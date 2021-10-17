@@ -42,7 +42,9 @@ Temporary Items
 Pods/
 Podfile.lock
 xcuserdata/
+xcuserdata
 *.xcworkspace
+xcschememanagement.plist
 
 ### Swift ###
 # Xcode
