@@ -22,7 +22,7 @@ class GrowthPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationController()
+//        setupNavigationController()
         
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
         
@@ -31,6 +31,11 @@ class GrowthPageViewController: UIViewController {
         fetchGrowthCards()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? AddGrowthCardViewController {
+            destinationVC.growthPage = self
+        }
+    }
 }
 
 
@@ -52,7 +57,7 @@ extension GrowthPageViewController {
 
 extension GrowthPageViewController {
     
-    private func fetchGrowthCards() {
+    func fetchGrowthCards() {
         
         GrowthCardProvider.shared.fetchData { result in
             

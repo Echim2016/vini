@@ -44,4 +44,21 @@ class GrowthCardProvider {
             }
         }
     }
+    
+    func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document()
+        growthCard.id = document.documentID
+        growthCard.createdTime = Timestamp(date: Date())
+        document.setData(growthCard.toDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
 }

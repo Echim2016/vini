@@ -18,7 +18,7 @@ struct GrowthCard: Codable {
     var archivedTime: Int64?
     var contents: [GrowthContent]?
     var conclusion: String?
-    var createdTime: Timestamp
+    var createdTime: Timestamp?
     
     enum CodingKeys: String, CodingKey {
         

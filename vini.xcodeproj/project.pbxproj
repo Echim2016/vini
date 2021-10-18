@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
+		9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
 		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
+		9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrowthCardViewController.swift; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
 		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */,
+				9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
+				9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
