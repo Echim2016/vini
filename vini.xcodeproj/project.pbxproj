@@ -8,9 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
+		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
+		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
+		9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */; };
+		9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */; };
+		9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */; };
+		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
+		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
+		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
-		9CC1E4C5271BE53500F17190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C4271BE53500F17190 /* ViewController.swift */; };
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
@@ -19,10 +26,17 @@
 
 /* Begin PBXFileReference section */
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
+		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
+		9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthCardCell.xib; sourceTree = "<group>"; };
+		9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthPageViewController.swift; sourceTree = "<group>"; };
+		9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
+		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
+		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CC1E4C4271BE53500F17190 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9CC1E4C7271BE53500F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C5FC928271D4F4F00DE4E42 /* Growth */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */,
+			);
+			path = Growth;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
@@ -66,12 +88,12 @@
 			isa = PBXGroup;
 			children = (
 				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
+				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
 				9CC1E4D6271BE58900F17190 /* Model */,
 				9CC1E4D4271BE57E00F17190 /* View */,
 				9CC1E4D5271BE58400F17190 /* Controller */,
 				9CC1E4D8271BE5A300F17190 /* Resource */,
-				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4CE271BE53600F17190 /* Info.plist */,
 			);
 			path = vini;
@@ -80,6 +102,8 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */,
+				9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -87,7 +111,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9CC1E4C4271BE53500F17190 /* ViewController.swift */,
+				9C5FC928271D4F4F00DE4E42 /* Growth */,
 				9CC1E4C0271BE53500F17190 /* AppDelegate.swift */,
 				9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */,
 			);
@@ -97,6 +121,9 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
+				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
+				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +131,7 @@
 		9CC1E4D7271BE59300F17190 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -121,6 +149,7 @@
 			children = (
 				9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */,
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
+				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -205,7 +234,9 @@
 			files = (
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
 				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
+				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
+				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +307,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CC1E4C5271BE53500F17190 /* ViewController.swift in Sources */,
+				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
+				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
+				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
+				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
+				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
+				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
