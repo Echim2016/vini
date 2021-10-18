@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
 		9CC1E4C5271BE53500F17190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C4271BE53500F17190 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		9CC1E4BF271BE53500F17190 /* vini */ = {
 			isa = PBXGroup;
 			children = (
+				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
 				9CC1E4D6271BE58900F17190 /* Model */,
 				9CC1E4D4271BE57E00F17190 /* View */,
@@ -151,6 +154,7 @@
 				9CC1E4BA271BE53500F17190 /* Frameworks */,
 				9CC1E4BB271BE53500F17190 /* Resources */,
 				9C1EADF2271C168D00C2F73C /* ShellScript */,
+				AAC60A91DD001B3F870DDDEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
+				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 			);
@@ -224,6 +229,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		AAC60A91DD001B3F870DDDEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FDED9D31104E535B177D3D3D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -333,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -388,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -423,7 +445,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,7 +474,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
