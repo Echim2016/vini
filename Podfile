@@ -10,5 +10,6 @@ target 'vini' do
   pod 'SwiftLint' 
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end
