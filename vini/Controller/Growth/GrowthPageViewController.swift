@@ -35,6 +35,10 @@ class GrowthPageViewController: UIViewController {
         if let destinationVC = segue.destination as? AddGrowthCardViewController {
             destinationVC.growthPage = self
         }
+        
+        if let destinationVC = segue.destination as? GrowthCaptureViewController {
+//            destinationVC.modalPresentationStyle = .fullScreen
+        }
     }
 }
 
@@ -114,5 +118,9 @@ extension GrowthPageViewController: UITableViewDataSource {
 }
 
 extension GrowthPageViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShowGrowthCapture", sender: nil)
+    }
     
 }

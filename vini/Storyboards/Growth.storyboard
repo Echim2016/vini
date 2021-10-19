@@ -50,11 +50,22 @@
                     <navigationItem key="navigationItem" id="sou-lj-HrM"/>
                     <connections>
                         <outlet property="tableView" destination="9mx-OD-6ya" id="hWx-07-vNl"/>
+                        <segue destination="ZxX-bD-lW4" kind="presentation" identifier="ShowGrowthCapture" id="fiL-rE-pnI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
+        </scene>
+        <!--GrowthCapture-->
+        <scene sceneID="gKi-yK-GEp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GrowthCapture" id="ZxX-bD-lW4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4m0-gd-q6I"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51c-BN-rNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="117"/>
         </scene>
         <!--Add Growth Card View Controller-->
         <scene sceneID="Q4p-TX-aaD">
