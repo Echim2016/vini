@@ -13,6 +13,12 @@ class GrowthContentCell: UITableViewCell {
     
     @IBOutlet weak var growthContentImageView: UIImageView!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    
+    @IBOutlet weak var createdTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,4 +35,23 @@ class GrowthContentCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell(content: GrowthContent) {
+        
+        titleLabel.text = content.title
+        
+        contentLabel.text = content.content
+        
+        growthContentImageView.isHidden = content.image.isEmpty ? true : false
+        
+        growthContentImageView.loadImage(content.image, placeHolder: nil)
+        
+        let timeInterval = TimeInterval(Int(content.createdTime.seconds))
+        
+        let dformatter = DateFormatter()
+        
+        dformatter.dateFormat = "yyyy/MM/dd"
+        
+        createdTimeLabel.text = "\(dformatter.string(from: Date(timeIntervalSince1970: timeInterval)))"
+        
+    }
 }

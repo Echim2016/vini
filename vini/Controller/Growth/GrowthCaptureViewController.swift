@@ -11,7 +11,16 @@ import grpc
 class GrowthCaptureViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
-    
+    @IBOutlet weak var headerEmojiLabel: UILabel! {
+        didSet {
+            headerEmojiLabel.text = headerEmoji
+        }
+    }
+    @IBOutlet weak var headerTitleLabel: UILabel! {
+        didSet {
+            headerTitleLabel.text = headerTitle
+        }
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -19,13 +28,18 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    lazy var headerEmoji: String = ""
+    lazy var headerTitle: String = ""
+    var growthCardID: String = ""
+    
+    var data: [GrowthContent] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +48,8 @@ class GrowthCaptureViewController: UIViewController {
         headerView.setBottomCurve()
         
         self.tabBarController?.tabBar.isHidden = true
+        
+        fetchGrowthContents()
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
@@ -42,10 +58,31 @@ class GrowthCaptureViewController: UIViewController {
     }
 }
 
+extension GrowthCaptureViewController {
+    
+    func fetchGrowthContents() {
+        
+        GrowthContentProvider.shared.fetchGrowthContents(id: growthCardID) { result in
+            
+            switch result {
+            case .success(let contents):
+                
+                self.data = contents
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
+}
+
 extension GrowthCaptureViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        data.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,7 +109,7 @@ extension GrowthCaptureViewController: UITableViewDataSource {
                 fatalError()
             }
             
-            cell.growthContentImageView.loadImage("https://theposieparker.com/wp-content/uploads/2020/08/book.jpg", placeHolder: nil)
+            cell.setupCell(content: data[indexPath.row - 1])
             
             return cell
         }

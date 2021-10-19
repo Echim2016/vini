@@ -42,9 +42,9 @@
                                                 <constraint firstItem="MLn-Wn-iTT" firstAttribute="centerX" secondItem="pgB-qP-Y6X" secondAttribute="centerX" id="tpF-Dh-Vd2"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「想學習更多iOS技術」" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqf-OF-VcM">
-                                            <rect key="frame" x="57" y="110" width="300" height="39.5"/>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="28"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「想學習更多iOS技術」" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqf-OF-VcM">
+                                            <rect key="frame" x="32" y="100" width="350" height="42"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
                                             <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -52,10 +52,12 @@
                                     <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstItem="vqf-OF-VcM" firstAttribute="centerX" secondItem="JnJ-UK-3Bl" secondAttribute="centerX" id="6WF-0K-LXN"/>
+                                        <constraint firstAttribute="trailing" secondItem="vqf-OF-VcM" secondAttribute="trailing" constant="32" id="Aqf-sn-fbF"/>
                                         <constraint firstItem="pgB-qP-Y6X" firstAttribute="centerX" secondItem="JnJ-UK-3Bl" secondAttribute="centerX" id="Xqe-H1-1sc"/>
                                         <constraint firstAttribute="height" constant="250" id="dYZ-or-0cI"/>
+                                        <constraint firstItem="vqf-OF-VcM" firstAttribute="leading" secondItem="JnJ-UK-3Bl" secondAttribute="leading" constant="32" id="n2e-NG-tWp"/>
                                         <constraint firstItem="pgB-qP-Y6X" firstAttribute="top" secondItem="JnJ-UK-3Bl" secondAttribute="top" id="o7x-k5-5PW"/>
-                                        <constraint firstItem="vqf-OF-VcM" firstAttribute="top" secondItem="pgB-qP-Y6X" secondAttribute="bottom" constant="20" id="sCQ-VR-FQ7"/>
+                                        <constraint firstItem="vqf-OF-VcM" firstAttribute="top" secondItem="pgB-qP-Y6X" secondAttribute="bottom" constant="10" id="sCQ-VR-FQ7"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -98,6 +100,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="headerEmojiLabel" destination="MLn-Wn-iTT" id="bLE-TU-L7I"/>
+                        <outlet property="headerTitleLabel" destination="vqf-OF-VcM" id="MP2-Eg-cUs"/>
                         <outlet property="headerView" destination="JnJ-UK-3Bl" id="im2-Lq-byl"/>
                         <outlet property="tableView" destination="IOB-tM-r9n" id="e6v-ev-paR"/>
                     </connections>

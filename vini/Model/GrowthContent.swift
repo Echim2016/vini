@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct GrowthContent: Codable {
     
     var id: String
-    var growthCardId: String
+    var growthCardId: DocumentReference
     var title: String
     var content: String
     var image: String
-    var createdTime: Int64
+    var createdTime: Timestamp
     
     enum CodingKeys: String, CodingKey {
         
@@ -34,7 +35,7 @@ struct GrowthContent: Codable {
                 "title": title as Any,
                 "content": content as Any,
                 "image": image as Any,
-                "createdTime": createdTime as Any,
+                "createdTime": createdTime as Any
             ]
         }
     

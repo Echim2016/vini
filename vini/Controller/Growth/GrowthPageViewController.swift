@@ -32,17 +32,27 @@ class GrowthPageViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let destinationVC = segue.destination as? AddGrowthCardViewController {
+            
             destinationVC.growthPage = self
         }
         
-        if let destinationVC = segue.destination as? GrowthCaptureViewController {
-
+        if segue.identifier == "ShowGrowthCapture" {
+            
+            if let navigationController = segue.destination as? UINavigationController,
+               let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
+                
+                if let index = sender as? Int {
+                    growthCaptureVC.headerEmoji = data[index].emoji
+                    growthCaptureVC.headerTitle = data[index].title
+                    growthCaptureVC.growthCardID = data[index].id
+                }
+            }
             
         }
     }
 }
-
 
 // MARK: - View-releated Setup -
 extension GrowthPageViewController {
@@ -122,7 +132,7 @@ extension GrowthPageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "ShowGrowthCapture", sender: nil)
+        performSegue(withIdentifier: "ShowGrowthCapture", sender: indexPath.row)
     }
     
 }
