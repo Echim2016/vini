@@ -11,5 +11,6 @@ target 'vini' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Kingfisher'
 
 end

@@ -23,6 +23,8 @@ class GrowthCaptureViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
+        
+        tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
 
     }
     
@@ -56,21 +58,25 @@ extension GrowthCaptureViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GrowthContentCell.identifier, for: indexPath) as? GrowthContentCell else {
-            fatalError()
-        }
-        
-        let url = URL(string: "https://theposieparker.com/wp-content/uploads/2020/08/book.jpg")
-
-        DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                cell.growthContentImageView?.image = UIImage(data: data!)
-                self.tableView.reloadData()
+        if indexPath.row == 0 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateGrowthContentCell.identifier, for: indexPath) as? CreateGrowthContentCell else {
+                fatalError()
             }
+            
+            return cell
+            
+        } else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: GrowthContentCell.identifier, for: indexPath) as? GrowthContentCell else {
+                fatalError()
+            }
+            
+            cell.growthContentImageView.loadImage("https://theposieparker.com/wp-content/uploads/2020/08/book.jpg", placeHolder: nil)
+            
+            return cell
         }
         
-        return cell
     }
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */; };
+		9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */; };
+		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
 		9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */; };
 		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
+		9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGrowthContentCell.swift; sourceTree = "<group>"; };
+		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
 		9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrowthCardViewController.swift; sourceTree = "<group>"; };
 		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
@@ -72,6 +78,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C05B224271EB38900C78620 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		9C05B227271EB45B00C78620 /* Growth Card */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */,
+				9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */,
+				9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */,
+			);
+			path = "Growth Card";
+			sourceTree = "<group>";
+		};
 		9C5FC928271D4F4F00DE4E42 /* Growth */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
+				9C05B224271EB38900C78620 /* Third Party Wrapper */,
 				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
 				9CC1E4D6271BE58900F17190 /* Model */,
@@ -118,11 +143,11 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */,
-				9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */,
-				9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */,
+				9C05B227271EB45B00C78620 /* Growth Card */,
 				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
 				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
+				9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */,
+				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,6 +285,7 @@
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
 				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
+				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,11 +358,13 @@
 			files = (
 				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
+				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
 				9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */,
 				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
+				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
