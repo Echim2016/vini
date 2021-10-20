@@ -11,6 +11,7 @@
 		9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */; };
 		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
 		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
+		9C05B22F271EEE8200C78620 /* CreateGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* CreateGrowthContentCardViewController.swift */; };
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
 		9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */; };
 		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
@@ -18,6 +19,7 @@
 		9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */; };
 		9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6132271E9B780013D63A /* GrowthContentCell.swift */; };
 		9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A6133271E9B780013D63A /* GrowthContentCell.xib */; };
+		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
 		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
@@ -40,6 +42,7 @@
 		9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGrowthContentCell.swift; sourceTree = "<group>"; };
 		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
 		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
+		9C05B22E271EEE8200C78620 /* CreateGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGrowthContentCardViewController.swift; sourceTree = "<group>"; };
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
 		9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGrowthCardViewController.swift; sourceTree = "<group>"; };
 		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9C1A6132271E9B780013D63A /* GrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentCell.swift; sourceTree = "<group>"; };
 		9C1A6133271E9B780013D63A /* GrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthContentCell.xib; sourceTree = "<group>"; };
+		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
 		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */,
 				9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */,
 				9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */,
+				9C05B22E271EEE8200C78620 /* CreateGrowthContentCardViewController.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */,
 				9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */,
+				9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -362,11 +368,13 @@
 				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
+				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
 				9C1A612B271D79600013D63A /* AddGrowthCardViewController.swift in Sources */,
 				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
+				9C05B22F271EEE8200C78620 /* CreateGrowthContentCardViewController.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,

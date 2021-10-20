@@ -7,8 +7,14 @@
 
 import UIKit
 import grpc
+import FirebaseFirestore
 
 class GrowthCaptureViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case createContentCard = "CreateGrowthContentCard"
+    }
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerEmojiLabel: UILabel! {
@@ -40,6 +46,8 @@ class GrowthCaptureViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
+        
+        setupListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +56,29 @@ class GrowthCaptureViewController: UIViewController {
         headerView.setBottomCurve()
         
         self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        fetchGrowthContents()
+        if let destinationVC = segue.destination as? CreateGrowthContentCardViewController {
+            
+            destinationVC.contentIntroText = headerTitle
+            
+            if let growthCardID = sender as? String {
+                
+                destinationVC.growthCardID = growthCardID
+            }
+        }
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: growthCardID)
     }
 }
 
@@ -77,6 +101,19 @@ extension GrowthCaptureViewController {
         }
     }
     
+    func setupListener() {
+        
+        Firestore.firestore().collection("Growth_Contents")
+            .addSnapshotListener(includeMetadataChanges: true) { _, error in
+                
+                if let error = error {
+                    print(error)
+                } else {
+                    self.fetchGrowthContents()
+                    print("Database has updated")
+                }
+            }
+    }
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
@@ -100,6 +137,8 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateGrowthContentCell.identifier, for: indexPath) as? CreateGrowthContentCell else {
                 fatalError()
             }
+            
+            cell.createGrowthContentCardButton.addTarget(self, action: #selector(tapCreateGrowthContentCardButton(_:)), for: .touchUpInside)
             
             return cell
             

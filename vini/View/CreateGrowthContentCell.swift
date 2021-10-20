@@ -13,6 +13,8 @@ class CreateGrowthContentCell: UITableViewCell {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     
+    @IBOutlet weak var createGrowthContentCardButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,7 +28,6 @@ class CreateGrowthContentCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

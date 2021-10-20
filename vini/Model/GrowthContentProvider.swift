@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseStorage
 
 class GrowthContentProvider {
     
@@ -47,4 +48,64 @@ class GrowthContentProvider {
         }
     }
     
+    func uploadImage(imageView: UIImageView, completion: @escaping (_ url: String?) -> Void) {
+        
+        let storageRef = Storage.storage().reference().child("\(Date().timeIntervalSince1970).jpg")
+        
+        if let uploadData = imageView.image!.jpegData(compressionQuality: 0.5) {
+            
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                
+                guard let metadata = metadata else {
+                    completion(nil)
+                    return
+                    
+                }
+                
+                storageRef.downloadURL(completion: { (url, error) in
+                    
+                    guard let downloadURL = url else {
+                        completion(nil)
+                        return
+                    }
+                    print(downloadURL)
+                    completion(downloadURL.absoluteString)
+                })
+                
+            }
+        }
+    }
+    
+    func addGrowthContents(id: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        uploadImage(imageView: imageView) { url in
+            
+            guard let url = url else { return }
+            
+            let document = self.db.collection("Growth_Contents").document()
+            
+            let growthContent = GrowthContent(
+                id: document.documentID,
+                growthCardId: self.db.collection("Growth_Cards").document(id),
+                title: title,
+                content: content,
+                image: url,
+                createdTime: Timestamp(date: Date())
+            )
+            
+            document.setData(growthContent.toDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+        }
+        
+    }
+    
 }
+    

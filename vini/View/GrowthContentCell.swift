@@ -27,6 +27,8 @@ class GrowthContentCell: UITableViewCell {
         self.selectionStyle = .none
         
         cellBackgroundView.layer.cornerRadius = 25
+        
+        growthContentImageView.layer.cornerRadius = 18
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

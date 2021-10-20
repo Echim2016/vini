@@ -29,14 +29,14 @@ struct GrowthContent: Codable {
     
     var toDict: [String: Any] {
         
-            return [
-                "id": id as Any,
-                "growth_card_id": growthCardId as Any,
-                "title": title as Any,
-                "content": content as Any,
-                "image": image as Any,
-                "createdTime": createdTime as Any
-            ]
-        }
+        return [
+            "id": id as Any,
+            "growth_card_id": growthCardId as Any,
+            "title": title as Any,
+            "content": content as Any,
+            "image": image as Any,
+            "created_time": createdTime as Any
+        ]
+    }
     
 }

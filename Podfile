@@ -11,6 +11,10 @@ target 'vini' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
   pod 'Kingfisher'
+  pod 'RSKPlaceholderTextView'
+  pod 'IQKeyboardManagerSwift'
+
 
 end

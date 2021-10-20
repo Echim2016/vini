@@ -76,6 +76,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="335-Ue-bji" id="NDZ-EP-kpE"/>
+                <outlet property="createGrowthContentCardButton" destination="9Zx-Q2-jQm" id="qEP-6L-EAb"/>
                 <outlet property="dateLabel" destination="6pq-p6-Ob0" id="0pb-EZ-w7S"/>
             </connections>
             <point key="canvasLocation" x="294.20289855072468" y="214.95535714285714"/>
