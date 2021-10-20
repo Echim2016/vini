@@ -22,7 +22,7 @@ class GrowthContentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.backgroundColor = .clear
+        self.backgroundColor = .B1
         
         self.selectionStyle = .none
         

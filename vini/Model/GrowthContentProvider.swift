@@ -48,16 +48,16 @@ class GrowthContentProvider {
         }
     }
     
-    func uploadImage(imageView: UIImageView, completion: @escaping (_ url: String?) -> Void) {
+    func uploadImage(imageView: UIImageView, completion: @escaping (_ url: String) -> Void) {
         
         let storageRef = Storage.storage().reference().child("\(Date().timeIntervalSince1970).jpg")
         
-        if let uploadData = imageView.image!.jpegData(compressionQuality: 0.5) {
+        if let uploadData = imageView.image?.jpegData(compressionQuality: 0.5) {
             
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 
                 guard let metadata = metadata else {
-                    completion(nil)
+                    completion("")
                     return
                     
                 }
@@ -65,7 +65,7 @@ class GrowthContentProvider {
                 storageRef.downloadURL(completion: { (url, error) in
                     
                     guard let downloadURL = url else {
-                        completion(nil)
+                        completion("")
                         return
                     }
                     print(downloadURL)
@@ -73,14 +73,14 @@ class GrowthContentProvider {
                 })
                 
             }
+        } else {
+            completion("")
         }
     }
     
     func addGrowthContents(id: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
         
         uploadImage(imageView: imageView) { url in
-            
-            guard let url = url else { return }
             
             let document = self.db.collection("Growth_Contents").document()
             
@@ -105,6 +105,20 @@ class GrowthContentProvider {
             }
         }
         
+    }
+    
+    func deleteGrowthContentCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        db.collection("Growth_Contents").document(id).delete() { err in
+            
+            if let err = err {
+                print("Error removing growth content card: \(err)")
+                completion(.failure(err))
+            } else {
+                print("Growth content card successfully removed!")
+                completion(.success("Success"))
+            }
+        }
     }
     
 }

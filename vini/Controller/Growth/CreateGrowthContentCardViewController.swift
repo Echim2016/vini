@@ -108,9 +108,6 @@ extension CreateGrowthContentCardViewController {
             }
         }
     }
-    
-    
-    
 }
 
 // MARK: - View-related Setup

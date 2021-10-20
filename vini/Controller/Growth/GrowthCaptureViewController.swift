@@ -46,8 +46,6 @@ class GrowthCaptureViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
-        
-        setupListener()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +54,8 @@ class GrowthCaptureViewController: UIViewController {
         headerView.setBottomCurve()
         
         self.tabBarController?.tabBar.isHidden = true
+        
+        fetchGrowthContents()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,6 +82,7 @@ class GrowthCaptureViewController: UIViewController {
     }
 }
 
+// MARK: - Firebase -
 extension GrowthCaptureViewController {
     
     func fetchGrowthContents() {
@@ -97,6 +98,22 @@ extension GrowthCaptureViewController {
             case .failure(let error):
                 
                 print(error)
+            }
+        }
+    }
+    
+    func deleteGrowthContentCard(id: String, completion: @escaping (Bool) -> Void) {
+        
+        GrowthContentProvider.shared.deleteGrowthContentCard(id: id) { result in
+            
+            switch result {
+            case .success(let message):
+                print(message)
+                completion(true)
+                
+            case .failure(let error):
+                print(error)
+                completion(false)
             }
         }
     }
@@ -127,7 +144,7 @@ extension GrowthCaptureViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        300
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,5 +174,28 @@ extension GrowthCaptureViewController: UITableViewDataSource {
 }
 
 extension GrowthCaptureViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+        let delete = UIAction(
+            title: "刪除",
+            image: UIImage(systemName: "trash.fill"),
+            attributes: [.destructive]) { action in
+                
+                print("delete")
+                self.deleteGrowthContentCard(id: self.data[indexPath.row - 1].id) { success in
+                    
+                    if success {
+                        self.data.remove(at: indexPath.row - 1)
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+            }
+
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            UIMenu(title: "", children: [delete])
+        }
+
+    }
     
 }
