@@ -48,9 +48,9 @@ class GrowthContentProvider {
         }
     }
     
-    func uploadImage(imageView: UIImageView, completion: @escaping (_ url: String) -> Void) {
+    func uploadImage(imageView: UIImageView, id: String,  completion: @escaping (_ url: String) -> Void) {
         
-        let storageRef = Storage.storage().reference().child("\(Date().timeIntervalSince1970).jpg")
+        let storageRef = Storage.storage().reference().child("\(id).jpg")
         
         if let uploadData = imageView.image?.jpegData(compressionQuality: 0.5) {
             
@@ -80,9 +80,9 @@ class GrowthContentProvider {
     
     func addGrowthContents(id: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
         
-        uploadImage(imageView: imageView) { url in
-            
-            let document = self.db.collection("Growth_Contents").document()
+        let document = self.db.collection("Growth_Contents").document()
+        
+        uploadImage(imageView: imageView, id: document.documentID) { url in
             
             let growthContent = GrowthContent(
                 id: document.documentID,
@@ -116,8 +116,32 @@ class GrowthContentProvider {
                 completion(.failure(err))
             } else {
                 print("Growth content card successfully removed!")
-                completion(.success("Success"))
+                self.deleteGrowthContentCardImage(id: id) { result in
+                    
+                    switch result {
+                    case .success(let success):
+                        completion(.success(success))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+                
             }
+        }
+    }
+    
+    func deleteGrowthContentCardImage(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let ref = Storage.storage().reference().child("\(id).jpg")
+
+        ref.delete { error in
+          if let error = error {
+              print("Error removing growth content card image: \(error)")
+              completion(.failure(error))
+          } else {
+              print("Growth content card image successfully removed!")
+              completion(.success("Success"))
+          }
         }
     }
     
