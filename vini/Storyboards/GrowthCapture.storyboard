@@ -105,16 +105,17 @@
                         <outlet property="headerView" destination="JnJ-UK-3Bl" id="im2-Lq-byl"/>
                         <outlet property="tableView" destination="IOB-tM-r9n" id="e6v-ev-paR"/>
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="CreateGrowthContentCard" id="noz-NI-lb9"/>
+                        <segue destination="F69-GU-DzG" kind="presentation" identifier="EditGrowthContentCard" id="ayE-PI-VOL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="109.82142857142857"/>
         </scene>
-        <!--Create Growth Content Card View Controller-->
+        <!--Set Growth Content Card View Controller-->
         <scene sceneID="CAR-gr-LfO">
             <objects>
-                <viewController id="F69-GU-DzG" customClass="CreateGrowthContentCardViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="F69-GU-DzG" customClass="SetGrowthContentCardViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bu2-g3-47S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -285,6 +286,9 @@
             <size key="intrinsicContentSize" width="10" height="47"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="ayE-PI-VOL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>

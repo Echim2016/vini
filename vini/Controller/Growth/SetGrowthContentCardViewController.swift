@@ -9,7 +9,14 @@ import UIKit
 import PhotosUI
 import RSKPlaceholderTextView
 
-class CreateGrowthContentCardViewController: UIViewController {
+class SetGrowthContentCardViewController: UIViewController {
+    
+    enum Status {
+        case create
+        case edit
+    }
+    
+    weak var growthCaptureVC: GrowthCaptureViewController?
     
     @IBOutlet weak var introLabel: UILabel! {
         didSet {
@@ -27,6 +34,7 @@ class CreateGrowthContentCardViewController: UIViewController {
         didSet {
             contentTextView.delegate = self
             contentTextView.accessibilityLabel = "content"
+            contentTextView.text = contentToAdd
         }
     }
     
@@ -34,12 +42,14 @@ class CreateGrowthContentCardViewController: UIViewController {
         didSet {
             titleTextView.delegate = self
             titleTextView.accessibilityLabel = "title"
+            titleTextView.text = titleToAdd
         }
     }
     
     @IBOutlet weak var contentImageView: UIImageView! {
         didSet {
             contentImageView.layer.cornerRadius = 18
+            contentImageView.loadImage(imageURL, placeHolder: nil)
         }
     }
     
@@ -52,9 +62,13 @@ class CreateGrowthContentCardViewController: UIViewController {
     var contentIntroText: String = "..."
     var imageIntroText: String = ""
     var growthCardID: String = ""
+    var contentCardID: String = ""
     
     var titleToAdd: String = ""
     var contentToAdd: String = ""
+    var imageURL: String?
+    var newImageIsSet: Bool = false
+    var currentStatus = Status.create
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,20 +101,32 @@ class CreateGrowthContentCardViewController: UIViewController {
         textViewDidEndEditing(contentTextView)
         textViewDidEndEditing(titleTextView)
         
-        addGrowthContentCard()
+        switch currentStatus {
+            
+        case .create:
+            addGrowthContentCard()
+        case .edit:
+            updateGrowthContentCard()
+            
+        }
     }
 }
 
 // MARK: - Firebase -
-extension CreateGrowthContentCardViewController {
+extension SetGrowthContentCardViewController {
     
-    func addGrowthContentCard() {
+    private func addGrowthContentCard() {
         
-        GrowthContentProvider.shared.addGrowthContents(id: growthCardID, title: titleToAdd, content: contentToAdd, imageView: contentImageView) { result in
+        GrowthContentProvider.shared.addGrowthContents(
+            id: growthCardID,
+            title: titleToAdd,
+            content: contentToAdd,
+            imageView: contentImageView) { result in
             
             switch result {
             case .success(let message):
                 print(message)
+                self.growthCaptureVC?.fetchGrowthContents()
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
@@ -108,10 +134,31 @@ extension CreateGrowthContentCardViewController {
             }
         }
     }
+    
+    private func updateGrowthContentCard() {
+        
+        GrowthContentProvider.shared.updateGrowthContents(
+            contentID: contentCardID,
+            title: titleToAdd,
+            content: contentToAdd,
+            imageView: newImageIsSet ? contentImageView : nil) { result in
+            
+            switch result {
+            case .success(let message):
+                print(message)
+                self.growthCaptureVC?.fetchGrowthContents()
+                self.dismiss(animated: true, completion: nil)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
 }
 
 // MARK: - View-related Setup
-extension CreateGrowthContentCardViewController {
+extension SetGrowthContentCardViewController {
     
     func setupTextView() {
         
@@ -126,7 +173,7 @@ extension CreateGrowthContentCardViewController {
 }
 
 // MARK: - UITextView Delegate -
-extension CreateGrowthContentCardViewController: UITextViewDelegate {
+extension SetGrowthContentCardViewController: UITextViewDelegate {
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         
@@ -153,7 +200,7 @@ extension CreateGrowthContentCardViewController: UITextViewDelegate {
 }
 
 // MARK: - Image Picker -
-extension CreateGrowthContentCardViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
 
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
 
@@ -173,6 +220,8 @@ extension CreateGrowthContentCardViewController: UIImagePickerControllerDelegate
         if let originalImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             contentImageView.image = originalImage
         }
+        
+        newImageIsSet = true
 
         dismiss(animated: true, completion: nil)
     }
@@ -187,6 +236,7 @@ extension CreateGrowthContentCardViewController: UIImagePickerControllerDelegate
         if let itemProvider = itemProviders.first, itemProvider.canLoadObject(ofClass: UIImage.self) {
             
             let previousImage = contentImageView.image
+            
             itemProvider.loadObject(ofClass: UIImage.self) {[weak self] (image, error) in
                 DispatchQueue.main.async {
                     guard let self = self,

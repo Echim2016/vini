@@ -14,6 +14,7 @@ class GrowthCaptureViewController: UIViewController {
     private enum Segue: String {
         
         case createContentCard = "CreateGrowthContentCard"
+        case editContentCard = "EditGrowthContentCard"
     }
 
     @IBOutlet weak var headerView: UIView!
@@ -60,13 +61,34 @@ class GrowthCaptureViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destinationVC = segue.destination as? CreateGrowthContentCardViewController {
+        if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
             
+            destinationVC.growthCaptureVC = self
             destinationVC.contentIntroText = headerTitle
             
             if let growthCardID = sender as? String {
                 
                 destinationVC.growthCardID = growthCardID
+            }
+            
+            if let index = sender as? Int {
+                
+                destinationVC.titleToAdd = data[index].title
+                destinationVC.contentToAdd = data[index].content
+                destinationVC.imageURL = data[index].image
+                destinationVC.contentCardID = data[index].id
+            }
+            
+            switch segue.identifier {
+                
+            case Segue.createContentCard.rawValue:
+                destinationVC.currentStatus = .create
+                
+            case Segue.editContentCard.rawValue:
+                destinationVC.currentStatus = .edit
+                
+            default:
+                break
             }
         }
     }
@@ -93,7 +115,17 @@ extension GrowthCaptureViewController {
             case .success(let contents):
                 
                 self.data = contents
-                self.tableView.reloadData()
+        
+                UIView.transition(
+                    with: self.tableView,
+                    duration: 0.5,
+                    options: .transitionCrossDissolve,
+                    animations: {
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    },
+                    completion: nil)
                 
             case .failure(let error):
                 
@@ -102,34 +134,22 @@ extension GrowthCaptureViewController {
         }
     }
     
-    func deleteGrowthContentCard(id: String, completion: @escaping (Bool) -> Void) {
+    private func deleteGrowthContentCard(id: String, imageExists: Bool,  completion: @escaping (Bool) -> Void) {
         
-        GrowthContentProvider.shared.deleteGrowthContentCard(id: id) { result in
+        GrowthContentProvider.shared.deleteGrowthContentCard(id: id, imageExists: imageExists) { result in
             
             switch result {
             case .success(let message):
+                
                 print(message)
                 completion(true)
                 
             case .failure(let error):
+                
                 print(error)
                 completion(false)
             }
         }
-    }
-    
-    func setupListener() {
-        
-        Firestore.firestore().collection("Growth_Contents")
-            .addSnapshotListener(includeMetadataChanges: true) { _, error in
-                
-                if let error = error {
-                    print(error)
-                } else {
-                    self.fetchGrowthContents()
-                    print("Database has updated")
-                }
-            }
     }
 }
 
@@ -176,26 +196,44 @@ extension GrowthCaptureViewController: UITableViewDataSource {
 extension GrowthCaptureViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-
-        let delete = UIAction(
-            title: "刪除",
-            image: UIImage(systemName: "trash.fill"),
-            attributes: [.destructive]) { action in
+        
+        // Disable welcome cell's content menu
+        if indexPath.row == 0 {
+            
+            return nil
+            
+        } else {
+            
+            let edit = UIAction(
+                title: "編輯",
+                image: UIImage(systemName: "square.and.pencil")
+            ) { _ in
                 
-                print("delete")
-                self.deleteGrowthContentCard(id: self.data[indexPath.row - 1].id) { success in
+                // Navigate to edit page
+                self.performSegue(withIdentifier: Segue.editContentCard.rawValue, sender: indexPath.row - 1)
+            }
+            
+            let delete = UIAction(
+                title: "刪除",
+                image: UIImage(systemName: "trash.fill"),
+                attributes: [.destructive]) { _ in
                     
-                    if success {
-                        self.data.remove(at: indexPath.row - 1)
-                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    let id = self.data[indexPath.row - 1].id
+                    let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                    
+                    self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
+                        
+                        if success {
+                            self.data.remove(at: indexPath.row - 1)
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
                     }
                 }
+            
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+                UIMenu(title: "", children: [edit, delete])
             }
-
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            UIMenu(title: "", children: [delete])
         }
-
     }
     
 }

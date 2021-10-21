@@ -39,4 +39,21 @@ struct GrowthContent: Codable {
         ]
     }
     
+    var toDictInFullEditMode: [String: Any] {
+        
+        return [
+            "title": title as Any,
+            "content": content as Any,
+            "image": image as Any
+        ]
+    }
+    
+    var toDictInTextEditMode: [String: Any] {
+        
+        return [
+            "title": title as Any,
+            "content": content as Any
+        ]
+    }
+    
 }

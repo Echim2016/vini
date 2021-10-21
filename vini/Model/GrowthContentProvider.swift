@@ -48,7 +48,7 @@ class GrowthContentProvider {
         }
     }
     
-    func uploadImage(imageView: UIImageView, id: String,  completion: @escaping (_ url: String) -> Void) {
+    func uploadImage(imageView: UIImageView, id: String, completion: @escaping (_ url: String) -> Void) {
         
         let storageRef = Storage.storage().reference().child("\(id).jpg")
         
@@ -59,7 +59,6 @@ class GrowthContentProvider {
                 guard let metadata = metadata else {
                     completion("")
                     return
-                    
                 }
                 
                 storageRef.downloadURL(completion: { (url, error) in
@@ -68,7 +67,7 @@ class GrowthContentProvider {
                         completion("")
                         return
                     }
-                    print(downloadURL)
+                    
                     completion(downloadURL.absoluteString)
                 })
                 
@@ -107,7 +106,48 @@ class GrowthContentProvider {
         
     }
     
-    func deleteGrowthContentCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthContents(contentID: String, title: String, content: String, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = self.db.collection("Growth_Contents").document(contentID)
+        
+        var updateDict = [
+            "title": title,
+            "content": content,
+        ]
+        
+        if let imageView = imageView {
+            
+            uploadImage(imageView: imageView, id: document.documentID) { url in
+                
+                updateDict["image"] = url
+                
+                document.updateData(updateDict) { error in
+                    
+                    if let error = error {
+                        
+                        completion(.failure(error))
+                    } else {
+                        
+                        completion(.success("Success"))
+                    }
+                }
+            }
+        } else {
+            
+            document.updateData(updateDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+        }
+    }
+    
+    func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping (Result<String, Error>) -> Void) {
         
         db.collection("Growth_Contents").document(id).delete() { err in
             
@@ -116,14 +156,21 @@ class GrowthContentProvider {
                 completion(.failure(err))
             } else {
                 print("Growth content card successfully removed!")
-                self.deleteGrowthContentCardImage(id: id) { result in
+                
+                if imageExists {
                     
-                    switch result {
-                    case .success(let success):
-                        completion(.success(success))
-                    case .failure(let error):
-                        completion(.failure(error))
+                    self.deleteGrowthContentCardImage(id: id) { result in
+                        
+                        switch result {
+                        case .success(let success):
+                            completion(.success(success))
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
                     }
+                } else {
+                    
+                    completion(.success("Success"))
                 }
                 
             }
