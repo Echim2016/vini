@@ -29,6 +29,7 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
 				9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */,
 				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
+				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
+				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,

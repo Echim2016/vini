@@ -35,6 +35,8 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var footerView: UIView!
+    
     lazy var headerEmoji: String = ""
     lazy var headerTitle: String = ""
     var growthCardID: String = ""
@@ -57,6 +59,8 @@ class GrowthCaptureViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         fetchGrowthContents()
+        
+        footerView.setTopCurve()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,7 +138,7 @@ extension GrowthCaptureViewController {
         }
     }
     
-    private func deleteGrowthContentCard(id: String, imageExists: Bool,  completion: @escaping (Bool) -> Void) {
+    private func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping (Bool) -> Void) {
         
         GrowthContentProvider.shared.deleteGrowthContentCard(id: id, imageExists: imageExists) { result in
             

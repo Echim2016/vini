@@ -35,13 +35,13 @@ extension UIView {
     }
     
     func setTopCurve() {
-        let offset = CGFloat(self.frame.size.height / 4)
+        let offset = CGFloat(self.frame.size.height / 2)
         let bounds = self.bounds
-        let rectBounds = CGRect(x: bounds.origin.x, y: bounds.origin.y + bounds.size.height / 2  , width:   bounds.size.width, height: bounds.size.height / 2)
+        let rectBounds = CGRect(x: bounds.origin.x, y: bounds.origin.y + bounds.size.height / 2, width: bounds.size.width * 1.1, height: bounds.size.height / 2)
         
         let rectPath = UIBezierPath(rect: rectBounds)
         
-        let ovalBounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - offset / 2, width: bounds.size.width + offset, height: bounds.size.height)
+        let ovalBounds = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y + offset * 0.2, width: bounds.size.width + offset, height: bounds.size.height * 0.6)
         let ovalPath = UIBezierPath(ovalIn: ovalBounds)
         rectPath.append(ovalPath)
         
