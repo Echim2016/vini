@@ -43,6 +43,8 @@ class GrowthPageViewController: UIViewController {
             if let navigationController = segue.destination as? UINavigationController,
                let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
                 
+                growthCaptureVC.growthPageVC = self
+                
                 if let index = sender as? Int {
                     growthCaptureVC.headerEmoji = data[index].emoji
                     growthCaptureVC.headerTitle = data[index].title

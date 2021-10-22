@@ -8,6 +8,7 @@
 import UIKit
 import grpc
 import FirebaseFirestore
+import RSKPlaceholderTextView
 
 class GrowthCaptureViewController: UIViewController {
     
@@ -17,8 +18,11 @@ class GrowthCaptureViewController: UIViewController {
         case editContentCard = "EditGrowthContentCard"
         case drawConclusions = "DrawConclusions"
     }
+    
+    weak var growthPageVC: GrowthPageViewController?
 
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var expandViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerEmojiLabel: UILabel! {
         didSet {
             headerEmojiLabel.text = headerEmoji
@@ -29,6 +33,21 @@ class GrowthCaptureViewController: UIViewController {
             headerTitleLabel.text = headerTitle
         }
     }
+    
+    @IBOutlet weak var emojiTextField: UITextField! {
+        didSet {
+            emojiTextField.text = headerEmoji
+            emojiTextField.delegate = self
+        }
+    }
+   
+    @IBOutlet weak var headerTitleTextView: RSKPlaceholderTextView! {
+        didSet {
+            headerTitleTextView.text = headerTitle
+            headerTitleTextView.delegate = self
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -38,11 +57,26 @@ class GrowthCaptureViewController: UIViewController {
     
     @IBOutlet weak var footerView: UIView!
     
+    @IBOutlet weak var editButton: UIButton!
+    
     lazy var headerEmoji: String = ""
     lazy var headerTitle: String = ""
+    lazy var headerEmojiToUpdate: String = ""
+    lazy var headerTitleToUpdate: String = ""
     var growthCardID: String = ""
     
     var data: [GrowthContent] = []
+    
+    var isInEditMode: Bool = false {
+        didSet {
+            emojiTextField.isEnabled = isInEditMode
+            headerTitleTextView.isEditable = isInEditMode
+            
+            let imageName = isInEditMode ? "checkmark.circle.fill" : "pencil.circle.fill"
+            
+            editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +84,8 @@ class GrowthCaptureViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
+        
+        isInEditMode = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +98,8 @@ class GrowthCaptureViewController: UIViewController {
         fetchGrowthContents()
         
         setupFooterview()
+        
+        setupTextView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,6 +145,18 @@ class GrowthCaptureViewController: UIViewController {
     @IBAction func tapBackButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tapEditButton(_ sender: Any) {
+        
+        if isInEditMode {
+            
+            updateGrowthCard()
+
+        } else {
+            
+            showEditPage()
+        }
     }
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
@@ -167,6 +217,29 @@ extension GrowthCaptureViewController {
             }
         }
     }
+    
+    private func updateGrowthCard() {
+        
+//        textFieldDidEndEditing(emojiTextField)
+//        textViewDidEndEditing(headerTitleTextView)
+        
+        GrowthCardProvider.shared.updateGrowthCard(id: growthCardID, emoji: headerEmojiToUpdate, title: headerTitleToUpdate) { result in
+            
+            switch result {
+            case .success(let message):
+                
+                print(message)
+                self.growthPageVC?.fetchGrowthCards()
+                self.dismiss(animated: true, completion: nil)
+                
+            case .failure(let error):
+                
+                print(error)
+                self.headerEmojiLabel.text = self.headerEmoji
+                self.headerTitleLabel.text = self.headerTitle
+            }
+        }
+    }
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
@@ -210,6 +283,11 @@ extension GrowthCaptureViewController: UITableViewDataSource {
 }
 
 extension GrowthCaptureViewController: UITableViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        editButton.isHidden = scrollView.contentOffset.y != 0
+    }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
@@ -254,7 +332,74 @@ extension GrowthCaptureViewController: UITableViewDelegate {
     
 }
 
+// MARK: - Text Field & Text View -
+extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        switch textField {
+        case emojiTextField:
+            
+            guard let text = textField.text,
+                  text.count < 2,
+                  (text.isSingleEmoji || text.isEmpty) else {
+                      textField.text = headerEmoji
+                      return
+                  }
+            
+            headerEmojiToUpdate = text
+            
+        default:
+            break
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        switch textView {
+        case headerTitleTextView:
+            
+            guard let text = textView.text,
+                  text.count <= 20 else {
+                      textView.text = ""
+                      return
+                  }
+            
+            headerTitleToUpdate = text
+            
+        default:
+            break
+        }
+
+    }
+}
+
 extension GrowthCaptureViewController {
+    
+    func showEditPage() {
+
+        tableView.isScrollEnabled = false
+        
+        isInEditMode = true
+        
+        UIView.animate(
+            withDuration: 0.9,
+            delay: 0,
+            options: [.curveEaseInOut],
+            animations: {
+                self.expandViewHeight.constant = self.view.frame.height - 180
+                self.view.layoutIfNeeded()
+                self.headerTitleTextView.becomeFirstResponder()
+            })
+    }
+    
+    func setupTextView() {
+        
+        headerTitleTextView.placeholder = "輸入你的成長項目標題..."
+        headerTitleTextView.tintColor = UIColor.B2
+        headerTitleTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+    }
     
     func setupFooterview() {
         
