@@ -92,16 +92,25 @@ class GrowthContentProvider {
                 createdTime: Timestamp(date: Date())
             )
             
-            document.setData(growthContent.toDict) { error in
+            do {
                 
-                if let error = error {
+                try document.setData(from: growthContent) { error in
                     
-                    completion(.failure(error))
-                } else {
-                    
-                    completion(.success("Success"))
+                    if let error = error {
+                        
+                        completion(.failure(error))
+                    } else {
+                        
+                        completion(.success("Success"))
+                    }
                 }
+                
+            } catch let error {
+                
+                print(error)
+                completion(.failure(error))
             }
+            
         }
         
     }

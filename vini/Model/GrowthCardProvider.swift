@@ -50,15 +50,24 @@ class GrowthCardProvider {
         let document = db.collection("Growth_Cards").document()
         growthCard.id = document.documentID
         growthCard.createdTime = Timestamp(date: Date())
-        document.setData(growthCard.toDict) { error in
+        
+        do {
             
-            if let error = error {
+            try document.setData(from: growthCard) { error in
                 
-                completion(.failure(error))
-            } else {
-                
-                completion(.success("Success"))
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
             }
+            
+        } catch let error {
+            
+            print(error)
+            completion(.failure(error))
         }
     }
 }

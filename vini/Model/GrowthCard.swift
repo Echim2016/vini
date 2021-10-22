@@ -15,7 +15,7 @@ struct GrowthCard: Codable {
     var emoji: String
     var isStarred: Bool
     var isArchived: Bool
-    var archivedTime: Int64?
+    var archivedTime: Timestamp?
     var contents: [GrowthContent]?
     var conclusion: String?
     var createdTime: Timestamp?
@@ -31,21 +31,6 @@ struct GrowthCard: Codable {
         case contents
         case conclusion
         case createdTime = "created_time"
-    }
-    
-    var toDict: [String: Any] {
-        
-        return [
-            "id": id as Any,
-            "title": title as Any,
-            "emoji": emoji as Any,
-            "is_starred": isStarred as Any,
-            "is_archived": isArchived as Any,
-            "archived_time": archivedTime as Any,
-            "contents": contents as Any,
-            "conclusion": conclusion as Any,
-            "created_time": createdTime as Any
-        ]
     }
     
 }

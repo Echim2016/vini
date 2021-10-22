@@ -27,33 +27,4 @@ struct GrowthContent: Codable {
         case createdTime = "created_time"
     }
     
-    var toDict: [String: Any] {
-        
-        return [
-            "id": id as Any,
-            "growth_card_id": growthCardId as Any,
-            "title": title as Any,
-            "content": content as Any,
-            "image": image as Any,
-            "created_time": createdTime as Any
-        ]
-    }
-    
-    var toDictInFullEditMode: [String: Any] {
-        
-        return [
-            "title": title as Any,
-            "content": content as Any,
-            "image": image as Any
-        ]
-    }
-    
-    var toDictInTextEditMode: [String: Any] {
-        
-        return [
-            "title": title as Any,
-            "content": content as Any
-        ]
-    }
-    
 }
