@@ -112,11 +112,22 @@
                         <outlet property="tableView" destination="IOB-tM-r9n" id="e6v-ev-paR"/>
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="CreateGrowthContentCard" id="noz-NI-lb9"/>
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="EditGrowthContentCard" id="ayE-PI-VOL"/>
+                        <segue destination="ZeT-yR-ien" kind="show" identifier="DrawConclusions" id="q0G-b0-Oyf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="109.82142857142857"/>
+        </scene>
+        <!--Conclusion-->
+        <scene sceneID="CpK-jg-J3L">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Conclusion" id="ZeT-yR-ien" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0or-GY-bda"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIP-fp-qtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2780" y="110"/>
         </scene>
         <!--Set Growth Content Card View Controller-->
         <scene sceneID="CAR-gr-LfO">

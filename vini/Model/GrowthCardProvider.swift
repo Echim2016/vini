@@ -70,4 +70,40 @@ class GrowthCardProvider {
             completion(.failure(error))
         }
     }
+    
+    func updateConclusion(id: String, conclusion: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document(id)
+        
+        document.updateData(["conclusion": conclusion]) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func fetchConclusion(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document(id)
+        
+        document.getDocument{ (document, error) in
+            
+            if let document = document, document.exists {
+                
+                guard let documentData = document.data() else { return }
+                
+                let conclusion = documentData["conclusion"] as? String ?? ""
+                completion(.success(conclusion))
+
+            } else {
+                print("Conclusion does not exist")
+                completion(.failure(error!))
+            }
+        }
+    }
 }

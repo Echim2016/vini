@@ -121,7 +121,7 @@ class GrowthContentProvider {
         
         var updateDict = [
             "title": title,
-            "content": content,
+            "content": content
         ]
         
         if let imageView = imageView {

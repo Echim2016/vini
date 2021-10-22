@@ -29,6 +29,8 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */; };
+		9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */; };
 		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
@@ -61,6 +63,8 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conclusion.storyboard; sourceTree = "<group>"; };
+		9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsViewController.swift; sourceTree = "<group>"; };
 		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				9C1A612A271D79600013D63A /* AddGrowthCardViewController.swift */,
 				9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */,
 				9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */,
+				9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
 				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
+				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -293,6 +299,7 @@
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
 				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
 				9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */,
+				9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
@@ -383,6 +390,7 @@
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
+				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,

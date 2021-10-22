@@ -15,6 +15,7 @@ class GrowthCaptureViewController: UIViewController {
         
         case createContentCard = "CreateGrowthContentCard"
         case editContentCard = "EditGrowthContentCard"
+        case drawConclusions = "DrawConclusions"
     }
 
     @IBOutlet weak var headerView: UIView!
@@ -60,7 +61,7 @@ class GrowthCaptureViewController: UIViewController {
         
         fetchGrowthContents()
         
-        footerView.setTopCurve()
+        setupFooterview()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,6 +96,12 @@ class GrowthCaptureViewController: UIViewController {
                 break
             }
         }
+        
+        if let destinationVC = segue.destination as? DrawConclusionsViewController {
+            
+            destinationVC.introText = headerTitle
+            destinationVC.growthCardID = self.growthCardID
+        }
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
@@ -105,6 +112,11 @@ class GrowthCaptureViewController: UIViewController {
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
         performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: growthCardID)
+    }
+    
+    @objc func tapDrawConclusionsButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: Segue.drawConclusions.rawValue, sender: nil)
     }
 }
 
@@ -240,4 +252,34 @@ extension GrowthCaptureViewController: UITableViewDelegate {
         }
     }
     
+}
+
+extension GrowthCaptureViewController {
+    
+    func setupFooterview() {
+        
+        footerView.setTopCurve()
+        
+        let button = UIButton()
+        
+        button.layer.cornerRadius = 25
+        
+        footerView.addSubview(button)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: 0.7),
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: footerView.centerYAnchor)
+        ])
+        
+        button.backgroundColor = UIColor.S1
+        button.setTitleColor(UIColor.B2, for: .normal)
+        button.setTitle("我的學習結論 →", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        
+        button.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
+    }
 }
