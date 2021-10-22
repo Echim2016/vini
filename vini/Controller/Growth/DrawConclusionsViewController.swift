@@ -29,7 +29,6 @@ class DrawConclusionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +80,6 @@ extension DrawConclusionsViewController {
             }
         }
     }
-    
 }
 
 // MARK: - Text View -
@@ -93,7 +91,6 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         conclusionTextView.tintColor = UIColor.S1
         conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
     }
-    
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
@@ -115,7 +112,12 @@ extension DrawConclusionsViewController {
     
     func setupNavBar() {
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(tapBackButton(_:)))
-        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.B2
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "chevron.backward"),
+            style: .plain,
+            target: self,
+            action: #selector(tapBackButton(_:))
+        )
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.B2
     }
 }

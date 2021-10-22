@@ -260,26 +260,42 @@ extension GrowthCaptureViewController {
         
         footerView.setTopCurve()
         
-        let button = UIButton()
+        let buttonStackView = UIStackView()
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.axis = .vertical
+        buttonStackView.spacing = 16
         
-        button.layer.cornerRadius = 25
+        footerView.addSubview(buttonStackView)
         
-        footerView.addSubview(button)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: 0.7),
-            button.heightAnchor.constraint(equalToConstant: 50),
-            button.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: footerView.centerYAnchor)
+            buttonStackView.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: 0.7),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 100),
+            buttonStackView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+            buttonStackView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor, constant: 10)
         ])
         
-        button.backgroundColor = UIColor.S1
-        button.setTitleColor(UIColor.B2, for: .normal)
-        button.setTitle("我的學習結論 →", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        let conclusionButton = UIButton()
+        conclusionButton.layer.cornerRadius = 21
+        buttonStackView.addArrangedSubview(conclusionButton)
         
-        button.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
+        conclusionButton.backgroundColor = UIColor.S1
+        conclusionButton.setTitleColor(UIColor.B2, for: .normal)
+        conclusionButton.setTitle("我的學習結論 →", for: .normal)
+        conclusionButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        
+        conclusionButton.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
+        
+        let archiveButton = UIButton()
+        archiveButton.layer.cornerRadius = 21
+        buttonStackView.addArrangedSubview(archiveButton)
+        
+        archiveButton.backgroundColor = UIColor.B1
+        archiveButton.setTitleColor(UIColor.white, for: .normal)
+        archiveButton.setTitle("封存這張卡片 →", for: .normal)
+        archiveButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
+        
+//        archiveButton.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
     }
 }
