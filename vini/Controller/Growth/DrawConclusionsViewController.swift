@@ -26,6 +26,7 @@ class DrawConclusionsViewController: UIViewController {
     var introText = "這張成長卡片"
     var growthCardID = ""
     var conclusionToAdd = ""
+    var conclusionHasEdited  = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +45,18 @@ class DrawConclusionsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        textViewDidEndEditing(conclusionTextView)
-        
-        GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+        if conclusionHasEdited {
             
-            switch result {
-            case .success(let success):
-                print(success)
-            case .failure(let error):
-                print(error)
+            textViewDidEndEditing(conclusionTextView)
+            
+            GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+                
+                switch result {
+                case .success(let success):
+                    print(success)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
@@ -98,6 +102,8 @@ extension DrawConclusionsViewController: UITextViewDelegate {
               !text.isEmpty else {
                   return
               }
+        
+        conclusionHasEdited = true
         
         switch textView {
         case conclusionTextView:
