@@ -89,7 +89,40 @@
                                 <view key="tableFooterView" contentMode="scaleToFill" id="R5T-tD-nbY">
                                     <rect key="frame" x="0.0" y="361" width="414" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-bE-cn7">
+                                            <rect key="frame" x="147" y="124" width="120" height="120"/>
+                                            <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" id="dpw-ii-Dr9"/>
+                                                <constraint firstAttribute="width" constant="120" id="hTC-dW-nlW"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="27"/>
+                                            <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="打包學習">
+                                                <color key="titleColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                            <buttonConfiguration key="configuration" style="plain" title="封存卡片">
+                                                <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
+                                                <color key="baseForegroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </buttonConfiguration>
+                                        </button>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請長按以下按鈕來封存卡片..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcp-rY-F2G">
+                                            <rect key="frame" x="32" y="72" width="350" height="20"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                            <color key="textColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Zcp-rY-F2G" secondAttribute="trailing" constant="32" id="Etu-YL-CRO"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hx4-bE-cn7" secondAttribute="bottom" constant="56" id="NCj-tA-nWZ"/>
+                                        <constraint firstItem="Zcp-rY-F2G" firstAttribute="leading" secondItem="R5T-tD-nbY" secondAttribute="leading" constant="32" id="aKs-QV-g40"/>
+                                        <constraint firstItem="Hx4-bE-cn7" firstAttribute="top" secondItem="Zcp-rY-F2G" secondAttribute="bottom" constant="32" id="vM1-I6-8h6"/>
+                                        <constraint firstItem="Hx4-bE-cn7" firstAttribute="centerX" secondItem="R5T-tD-nbY" secondAttribute="centerX" id="yX9-vg-GR4"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0xE-Hy-fcH">
@@ -157,6 +190,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="archiveButton" destination="Hx4-bE-cn7" id="pIJ-wJ-OQg"/>
+                        <outlet property="archiveIntroLabel" destination="Zcp-rY-F2G" id="9vi-Ln-nfQ"/>
                         <outlet property="editButton" destination="9TS-sv-2aH" id="R0K-ub-wFI"/>
                         <outlet property="emojiTextField" destination="GHv-Qb-oWh" id="aEw-CQ-rAH"/>
                         <outlet property="expandView" destination="Sea-Ec-MQt" id="Lyy-BQ-ULq"/>
@@ -171,6 +206,7 @@
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="CreateGrowthContentCard" id="noz-NI-lb9"/>
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="EditGrowthContentCard" id="ayE-PI-VOL"/>
                         <segue destination="ZeT-yR-ien" kind="show" identifier="DrawConclusions" id="q0G-b0-Oyf"/>
+                        <segue destination="0d6-dM-goE" kind="presentation" identifier="ShowCongratsPage" id="Z7q-mW-2w8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -186,6 +222,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIP-fp-qtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2780" y="110"/>
+        </scene>
+        <!--Congrats-->
+        <scene sceneID="2a2-TL-4fn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Congrats" id="0d6-dM-goE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXe-5C-icP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2785" y="280"/>
         </scene>
         <!--Set Growth Content Card View Controller-->
         <scene sceneID="CAR-gr-LfO">

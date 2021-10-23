@@ -17,6 +17,8 @@ class GrowthCaptureViewController: UIViewController {
         case createContentCard = "CreateGrowthContentCard"
         case editContentCard = "EditGrowthContentCard"
         case drawConclusions = "DrawConclusions"
+        case showArchiveView = "ShowArchiveView"
+        case showCongratsPage = "ShowCongratsPage"
     }
     
     weak var growthPageVC: GrowthPageViewController?
@@ -57,8 +59,19 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    var buttonStackView: UIStackView = {
+       
+        let buttonStackView = UIStackView()
+        buttonStackView.distribution = .fillEqually
+        buttonStackView.axis = .vertical
+        buttonStackView.spacing = 16
+        
+        return buttonStackView
+    }()
+
+    @IBOutlet weak var archiveIntroLabel: UILabel!
+    @IBOutlet weak var archiveButton: UIButton!
     @IBOutlet weak var footerView: UIView!
-    
     @IBOutlet weak var editButton: UIButton!
     
     lazy var headerEmoji: String = ""
@@ -67,7 +80,18 @@ class GrowthCaptureViewController: UIViewController {
     lazy var headerTitleToUpdate: String = ""
     var growthCardID: String = ""
     
-    var data: [GrowthContent] = []
+    var data: [GrowthContent] = [] {
+        didSet {
+            if data.isEmpty && hasArchived {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+
+                    self.navigateToCongratsPage()
+                }
+            }
+        }
+    }
+    
+    var hasArchived: Bool = false
     
     var isInCreateCardMode: Bool = false
     
@@ -193,6 +217,47 @@ class GrowthCaptureViewController: UIViewController {
         
         performSegue(withIdentifier: Segue.drawConclusions.rawValue, sender: nil)
     }
+    
+    @objc func tapShowArchiveViewButton(_ sender: UIButton) {
+        
+        buttonStackView.isHidden = true
+        archiveButton.isHidden = false
+        archiveIntroLabel.isHidden = false
+    }
+    
+    @objc func longPress(gesture: UILongPressGestureRecognizer) {
+                
+        if gesture.state == UIGestureRecognizer.State.began {
+            
+            archiveIntroLabel.text = "正在打包所有學習，請持續長按..."
+            
+            hasArchived = true
+            
+            archiveIntroLabel.isHidden = false
+            
+            let dataLength = data.count
+            
+            for index in 0..<dataLength {
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8 * Double(index)) {
+                    let indexPath = IndexPath(row: dataLength - index, section: 0)
+                    self.data.remove(at: dataLength - 1 - index)
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+
+            }
+
+        } else if gesture.state == UIGestureRecognizer.State.ended {
+            
+            if data.isEmpty {
+                navigateToCongratsPage()
+            } else {
+                hasArchived = false
+                self.fetchGrowthContents()
+            }
+            
+        }
+    }
 }
 
 // MARK: - Firebase -
@@ -316,6 +381,8 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             }
             
             cell.createGrowthContentCardButton.addTarget(self, action: #selector(tapCreateGrowthContentCardButton(_:)), for: .touchUpInside)
+            
+            cell.isHidden = hasArchived
             
             return cell
             
@@ -457,6 +524,13 @@ extension GrowthCaptureViewController {
             })
     }
     
+    func navigateToCongratsPage() {
+        
+        hasArchived = true
+        archiveIntroLabel.isHidden = true
+        performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
+    }
+    
     func setupTextView() {
         
         headerTitleTextView.placeholder = "輸入你的成長項目標題..."
@@ -473,13 +547,10 @@ extension GrowthCaptureViewController {
     func setupFooterview() {
         
         footerView.setTopCurve()
-        
-        let buttonStackView = UIStackView()
-        buttonStackView.distribution = .fillEqually
-        buttonStackView.axis = .vertical
-        buttonStackView.spacing = 16
-        
+   
         footerView.addSubview(buttonStackView)
+        
+        setupArchiveButton()
         
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -510,6 +581,18 @@ extension GrowthCaptureViewController {
         archiveButton.setTitle("封存這張卡片 →", for: .normal)
         archiveButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         
-//        archiveButton.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
+        archiveButton.addTarget(self, action: #selector(tapShowArchiveViewButton(_:)), for: .touchUpInside)
+        
     }
+    
+    func setupArchiveButton() {
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+            longPress.minimumPressDuration = 0.5
+            self.archiveButton.addGestureRecognizer(longPress)
+        
+        archiveButton.layer.cornerRadius = archiveButton.frame.height / 2
+        archiveButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+    }
+    
 }

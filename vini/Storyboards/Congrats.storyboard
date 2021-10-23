@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Congrats View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="CongratsViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkP-Or-sXP">
+                                <rect key="frame" x="134.5" y="752" width="145" height="50"/>
+                                <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HwY-0B-gEH"/>
+                                    <constraint firstAttribute="width" constant="145" id="dpS-2v-jzc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="繼續成長 →"/>
+                                <connections>
+                                    <action selector="tapBackButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sLk-wI-lb9"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJF-9Z-NAa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你真棒！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-x1-83z">
+                                        <rect key="frame" x="32" y="141" width="350" height="76"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="54"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="繼續邁向下一個成長吧！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbE-Qs-jzD">
+                                        <rect key="frame" x="32" y="253" width="350" height="28"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JbE-Qs-jzD" secondAttribute="trailing" constant="32" id="4pw-fS-DDJ"/>
+                                    <constraint firstAttribute="height" constant="400" id="DSS-16-tPS"/>
+                                    <constraint firstItem="JbE-Qs-jzD" firstAttribute="leading" secondItem="xJF-9Z-NAa" secondAttribute="leading" constant="32" id="GuU-5S-RHy"/>
+                                    <constraint firstItem="JbE-Qs-jzD" firstAttribute="top" secondItem="YTO-x1-83z" secondAttribute="bottom" constant="36" id="XXZ-Wk-Lkj"/>
+                                    <constraint firstItem="YTO-x1-83z" firstAttribute="top" secondItem="xJF-9Z-NAa" secondAttribute="top" constant="141" id="oXV-c0-bwh"/>
+                                    <constraint firstItem="YTO-x1-83z" firstAttribute="leading" secondItem="xJF-9Z-NAa" secondAttribute="leading" constant="32" id="sGo-CX-KBU"/>
+                                    <constraint firstAttribute="trailing" secondItem="YTO-x1-83z" secondAttribute="trailing" constant="32" id="zXK-jm-tLI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="dkP-Or-sXP" secondAttribute="bottom" constant="60" id="NAz-hH-Iai"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xJF-9Z-NAa" secondAttribute="trailing" id="NNR-mr-KAF"/>
+                            <constraint firstItem="xJF-9Z-NAa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="XAA-sz-0t3"/>
+                            <constraint firstItem="xJF-9Z-NAa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vpO-Rk-uCp"/>
+                            <constraint firstItem="dkP-Or-sXP" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="wT2-7A-CAC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="dkP-Or-sXP" id="eI0-kF-qLQ"/>
+                        <outlet property="headerView" destination="xJF-9Z-NAa" id="w7n-60-mNk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133" y="89"/>
+        </scene>
+    </scenes>
+</document>

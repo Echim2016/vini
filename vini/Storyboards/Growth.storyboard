@@ -58,11 +58,11 @@
             </objects>
             <point key="canvasLocation" x="1809" y="117"/>
         </scene>
-        <!--Growth-->
+        <!--Navigation Controller-->
         <scene sceneID="X3f-mq-4mk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Growth" image="house" catalog="system" id="skg-9d-VCj"/>
+                    <tabBarItem key="tabBarItem" title="" image="checklist" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p21-RL-vk3">
@@ -94,6 +94,6 @@
         <segue reference="7dB-Gn-XTz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="checklist" catalog="system" width="128" height="105"/>
     </resources>
 </document>

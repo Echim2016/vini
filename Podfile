@@ -15,5 +15,6 @@ target 'vini' do
   pod 'Kingfisher'
   pod 'RSKPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
+  pod 'loady'
 
 end
