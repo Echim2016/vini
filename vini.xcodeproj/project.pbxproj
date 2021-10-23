@@ -121,6 +121,7 @@
 				9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */,
 				9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */,
 				9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */,
+				9CF72A3F27242C3000747089 /* CongratsViewController.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -179,7 +180,6 @@
 				9C5FC928271D4F4F00DE4E42 /* Growth */,
 				9CC1E4C0271BE53500F17190 /* AppDelegate.swift */,
 				9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */,
-				9CF72A3F27242C3000747089 /* CongratsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

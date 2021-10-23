@@ -175,6 +175,11 @@ class GrowthCaptureViewController: UIViewController {
             destinationVC.introText = headerTitle
             destinationVC.growthCardID = self.growthCardID
         }
+        
+        if let destinationVC = segue.destination as? CongratsViewController {
+            
+            destinationVC.growthPageVC = growthPageVC
+        }
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
@@ -356,6 +361,21 @@ extension GrowthCaptureViewController {
             }
         }
     }
+    
+    private func archiveGrowthCard(completion: @escaping (Bool) -> Void) {
+        
+        GrowthCardProvider.shared.archiveGrowthCard(id: growthCardID) { result in
+            
+            switch result {
+            case .success(let message):
+                print(message)
+                completion(true)
+            case .failure(let error):
+                print(error)
+                completion(false)
+            }
+        }
+    }
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
@@ -526,9 +546,15 @@ extension GrowthCaptureViewController {
     
     func navigateToCongratsPage() {
         
-        hasArchived = true
-        archiveIntroLabel.isHidden = true
-        performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
+        archiveGrowthCard { success in
+            
+            if success {
+                self.hasArchived = true
+                self.archiveIntroLabel.isHidden = true
+                self.performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
+            }
+            
+        }
     }
     
     func setupTextView() {
