@@ -45,7 +45,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                             <constraints>
                                                 <constraint firstItem="GHv-Qb-oWh" firstAttribute="centerX" secondItem="pgB-qP-Y6X" secondAttribute="centerX" id="Kf5-Z2-z6e"/>
                                                 <constraint firstItem="MLn-Wn-iTT" firstAttribute="centerY" secondItem="pgB-qP-Y6X" secondAttribute="centerY" id="V3z-CR-qaw"/>
@@ -162,6 +162,7 @@
                         <outlet property="expandView" destination="Sea-Ec-MQt" id="Lyy-BQ-ULq"/>
                         <outlet property="expandViewHeight" destination="kGE-PM-zvt" id="t2i-oI-oWJ"/>
                         <outlet property="footerView" destination="R5T-tD-nbY" id="S8x-VZ-jik"/>
+                        <outlet property="headerEmojiBackgroundView" destination="pgB-qP-Y6X" id="OJF-rH-SET"/>
                         <outlet property="headerEmojiLabel" destination="MLn-Wn-iTT" id="bLE-TU-L7I"/>
                         <outlet property="headerTitleLabel" destination="vqf-OF-VcM" id="MP2-Eg-cUs"/>
                         <outlet property="headerTitleTextView" destination="9Dd-LG-Oqs" id="DJB-DN-dlK"/>

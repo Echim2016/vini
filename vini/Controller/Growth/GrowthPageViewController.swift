@@ -8,6 +8,12 @@
 import UIKit
 
 class GrowthPageViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showGrowthCapture = "ShowGrowthCapture"
+        case createNewGrowthCard = "CreateNewGrowthCard"
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         
@@ -30,28 +36,36 @@ class GrowthPageViewController: UIViewController {
         
         fetchGrowthCards()
     }
+    @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destinationVC = segue.destination as? AddGrowthCardViewController {
+        if let navigationController = segue.destination as? UINavigationController,
+           let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
             
-            destinationVC.growthPage = self
-        }
-        
-        if segue.identifier == "ShowGrowthCapture" {
+            growthCaptureVC.growthPageVC = self
             
-            if let navigationController = segue.destination as? UINavigationController,
-               let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
+            switch segue.identifier {
                 
-                growthCaptureVC.growthPageVC = self
+            case Segue.showGrowthCapture.rawValue:
                 
                 if let index = sender as? Int {
+                    
                     growthCaptureVC.headerEmoji = data[index].emoji
                     growthCaptureVC.headerTitle = data[index].title
                     growthCaptureVC.growthCardID = data[index].id
                 }
+                
+            case Segue.createNewGrowthCard.rawValue:
+                
+                growthCaptureVC.isInCreateCardMode = true
+
+            default:
+                break
             }
-            
         }
     }
 }

@@ -24,6 +24,7 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var expandView: UIView!
     @IBOutlet weak var expandViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerEmojiBackgroundView: UIView!
     @IBOutlet weak var headerEmojiLabel: UILabel! {
         didSet {
             headerEmojiLabel.text = headerEmoji
@@ -68,6 +69,8 @@ class GrowthCaptureViewController: UIViewController {
     
     var data: [GrowthContent] = []
     
+    var isInCreateCardMode: Bool = false
+    
     var isInEditMode: Bool = false {
         didSet {
             emojiTextField.isEnabled = isInEditMode
@@ -84,24 +87,30 @@ class GrowthCaptureViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
-        
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
-        
-        isInEditMode = false
+        isInEditMode = isInCreateCardMode
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        headerView.setBottomCurve()
-        
         self.tabBarController?.tabBar.isHidden = true
         
-        fetchGrowthContents()
+        if !isInCreateCardMode {
+            fetchGrowthContents()
+        }
         
+        setupHeaderView()
         setupFooterview()
-        
         setupTextView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isInCreateCardMode {
+            showEditPage()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -152,13 +161,20 @@ class GrowthCaptureViewController: UIViewController {
             
         } else {
             
+            self.growthPageVC?.fetchGrowthCards()
             self.dismiss(animated: true, completion: nil)
         }
     }
     
     @IBAction func tapEditButton(_ sender: Any) {
         
-        if isInEditMode {
+        if isInCreateCardMode {
+            
+            createGrowthCard()
+            hideEditPage()
+            isInCreateCardMode = false
+            
+        } else if isInEditMode {
             
             updateGrowthCard()
 
@@ -228,6 +244,9 @@ extension GrowthCaptureViewController {
     }
     
     private func updateGrowthCard() {
+        
+        textFieldDidChangeSelection(emojiTextField)
+        textViewDidEndEditing(headerTitleTextView)
 
         GrowthCardProvider.shared.updateGrowthCard(id: growthCardID, emoji: headerEmojiToUpdate, title: headerTitleToUpdate) { result in
             
@@ -242,6 +261,32 @@ extension GrowthCaptureViewController {
                 print(error)
                 self.headerEmojiLabel.text = self.headerEmoji
                 self.headerTitleLabel.text = self.headerTitle
+            }
+        }
+    }
+    
+    private func createGrowthCard() {
+        
+        var growthCard: GrowthCard = GrowthCard(
+            id: "",
+            title: headerTitleToUpdate,
+            emoji: headerEmojiToUpdate,
+            isStarred: false,
+            isArchived: false,
+            archivedTime: nil,
+            contents: nil,
+            conclusion: nil,
+            createdTime: nil
+        )
+        
+        GrowthCardProvider.shared.addData(growthCard: &growthCard) { result in
+            
+            switch result {
+            case .success(let message):
+                print(message)
+                self.growthCardID = growthCard.id
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -416,6 +461,12 @@ extension GrowthCaptureViewController {
         headerTitleTextView.placeholder = "輸入你的成長項目標題..."
         headerTitleTextView.tintColor = UIColor.B2
         headerTitleTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+    }
+    
+    func setupHeaderView() {
+        
+        headerView.setBottomCurve()
+        headerEmojiBackgroundView.layer.cornerRadius = 40
     }
     
     func setupFooterview() {

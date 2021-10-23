@@ -20,37 +20,28 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0z-I6-TQQ">
-                                <rect key="frame" x="338" y="737" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="TMb-Fm-KC6"/>
-                                    <constraint firstAttribute="height" constant="60" id="pgN-ds-tIj"/>
-                                </constraints>
-                                <color key="tintColor" red="0.93333333333333335" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="plus.circle.fill" catalog="system"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="cUV-EE-bRI" kind="presentation" id="3VW-HZ-FoT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078431372548" green="0.12156862745098039" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9mx-OD-6ya" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Sat-f6-jLx"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Y0z-I6-TQQ" secondAttribute="bottom" constant="16" id="bik-cR-8DI"/>
                             <constraint firstItem="9mx-OD-6ya" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cNy-az-I8r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9mx-OD-6ya" secondAttribute="trailing" id="f1a-Xs-5fD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9mx-OD-6ya" secondAttribute="bottom" id="fOt-6x-Vjx"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Y0z-I6-TQQ" secondAttribute="trailing" constant="16" id="v7G-cj-zgx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sou-lj-HrM"/>
+                    <navigationItem key="navigationItem" id="sou-lj-HrM">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Dtq-cs-3tW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapCreateNewGrowthCardButton:" destination="Y6W-OH-hqX" id="Klt-G8-DNY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="9mx-OD-6ya" id="hWx-07-vNl"/>
                         <segue destination="ZxX-bD-lW4" kind="presentation" identifier="ShowGrowthCapture" id="fiL-rE-pnI"/>
+                        <segue destination="ZxX-bD-lW4" kind="presentation" identifier="CreateNewGrowthCard" id="7dB-Gn-XTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -66,90 +57,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51c-BN-rNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1809" y="117"/>
-        </scene>
-        <!--Add Growth Card View Controller-->
-        <scene sceneID="Q4p-TX-aaD">
-            <objects>
-                <viewController id="cUV-EE-bRI" customClass="AddGrowthCardViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EbC-8l-NPO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="zUC-yW-XPI">
-                                <rect key="frame" x="68" y="329" width="278.5" height="83"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="wcp-eS-gDi">
-                                        <rect key="frame" x="0.0" y="0.0" width="278.5" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="卡片名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2Y-Xx-WAX">
-                                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vy6-ga-yay">
-                                                <rect key="frame" x="98.5" y="0.0" width="180" height="34"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="cAq-9m-DKC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="pb7-w4-hyf">
-                                        <rect key="frame" x="0.0" y="49" width="278.5" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emoji" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-7f-Qoc">
-                                                <rect key="frame" x="0.0" y="0.0" width="41.5" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UVQ-ev-b22">
-                                                <rect key="frame" x="98.5" y="0.0" width="180" height="34"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="vFn-Rj-IMO"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-ux-2Zu">
-                                <rect key="frame" x="68" y="477" width="278.5" height="31"/>
-                                <color key="tintColor" red="0.93333333330000001" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="新增"/>
-                                <connections>
-                                    <action selector="tapAddGrowthCardButton:" destination="cUV-EE-bRI" eventType="touchUpInside" id="PgL-Ec-ztq"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="mCe-Ak-xzR"/>
-                        <color key="backgroundColor" red="0.45098039220000002" green="0.58431372550000005" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="f1c-ux-2Zu" firstAttribute="top" secondItem="zUC-yW-XPI" secondAttribute="bottom" constant="65" id="1IS-EJ-GdT"/>
-                            <constraint firstItem="zUC-yW-XPI" firstAttribute="centerX" secondItem="mCe-Ak-xzR" secondAttribute="centerX" id="23a-q5-dpy"/>
-                            <constraint firstItem="mCe-Ak-xzR" firstAttribute="bottom" secondItem="f1c-ux-2Zu" secondAttribute="bottom" constant="300" id="Ach-CU-kiC"/>
-                            <constraint firstItem="f1c-ux-2Zu" firstAttribute="width" secondItem="zUC-yW-XPI" secondAttribute="width" id="p0e-Gf-s3R"/>
-                            <constraint firstItem="f1c-ux-2Zu" firstAttribute="centerX" secondItem="mCe-Ak-xzR" secondAttribute="centerX" id="tNW-GI-TGk"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="WOd-nD-WUi"/>
-                    <connections>
-                        <outlet property="addGrowthCardButton" destination="f1c-ux-2Zu" id="OJd-k2-r0u"/>
-                        <outlet property="cardTitleTextField" destination="Vy6-ga-yay" id="fmV-CQ-uJL"/>
-                        <outlet property="emojiTextField" destination="UVQ-ev-b22" id="oAr-kW-shS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WJN-Cf-ubi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1039.1304347826087" y="837.72321428571422"/>
         </scene>
         <!--Growth-->
         <scene sceneID="X3f-mq-4mk">
@@ -183,8 +90,10 @@
             <point key="canvasLocation" x="131.8840579710145" y="116.51785714285714"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7dB-Gn-XTz"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="house" catalog="system" width="128" height="106"/>
-        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
