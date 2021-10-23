@@ -105,6 +105,23 @@ extension GrowthPageViewController {
         }
     }
     
+    private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
+        
+        GrowthCardProvider.shared.deleteGrowthCard(id: id) { result in
+            
+            switch result {
+            case .success(let success):
+                
+                completion(true)
+                
+            case .failure(let error):
+                
+                print(error)
+                completion(false)
+            }
+        }
+    }
+    
 }
 
 extension GrowthPageViewController: UITableViewDataSource {
@@ -149,6 +166,28 @@ extension GrowthPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "ShowGrowthCapture", sender: indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let delete = UIAction(
+            title: "刪除",
+            image: UIImage(systemName: "trash.fill"),
+            attributes: [.destructive]) { _ in
+                
+                let id = self.data[indexPath.row].id
+                
+                self.deleteGrowthCard(id: id) { success in
+                    if success {
+                        self.data.remove(at: indexPath.row)
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+                }
+            }
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            UIMenu(title: "", children: [delete])
+        }
     }
     
 }

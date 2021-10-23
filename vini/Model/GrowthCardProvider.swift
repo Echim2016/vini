@@ -127,4 +127,19 @@ class GrowthCardProvider {
             }
         }
     }
+    
+    func deleteGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        db.collection("Growth_Cards").document(id).delete() { err in
+            
+            if let err = err {
+                print("Error removing growth card: \(err)")
+                completion(.failure(err))
+            } else {
+                print("Growth card successfully removed!")
+                    
+                    completion(.success("Success"))
+            }
+        }
+    }
 }

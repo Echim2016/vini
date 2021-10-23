@@ -168,7 +168,7 @@ class GrowthCaptureViewController: UIViewController {
     
     @IBAction func tapEditButton(_ sender: Any) {
         
-        if isInCreateCardMode {
+        if isInCreateCardMode && isInEditMode {
             
             createGrowthCard()
             hideEditPage()

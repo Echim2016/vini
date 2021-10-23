@@ -18,6 +18,9 @@ class GrowthCardCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.contentView.backgroundColor = .B1
+        self.selectionStyle = .none
+
         let layer = CAGradientLayer()
         layer.frame = cellBackgroundView.bounds
         layer.colors = [UIColor.B2.cgColor, UIColor.S1.cgColor]
