@@ -159,6 +159,7 @@
                     <connections>
                         <outlet property="editButton" destination="9TS-sv-2aH" id="R0K-ub-wFI"/>
                         <outlet property="emojiTextField" destination="GHv-Qb-oWh" id="aEw-CQ-rAH"/>
+                        <outlet property="expandView" destination="Sea-Ec-MQt" id="Lyy-BQ-ULq"/>
                         <outlet property="expandViewHeight" destination="kGE-PM-zvt" id="t2i-oI-oWJ"/>
                         <outlet property="footerView" destination="R5T-tD-nbY" id="S8x-VZ-jik"/>
                         <outlet property="headerEmojiLabel" destination="MLn-Wn-iTT" id="bLE-TU-L7I"/>

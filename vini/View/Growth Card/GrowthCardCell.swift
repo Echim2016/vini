@@ -22,7 +22,7 @@ class GrowthCardCell: UITableViewCell {
         layer.frame = cellBackgroundView.bounds
         layer.colors = [UIColor.B2.cgColor, UIColor.S1.cgColor]
         layer.startPoint = CGPoint(x: 0, y: 0)
-        layer.endPoint = CGPoint(x: 20, y: 10)
+        layer.endPoint = CGPoint(x: 9, y: 4)
         self.cellBackgroundView.layer.insertSublayer(layer, at: 0)
     }
 

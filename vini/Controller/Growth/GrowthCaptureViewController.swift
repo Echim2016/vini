@@ -22,6 +22,7 @@ class GrowthCaptureViewController: UIViewController {
     weak var growthPageVC: GrowthPageViewController?
 
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var expandView: UIView!
     @IBOutlet weak var expandViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerEmojiLabel: UILabel! {
         didSet {
@@ -71,6 +72,7 @@ class GrowthCaptureViewController: UIViewController {
         didSet {
             emojiTextField.isEnabled = isInEditMode
             headerTitleTextView.isEditable = isInEditMode
+            tableView.isScrollEnabled = !isInEditMode
             
             let imageName = isInEditMode ? "checkmark.circle.fill" : "pencil.circle.fill"
             
@@ -144,7 +146,14 @@ class GrowthCaptureViewController: UIViewController {
     
     @IBAction func tapBackButton(_ sender: Any) {
         
-        self.dismiss(animated: true, completion: nil)
+        if isInEditMode {
+            
+            hideEditPage()
+            
+        } else {
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func tapEditButton(_ sender: Any) {
@@ -219,18 +228,14 @@ extension GrowthCaptureViewController {
     }
     
     private func updateGrowthCard() {
-        
-//        textFieldDidEndEditing(emojiTextField)
-//        textViewDidEndEditing(headerTitleTextView)
-        
+
         GrowthCardProvider.shared.updateGrowthCard(id: growthCardID, emoji: headerEmojiToUpdate, title: headerTitleToUpdate) { result in
             
             switch result {
             case .success(let message):
                 
                 print(message)
-                self.growthPageVC?.fetchGrowthCards()
-                self.dismiss(animated: true, completion: nil)
+                self.hideEditPage()
                 
             case .failure(let error):
                 
@@ -378,8 +383,6 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
 extension GrowthCaptureViewController {
     
     func showEditPage() {
-
-        tableView.isScrollEnabled = false
         
         isInEditMode = true
         
@@ -391,6 +394,20 @@ extension GrowthCaptureViewController {
                 self.expandViewHeight.constant = self.view.frame.height - 180
                 self.view.layoutIfNeeded()
                 self.headerTitleTextView.becomeFirstResponder()
+            })
+    }
+    
+    func hideEditPage() {
+        
+        isInEditMode = false
+        
+        UIView.animate(
+            withDuration: 0.6,
+            delay: 0,
+            options: [.curveEaseInOut],
+            animations: {
+                self.expandViewHeight.constant = 0
+                self.view.layoutIfNeeded()
             })
     }
     
