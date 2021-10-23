@@ -180,7 +180,7 @@ extension GrowthPageViewController: UITableViewDelegate {
                 self.deleteGrowthCard(id: id) { success in
                     if success {
                         self.data.remove(at: indexPath.row)
-                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.tableView.deleteRows(at: [indexPath], with: .left)
                     }
                 }
             }

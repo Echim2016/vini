@@ -285,6 +285,7 @@ extension GrowthCaptureViewController {
             case .success(let message):
                 print(message)
                 self.growthCardID = growthCard.id
+                self.headerTitle = growthCard.title
             case .failure(let error):
                 print(error)
             }
@@ -486,7 +487,7 @@ extension GrowthCaptureViewController {
             buttonStackView.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: 0.7),
             buttonStackView.heightAnchor.constraint(equalToConstant: 100),
             buttonStackView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
-            buttonStackView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor, constant: 10)
+            buttonStackView.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -32)
         ])
         
         let conclusionButton = UIButton()
