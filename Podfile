@@ -8,5 +8,12 @@ target 'vini' do
   # Pods for vini
 
   pod 'SwiftLint' 
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
+  pod 'Kingfisher'
+  pod 'RSKPlaceholderTextView'
+  pod 'IQKeyboardManagerSwift'
 
 end

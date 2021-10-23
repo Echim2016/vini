@@ -44,7 +44,7 @@ Podfile.lock
 xcuserdata/
 xcuserdata
 *.xcworkspace
-xcschememanagement.plist
+*.xcschememanagement.plist
 
 ### Swift ###
 # Xcode

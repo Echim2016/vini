@@ -7,9 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */; };
+		9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */; };
+		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
+		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
+		9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */; };
+		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
+		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
+		9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */; };
+		9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */; };
+		9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6132271E9B780013D63A /* GrowthContentCell.swift */; };
+		9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A6133271E9B780013D63A /* GrowthContentCell.xib */; };
+		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
+		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
+		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
+		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
+		9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */; };
+		9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */; };
+		9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */; };
+		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
+		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
+		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */; };
+		9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */; };
+		9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA12723059E00E85F28 /* String+Extension.swift */; };
+		9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA3272308B200E85F28 /* EmojiTextField.swift */; };
+		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
-		9CC1E4C5271BE53500F17190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C4271BE53500F17190 /* ViewController.swift */; };
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
@@ -17,10 +42,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
+		9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGrowthContentCell.swift; sourceTree = "<group>"; };
+		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
+		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
+		9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGrowthContentCardViewController.swift; sourceTree = "<group>"; };
+		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
+		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
+		9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureViewController.swift; sourceTree = "<group>"; };
+		9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		9C1A6132271E9B780013D63A /* GrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentCell.swift; sourceTree = "<group>"; };
+		9C1A6133271E9B780013D63A /* GrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthContentCell.xib; sourceTree = "<group>"; };
+		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
+		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
+		9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthCardCell.xib; sourceTree = "<group>"; };
+		9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthPageViewController.swift; sourceTree = "<group>"; };
+		9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
+		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
+		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conclusion.storyboard; sourceTree = "<group>"; };
+		9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsViewController.swift; sourceTree = "<group>"; };
+		9CA66FA12723059E00E85F28 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9CA66FA3272308B200E85F28 /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9CC1E4C4271BE53500F17190 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9CC1E4C7271BE53500F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -42,6 +92,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C05B224271EB38900C78620 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		9C05B227271EB45B00C78620 /* Growth Card */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */,
+				9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */,
+				9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */,
+			);
+			path = "Growth Card";
+			sourceTree = "<group>";
+		};
+		9C5FC928271D4F4F00DE4E42 /* Growth */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC924271D3A3100DE4E42 /* GrowthPageViewController.swift */,
+				9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */,
+				9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */,
+				9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */,
+			);
+			path = Growth;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +142,14 @@
 		9CC1E4BF271BE53500F17190 /* vini */ = {
 			isa = PBXGroup;
 			children = (
+				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
+				9C05B224271EB38900C78620 /* Third Party Wrapper */,
+				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
 				9CC1E4D6271BE58900F17190 /* Model */,
 				9CC1E4D4271BE57E00F17190 /* View */,
 				9CC1E4D5271BE58400F17190 /* Controller */,
 				9CC1E4D8271BE5A300F17190 /* Resource */,
-				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4CE271BE53600F17190 /* Info.plist */,
 			);
 			path = vini;
@@ -77,6 +158,13 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C05B227271EB45B00C78620 /* Growth Card */,
+				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
+				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
+				9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */,
+				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
+				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
+				9CA66FA3272308B200E85F28 /* EmojiTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -84,7 +172,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9CC1E4C4271BE53500F17190 /* ViewController.swift */,
+				9C5FC928271D4F4F00DE4E42 /* Growth */,
 				9CC1E4C0271BE53500F17190 /* AppDelegate.swift */,
 				9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */,
 			);
@@ -94,6 +182,10 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
+				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
+				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
+				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +193,10 @@
 		9CC1E4D7271BE59300F17190 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */,
+				9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */,
+				9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */,
+				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -118,6 +214,9 @@
 			children = (
 				9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */,
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
+				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
+				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
+				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -151,6 +250,7 @@
 				9CC1E4BA271BE53500F17190 /* Frameworks */,
 				9CC1E4BB271BE53500F17190 /* Resources */,
 				9C1EADF2271C168D00C2F73C /* ShellScript */,
+				AAC60A91DD001B3F870DDDEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,7 +300,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
+				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
+				9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */,
+				9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */,
+				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
+				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
+				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
+				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +331,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		AAC60A91DD001B3F870DDDEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vini/Pods-vini-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FDED9D31104E535B177D3D3D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -254,8 +378,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CC1E4C5271BE53500F17190 /* ViewController.swift in Sources */,
+				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
+				9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */,
+				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
+				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
+				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
+				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
+				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
+				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
+				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
+				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
+				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
+				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
+				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
+				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
+				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
+				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
+				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
+				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
+				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +475,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -388,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -409,9 +551,11 @@
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "讓您可以上傳微小學習的照片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -423,7 +567,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -438,9 +582,11 @@
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "讓您可以上傳微小學習的照片";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -452,7 +598,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
