@@ -384,7 +384,7 @@ extension GrowthCaptureViewController {
         isInEditMode = true
         
         UIView.animate(
-            withDuration: 0.9,
+            withDuration: 0.6,
             delay: 0,
             options: [.curveEaseInOut],
             animations: {

@@ -17,7 +17,13 @@ class GrowthCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        let layer = CAGradientLayer()
+        layer.frame = cellBackgroundView.bounds
+        layer.colors = [UIColor.B2.cgColor, UIColor.S1.cgColor]
+        layer.startPoint = CGPoint(x: 0, y: 0)
+        layer.endPoint = CGPoint(x: 20, y: 10)
+        self.cellBackgroundView.layer.insertSublayer(layer, at: 0)
     }
 
     func setupCell(title: String, emoji: String) {
