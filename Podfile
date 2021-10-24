@@ -16,5 +16,6 @@ target 'vini' do
   pod 'RSKPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
   pod 'loady'
+  pod "Haptica"
 
 end

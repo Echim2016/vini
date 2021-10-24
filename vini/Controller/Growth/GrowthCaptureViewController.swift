@@ -9,6 +9,7 @@ import UIKit
 import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
+import Haptica
 
 class GrowthCaptureViewController: UIViewController {
     
@@ -264,13 +265,15 @@ class GrowthCaptureViewController: UIViewController {
             for index in 0..<dataLength {
                 
                 workItem = DispatchWorkItem {
+                    
 
                     if self.hasArchived {
                        
                         let indexPath = IndexPath(row: dataLength - index, section: 0)
                         self.data.remove(at: dataLength - 1 - index)
                         self.tableView.deleteRows(at: [indexPath], with: .fade)
-                        
+                        Haptic.play("..oO-Oo..", delay: 0.2)
+
                     } else {
                         self.fetchGrowthContents()
                     }
