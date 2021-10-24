@@ -80,6 +80,17 @@ class SetGrowthContentCardViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupTextView()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(
+            withDuration: 0.4,
+            animations: {
+                self.contentTextView.becomeFirstResponder()
+        })
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {

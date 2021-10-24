@@ -28,7 +28,7 @@ class GrowthPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setupNavigationController()
+        setupNavigationController()
         
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
         
@@ -75,13 +75,9 @@ extension GrowthPageViewController {
     
     func setupNavigationController() {
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 94/255, green: 121/255, blue: 161/255, alpha: 1)
-
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        let imageView = UIImageView(image: UIImage(named: "vini_logo"))
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
     }
     
 }

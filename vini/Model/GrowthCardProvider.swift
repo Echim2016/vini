@@ -17,7 +17,7 @@ class GrowthCardProvider {
     
     func fetchData(completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
         
-        db.collection("Growth_Cards").order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+        db.collection("Growth_Cards").whereField("is_archived", isEqualTo: false).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -139,6 +139,27 @@ class GrowthCardProvider {
                 print("Growth card successfully removed!")
                     
                     completion(.success("Success"))
+            }
+        }
+    }
+    
+    func archiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document(id)
+        
+        let updateDict = [
+            "is_archived": true,
+            "archived_time": Timestamp(date: Date())
+        ] as [String : Any]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
             }
         }
     }

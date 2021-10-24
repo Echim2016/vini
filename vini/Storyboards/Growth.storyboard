@@ -11,7 +11,7 @@
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="GrowthPageViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="GrowthPageViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="0.090196078431372548" green="0.12156862745098039" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="9mx-OD-6ya" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Sat-f6-jLx"/>
                             <constraint firstItem="9mx-OD-6ya" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cNy-az-I8r"/>
@@ -58,11 +58,11 @@
             </objects>
             <point key="canvasLocation" x="1809" y="117"/>
         </scene>
-        <!--Growth-->
+        <!--Navigation Controller-->
         <scene sceneID="X3f-mq-4mk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Growth" image="house" catalog="system" id="skg-9d-VCj"/>
+                    <tabBarItem key="tabBarItem" title="" image="checklist" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p21-RL-vk3">
@@ -94,6 +94,6 @@
         <segue reference="7dB-Gn-XTz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="house" catalog="system" width="128" height="106"/>
+        <image name="checklist" catalog="system" width="128" height="105"/>
     </resources>
 </document>
