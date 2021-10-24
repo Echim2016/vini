@@ -52,7 +52,7 @@ extension CongratsViewController {
     func showVini() {
         
         UIView.animate(
-            withDuration: 1.5,
+            withDuration: 1.3,
             delay: 0,
             options: [.curveEaseInOut],
             animations: {

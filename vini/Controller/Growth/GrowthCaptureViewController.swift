@@ -250,10 +250,10 @@ class GrowthCaptureViewController: UIViewController {
         var workItem: DispatchWorkItem?
                 
         if gesture.state == UIGestureRecognizer.State.began {
-            
-            archiveIntroLabel.text = "正在打包所有學習，請持續長按..."
-            
+                        
             hasArchived = true
+            
+            archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
             
             archiveIntroLabel.isHidden = false
             
