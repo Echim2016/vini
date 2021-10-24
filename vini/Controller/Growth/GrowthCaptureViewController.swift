@@ -68,6 +68,15 @@ class GrowthCaptureViewController: UIViewController {
         
         return buttonStackView
     }()
+    
+    var sparkVini: UIImageView = {
+       
+        let viniImageView = UIImageView()
+        viniImageView.image = UIImage(named: "vini_spark")
+        viniImageView.contentMode = .scaleAspectFit
+        
+        return viniImageView
+    }()
 
     @IBOutlet weak var archiveIntroLabel: UILabel!
     @IBOutlet weak var archiveButton: UIButton!
@@ -91,7 +100,15 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
-    var hasArchived: Bool = false
+    var hasArchived: Bool = false {
+        didSet {
+            
+            buttonStackView.alpha = hasArchived ? 0 : 1
+            archiveButton.alpha = hasArchived ? 1 : 0
+            sparkVini.alpha = hasArchived ? 1 : 0
+            archiveIntroLabel.text = hasArchived ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
+        }
+    }
     
     var isInCreateCardMode: Bool = false
     
@@ -113,6 +130,7 @@ class GrowthCaptureViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
         isInEditMode = isInCreateCardMode
+        setupFooterview()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +143,6 @@ class GrowthCaptureViewController: UIViewController {
         }
         
         setupHeaderView()
-        setupFooterview()
         setupTextView()
     }
     
@@ -225,12 +242,12 @@ class GrowthCaptureViewController: UIViewController {
     
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
-        buttonStackView.isHidden = true
-        archiveButton.isHidden = false
-        archiveIntroLabel.isHidden = false
+        showArchiveButton()
     }
     
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
+        
+        var workItem: DispatchWorkItem?
                 
         if gesture.state == UIGestureRecognizer.State.began {
             
@@ -240,14 +257,27 @@ class GrowthCaptureViewController: UIViewController {
             
             archiveIntroLabel.isHidden = false
             
+            self.sparkVini.shake()
+            
             let dataLength = data.count
             
             for index in 0..<dataLength {
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8 * Double(index)) {
-                    let indexPath = IndexPath(row: dataLength - index, section: 0)
-                    self.data.remove(at: dataLength - 1 - index)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                workItem = DispatchWorkItem {
+
+                    if self.hasArchived {
+                       
+                        let indexPath = IndexPath(row: dataLength - index, section: 0)
+                        self.data.remove(at: dataLength - 1 - index)
+                        self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        
+                    } else {
+                        self.fetchGrowthContents()
+                    }
+                }
+                
+                if let workItem = workItem {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8 * Double(index), execute: workItem)
                 }
 
             }
@@ -258,7 +288,7 @@ class GrowthCaptureViewController: UIViewController {
                 navigateToCongratsPage()
             } else {
                 hasArchived = false
-                self.fetchGrowthContents()
+                workItem?.cancel()
             }
             
         }
@@ -544,22 +574,32 @@ extension GrowthCaptureViewController {
             })
     }
     
+    func showArchiveButton() {
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0,
+            options: [.curveEaseInOut],
+            animations: {
+                self.hasArchived = true
+            })
+    }
+    
     func navigateToCongratsPage() {
         
         archiveGrowthCard { success in
             
             if success {
                 self.hasArchived = true
-                self.archiveIntroLabel.isHidden = true
+                self.archiveIntroLabel.alpha = 0
                 self.performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
             }
-            
         }
     }
     
     func setupTextView() {
         
-        headerTitleTextView.placeholder = "輸入你的成長項目標題..."
+        headerTitleTextView.placeholder = "輸入成長項目標題..."
         headerTitleTextView.tintColor = UIColor.B2
         headerTitleTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
     }
@@ -609,6 +649,19 @@ extension GrowthCaptureViewController {
         
         archiveButton.addTarget(self, action: #selector(tapShowArchiveViewButton(_:)), for: .touchUpInside)
         
+        sparkVini.alpha = 0
+        
+        view.addSubview(sparkVini)
+        
+        sparkVini.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            sparkVini.widthAnchor.constraint(equalTo: footerView.widthAnchor, multiplier: 0.3),
+            sparkVini.heightAnchor.constraint(equalTo: sparkVini.widthAnchor),
+            sparkVini.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+            sparkVini.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: 60)
+        ])
+        
     }
     
     func setupArchiveButton() {
@@ -620,5 +673,4 @@ extension GrowthCaptureViewController {
         archiveButton.layer.cornerRadius = archiveButton.frame.height / 2
         archiveButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
     }
-    
 }

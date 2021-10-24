@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +44,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.30000517384105962" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="GHv-Qb-oWh" firstAttribute="centerX" secondItem="pgB-qP-Y6X" secondAttribute="centerX" id="Kf5-Z2-z6e"/>
                                                 <constraint firstItem="MLn-Wn-iTT" firstAttribute="centerY" secondItem="pgB-qP-Y6X" secondAttribute="centerY" id="V3z-CR-qaw"/>
@@ -90,37 +89,36 @@
                                     <rect key="frame" x="0.0" y="361" width="414" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-bE-cn7">
+                                        <button opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-bE-cn7">
                                             <rect key="frame" x="147" y="124" width="120" height="120"/>
                                             <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="dpw-ii-Dr9"/>
                                                 <constraint firstAttribute="width" constant="120" id="hTC-dW-nlW"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="27"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
                                             <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" title="打包學習">
+                                            <size key="titleShadowOffset" width="2" height="2"/>
+                                            <state key="normal" title="封存">
                                                 <color key="titleColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
-                                            <buttonConfiguration key="configuration" style="plain" title="封存卡片">
-                                                <fontDescription key="titleFontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="26"/>
-                                                <color key="baseForegroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </buttonConfiguration>
                                         </button>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請長按以下按鈕來封存卡片..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcp-rY-F2G">
-                                            <rect key="frame" x="32" y="72" width="350" height="20"/>
-                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcp-rY-F2G">
+                                            <rect key="frame" x="32" y="75" width="350" height="45"/>
+                                            <string key="text">對生活中的小細節用心，
+就能把世界活得更寬闊。</string>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                             <color key="textColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
+                                        <constraint firstItem="Zcp-rY-F2G" firstAttribute="top" secondItem="R5T-tD-nbY" secondAttribute="top" constant="75" id="A5S-St-SGH"/>
                                         <constraint firstAttribute="trailing" secondItem="Zcp-rY-F2G" secondAttribute="trailing" constant="32" id="Etu-YL-CRO"/>
                                         <constraint firstAttribute="bottom" secondItem="Hx4-bE-cn7" secondAttribute="bottom" constant="56" id="NCj-tA-nWZ"/>
                                         <constraint firstItem="Zcp-rY-F2G" firstAttribute="leading" secondItem="R5T-tD-nbY" secondAttribute="leading" constant="32" id="aKs-QV-g40"/>
-                                        <constraint firstItem="Hx4-bE-cn7" firstAttribute="top" secondItem="Zcp-rY-F2G" secondAttribute="bottom" constant="32" id="vM1-I6-8h6"/>
                                         <constraint firstItem="Hx4-bE-cn7" firstAttribute="centerX" secondItem="R5T-tD-nbY" secondAttribute="centerX" id="yX9-vg-GR4"/>
                                     </constraints>
                                 </view>
@@ -164,7 +162,7 @@
                                     <constraint firstAttribute="width" constant="40" id="8Rf-yB-FDu"/>
                                     <constraint firstAttribute="height" constant="40" id="r2N-Le-V2O"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="placeholderTextColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                                 <connections>
@@ -180,7 +178,7 @@
                                     <constraint firstAttribute="height" constant="40" id="C2r-zz-yPG"/>
                                     <constraint firstAttribute="width" constant="40" id="fl2-1d-V9Q"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="placeholderTextColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="pencil.circle.fill" catalog="system"/>
                                 <connections>
@@ -414,8 +412,5 @@
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
-        <systemColor name="placeholderTextColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
