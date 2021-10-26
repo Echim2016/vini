@@ -20,6 +20,8 @@ class MapScrollView: UIView {
         scrollView.bounces = false
         scrollView.isPagingEnabled = false
         scrollView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.1)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
     
@@ -65,7 +67,7 @@ class MapScrollView: UIView {
             mapStackView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             mapStackView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             mapStackView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            mapStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            mapStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
         
         for index in 0..<numberOfItems {
@@ -76,8 +78,22 @@ class MapScrollView: UIView {
             defaultMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
             defaultMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
             defaultMapView.backgroundColor = colors[index]
+            defaultMapView.backgroundColor = .B2
+            
         }
+        
     }
+    
+    func spawnDefaultVinis() {
+        
+        mapStackView.arrangedSubviews[numberOfItems / 2].spawnViniRandomly()
+    }
+    
+    func setContentOffsetToMiddle() {
+        
+        scrollView.contentOffset.x = scrollView.frame.size.width * CGFloat(numberOfItems) / 2
+    }
+    
 }
 
 extension MapScrollView: UIScrollViewDelegate {
@@ -100,6 +116,8 @@ extension MapScrollView: UIScrollViewDelegate {
                 
                 newMapView.backgroundColor = colors[random]
                 
+                newMapView.backgroundColor = .B2
+                
                 mapStackView.insertArrangedSubview(newMapView, at: 0)
                 
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,6 +125,8 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
+                                
+                mapStackView.arrangedSubviews[1].spawnViniRandomly()
 
                 let viewToRemove = mapStackView.arrangedSubviews[numberOfItems - 2]
                 
@@ -119,7 +139,7 @@ extension MapScrollView: UIScrollViewDelegate {
             
         } else {
             
-            if currentPage == numberOfItems - 2 {
+            if currentPage == numberOfItems - 3 {
                 
                 print("Add Right New Map")
                 
@@ -129,6 +149,8 @@ extension MapScrollView: UIScrollViewDelegate {
                 
                 newMapView.backgroundColor = colors[random]
                 
+                newMapView.backgroundColor = .B2
+                
                 mapStackView.addArrangedSubview(newMapView)
                 
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
@@ -136,6 +158,8 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
+                                                
+                mapStackView.arrangedSubviews[numberOfItems - 2].spawnViniRandomly()
                                 
                 let viewToRemove = mapStackView.arrangedSubviews[1]
                 
@@ -145,6 +169,58 @@ extension MapScrollView: UIScrollViewDelegate {
                 
                 scrollView.contentOffset.x -= viewToRemove.frame.width
             }
+        }
+    }
+    
+}
+
+extension UIView {
+    
+    func spawnViniRandomly() {
+        
+        let numberOfVinis = 2
+        
+        self.clipsToBounds = true
+
+        // Get Width and Height of view
+        let width = self.frame.width - 100
+        let height = self.frame.height - 120
+        
+        var positions: [(Int, Int)] = [(Int(arc4random_uniform(UInt32(width))), Int(arc4random_uniform(UInt32(height))))]
+        var randomX = 0
+        var randomY = 0
+        
+        for _ in 0..<numberOfVinis {
+            
+            var exist = false
+            
+            while !exist {
+                
+                randomX = Int(arc4random_uniform(UInt32(width)))
+                randomY = Int(arc4random_uniform(UInt32(height)))
+                
+                for position in positions {
+                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 60 {
+                        exist = true
+                    } else {
+                        exist = false
+                        break
+                    }
+                }
+                                
+            }
+            
+            positions.append((randomX, randomY))
+        }
+        
+        for (randomX, randomY) in positions {
+            
+            let randomView = UIImageView(frame: CGRect(x: randomX, y: randomY, width: 80, height: 100))
+            randomView.contentMode = .scaleAspectFit
+            randomView.image = UIImage(named: "vini_spark")
+            randomView.float(duration: 0.5)
+            
+            self.addSubview(randomView)
         }
     }
     

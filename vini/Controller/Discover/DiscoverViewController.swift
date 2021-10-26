@@ -9,15 +9,8 @@ import UIKit
 
 class DiscoverViewController: UIViewController {
     
-    var numberOfItems = 4
-    
-    var lastOffset: CGPoint = .zero
-    var lastOffsetCapture: TimeInterval = .zero
-    var isScrollingFast: Bool = false
-
-    
-    var colorBool : Bool = false
-    
+    let mapView = MapScrollView()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -29,13 +22,20 @@ class DiscoverViewController: UIViewController {
         setupMapScrollView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.mapView.spawnDefaultVinis()
+            self.mapView.setContentOffsetToMiddle()
+        })
+    }
+
 }
 
 extension DiscoverViewController {
     
     func setupMapScrollView() {
-        
-        let mapView = MapScrollView()
         
         self.view.addSubview(mapView)
         
@@ -45,8 +45,8 @@ extension DiscoverViewController {
             
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mapView.heightAnchor.constraint(equalToConstant: 300)
+            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.7)
         ])
     }
     
