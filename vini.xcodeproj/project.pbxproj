@@ -28,6 +28,9 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA42C7D2726B278007F9589 /* Discover.storyboard */; };
+		9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C802726B293007F9589 /* DiscoverViewController.swift */; };
+		9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C832727968B007F9589 /* MapScrollView.swift */; };
 		9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */; };
 		9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */; };
 		9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA12723059E00E85F28 /* String+Extension.swift */; };
@@ -65,6 +68,9 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9CA42C7D2726B278007F9589 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		9CA42C802726B293007F9589 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		9CA42C832727968B007F9589 /* MapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScrollView.swift; sourceTree = "<group>"; };
 		9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conclusion.storyboard; sourceTree = "<group>"; };
 		9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsViewController.swift; sourceTree = "<group>"; };
 		9CA66FA12723059E00E85F28 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -126,6 +132,22 @@
 			path = Growth;
 			sourceTree = "<group>";
 		};
+		9CA42C7F2726B283007F9589 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				9CA42C802726B293007F9589 /* DiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		9CA42C8227279660007F9589 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				9CA42C832727968B007F9589 /* MapScrollView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +185,7 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CA42C8227279660007F9589 /* Discover */,
 				9C05B227271EB45B00C78620 /* Growth Card */,
 				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
 				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
@@ -177,6 +200,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CA42C7F2726B283007F9589 /* Discover */,
 				9C5FC928271D4F4F00DE4E42 /* Growth */,
 				9CC1E4C0271BE53500F17190 /* AppDelegate.swift */,
 				9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */,
@@ -223,6 +247,7 @@
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
 				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
 				9CF72A3D27242C1F00747089 /* Congrats.storyboard */,
+				9CA42C7D2726B278007F9589 /* Discover.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -310,6 +335,7 @@
 				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
 				9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */,
 				9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */,
+				9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
@@ -401,11 +427,13 @@
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
+				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
+				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,
 				9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
