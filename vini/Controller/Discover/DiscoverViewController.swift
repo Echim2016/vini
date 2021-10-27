@@ -9,6 +9,11 @@ import UIKit
 
 class DiscoverViewController: UIViewController {
     
+    private enum Segue: String {
+        
+        case showProfileSetting = "ShowProfileSetting"
+    }
+    
     let mapView = MapScrollView()
     
     private var infoOfUsers: [Vini] = []
@@ -46,6 +51,7 @@ class DiscoverViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         mapView.clearStackSubviews()
+        resetTitle()
     }
     
     @objc private func onTap(_ gesture: UIGestureRecognizer) {
@@ -73,7 +79,12 @@ class DiscoverViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func tapProfileSettingButton(_ sender: Any) {
 
+        performSegue(withIdentifier: Segue.showProfileSetting.rawValue, sender: nil)
+    }
+    
 }
 
 extension DiscoverViewController {
@@ -95,10 +106,16 @@ extension DiscoverViewController {
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.7)
+            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.65)
         ])
     }
     
+    func resetTitle() {
+        
+        wonderingLabel.text = "歡迎回來 Vini Town，\n繼續探索吧！"
+        nameLabel.text = "請左滑或右滑開始探索"
+        sendButton.alpha = 0
+    }
 }
 
 extension DiscoverViewController {
