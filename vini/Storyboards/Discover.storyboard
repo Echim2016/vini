@@ -15,10 +15,25 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lt-jQ-UM1">
+                                <rect key="frame" x="36" y="122" width="41.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="4Lt-jQ-UM1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="34" id="5Th-0w-SbG"/>
+                            <constraint firstItem="4Lt-jQ-UM1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="VDp-R6-JtT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="4Lt-jQ-UM1" id="TLy-MP-yVL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

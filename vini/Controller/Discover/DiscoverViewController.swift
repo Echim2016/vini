@@ -11,8 +11,11 @@ class DiscoverViewController: UIViewController {
     
     let mapView = MapScrollView()
         
+    @IBOutlet weak var nameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.isUserInteractionEnabled = true
     
     }
     
@@ -20,6 +23,7 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupMapScrollView()
+        mapView.configureMapScrollView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +34,34 @@ class DiscoverViewController: UIViewController {
             self.mapView.setContentOffsetToMiddle()
         })
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        mapView.clearStackSubviews()
+    }
+    
+    @objc private func onTap(_ gesture: UIGestureRecognizer) {
+
+        let touchPoint = gesture.location(in: self.mapView.mapStackView)
+        
+        print(touchPoint)
+        
+        self.mapView.mapStackView.arrangedSubviews.filter { $0.frame.contains(touchPoint)}.forEach { map  in
+            
+            let location = gesture.location(in: map)
+            
+            map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
+                if let vini = vini as? Vini {
+                    vini.layer.removeAllAnimations()
+                    vini.shake()
+                    print(vini.name)
+                    nameLabel.text = vini.name
+                }
+            }
+            
+        }
+    }
 
 }
 
@@ -37,7 +69,13 @@ extension DiscoverViewController {
     
     func setupMapScrollView() {
         
+        mapView.dataSource = self
+        
         self.view.addSubview(mapView)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+
+        self.mapView.addGestureRecognizer(tapGesture)
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -48,6 +86,38 @@ extension DiscoverViewController {
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.7)
         ])
+    }
+    
+}
+
+extension DiscoverViewController {
+    
+    func fetchUserInfo() {
+        
+        
+    }
+    
+}
+
+extension DiscoverViewController: MapScrollViewDataSource {
+    
+    func infoOfUsers(_ mapScrollView: MapScrollView) -> [Vini] {
+        
+        var vinis: [Vini] = []
+        
+        let names: [String] = ["Ed", "Anson", "Astrid", "Amber", "Elio", "Zoe", "Allie", "Dean", "Dodo", "Morgan", "Celeste", "echim", "Ivan", "Willy"]
+        
+        
+        for _ in 0...10 {
+            
+            let vini1 = Vini()
+            vini1.name = names.randomElement() ?? "iOS"
+            vini1.wondering = "如何保持忙碌中運動的習慣"
+            
+            vinis.append(vini1)
+        }
+        
+        return vinis
     }
     
 }
