@@ -10,6 +10,8 @@ import UIKit
 class DiscoverViewController: UIViewController {
     
     let mapView = MapScrollView()
+    
+    private var infoOfUsers: [Vini] = []
         
     @IBOutlet weak var nameLabel: UILabel!
     override func viewDidLoad() {
@@ -23,7 +25,8 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupMapScrollView()
-        mapView.configureMapScrollView()
+        fetchUserInfo()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +97,22 @@ extension DiscoverViewController {
     
     func fetchUserInfo() {
         
+        DiscoverUserManager.shared.fetchData { result in
+            switch result {
+            case .success(let vinis):
+                
+                self.infoOfUsers = vinis
+                self.mapView.configureMapScrollView()
+                
+                self.infoOfUsers.forEach { vini in
+                    print(vini.name)
+                }
+
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
         
     }
     
@@ -102,22 +121,7 @@ extension DiscoverViewController {
 extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [Vini] {
-        
-        var vinis: [Vini] = []
-        
-        let names: [String] = ["Ed", "Anson", "Astrid", "Amber", "Elio", "Zoe", "Allie", "Dean", "Dodo", "Morgan", "Celeste", "echim", "Ivan", "Willy"]
-        
-        
-        for _ in 0...10 {
-            
-            let vini1 = Vini()
-            vini1.name = names.randomElement() ?? "iOS"
-            vini1.wondering = "如何保持忙碌中運動的習慣"
-            
-            vinis.append(vini1)
-        }
-        
-        return vinis
+        return infoOfUsers
     }
     
 }

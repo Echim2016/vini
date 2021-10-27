@@ -130,15 +130,15 @@ extension MapScrollView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        guard scrollView.frame.size.width > 0,
-              infosOfUsers.count > 0,
-              currentDataLocation * numberOfViniPerMap < infosOfUsers.count else { return }
+        guard scrollView.frame.size.width > 0 else { return }
+              
+        guard infosOfUsers.count > 0 else { return }
                 
         let currentPage: Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
 
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
                         
-            if currentPage == 1 {
+            if currentPage == 1 && currentDataLocation > 0 {
                                 
                 let newMapView = UIView()
                 
@@ -149,6 +149,24 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
+                
+                var vinis: [Vini] = []
+                
+                let location = currentDataLocation * numberOfViniPerMap
+                
+                for index in location ..< location + numberOfViniPerMap {
+                    
+                    if infosOfUsers.count > index {
+                        let data = infosOfUsers[index]
+                        vinis.append(data)
+                    } else {
+                        // fetch new data
+                    }
+                }
+                
+                if vinis.count == numberOfViniPerMap {
+                    mapStackView.arrangedSubviews[1].spawnViniRandomly(vinis: vinis)
+                }
                                 
 //                mapStackView.arrangedSubviews[1].spawnViniRandomly()
 
@@ -159,11 +177,13 @@ extension MapScrollView: UIScrollViewDelegate {
                 viewToRemove.removeFromSuperview()
                 
                 scrollView.contentOffset.x += viewToRemove.frame.width
+                
+                currentDataLocation -= 1
             }
             
         } else {
             
-            if currentPage == numberOfMapsInStack - 3 {
+            if currentPage == numberOfMapsInStack - 3 && (currentDataLocation+2) * numberOfViniPerMap < infosOfUsers.count {
                                 
                 let newMapView = UIView()
                 
@@ -178,21 +198,21 @@ extension MapScrollView: UIScrollViewDelegate {
                 
                 var vinis: [Vini] = []
                 
-                for index in currentDataLocation ..< currentDataLocation + numberOfViniPerMap {
+                let location = currentDataLocation * numberOfViniPerMap
+                
+                for index in location ..< location + numberOfViniPerMap {
                     
-                    if infosOfUsers.count > currentDataLocation * numberOfViniPerMap {
+                    if infosOfUsers.count > index {
                         let data = infosOfUsers[index]
                         vinis.append(data)
                     } else {
                         // fetch new data
                     }
-                    
                 }
                 if vinis.count == numberOfViniPerMap {
                     mapStackView.arrangedSubviews[numberOfMapsInStack - 2].spawnViniRandomly(vinis: vinis)
                 }
-                
-                                
+            
                 let viewToRemove = mapStackView.arrangedSubviews[1]
                 mapStackView.removeArrangedSubview(viewToRemove)
                 viewToRemove.removeFromSuperview()
@@ -238,7 +258,6 @@ extension UIView {
                         break
                     }
                 }
-                                
             }
             
             positions.append((randomX, randomY))
@@ -246,12 +265,6 @@ extension UIView {
         
         
         for index in 0...numberOfVinis {
-            
-            
-//            let viniView = UIImageView(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
-//            viniView.contentMode = .scaleAspectFit
-//            viniView.image = UIImage(named: "vini_spark")
-//            viniView.float(duration: 0.5)
             
             let viniView = Vini(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
             viniView.name = vinis[index].name
@@ -261,9 +274,7 @@ extension UIView {
             viniView.float(duration: 0.5)
             
             self.addSubview(viniView)
-            
         }
-        
     }
     
 }

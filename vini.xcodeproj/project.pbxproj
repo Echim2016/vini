@@ -42,6 +42,7 @@
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
 		9CEAC5132728060C00C98B96 /* Vini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* Vini.swift */; };
+		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -85,6 +86,7 @@
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CC1E4CE271BE53600F17190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CEAC5122728060C00C98B96 /* Vini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vini.swift; sourceTree = "<group>"; };
+		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,10 +216,8 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
-				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
-				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
-				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+				9CEAC5162728FCB100C98B96 /* Growth */,
+				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +253,17 @@
 				9CA42C7D2726B278007F9589 /* Discover.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9CEAC5162728FCB100C98B96 /* Growth */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
+				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
+				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
+				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+			);
+			path = Growth;
 			sourceTree = "<group>";
 		};
 		D38D95195B139FE977D261F2 /* Pods */ = {
@@ -431,6 +442,7 @@
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
+				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
