@@ -13,7 +13,10 @@ class DiscoverViewController: UIViewController {
     
     private var infoOfUsers: [Vini] = []
         
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var wonderingLabel: UILabel!
+    @IBOutlet weak var sendButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +29,8 @@ class DiscoverViewController: UIViewController {
         
         setupMapScrollView()
         fetchUserInfo()
-
+        headerView.layer.cornerRadius = 25
+        sendButton.layer.cornerRadius = 20
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,10 +60,14 @@ class DiscoverViewController: UIViewController {
             
             map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
                 if let vini = vini as? Vini {
+                    sendButton.alpha = 1
                     vini.layer.removeAllAnimations()
-                    vini.shake()
+//                    vini.shake()
+                    vini.float(duration: 0.5)
                     print(vini.name)
                     nameLabel.text = vini.name
+                    wonderingLabel.text = vini.wondering
+                    
                 }
             }
             
@@ -75,7 +83,7 @@ extension DiscoverViewController {
         mapView.dataSource = self
         
         self.view.addSubview(mapView)
-        
+                
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
 
         self.mapView.addGestureRecognizer(tapGesture)

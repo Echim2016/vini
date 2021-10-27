@@ -32,7 +32,7 @@ class MapScrollView: UIView {
         scrollView.bounces = false
         scrollView.isPagingEnabled = false
         scrollView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.1)
-        scrollView.showsHorizontalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
@@ -135,6 +135,8 @@ extension MapScrollView: UIScrollViewDelegate {
         guard infosOfUsers.count > 0 else { return }
                 
         let currentPage: Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        
+        
 
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
                         
@@ -271,7 +273,7 @@ extension UIView {
             viniView.wondering = vinis[index].wondering
 //            vini.viniImageView = vinis[index].viniImageView
             viniView.viniImageView.image = UIImage(named: "vini_spark")
-            viniView.float(duration: 0.5)
+//            viniView.float(duration: 0.5)
             
             self.addSubview(viniView)
         }

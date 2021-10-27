@@ -29,10 +29,12 @@ class DiscoverUserManager {
                 for document in querySnapshot!.documents {
                     
                     
-                    guard let name = document.get("display_name") as? String else { return }
+                    guard let name = document.get("display_name") as? String,
+                          let wondering = document.get("wondering") as? String else { return }
                     
                     let vini = Vini()
                     vini.name = name
+                    vini.wondering = wondering
                     vinis.append(vini)
                     
                     

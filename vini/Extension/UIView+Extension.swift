@@ -113,7 +113,7 @@ public extension UIView {
         
         UIView.animate(
             withDuration: duration,
-            delay: Double.random(in: 0...1),
+            delay: Double.random(in: 0...0.5),
             options: [.autoreverse, .repeat],
             animations: {
                 self.frame = CGRect(

@@ -16,23 +16,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lt-jQ-UM1">
-                                <rect key="frame" x="36" y="122" width="41.5" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
+                                <rect key="frame" x="16" y="56" width="382" height="224"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小鎮裡的Vini都在想些什麼？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
+                                        <rect key="frame" x="16" y="32" width="350" height="34"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="24"/>
+                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
+                                        <rect key="frame" x="32" y="128.5" width="318" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-mH-FH9">
+                                        <rect key="frame" x="32" y="174" width="318" height="40"/>
+                                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="IxJ-PM-5IB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="發一封私信給他"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="10" id="1eC-sb-wiz"/>
+                                    <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
+                                    <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="CIA-zA-jnB"/>
+                                    <constraint firstAttribute="trailing" secondItem="ISw-Aw-LEI" secondAttribute="trailing" constant="16" id="L42-4K-2gC"/>
+                                    <constraint firstAttribute="trailing" secondItem="eRo-iy-Kb4" secondAttribute="trailing" constant="32" id="OL0-Oj-1Hf"/>
+                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="OPB-65-MRR"/>
+                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="top" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="20" id="TkC-5C-zhc"/>
+                                    <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
+                                    <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="4Lt-jQ-UM1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="34" id="5Th-0w-SbG"/>
-                            <constraint firstItem="4Lt-jQ-UM1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="VDp-R6-JtT"/>
+                            <constraint firstItem="P50-Gu-XAf" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="MgU-LC-JAW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="OR8-XT-Iql"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="P50-Gu-XAf" secondAttribute="trailing" constant="16" id="VHH-7p-jl7"/>
+                            <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy"/>
                     <connections>
-                        <outlet property="nameLabel" destination="4Lt-jQ-UM1" id="TLy-MP-yVL"/>
+                        <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
+                        <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
+                        <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
+                        <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
