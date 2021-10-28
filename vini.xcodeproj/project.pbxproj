@@ -47,6 +47,7 @@
 		9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */; };
 		9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */; };
 		9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */; };
+		9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DA0272A8F9E006CCA06 /* User.swift */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -95,6 +96,7 @@
 		9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileCell.swift; sourceTree = "<group>"; };
 		9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetProfileCell.xib; sourceTree = "<group>"; };
+		9CEE9DA0272A8F9E006CCA06 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				9CEAC5162728FCB100C98B96 /* Growth */,
 				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
+				9CEE9DA0272A8F9E006CCA06 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
 				9CEAC5132728060C00C98B96 /* Vini.swift in Sources */,
 				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
+				9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,

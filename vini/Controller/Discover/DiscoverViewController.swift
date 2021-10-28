@@ -26,7 +26,6 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.isUserInteractionEnabled = true
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -42,8 +42,16 @@ class SetProfileViewController: UIViewController {
     
     let userDefault = UserDefaults.standard
     
-    var wonderingToAdd: String = ""
-    var dispalyNameToAdd: String = ""
+    var user: User = User() {
+        didSet {
+    
+            self.isPublishedSwitch.isOn = user.isPublished
+            self.viniImageView.image = UIImage(named: user.viniType)
+            let types = viniAssets.map { $0.name }
+            self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +61,7 @@ class SetProfileViewController: UIViewController {
         tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
         
         userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +69,8 @@ class SetProfileViewController: UIViewController {
         
         viniImageView.float(duration: 0.5)
         viniSelectorView.setBottomCurve()
+        fetchProfile()
+
     }
 
     @IBAction func tapDismissButton(_ sender: Any) {
@@ -68,8 +79,8 @@ class SetProfileViewController: UIViewController {
     
     @IBAction func tapSaveButton(_ sender: Any) {
         
-        if !wonderingToAdd.isEmpty,
-           !dispalyNameToAdd.isEmpty {
+        if !user.wondering.isEmpty,
+           !user.displayName.isEmpty {
             saveProfile()
         }
     }
@@ -83,10 +94,29 @@ class SetProfileViewController: UIViewController {
         
         currentViniIndex += 1
     }
-
 }
 
 extension SetProfileViewController {
+    
+    func fetchProfile() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+            
+            DiscoverUserManager.shared.fetchUserProfile(id: userID) { result in
+                switch result {
+                case .success(let user):
+                    
+                    self.user = user
+                    print(user)
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+    
+    }
     
     func saveProfile() {
         
@@ -94,8 +124,8 @@ extension SetProfileViewController {
             
             DiscoverUserManager.shared.updateUserStatus(
                 id: userID,
-                wondering: wonderingToAdd,
-                name: dispalyNameToAdd,
+                wondering: user.wondering,
+                name: user.displayName,
                 viniType: viniAssets[currentViniIndex].name,
                 isOn: isPublishedSwitch.isOn
             ) { result in
@@ -112,7 +142,6 @@ extension SetProfileViewController {
             }
         }
     }
-        
 }
 
 extension SetProfileViewController: UITableViewDelegate {
@@ -147,12 +176,13 @@ extension SetProfileViewController: UITableViewDataSource {
         case 0:
             cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
             cell.textView.accessibilityLabel = "wondering"
+            cell.textView.placeholder = user.wondering as NSString
         case 1:
             cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Town 裡面的名稱")
             cell.textView.accessibilityLabel = "displayName"
+            cell.textView.placeholder = user.displayName as NSString
         default:
             break
-            
         }
         
         cell.textView.delegate = self
@@ -180,9 +210,9 @@ extension SetProfileViewController: UITextViewDelegate {
         
         switch textView.accessibilityLabel {
         case "wondering":
-            wonderingToAdd = text
+            user.wondering = text
         case "displayName":
-            dispalyNameToAdd = text
+            user.displayName = text
         default:
             break
         }
