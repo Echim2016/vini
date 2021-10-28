@@ -25,7 +25,6 @@ class SetProfileViewController: UIViewController {
             }
             
             viniImageView.image = UIImage(assetIdentifier: viniAssets[currentViniIndex])
-
         }
     }
     
@@ -39,12 +38,21 @@ class SetProfileViewController: UIViewController {
     
     @IBOutlet weak var viniSelectorView: UIView!
     
+    @IBOutlet weak var isPublishedSwitch: UISwitch!
+    
+    let userDefault = UserDefaults.standard
+    
+    var wonderingToAdd: String = ""
+    var dispalyNameToAdd: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.isModalInPresentation = true
         
-        tableView.registerCellWithNib(identifier: SetWonderingCell.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
+        
+        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +67,11 @@ class SetProfileViewController: UIViewController {
     }
     
     @IBAction func tapSaveButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        
+        if !wonderingToAdd.isEmpty,
+           !dispalyNameToAdd.isEmpty {
+            saveProfile()
+        }
     }
     
     @IBAction func tapLeftArrowButton(_ sender: Any) {
@@ -71,12 +83,39 @@ class SetProfileViewController: UIViewController {
         
         currentViniIndex += 1
     }
-    
 
 }
 
-extension SetProfileViewController: UITableViewDelegate {
+extension SetProfileViewController {
     
+    func saveProfile() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+            
+            DiscoverUserManager.shared.updateUserStatus(
+                id: userID,
+                wondering: wonderingToAdd,
+                name: dispalyNameToAdd,
+                viniType: viniAssets[currentViniIndex].name,
+                isOn: isPublishedSwitch.isOn
+            ) { result in
+                
+                switch result {
+                case .success:
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+    }
+        
+}
+
+extension SetProfileViewController: UITableViewDelegate {
     
 }
 
@@ -96,7 +135,10 @@ extension SetProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SetWonderingCell.identifier, for: indexPath) as? SetWonderingCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SetProfileCell.identifier,
+            for: indexPath
+        ) as? SetProfileCell else {
             fatalError()
         }
         
@@ -104,15 +146,45 @@ extension SetProfileViewController: UITableViewDataSource {
             
         case 0:
             cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
+            cell.textView.accessibilityLabel = "wondering"
         case 1:
             cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Town 裡面的名稱")
+            cell.textView.accessibilityLabel = "displayName"
         default:
             break
             
         }
         
+        cell.textView.delegate = self
+        
         return cell
         
     }
     
+}
+
+extension SetProfileViewController: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        guard let text = textView.text,
+              !text.isEmpty else {
+                  return
+              }
+        
+        switch textView.accessibilityLabel {
+        case "wondering":
+            wonderingToAdd = text
+        case "displayName":
+            dispalyNameToAdd = text
+        default:
+            break
+        }
+    }
 }

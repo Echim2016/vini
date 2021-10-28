@@ -8,15 +8,13 @@
 import UIKit
 import RSKPlaceholderTextView
 
-class SetWonderingCell: UITableViewCell {
+class SetProfileCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: RSKPlaceholderTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

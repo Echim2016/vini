@@ -28,7 +28,6 @@ class DiscoverUserManager {
                 
                 for document in querySnapshot!.documents {
                     
-                    
                     guard let name = document.get("display_name") as? String,
                           let wondering = document.get("wondering") as? String else { return }
                     
@@ -37,20 +36,32 @@ class DiscoverUserManager {
                     vini.wondering = wondering
                     vinis.append(vini)
                     
-                    
-//                    do {
-//                        if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
-//
-//                            growthCards.append(growthCard)
-//                        }
-//
-//                    } catch {
-//
-//                        completion(.failure(error))
-//                    }
                 }
                 
                 completion(.success(vinis))
+            }
+        }
+    }
+    
+    func updateUserStatus(id: String, wondering: String, name: String, viniType: String, isOn: Bool, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Users").document(id)
+        
+        let updateDict = [
+            "display_name": name,
+            "wondering": wondering,
+            "vini_type": viniType,
+            "is_published": isOn
+        ] as [String: Any]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
             }
         }
     }
