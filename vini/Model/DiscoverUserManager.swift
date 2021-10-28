@@ -17,7 +17,7 @@ class DiscoverUserManager {
     
     func fetchData(completion: @escaping (Result<[Vini], Error>) -> Void) {
         
-        db.collection("Users").getDocuments() { (querySnapshot, error) in
+        db.collection("Users").whereField("is_published", isEqualTo: true).getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -28,13 +28,20 @@ class DiscoverUserManager {
                 
                 for document in querySnapshot!.documents {
                     
-                    guard let name = document.get("display_name") as? String,
-                          let wondering = document.get("wondering") as? String else { return }
-                    
-                    let vini = Vini()
-                    vini.name = name
-                    vini.wondering = wondering
-                    vinis.append(vini)
+                    do {
+                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
+                            let vini = Vini()
+                            vini.name = userInfo.displayName
+                            vini.wondering = userInfo.wondering
+                            vini.viniType = userInfo.viniType
+                            vinis.append(vini)
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
                     
                 }
                 
@@ -95,7 +102,5 @@ class DiscoverUserManager {
                 
             }
         }
-        
-        
     }
 }

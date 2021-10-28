@@ -127,10 +127,6 @@ extension DiscoverViewController {
                 
                 self.infoOfUsers = vinis
                 self.mapView.configureMapScrollView()
-                
-                self.infoOfUsers.forEach { vini in
-                    print(vini.name)
-                }
 
             case .failure(let error):
                 

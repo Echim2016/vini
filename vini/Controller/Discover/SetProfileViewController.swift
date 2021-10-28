@@ -61,7 +61,6 @@ class SetProfileViewController: UIViewController {
         tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
         
         userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

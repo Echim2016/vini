@@ -62,7 +62,7 @@ class MapScrollView: UIView {
         
         if let infos = dataSource?.infoOfUsers(self) {
             self.infosOfUsers = infos
-            self.currentDataLocation = infosOfUsers.count / 3 / 2
+            self.currentDataLocation = infosOfUsers.count / 3 / 2 - 1
         }
     }
     
@@ -135,8 +135,6 @@ extension MapScrollView: UIScrollViewDelegate {
         guard infosOfUsers.count > 0 else { return }
                 
         let currentPage: Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        
-        
 
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
                         
@@ -207,8 +205,6 @@ extension MapScrollView: UIScrollViewDelegate {
                     if infosOfUsers.count > index {
                         let data = infosOfUsers[index]
                         vinis.append(data)
-                    } else {
-                        // fetch new data
                     }
                 }
                 if vinis.count == numberOfViniPerMap {
@@ -239,7 +235,10 @@ extension UIView {
         let width = self.frame.width - 100
         let height = self.frame.height - 120
         
-        var positions: [(Int, Int)] = [(Int(arc4random_uniform(UInt32(width))), Int(arc4random_uniform(UInt32(height))))]
+        var positions: [(Int, Int)] = [
+            (Int(arc4random_uniform(UInt32(width))),
+             Int(arc4random_uniform(UInt32(height))))
+        ]
         var randomX = 0
         var randomY = 0
         
@@ -265,14 +264,12 @@ extension UIView {
             positions.append((randomX, randomY))
         }
         
-        
         for index in 0...numberOfVinis {
             
             let viniView = Vini(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
             viniView.name = vinis[index].name
             viniView.wondering = vinis[index].wondering
-//            vini.viniImageView = vinis[index].viniImageView
-            viniView.viniImageView.image = UIImage(named: "vini_spark")
+            viniView.viniImageView.image = UIImage(named: vinis[index].viniType)
 //            viniView.float(duration: 0.5)
             
             self.addSubview(viniView)
