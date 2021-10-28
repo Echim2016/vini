@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Draw Conclusions View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DrawConclusionsViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wZ-WD-B5L">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wtK-80-dBe">
+                                        <rect key="frame" x="20.5" y="32" width="373" height="181.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conclusion Intro" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cg1-LU-9ZX">
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="25.5"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                <color key="textColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ffu-JI-0nU" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
+                                                <rect key="frame" x="0.0" y="41.5" width="373" height="44"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJD-3o-clE">
+                                                <rect key="frame" x="0.0" y="101.5" width="373" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="wtK-80-dBe" firstAttribute="width" secondItem="kcq-WJ-9d5" secondAttribute="width" multiplier="0.9" id="GVH-ka-nqg"/>
+                                    <constraint firstItem="wtK-80-dBe" firstAttribute="centerX" secondItem="ES5-rK-OEK" secondAttribute="centerX" id="Xh6-cl-zEQ"/>
+                                    <constraint firstItem="wtK-80-dBe" firstAttribute="top" secondItem="ES5-rK-OEK" secondAttribute="top" constant="32" id="iQe-Q7-EuI"/>
+                                    <constraint firstItem="wtK-80-dBe" firstAttribute="bottom" secondItem="ES5-rK-OEK" secondAttribute="bottom" id="ouG-Gp-XyX"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ES5-rK-OEK"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="kcq-WJ-9d5"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="5wZ-WD-B5L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DXo-es-TQf"/>
+                            <constraint firstItem="wtK-80-dBe" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Vfc-ZJ-3Za"/>
+                            <constraint firstItem="5wZ-WD-B5L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hpy-jk-3dC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5wZ-WD-B5L" secondAttribute="bottom" id="p11-WC-gfa"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5wZ-WD-B5L" secondAttribute="trailing" id="uBu-ok-aJm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="conclusionIntroLabel" destination="Cg1-LU-9ZX" id="sqc-9B-vZ3"/>
+                        <outlet property="conclusionTextView" destination="Ffu-JI-0nU" id="i2h-4H-UfB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="106.47321428571428"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Ffu-JI-0nU">
+            <size key="intrinsicContentSize" width="10" height="44"/>
+        </designable>
+    </designables>
+</document>

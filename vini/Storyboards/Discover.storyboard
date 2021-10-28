@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1IB-79-FYv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Discover View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DiscoverViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
+                                <rect key="frame" x="16" y="96" width="382" height="224"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小鎮裡的Vini都在想些什麼？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
+                                        <rect key="frame" x="16" y="32" width="350" height="34"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="24"/>
+                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
+                                        <rect key="frame" x="32" y="138.5" width="318" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-mH-FH9">
+                                        <rect key="frame" x="32" y="174" width="318" height="40"/>
+                                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="IxJ-PM-5IB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="發一封私信給他 →"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="10" id="1eC-sb-wiz"/>
+                                    <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
+                                    <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="CIA-zA-jnB"/>
+                                    <constraint firstAttribute="trailing" secondItem="ISw-Aw-LEI" secondAttribute="trailing" constant="16" id="L42-4K-2gC"/>
+                                    <constraint firstAttribute="trailing" secondItem="eRo-iy-Kb4" secondAttribute="trailing" constant="32" id="OL0-Oj-1Hf"/>
+                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="OPB-65-MRR"/>
+                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="top" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="10" id="TkC-5C-zhc"/>
+                                    <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
+                                    <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="P50-Gu-XAf" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="MgU-LC-JAW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="P50-Gu-XAf" secondAttribute="trailing" constant="16" id="VHH-7p-jl7"/>
+                            <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-8" id="fZ2-sm-7y4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="liE-yO-0Fy">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="zZV-kg-Wf8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-81-l15">
+                                <rect key="frame" x="0.0" y="0.5" width="39" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="uYs-9O-2v3"/>
+                                    <constraint firstAttribute="width" constant="39" id="wFe-Bc-l1o"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="person.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Epg-8c-7S3"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
+                        <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
+                        <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
+                        <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
+                        <segue destination="mYz-9F-MJZ" kind="presentation" identifier="ShowProfileSetting" id="5QQ-b6-FJo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952.1739130434785" y="116.51785714285714"/>
+        </scene>
+        <!--Set Profile View Controller-->
+        <scene sceneID="deg-u7-xvh">
+            <objects>
+                <viewController id="mYz-9F-MJZ" customClass="SetProfileViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hot-9M-JPj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-h2-oyv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="NDV-Be-l71">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vini_amaze" translatesAutoresizingMaskIntoConstraints="NO" id="5yp-6u-VgF">
+                                            <rect key="frame" x="145" y="45.5" width="124" height="179"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ON2-GL-DMz">
+                                            <rect key="frame" x="309" y="99" width="46" height="72"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="→"/>
+                                            <connections>
+                                                <action selector="tapRightArrowButton:" destination="mYz-9F-MJZ" eventType="touchUpInside" id="6qY-In-bbj"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLu-pQ-ctc">
+                                            <rect key="frame" x="59" y="99" width="46" height="72"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="←"/>
+                                            <connections>
+                                                <action selector="tapLeftArrowButton:" destination="mYz-9F-MJZ" eventType="touchUpInside" id="PaQ-8d-cO4"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請選擇一隻代表你的 Vini" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLu-AT-2NV">
+                                            <rect key="frame" x="107" y="239.5" width="200.5" height="25.5"/>
+                                            <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="juG-CR-wBb">
+                                            <rect key="frame" x="118.5" y="290" width="177" height="31"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公開我的狀態" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JI-dk-x2a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="31"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgd-iJ-jtv">
+                                                    <rect key="frame" x="128" y="0.0" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </switch>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="ON2-GL-DMz" firstAttribute="leading" secondItem="5yp-6u-VgF" secondAttribute="trailing" constant="40" id="CVK-ei-hoa"/>
+                                        <constraint firstItem="5yp-6u-VgF" firstAttribute="width" secondItem="NDV-Be-l71" secondAttribute="width" multiplier="0.3" id="ChS-ie-qhl"/>
+                                        <constraint firstItem="nLu-pQ-ctc" firstAttribute="centerY" secondItem="5yp-6u-VgF" secondAttribute="centerY" id="Q37-KD-seC"/>
+                                        <constraint firstItem="5yp-6u-VgF" firstAttribute="centerX" secondItem="NDV-Be-l71" secondAttribute="centerX" id="SHU-yq-TTi"/>
+                                        <constraint firstItem="5yp-6u-VgF" firstAttribute="centerY" secondItem="NDV-Be-l71" secondAttribute="centerY" constant="-40" id="WQS-J0-Mdf"/>
+                                        <constraint firstItem="juG-CR-wBb" firstAttribute="centerX" secondItem="NDV-Be-l71" secondAttribute="centerX" id="XRu-Mh-Rfo"/>
+                                        <constraint firstItem="5yp-6u-VgF" firstAttribute="leading" secondItem="nLu-pQ-ctc" secondAttribute="trailing" constant="40" id="fC4-sr-pId"/>
+                                        <constraint firstItem="juG-CR-wBb" firstAttribute="top" secondItem="cLu-AT-2NV" secondAttribute="bottom" constant="25" id="hiH-rt-A2Z"/>
+                                        <constraint firstItem="cLu-AT-2NV" firstAttribute="top" secondItem="5yp-6u-VgF" secondAttribute="bottom" constant="15" id="nt1-MT-SMe"/>
+                                        <constraint firstItem="ON2-GL-DMz" firstAttribute="centerY" secondItem="5yp-6u-VgF" secondAttribute="centerY" id="om8-Zf-HE1"/>
+                                        <constraint firstItem="5yp-6u-VgF" firstAttribute="height" secondItem="NDV-Be-l71" secondAttribute="height" multiplier="0.512" id="p93-DB-l5t"/>
+                                        <constraint firstItem="cLu-AT-2NV" firstAttribute="centerX" secondItem="NDV-Be-l71" secondAttribute="centerX" id="uWZ-yf-wPv"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEs-E5-26V" userLabel="Close Button">
+                                <rect key="frame" x="16" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="jQP-Nw-XPW"/>
+                                    <constraint firstAttribute="height" constant="40" id="oLa-iC-Vhq"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapDismissButton:" destination="mYz-9F-MJZ" eventType="touchUpInside" id="Xcu-yG-5zX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wE7-AJ-YY7" userLabel="Close Button">
+                                <rect key="frame" x="358" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="0ng-BF-3JS"/>
+                                    <constraint firstAttribute="height" constant="40" id="Vcv-9Q-XoF"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="checkmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapSaveButton:" destination="mYz-9F-MJZ" eventType="touchUpInside" id="NaP-W1-qlM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="K4n-me-z8p"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="K4n-me-z8p" firstAttribute="bottom" secondItem="qhZ-h2-oyv" secondAttribute="bottom" id="9IG-2x-cVq"/>
+                            <constraint firstItem="K4n-me-z8p" firstAttribute="trailing" secondItem="qhZ-h2-oyv" secondAttribute="trailing" id="FWj-MO-RIF"/>
+                            <constraint firstItem="qhZ-h2-oyv" firstAttribute="top" secondItem="K4n-me-z8p" secondAttribute="top" id="Ylz-dP-PF3"/>
+                            <constraint firstItem="qhZ-h2-oyv" firstAttribute="leading" secondItem="K4n-me-z8p" secondAttribute="leading" id="YnK-fw-lQo"/>
+                            <constraint firstItem="fEs-E5-26V" firstAttribute="top" secondItem="K4n-me-z8p" secondAttribute="top" constant="16" id="obn-c6-zgI"/>
+                            <constraint firstItem="fEs-E5-26V" firstAttribute="leading" secondItem="K4n-me-z8p" secondAttribute="leading" constant="16" id="ta0-27-ex0"/>
+                            <constraint firstItem="K4n-me-z8p" firstAttribute="trailing" secondItem="wE7-AJ-YY7" secondAttribute="trailing" constant="16" id="vYE-NN-m2x"/>
+                            <constraint firstItem="wE7-AJ-YY7" firstAttribute="top" secondItem="K4n-me-z8p" secondAttribute="top" constant="16" id="vke-bo-FDn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="isPublishedSwitch" destination="Tgd-iJ-jtv" id="yiT-fA-nyg"/>
+                        <outlet property="tableView" destination="qhZ-h2-oyv" id="q3T-ro-zuH"/>
+                        <outlet property="viniImageView" destination="5yp-6u-VgF" id="ELS-bl-0ee"/>
+                        <outlet property="viniSelectorView" destination="NDV-Be-l71" id="AL2-wW-6yl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZy-hA-eln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2813" y="117"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="05H-Yl-rt1">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BO1-8X-f3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1IB-79-FYv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="safari.fill" catalog="system" id="Bvg-6h-xVd"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="HEI-DS-zix"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vsi-S6-DYz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="r6N-WI-uEu"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="safari.fill" catalog="system" width="128" height="121"/>
+        <image name="vini_amaze" width="317.5" height="337"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
