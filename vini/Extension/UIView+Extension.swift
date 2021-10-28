@@ -108,4 +108,24 @@ public extension UIView {
         animation.values = [translation, -translation]
         layer.add(animation, forKey: "shake")
     }
+    
+    func float(duration: Double) {
+        
+        UIView.animate(
+            withDuration: duration,
+            delay: Double.random(in: 0...0.5),
+            options: [.autoreverse, .repeat],
+            animations: {
+                self.frame = CGRect(
+                    x: self.frame.origin.x,
+                    y: self.frame.origin.y - 10,
+                    width: self.frame.size.width,
+                    height: self.frame.size.height)
+            },
+            completion: nil
+        )
+        
+        
+    }
 }
+

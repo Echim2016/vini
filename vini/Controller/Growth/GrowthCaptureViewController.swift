@@ -266,7 +266,6 @@ class GrowthCaptureViewController: UIViewController {
                 
                 workItem = DispatchWorkItem {
                     
-
                     if self.hasArchived {
                        
                         let indexPath = IndexPath(row: dataLength - index, section: 0)

@@ -28,6 +28,9 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA42C7D2726B278007F9589 /* Discover.storyboard */; };
+		9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C802726B293007F9589 /* DiscoverViewController.swift */; };
+		9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C832727968B007F9589 /* MapScrollView.swift */; };
 		9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */; };
 		9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */; };
 		9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA12723059E00E85F28 /* String+Extension.swift */; };
@@ -38,6 +41,13 @@
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
+		9CEAC5132728060C00C98B96 /* Vini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* Vini.swift */; };
+		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
+		9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */; };
+		9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */; };
+		9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */; };
+		9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */; };
+		9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DA0272A8F9E006CCA06 /* User.swift */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -65,6 +75,9 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9CA42C7D2726B278007F9589 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		9CA42C802726B293007F9589 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		9CA42C832727968B007F9589 /* MapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScrollView.swift; sourceTree = "<group>"; };
 		9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conclusion.storyboard; sourceTree = "<group>"; };
 		9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsViewController.swift; sourceTree = "<group>"; };
 		9CA66FA12723059E00E85F28 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -77,6 +90,13 @@
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CC1E4CE271BE53600F17190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CEAC5122728060C00C98B96 /* Vini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vini.swift; sourceTree = "<group>"; };
+		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
+		9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
+		9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileCell.swift; sourceTree = "<group>"; };
+		9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetProfileCell.xib; sourceTree = "<group>"; };
+		9CEE9DA0272A8F9E006CCA06 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +146,26 @@
 			path = Growth;
 			sourceTree = "<group>";
 		};
+		9CA42C7F2726B283007F9589 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				9CA42C802726B293007F9589 /* DiscoverViewController.swift */,
+				9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		9CA42C8227279660007F9589 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				9CA42C832727968B007F9589 /* MapScrollView.swift */,
+				9CEAC5122728060C00C98B96 /* Vini.swift */,
+				9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */,
+				9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +203,7 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CA42C8227279660007F9589 /* Discover */,
 				9C05B227271EB45B00C78620 /* Growth Card */,
 				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
 				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
@@ -177,6 +218,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CA42C7F2726B283007F9589 /* Discover */,
 				9C5FC928271D4F4F00DE4E42 /* Growth */,
 				9CC1E4C0271BE53500F17190 /* AppDelegate.swift */,
 				9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */,
@@ -187,10 +229,9 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
-				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
-				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
-				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+				9CEAC5162728FCB100C98B96 /* Growth */,
+				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
+				9CEE9DA0272A8F9E006CCA06 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +242,7 @@
 				9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */,
 				9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */,
 				9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */,
+				9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */,
 				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 			);
 			path = Extension;
@@ -223,8 +265,20 @@
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
 				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
 				9CF72A3D27242C1F00747089 /* Congrats.storyboard */,
+				9CA42C7D2726B278007F9589 /* Discover.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		9CEAC5162728FCB100C98B96 /* Growth */ = {
+			isa = PBXGroup;
+			children = (
+				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
+				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
+				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
+				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+			);
+			path = Growth;
 			sourceTree = "<group>";
 		};
 		D38D95195B139FE977D261F2 /* Pods */ = {
@@ -307,9 +361,11 @@
 			files = (
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
 				9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */,
+				9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */,
 				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
 				9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */,
 				9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */,
+				9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
@@ -391,7 +447,9 @@
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
+				9CEAC5132728060C00C98B96 /* Vini.swift in Sources */,
 				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
+				9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
@@ -401,11 +459,17 @@
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
+				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
+				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
+				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
+				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,
+				9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */,
+				9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */,
 				9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
