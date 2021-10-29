@@ -54,6 +54,7 @@
 		9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */; };
 		9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */; };
 		9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */; };
+		9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -109,6 +110,7 @@
 		9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
 		9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MailCell.xib; sourceTree = "<group>"; };
+		9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "82892-wave.json"; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
+				9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */,
 				9C05B224271EB38900C78620 /* Third Party Wrapper */,
 				9CC1E4D7271BE59300F17190 /* Extension */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
@@ -323,6 +326,14 @@
 			path = Mailbox;
 			sourceTree = "<group>";
 		};
+		9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */ = {
+			isa = PBXGroup;
+			children = (
+				9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */,
+			);
+			path = "Lottie Animation";
+			sourceTree = "<group>";
+		};
 		D38D95195B139FE977D261F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +426,7 @@
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
 				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
+				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 			);

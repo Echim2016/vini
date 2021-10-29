@@ -17,5 +17,6 @@ target 'vini' do
   pod 'IQKeyboardManagerSwift'
   pod 'loady'
   pod "Haptica"
+  pod 'lottie-ios'
 
 end
