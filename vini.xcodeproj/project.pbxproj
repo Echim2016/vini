@@ -52,6 +52,8 @@
 		9CEE9DA6272AA87C006CCA06 /* MailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DA5272AA87C006CCA06 /* MailboxViewController.swift */; };
 		9CEE9DA8272B9AAB006CCA06 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DA7272B9AAB006CCA06 /* Achievement.storyboard */; };
 		9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */; };
+		9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */; };
+		9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -105,6 +107,8 @@
 		9CEE9DA5272AA87C006CCA06 /* MailboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailboxViewController.swift; sourceTree = "<group>"; };
 		9CEE9DA7272B9AAB006CCA06 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
+		9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MailCell.xib; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CEE9DAC272B9ED0006CCA06 /* Mailbox */,
 				9CA42C8227279660007F9589 /* Discover */,
 				9C05B227271EB45B00C78620 /* Growth Card */,
 				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
@@ -309,6 +314,15 @@
 			path = Achievement;
 			sourceTree = "<group>";
 		};
+		9CEE9DAC272B9ED0006CCA06 /* Mailbox */ = {
+			isa = PBXGroup;
+			children = (
+				9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */,
+				9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */,
+			);
+			path = Mailbox;
+			sourceTree = "<group>";
+		};
 		D38D95195B139FE977D261F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */,
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
 				9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */,
 				9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */,
@@ -473,6 +488,7 @@
 			files = (
 				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
 				9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */,
+				9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */,
 				9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
