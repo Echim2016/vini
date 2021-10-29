@@ -25,6 +25,8 @@ class GrowthPageViewController: UIViewController {
     
     var data: [GrowthCard] = []
     
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +37,8 @@ class GrowthPageViewController: UIViewController {
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
         fetchGrowthCards()
+        
+        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
     }
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         

@@ -18,30 +18,30 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nlm-Kc-MrA">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="126"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="119"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="cvT-t6-LlH">
-                                <rect key="frame" x="32" y="32" width="366" height="62"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="cvT-t6-LlH">
+                                <rect key="frame" x="32" y="32" width="366" height="55"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vini_amaze" translatesAutoresizingMaskIntoConstraints="NO" id="cwi-3z-JHV">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="62"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="6D9-Kd-179"/>
                                             <constraint firstAttribute="width" constant="50" id="Vt5-b6-RlD"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Jwb-ja-FoC">
-                                        <rect key="frame" x="90" y="0.0" width="276" height="62"/>
+                                        <rect key="frame" x="75" y="0.0" width="291" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sender Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJa-QM-M5D">
-                                                <rect key="frame" x="0.0" y="0.0" width="276" height="28"/>
-                                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="291" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                <color key="textColor" red="0.82745098039215681" green="0.86274509803921573" blue="0.90196078431372551" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHW-L3-qne">
-                                                <rect key="frame" x="0.0" y="34" width="276" height="28"/>
-                                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHW-L3-qne">
+                                                <rect key="frame" x="0.0" y="30.5" width="291" height="24.5"/>
+                                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -67,6 +67,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mailTitleLabel" destination="zHW-L3-qne" id="BI4-RE-cjW"/>
+                <outlet property="senderNameLabel" destination="iJa-QM-M5D" id="8SR-jk-drv"/>
+                <outlet property="viniImageView" destination="cwi-3z-JHV" id="w8x-Oj-O1D"/>
+            </connections>
             <point key="canvasLocation" x="-166.66666666666669" y="100.11160714285714"/>
         </tableViewCell>
     </objects>

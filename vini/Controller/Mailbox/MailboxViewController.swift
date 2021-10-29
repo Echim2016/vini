@@ -15,10 +15,17 @@ class MailboxViewController: UIViewController {
             tableView.dataSource = self
         }
     }
+    
+    var mails: [Mail] = []
+    
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
+        
+        fetchMails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +41,29 @@ class MailboxViewController: UIViewController {
     
 }
 
+extension MailboxViewController {
+    
+    func fetchMails() {
+
+        if let userID = userDefault.value(forKey: "id") as? String {
+        
+            MailManager.shared.fetchData(id: userID) { result in
+                switch result {
+                case .success(let mails):
+                    
+                    self.mails = mails
+                    self.tableView.reloadData()
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        } 
+    }
+}
+
+
 extension MailboxViewController: UITableViewDelegate {
     
 }
@@ -41,7 +71,7 @@ extension MailboxViewController: UITableViewDelegate {
 extension MailboxViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        mails.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -49,7 +79,7 @@ extension MailboxViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,6 +90,16 @@ extension MailboxViewController: UITableViewDataSource {
         else {
             fatalError()
         }
+        
+        let mail = mails[indexPath.row]
+        
+        cell.setupCell(
+            senderName: mail.senderDisplayName,
+            title: mail.displayWondering,
+            image: mail.senderViniType
+        )
+        
+        print(mail.displayWondering)
         
         return cell
     }

@@ -56,6 +56,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tia-uk-hyP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
