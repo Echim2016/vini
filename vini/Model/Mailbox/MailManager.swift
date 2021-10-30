@@ -73,4 +73,20 @@ class MailManager {
         }
     }
     
+    func deleteMail(userID: String, mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        db.collection("Mailboxes").document(userID).collection("Mails").document(mailID).delete() { err in
+            
+            if let err = err {
+                print("Error removing mail: \(err)")
+                completion(.failure(err))
+            } else {
+                print("Mail successfully removed!")
+                    
+                    completion(.success("Success"))
+            }
+        }
+        
+    }
+    
 }

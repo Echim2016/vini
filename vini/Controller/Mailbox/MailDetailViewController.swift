@@ -20,6 +20,8 @@ class MailDetailViewController: UIViewController {
     
     var mail: Mail = Mail()
     
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +38,34 @@ class MailDetailViewController: UIViewController {
     }
     
     @IBAction func tapDeleteButton(_ sender: Any) {
+        
+        deleteMail()
     }
     
+}
+
+extension MailDetailViewController {
+    
+    func deleteMail() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+            
+            MailManager.shared.deleteMail(
+                userID: userID,
+                mailID: mail.id) { result in
+                    switch result {
+                    case .success:
+                        
+                        self.navigationController?.popViewController(animated: true)
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+        }
+        
+    }
 }
 
 extension MailDetailViewController: UITableViewDelegate {

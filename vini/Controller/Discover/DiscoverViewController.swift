@@ -150,7 +150,6 @@ extension DiscoverViewController {
                 print(error)
             }
         }
-        
     }
     
 }
