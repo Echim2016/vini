@@ -37,6 +37,7 @@ class MailboxViewController: UIViewController {
         super.viewWillAppear(animated)
         
         fetchMails()
+        setupNavigationController(title: "收信匣")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,8 +121,10 @@ extension MailboxViewController: UITableViewDataSource {
             image: mail.senderViniType
         )
         
-        print(mail.displayWondering)
-        
+        if mail.readTimestamp != nil {
+            cell.setupReadAppearance()
+        }
+         
         return cell
     }
     

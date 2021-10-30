@@ -24,4 +24,20 @@ extension UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func setupNavigationController(title: String) {
+        
+        let titleLabel = UILabel()
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.font: UIFont(name: "PingFangTC-SemiBold", size: 20),
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.kern : 3.0
+        ]
+        
+        titleLabel.attributedText = NSAttributedString(string: title, attributes: attributes)
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
+
+        self.navigationController?.navigationBar.layoutIfNeeded()
+    }
 }

@@ -42,4 +42,9 @@ class MailCell: UITableViewCell {
         mailTitleLabel.textColor = .gray
     }
     
+    func setupReadAppearance() {
+        
+        mailTitleLabel.textColor = .G1
+    }
+    
 }
