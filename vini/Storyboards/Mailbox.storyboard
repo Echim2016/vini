@@ -40,11 +40,50 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
+                        <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Mail Detail View Controller-->
+        <scene sceneID="rSq-4B-RAA">
+            <objects>
+                <viewController id="z4r-4Y-byP" customClass="MailDetailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XUq-dx-NKA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IHv-1K-m8k">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Je-HT-MEs"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="5Je-HT-MEs" firstAttribute="trailing" secondItem="IHv-1K-m8k" secondAttribute="trailing" id="0LW-jx-10W"/>
+                            <constraint firstItem="IHv-1K-m8k" firstAttribute="leading" secondItem="5Je-HT-MEs" secondAttribute="leading" id="afO-Mb-AIN"/>
+                            <constraint firstItem="IHv-1K-m8k" firstAttribute="top" secondItem="5Je-HT-MEs" secondAttribute="top" id="cZZ-fh-F66"/>
+                            <constraint firstItem="5Je-HT-MEs" firstAttribute="bottom" secondItem="IHv-1K-m8k" secondAttribute="bottom" id="oDN-jO-TWv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cns-lo-BgV">
+                        <barButtonItem key="rightBarButtonItem" image="trash.fill" catalog="system" style="plain" id="npr-3d-XiY">
+                            <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mhb-fm-sOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="99.776785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QXw-3G-E3c">
@@ -78,5 +117,6 @@
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

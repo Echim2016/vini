@@ -8,11 +8,17 @@
 import UIKit
 
 class MailboxViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showDetailMail = "ShowDetailMail"
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
+            tableView.separatorStyle = .none
         }
     }
     
@@ -25,14 +31,24 @@ class MailboxViewController: UIViewController {
         
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         
-        fetchMails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        fetchMails()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? MailDetailViewController {
+            
+            if let index = sender as? Int {
+                
+                destination.mail = mails[index]
+            }
+        }
+    }
 
     @IBAction func tapSetting(_ sender: Any) {
         
@@ -66,6 +82,11 @@ extension MailboxViewController {
 
 extension MailboxViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: Segue.showDetailMail.rawValue, sender: indexPath.row)
+    }
+    
 }
 
 extension MailboxViewController: UITableViewDataSource {
@@ -95,7 +116,7 @@ extension MailboxViewController: UITableViewDataSource {
         
         cell.setupCell(
             senderName: mail.senderDisplayName,
-            title: mail.displayWondering,
+            title: "回覆：" + mail.displayWondering,
             image: mail.senderViniType
         )
         

@@ -73,7 +73,7 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="zZV-kg-Wf8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-81-l15">
-                                <rect key="frame" x="0.0" y="0.5" width="39" height="19"/>
+                                <rect key="frame" x="0.0" y="0.5" width="39" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="uYs-9O-2v3"/>
                                     <constraint firstAttribute="width" constant="39" id="wFe-Bc-l1o"/>

@@ -27,13 +27,19 @@ class MailCell: UITableViewCell {
     func setupCell(senderName: String, title: String, image: String) {
         
         senderNameLabel.text = senderName
-        mailTitleLabel.text = "回覆：" + title
+        mailTitleLabel.text = title
         
         let types = UIImage.AssetIdentifier.allCases.map { $0.name }
         let imageIndex = types.firstIndex(of: image) ?? 0
         let viniImage = UIImage.AssetIdentifier(rawValue: imageIndex) ?? UIImage.AssetIdentifier.amaze
         
         viniImageView.image = UIImage.init(assetIdentifier: viniImage)
+    }
+    
+    func setupDetailCellAppearance() {
+     
+        mailTitleLabel.font = UIFont(name: "PingFangTC-medium", size: 12)
+        mailTitleLabel.textColor = .gray
     }
     
 }
