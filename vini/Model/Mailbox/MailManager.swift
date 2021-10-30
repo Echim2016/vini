@@ -45,9 +45,32 @@ class MailManager {
                 completion(.success(mails))
             }
         }
-        
-        
     }
     
+    func sendMails(mail: inout Mail, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Mailboxes").document(mail.receipientID).collection("Mails").document()
+        mail.id = document.documentID
+        mail.sentTime = Timestamp(date: Date())
+        
+        do {
+            
+            try document.setData(from: mail) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+            
+        } catch let error {
+            
+            print(error)
+            completion(.failure(error))
+        }
+    }
     
 }

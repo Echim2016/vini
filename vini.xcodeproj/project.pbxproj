@@ -41,7 +41,7 @@
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
-		9CEAC5132728060C00C98B96 /* Vini.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* Vini.swift */; };
+		9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* ViniView.swift */; };
 		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
 		9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */; };
 		9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */; };
@@ -57,6 +57,7 @@
 		9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */; };
 		9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */; };
 		9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DBA272BD5F1006CCA06 /* Mail.swift */; };
+		9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DBC272BED67006CCA06 /* SendMailViewController.swift */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
@@ -99,7 +100,7 @@
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CC1E4CE271BE53600F17190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CEAC5122728060C00C98B96 /* Vini.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vini.swift; sourceTree = "<group>"; };
+		9CEAC5122728060C00C98B96 /* ViniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViniView.swift; sourceTree = "<group>"; };
 		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
 		9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
 		9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -115,6 +116,7 @@
 		9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "82892-wave.json"; sourceTree = "<group>"; };
 		9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailManager.swift; sourceTree = "<group>"; };
 		9CEE9DBA272BD5F1006CCA06 /* Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
+		9CEE9DBC272BED67006CCA06 /* SendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailViewController.swift; sourceTree = "<group>"; };
 		9CF72A3D27242C1F00747089 /* Congrats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Congrats.storyboard; sourceTree = "<group>"; };
 		9CF72A3F27242C3000747089 /* CongratsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratsViewController.swift; sourceTree = "<group>"; };
 		A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vini.debug.xcconfig"; path = "Target Support Files/Pods-vini/Pods-vini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				9CA42C802726B293007F9589 /* DiscoverViewController.swift */,
 				9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */,
+				9CEE9DBC272BED67006CCA06 /* SendMailViewController.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -177,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				9CA42C832727968B007F9589 /* MapScrollView.swift */,
-				9CEAC5122728060C00C98B96 /* Vini.swift */,
+				9CEAC5122728060C00C98B96 /* ViniView.swift */,
 				9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */,
 				9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */,
 			);
@@ -528,7 +531,7 @@
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
-				9CEAC5132728060C00C98B96 /* Vini.swift in Sources */,
+				9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */,
 				9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */,
 				9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
@@ -543,6 +546,7 @@
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
+				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,

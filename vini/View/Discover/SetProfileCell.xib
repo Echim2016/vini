@@ -49,6 +49,7 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="textView" destination="rXG-59-sZj" id="nYf-9U-IOc"/>
+                <outlet property="textViewHeight" destination="prS-ye-PtM" id="fSo-HA-8MT"/>
                 <outlet property="titleLabel" destination="Xzn-XO-mAl" id="eue-x8-imI"/>
             </connections>
             <point key="canvasLocation" x="271.73913043478262" y="193.19196428571428"/>
