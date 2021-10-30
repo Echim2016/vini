@@ -30,7 +30,7 @@ struct Mail: Codable {
         case senderViniType = "sender_vini_type"
         case senderID = "sender_id"
         case sentTime = "sent_time"
-        case readTimestamp = "read_time_stamp"
+        case readTimestamp = "read_timestamp"
     }
     
     init() {

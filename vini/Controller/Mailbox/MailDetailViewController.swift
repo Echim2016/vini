@@ -9,7 +9,7 @@ import UIKit
 import RSKPlaceholderTextView
 
 class MailDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -28,13 +28,19 @@ class MailDetailViewController: UIViewController {
         tableView.registerCellWithNib(identifier: MailTitleCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailContentCell.identifier, bundle: nil)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         setupNavBarBackButton()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        updateReadStatus()
     }
     
     @IBAction func tapDeleteButton(_ sender: Any) {
@@ -45,6 +51,28 @@ class MailDetailViewController: UIViewController {
 }
 
 extension MailDetailViewController {
+    
+    func updateReadStatus() {
+        
+        if mail.readTimestamp == nil,
+           let userID = userDefault.value(forKey: "id") as? String {
+            
+            MailManager.shared.updateReadTime(
+                userID: userID,
+                mailID: mail.id
+            ) { result in
+                switch result {
+                case .success(let success):
+                    
+                    print(success)
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+    }
     
     func deleteMail() {
         

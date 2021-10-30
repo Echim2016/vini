@@ -89,4 +89,24 @@ class MailManager {
         
     }
     
+    func updateReadTime(userID: String, mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Mailboxes").document(userID).collection("Mails").document(mailID)
+        
+        let updateDict = [
+            "read_timestamp": Timestamp(date: Date())
+        ]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
 }
