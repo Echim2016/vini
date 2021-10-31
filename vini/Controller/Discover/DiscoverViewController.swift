@@ -15,6 +15,8 @@ class DiscoverViewController: UIViewController {
         case showProfileSetting = "ShowProfileSetting"
         case showSendMailPage = "ShowSendMailPage"
     }
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
     
     let mapView = MapScrollView()
     
@@ -42,8 +44,7 @@ class DiscoverViewController: UIViewController {
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20
         
-        view.bringSubviewToFront(headerView)
-        headerView.float(duration: 1)
+//        headerView.float(duration: 1)        backgroundImageView.float(duration: 5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -77,6 +78,13 @@ class DiscoverViewController: UIViewController {
                 if let vini = vini as? ViniView {
                     sendButton.alpha = 1
                     vini.isUserInteractionEnabled = false
+                    
+                    if let userID = UserDefaults.standard.value(forKey: "id") as? String {
+                        
+                        if vini.data.id == userID {
+                            sendButton.alpha = 0
+                        }
+                    }
                     
                     nameLabel.text = vini.data.name
                     wonderingLabel.text = vini.data.wondering

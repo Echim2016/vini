@@ -100,8 +100,8 @@ class MapScrollView: UIView {
             defaultMapView.translatesAutoresizingMaskIntoConstraints = false
             defaultMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
             defaultMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
-            defaultMapView.backgroundColor = colors[index]
-            defaultMapView.backgroundColor = .B2
+//            defaultMapView.backgroundColor = colors[index]
+            defaultMapView.backgroundColor = .clear
             
         }
         
@@ -142,9 +142,9 @@ extension MapScrollView: UIScrollViewDelegate {
                                 
                 let newMapView = UIView()
                 
-                let random = Int.random(in: 0...5)
-                newMapView.backgroundColor = colors[random]
-                newMapView.backgroundColor = .B2
+//                let random = Int.random(in: 0...5)
+//                newMapView.backgroundColor = colors[random]
+                newMapView.backgroundColor = .clear
                 mapStackView.insertArrangedSubview(newMapView, at: 0)
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
@@ -187,9 +187,9 @@ extension MapScrollView: UIScrollViewDelegate {
                                 
                 let newMapView = UIView()
                 
-                let random = Int.random(in: 0...5)
-                newMapView.backgroundColor = colors[random]
-                newMapView.backgroundColor = .B2
+//                let random = Int.random(in: 0...5)
+//                newMapView.backgroundColor = colors[random]
+                newMapView.backgroundColor = .clear
                 mapStackView.addArrangedSubview(newMapView)
     
                 newMapView.translatesAutoresizingMaskIntoConstraints = false

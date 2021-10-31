@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discoverback" translatesAutoresizingMaskIntoConstraints="NO" id="e1t-ES-qqF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
                                 <rect key="frame" x="16" y="96" width="382" height="224"/>
                                 <subviews>
@@ -63,17 +66,21 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="e1t-ES-qqF" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="CQb-Ah-Xxc"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="MgU-LC-JAW"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="P50-Gu-XAf" secondAttribute="trailing" constant="16" id="VHH-7p-jl7"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-8" id="fZ2-sm-7y4"/>
+                            <constraint firstItem="e1t-ES-qqF" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" id="iCV-dn-JH2"/>
+                            <constraint firstItem="e1t-ES-qqF" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" id="xv6-TR-H5F"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="e1t-ES-qqF" secondAttribute="top" id="yfs-To-KhP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy">
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="zZV-kg-Wf8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-81-l15">
-                                <rect key="frame" x="0.0" y="0.5" width="39" height="18"/>
+                                <rect key="frame" x="355" y="12.5" width="39" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="uYs-9O-2v3"/>
                                     <constraint firstAttribute="width" constant="39" id="wFe-Bc-l1o"/>
@@ -88,6 +95,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImageView" destination="e1t-ES-qqF" id="a4e-eY-EVw"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
                         <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
@@ -344,6 +352,7 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="discoverback" width="3210" height="4869"/>
         <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="safari.fill" catalog="system" width="128" height="121"/>
