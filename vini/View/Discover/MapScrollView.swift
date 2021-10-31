@@ -9,7 +9,7 @@ import UIKit
 
 protocol MapScrollViewDataSource: AnyObject {
     
-    func infoOfUsers(_ mapScrollView: MapScrollView) -> [Vini]
+    func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView]
 }
 
 class MapScrollView: UIView {
@@ -22,7 +22,7 @@ class MapScrollView: UIView {
     
     weak var dataSource: MapScrollViewDataSource?
     
-    private var infosOfUsers: [Vini] = []
+    private var infosOfUsers: [ViniView] = []
     
     var currentDataLocation: Int = 0
     
@@ -150,7 +150,7 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
-                var vinis: [Vini] = []
+                var vinis: [ViniView] = []
                 
                 let location = currentDataLocation * numberOfViniPerMap
                 
@@ -196,7 +196,7 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
-                var vinis: [Vini] = []
+                var vinis: [ViniView] = []
                 
                 let location = currentDataLocation * numberOfViniPerMap
                 
@@ -225,7 +225,7 @@ extension MapScrollView: UIScrollViewDelegate {
 
 extension UIView {
     
-    func spawnViniRandomly(vinis: [Vini]) {
+    func spawnViniRandomly(vinis: [ViniView]) {
         
         let numberOfVinis = vinis.count - 1
         
@@ -266,10 +266,11 @@ extension UIView {
         
         for index in 0...numberOfVinis {
             
-            let viniView = Vini(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
-            viniView.name = vinis[index].name
-            viniView.wondering = vinis[index].wondering
-            viniView.viniImageView.image = UIImage(named: vinis[index].viniType)
+            let viniView = ViniView(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
+            viniView.data.id = vinis[index].data.id
+            viniView.data.name = vinis[index].data.name
+            viniView.data.wondering = vinis[index].data.wondering
+            viniView.viniImageView.image = UIImage(named: vinis[index].data.viniType)
 //            viniView.float(duration: 0.5)
             
             self.addSubview(viniView)

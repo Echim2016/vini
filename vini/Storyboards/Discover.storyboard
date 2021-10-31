@@ -41,6 +41,9 @@
                                         <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="發一封私信給他 →"/>
+                                        <connections>
+                                            <action selector="tapSendMailButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hkV-Sh-z5D"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -70,7 +73,7 @@
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="zZV-kg-Wf8">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-81-l15">
-                                <rect key="frame" x="0.0" y="0.5" width="39" height="28"/>
+                                <rect key="frame" x="355" y="12.5" width="39" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="uYs-9O-2v3"/>
                                     <constraint firstAttribute="width" constant="39" id="wFe-Bc-l1o"/>
@@ -90,11 +93,104 @@
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
                         <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
                         <segue destination="mYz-9F-MJZ" kind="presentation" identifier="ShowProfileSetting" id="5QQ-b6-FJo"/>
+                        <segue destination="uU4-Kf-FoS" kind="presentation" identifier="ShowSendMailPage" id="3sJ-e1-wwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="116.51785714285714"/>
+        </scene>
+        <!--Send Mail View Controller-->
+        <scene sceneID="IJ0-76-XeH">
+            <objects>
+                <viewController id="uU4-Kf-FoS" customClass="SendMailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gkI-Jo-DGW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-mD-dAj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="DaJ-Lm-jVb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Qk-LW-3kR">
+                                            <rect key="frame" x="36" y="80" width="342" height="59"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="寄給: Astrid" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-x5-yFv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回覆: Wondering" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-X4-zLA">
+                                                    <rect key="frame" x="0.0" y="33.5" width="139.5" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="5Qk-LW-3kR" secondAttribute="trailing" constant="36" id="1KR-d2-XIk"/>
+                                        <constraint firstItem="5Qk-LW-3kR" firstAttribute="leading" secondItem="DaJ-Lm-jVb" secondAttribute="leading" constant="36" id="TYY-Tg-1Ex"/>
+                                        <constraint firstItem="5Qk-LW-3kR" firstAttribute="top" secondItem="DaJ-Lm-jVb" secondAttribute="top" constant="80" id="mQV-aT-HS7"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-AW-vdy" userLabel="Close Button">
+                                <rect key="frame" x="16" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="U7g-mO-CPY"/>
+                                    <constraint firstAttribute="height" constant="40" id="vtZ-lC-1Vv"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapDismissButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="Vsq-gr-nba"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voA-kc-dFZ" userLabel="Close Button">
+                                <rect key="frame" x="358" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4jv-iD-o1a"/>
+                                    <constraint firstAttribute="height" constant="40" id="8tS-ZV-HBV"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="paperplane.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapSendButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="vZ9-7s-rR7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xQS-pD-DTc"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="voA-kc-dFZ" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="2uu-Av-taD"/>
+                            <constraint firstItem="YRC-AW-vdy" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" constant="16" id="EU6-Tp-7Ar"/>
+                            <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="voA-kc-dFZ" secondAttribute="trailing" constant="16" id="EWw-Ju-7Ie"/>
+                            <constraint firstItem="zEv-mD-dAj" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" id="J2k-11-D4d"/>
+                            <constraint firstItem="xQS-pD-DTc" firstAttribute="bottom" secondItem="zEv-mD-dAj" secondAttribute="bottom" id="R9l-3U-wDF"/>
+                            <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="zEv-mD-dAj" secondAttribute="trailing" id="f0Q-mI-uoB"/>
+                            <constraint firstItem="YRC-AW-vdy" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="l0l-7R-R7c"/>
+                            <constraint firstItem="zEv-mD-dAj" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" id="w5V-1c-ZHM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headerView" destination="DaJ-Lm-jVb" id="zl6-Hn-H4e"/>
+                        <outlet property="receipientNameLabel" destination="ZAd-x5-yFv" id="iiq-XL-hxf"/>
+                        <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
+                        <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952" y="865"/>
         </scene>
         <!--Set Profile View Controller-->
         <scene sceneID="deg-u7-xvh">
@@ -227,7 +323,6 @@
         <!--Navigation Controller-->
         <scene sceneID="05H-Yl-rt1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BO1-8X-f3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1IB-79-FYv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="safari.fill" catalog="system" id="Bvg-6h-xVd"/>
                     <toolbarItems/>
@@ -242,12 +337,14 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="r6N-WI-uEu"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BO1-8X-f3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="116.51785714285714"/>
         </scene>
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="safari.fill" catalog="system" width="128" height="121"/>
         <image name="vini_amaze" width="317.5" height="337"/>

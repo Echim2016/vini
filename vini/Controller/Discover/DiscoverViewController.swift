@@ -12,16 +12,20 @@ class DiscoverViewController: UIViewController {
     private enum Segue: String {
         
         case showProfileSetting = "ShowProfileSetting"
+        case showSendMailPage = "ShowSendMailPage"
     }
     
     let mapView = MapScrollView()
     
-    private var infoOfUsers: [Vini] = []
+    private var infoOfUsers: [ViniView] = []
         
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wonderingLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
+    
+    var currentSelectedVini: ViniView = ViniView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,15 +68,15 @@ class DiscoverViewController: UIViewController {
             let location = gesture.location(in: map)
             
             map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
-                if let vini = vini as? Vini {
+                if let vini = vini as? ViniView {
                     sendButton.alpha = 1
                     vini.layer.removeAllAnimations()
 //                    vini.shake()
                     vini.float(duration: 0.5)
-                    print(vini.name)
-                    nameLabel.text = vini.name
-                    wonderingLabel.text = vini.wondering
+                    nameLabel.text = vini.data.name
+                    wonderingLabel.text = vini.data.wondering
                     
+                    self.currentSelectedVini = vini
                 }
             }
             
@@ -82,6 +86,19 @@ class DiscoverViewController: UIViewController {
     @IBAction func tapProfileSettingButton(_ sender: Any) {
 
         performSegue(withIdentifier: Segue.showProfileSetting.rawValue, sender: nil)
+    }
+    
+    @IBAction func tapSendMailButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showSendMailPage.rawValue, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? SendMailViewController {
+            
+            destination.receipient = currentSelectedVini
+        }
     }
     
 }
@@ -105,7 +122,7 @@ extension DiscoverViewController {
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.65)
+            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 1.1)
         ])
     }
     
@@ -133,14 +150,13 @@ extension DiscoverViewController {
                 print(error)
             }
         }
-        
     }
     
 }
 
 extension DiscoverViewController: MapScrollViewDataSource {
     
-    func infoOfUsers(_ mapScrollView: MapScrollView) -> [Vini] {
+    func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         return infoOfUsers
     }
     

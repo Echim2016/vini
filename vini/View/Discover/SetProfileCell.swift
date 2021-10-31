@@ -12,6 +12,7 @@ class SetProfileCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: RSKPlaceholderTextView!
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +30,12 @@ class SetProfileCell: UITableViewCell {
         textView.placeholder = NSString(utf8String: placeholder)
         textView.tintColor = UIColor.S1
         textView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+    }
+    
+    func setTextViewHeight(height: CGFloat) {
+        
+        textViewHeight.constant = height
+        self.layoutIfNeeded()
     }
     
 }

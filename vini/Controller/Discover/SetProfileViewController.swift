@@ -59,8 +59,6 @@ class SetProfileViewController: UIViewController {
         self.isModalInPresentation = true
         
         tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
-        
-        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +76,8 @@ class SetProfileViewController: UIViewController {
     
     @IBAction func tapSaveButton(_ sender: Any) {
         
+        view.endEditing(true)
+
         if !user.wondering.isEmpty,
            !user.displayName.isEmpty {
             saveProfile()
@@ -175,11 +175,11 @@ extension SetProfileViewController: UITableViewDataSource {
         case 0:
             cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
             cell.textView.accessibilityLabel = "wondering"
-            cell.textView.placeholder = user.wondering as NSString
+            cell.textView.text = user.wondering
         case 1:
             cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Town 裡面的名稱")
             cell.textView.accessibilityLabel = "displayName"
-            cell.textView.placeholder = user.displayName as NSString
+            cell.textView.text = user.displayName
         default:
             break
         }
@@ -187,7 +187,6 @@ extension SetProfileViewController: UITableViewDataSource {
         cell.textView.delegate = self
         
         return cell
-        
     }
     
 }
@@ -200,13 +199,13 @@ extension SetProfileViewController: UITextViewDelegate {
         return true
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         
         guard let text = textView.text,
               !text.isEmpty else {
                   return
               }
-        
+
         switch textView.accessibilityLabel {
         case "wondering":
             user.wondering = text
@@ -216,4 +215,5 @@ extension SetProfileViewController: UITextViewDelegate {
             break
         }
     }
+
 }
