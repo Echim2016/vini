@@ -17,9 +17,9 @@ class MailManager {
     
     func fetchData(id: String, completion: @escaping (Result<[Mail], Error>) -> Void) {
         
-        let userRef = db.collection("Mailboxes").document(id)
+        let ref = db.collection("Mailboxes").document(id)
         
-        userRef.collection("Mails").getDocuments() { (querySnapshot, error) in
+        ref.collection("Mails").getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -109,4 +109,44 @@ class MailManager {
         }
     }
     
+    func getReflectionTime(id: String, completion: @escaping (Result<Int, Error>) -> Void) {
+        
+        db.collection("Users").document(id).getDocument() { (document, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                if let document = document {
+                    
+                    guard let startTime = document.get("preferred_reflection_hour") as? Int else {
+                        return
+                    }
+                    
+                    completion(.success(startTime))
+                }
+            }
+        }
+    }
+    
+    func updateReflectionTime(userID: String, time: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Users").document(userID)
+        
+        let updateDict = [
+            "preferred_reflection_hour": time
+        ]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
 }

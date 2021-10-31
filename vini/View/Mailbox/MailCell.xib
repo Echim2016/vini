@@ -49,13 +49,21 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MED-3G-swe">
+                                <rect key="frame" x="71" y="32" width="343" height="71"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="cvT-t6-LlH" secondAttribute="bottom" constant="16" id="BNX-26-gY5"/>
                             <constraint firstItem="cvT-t6-LlH" firstAttribute="leading" secondItem="Nlm-Kc-MrA" secondAttribute="leading" constant="16" id="MIk-GY-Nk7"/>
+                            <constraint firstItem="MED-3G-swe" firstAttribute="width" secondItem="Jwb-ja-FoC" secondAttribute="width" constant="20" id="Md0-pB-KdH"/>
                             <constraint firstAttribute="trailing" secondItem="cvT-t6-LlH" secondAttribute="trailing" constant="16" id="PrE-CX-ACc"/>
                             <constraint firstItem="cvT-t6-LlH" firstAttribute="top" secondItem="Nlm-Kc-MrA" secondAttribute="top" constant="32" id="WwL-rV-BLo"/>
+                            <constraint firstItem="MED-3G-swe" firstAttribute="top" secondItem="cvT-t6-LlH" secondAttribute="top" id="aPv-Iw-1RO"/>
+                            <constraint firstAttribute="trailing" secondItem="MED-3G-swe" secondAttribute="trailing" constant="16" id="eYm-j9-aVP"/>
+                            <constraint firstItem="MED-3G-swe" firstAttribute="height" secondItem="cvT-t6-LlH" secondAttribute="height" id="wQU-h1-agH"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -69,6 +77,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cellMaskView" destination="MED-3G-swe" id="hEL-Ha-PuN"/>
+                <outlet property="labelStackView" destination="Jwb-ja-FoC" id="kzl-Ka-6Uu"/>
                 <outlet property="mailTitleLabel" destination="zHW-L3-qne" id="BI4-RE-cjW"/>
                 <outlet property="senderNameLabel" destination="iJa-QM-M5D" id="8SR-jk-drv"/>
                 <outlet property="viniImageView" destination="cwi-3z-JHV" id="w8x-Oj-O1D"/>

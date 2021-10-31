@@ -32,7 +32,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="HCc-nC-172">
                         <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="bVF-Lq-LHH">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapSetting:" destination="Y6W-OH-hqX" id="tbH-sx-vXy"/>
                             </connections>
@@ -41,11 +41,22 @@
                     <connections>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
                         <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
+                        <segue destination="TIW-zz-Rn2" kind="presentation" identifier="ShowSettings" id="zSs-aJ-d4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="ndm-Uj-ww7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="TIW-zz-Rn2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Qi-eH-k6e"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hO7-PP-eyX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="556"/>
         </scene>
         <!--Mail Detail View Controller-->
         <scene sceneID="rSq-4B-RAA">
@@ -71,7 +82,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cns-lo-BgV">
                         <barButtonItem key="rightBarButtonItem" image="trash.fill" catalog="system" style="plain" id="npr-3d-XiY">
-                            <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
                             </connections>

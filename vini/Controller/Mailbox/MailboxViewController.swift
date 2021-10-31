@@ -12,6 +12,7 @@ class MailboxViewController: UIViewController {
     private enum Segue: String {
         
         case showDetailMail = "ShowDetailMail"
+        case showSettings = "ShowSettings"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -26,17 +27,19 @@ class MailboxViewController: UIViewController {
     
     let userDefault = UserDefaults.standard
     
+    var preferredReflectionTime: Int = 23
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchMails()
+        getReflectionTime()
         setupNavigationController(title: "收信匣")
     }
     
@@ -53,7 +56,7 @@ class MailboxViewController: UIViewController {
 
     @IBAction func tapSetting(_ sender: Any) {
         
-        print("settings")
+        performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
     }
     
 }
@@ -78,14 +81,41 @@ extension MailboxViewController {
             }
         } 
     }
+    
+    func getReflectionTime() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+            MailManager.shared.getReflectionTime(id: userID) { result in
+                switch result {
+                case .success(let startTime):
+                    
+                    self.preferredReflectionTime = startTime
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+    }
 }
-
 
 extension MailboxViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: Segue.showDetailMail.rawValue, sender: indexPath.row)
+        if mails[indexPath.row].readTimestamp == nil {
+            
+            let currentHour = Calendar.current.component(.hour, from: Date())
+            if currentHour == preferredReflectionTime {
+                
+                performSegue(withIdentifier: Segue.showDetailMail.rawValue, sender: indexPath.row)
+            }
+
+        } else {
+            
+            performSegue(withIdentifier: Segue.showDetailMail.rawValue, sender: indexPath.row)
+        }
     }
     
 }
@@ -122,14 +152,20 @@ extension MailboxViewController: UITableViewDataSource {
         )
         
         if mail.readTimestamp != nil {
+            
             cell.setupReadAppearance()
+            
+        } else {
+            
+            let currentHour = Calendar.current.component(.hour, from: Date())
+            if currentHour != preferredReflectionTime {
+                
+                // user can only read unread mail during reflection time
+                cell.setupMask()
+            }
         }
-         
+        
         return cell
     }
-    
-}
-
-extension MailboxViewController {
     
 }

@@ -20,4 +20,9 @@ extension Timestamp {
         return dateFormatter.string(from: date)
     }
     
+    func toDate() -> Date {
+        
+        return self.dateValue()
+    }
+    
 }

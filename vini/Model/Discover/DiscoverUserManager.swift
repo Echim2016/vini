@@ -76,7 +76,7 @@ class DiscoverUserManager {
     
     func fetchUserProfile(id: String, completion: @escaping (Result<User, Error>) -> Void) {
         
-        db.collection("Users").document(id).getDocument{ (document, error) in
+        db.collection("Users").document(id).getDocument { (document, error) in
             
             if let error = error {
                 

@@ -17,7 +17,7 @@ extension UIViewController {
             target: self,
             action: #selector(tapBackBarButtonItem(_:))
         )
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.S1
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
     }
     
     @objc func tapBackBarButtonItem(_ sender: UIBarButtonItem) {
@@ -29,9 +29,9 @@ extension UIViewController {
         
         let titleLabel = UILabel()
         let attributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font: UIFont(name: "PingFangTC-SemiBold", size: 20),
+            NSAttributedString.Key.font: UIFont(name: "PingFangTC-SemiBold", size: 20) ?? UIFont.systemFont(ofSize: 20),
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.kern : 3.0
+            NSAttributedString.Key.kern: 3.0
         ]
         
         titleLabel.attributedText = NSAttributedString(string: title, attributes: attributes)

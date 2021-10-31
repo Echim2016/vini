@@ -152,3 +152,14 @@ extension UIView {
         }
     }
 }
+
+// MARK: - Corner Settings -
+extension UIView {
+    
+    func setupCorner() {
+        
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layoutIfNeeded()
+    }
+    
+}
