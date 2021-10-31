@@ -17,7 +17,6 @@ class DiscoverViewController: UIViewController {
     }
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    
     let mapView = MapScrollView()
     
     private var infoOfUsers: [ViniView] = []
