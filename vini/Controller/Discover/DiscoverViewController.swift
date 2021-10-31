@@ -15,7 +15,13 @@ class DiscoverViewController: UIViewController {
         case showProfileSetting = "ShowProfileSetting"
         case showSendMailPage = "ShowSendMailPage"
     }
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    @IBOutlet weak var backgroundRectView: UIView!
+    @IBOutlet weak var bigCloudImageView: UIImageView!
+    @IBOutlet weak var mediumCloudImageView: UIImageView!
+    
+
+    @IBOutlet weak var backgroundRectWidth: NSLayoutConstraint!
     
     let mapView = MapScrollView()
     
@@ -32,6 +38,17 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.isUserInteractionEnabled = true
+        
+        let layer = CAGradientLayer()
+        layer.frame = self.backgroundRectView.bounds
+        layer.colors = [
+            UIColor(red: 248/255, green: 129/255, blue: 117/255, alpha: 1.0).cgColor,
+            UIColor(red: 85/255, green: 80/255, blue: 126/255, alpha: 1.0).cgColor,
+            UIColor.B2.cgColor
+        ]
+        layer.startPoint = CGPoint(x: 200, y: 0)
+        layer.endPoint = CGPoint(x: 200, y: 1)
+        self.backgroundRectView.layer.insertSublayer(layer, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,25 +59,42 @@ class DiscoverViewController: UIViewController {
         fetchUserInfo()
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20
+        self.bigCloudImageView.float(duration: 1.6)
+        self.mediumCloudImageView.float(duration: 2.0)
         
-//        headerView.float(duration: 1)        backgroundImageView.float(duration: 5)
+        view.bringSubviewToFront(headerView)
+        view.bringSubviewToFront(mediumCloudImageView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 0.5, animations: {
-            self.mapView.spawnDefaultVinis()
-            self.mapView.setContentOffsetToMiddle()
-        })
+        UIView.animate(
+            withDuration: 0.7,
+            animations: {
+                
+                self.mapView.spawnDefaultVinis()
+                self.mapView.setContentOffsetToMiddle()
+                self.wonderingLabel.alpha = 1
+                self.nameLabel.alpha = 1
+                self.backgroundRectView.alpha = 1
+            },
+            completion: { _ in
+                self.showCloudAnimation()
+            }
+        )
         
-        print(mapView.frame.width)
-        print(mapView.frame.height)
+        Haptic.play("...o-o...", delay: 0.3)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        backgroundRectView.alpha = 0.1
+        wonderingLabel.alpha = 0.1
+        nameLabel.alpha = 0.1
+        bigCloudImageView.alpha = 0
+        mediumCloudImageView.alpha = 0
         mapView.clearStackSubviews()
         resetTitle()
     }
@@ -96,10 +130,8 @@ class DiscoverViewController: UIViewController {
                         self.currentSelectedVini = vini
                         Haptic.play(".", delay: 0.1)
                     }
-                    
                 }
             }
-            
         }
     }
     
@@ -148,7 +180,7 @@ extension DiscoverViewController {
     
     func resetTitle() {
         
-        wonderingLabel.text = "歡迎回來 Vini Town，\n繼續探索吧！"
+        wonderingLabel.text = "歡迎回來 Vini Cloud\n繼續探索吧！"
         nameLabel.text = "請左滑或右滑開始探索"
         sendButton.alpha = 0
     }
@@ -180,4 +212,18 @@ extension DiscoverViewController: MapScrollViewDataSource {
         return infoOfUsers
     }
     
+}
+
+extension DiscoverViewController {
+    
+    func showCloudAnimation() {
+        
+        UIView.animate(
+            withDuration: 0.8,
+            animations: {
+                self.bigCloudImageView.alpha = 1
+                self.mediumCloudImageView.alpha = 1
+            }
+        )
+    }
 }

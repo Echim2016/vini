@@ -61,11 +61,11 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--成就-->
         <scene sceneID="Nia-Hy-mhs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wQE-n0-P6P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="archivebox.fill" catalog="system" id="ua3-xk-zS4"/>
+                    <tabBarItem key="tabBarItem" title="成就" image="archivebox.fill" catalog="system" id="ua3-xk-zS4"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Fb-1u-u5Z">

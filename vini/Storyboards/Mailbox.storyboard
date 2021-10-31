@@ -96,11 +96,11 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="99.776785714285708"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--信箱-->
         <scene sceneID="QXw-3G-E3c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pEC-LX-oiM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="envelope.fill" catalog="system" id="U9U-p6-YaS"/>
+                    <tabBarItem key="tabBarItem" title="信箱" image="envelope.fill" catalog="system" id="U9U-p6-YaS"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tia-uk-hyP">
