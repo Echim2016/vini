@@ -330,8 +330,8 @@
 				9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */,
 				9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */,
 				9C021D45272D4334009A7581 /* UIViewController+Extension.swift */,
-				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 				9C021D47272D469A009A7581 /* Timestamp+Extension.swift */,
+				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";

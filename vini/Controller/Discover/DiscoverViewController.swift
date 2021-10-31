@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class DiscoverViewController: UIViewController {
     
@@ -36,9 +37,13 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupMapScrollView()
+        setupNavigationController(title: "探索")
         fetchUserInfo()
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20
+        
+        view.bringSubviewToFront(headerView)
+        headerView.float(duration: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +53,9 @@ class DiscoverViewController: UIViewController {
             self.mapView.spawnDefaultVinis()
             self.mapView.setContentOffsetToMiddle()
         })
+        
+        print(mapView.frame.width)
+        print(mapView.frame.height)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,9 +68,7 @@ class DiscoverViewController: UIViewController {
     @objc private func onTap(_ gesture: UIGestureRecognizer) {
 
         let touchPoint = gesture.location(in: self.mapView.mapStackView)
-        
-        print(touchPoint)
-        
+                
         self.mapView.mapStackView.arrangedSubviews.filter { $0.frame.contains(touchPoint)}.forEach { map  in
             
             let location = gesture.location(in: map)
@@ -70,13 +76,20 @@ class DiscoverViewController: UIViewController {
             map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
                 if let vini = vini as? ViniView {
                     sendButton.alpha = 1
-                    vini.layer.removeAllAnimations()
-//                    vini.shake()
-                    vini.float(duration: 0.5)
+                    vini.isUserInteractionEnabled = false
+                    
                     nameLabel.text = vini.data.name
                     wonderingLabel.text = vini.data.wondering
                     
-                    self.currentSelectedVini = vini
+                    if self.currentSelectedVini != vini {
+                        
+                        vini.float(duration: 0.5)
+                        self.currentSelectedVini.layer.removeAllAnimations()
+                        self.currentSelectedVini.isUserInteractionEnabled = true
+                        self.currentSelectedVini = vini
+                        Haptic.play(".", delay: 0.1)
+                    }
+                    
                 }
             }
             
@@ -122,7 +135,7 @@ extension DiscoverViewController {
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 1.1)
+            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1)
         ])
     }
     
