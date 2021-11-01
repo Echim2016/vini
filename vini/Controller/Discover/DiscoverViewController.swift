@@ -39,16 +39,7 @@ class DiscoverViewController: UIViewController {
         
         mapView.isUserInteractionEnabled = true
         
-        let layer = CAGradientLayer()
-        layer.frame = self.backgroundRectView.bounds
-        layer.colors = [
-            UIColor(red: 248/255, green: 129/255, blue: 117/255, alpha: 1.0).cgColor,
-            UIColor(red: 85/255, green: 80/255, blue: 126/255, alpha: 1.0).cgColor,
-            UIColor.B2.cgColor
-        ]
-        layer.startPoint = CGPoint(x: 200, y: 0)
-        layer.endPoint = CGPoint(x: 200, y: 1)
-        self.backgroundRectView.layer.insertSublayer(layer, at: 0)
+        setupBackgroundRectView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,10 +169,24 @@ extension DiscoverViewController {
         ])
     }
     
+    func setupBackgroundRectView() {
+        
+        let layer = CAGradientLayer()
+        layer.frame = self.backgroundRectView.bounds
+        layer.colors = [
+            UIColor(red: 248/255, green: 129/255, blue: 117/255, alpha: 1.0).cgColor,
+            UIColor(red: 85/255, green: 80/255, blue: 126/255, alpha: 1.0).cgColor,
+            UIColor.B2.cgColor
+        ]
+        layer.startPoint = CGPoint(x: 200, y: 0)
+        layer.endPoint = CGPoint(x: 200, y: 1)
+        self.backgroundRectView.layer.insertSublayer(layer, at: 0)
+    }
+    
     func resetTitle() {
         
         wonderingLabel.text = "歡迎回來 Vini Cloud\n繼續探索吧！"
-        nameLabel.text = "請左滑或右滑開始探索"
+        nameLabel.text = "最近在想些什麼？"
         sendButton.alpha = 0
     }
 }
