@@ -16,79 +16,99 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK1-yi-9no">
+                                <rect key="frame" x="62" y="103" width="290" height="580"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
                                 <rect key="frame" x="16" y="96" width="382" height="224"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小鎮裡的Vini都在想些什麼？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_big_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="CSB-wF-AuN">
+                                        <rect key="frame" x="150" y="29" width="382" height="166"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CSB-wF-AuN" secondAttribute="height" multiplier="342:149" id="V1c-Jb-r5c"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到 Vini Cloud" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
                                         <rect key="frame" x="16" y="32" width="350" height="34"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="24"/>
-                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
-                                        <rect key="frame" x="32" y="138.5" width="318" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                        <color key="textColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
+                                        <rect key="frame" x="16" y="158.5" width="180" height="25.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-mH-FH9">
-                                        <rect key="frame" x="32" y="174" width="318" height="40"/>
-                                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="250" y="144" width="100" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="0.30085885759999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="IxJ-PM-5IB"/>
+                                            <constraint firstAttribute="width" constant="100" id="Y5c-js-UTs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <color key="tintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="14"/>
+                                        <color key="tintColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="發一封私信給他 →"/>
+                                        <state key="normal" title="寄信給他 →"/>
                                         <connections>
                                             <action selector="tapSendMailButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hkV-Sh-z5D"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="10" id="1eC-sb-wiz"/>
+                                    <constraint firstItem="CSB-wF-AuN" firstAttribute="centerY" secondItem="P50-Gu-XAf" secondAttribute="centerY" id="9VN-4g-KN3"/>
                                     <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
-                                    <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="CIA-zA-jnB"/>
+                                    <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="CIA-zA-jnB"/>
+                                    <constraint firstAttribute="bottom" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="40" id="Ivz-y3-X0d"/>
                                     <constraint firstAttribute="trailing" secondItem="ISw-Aw-LEI" secondAttribute="trailing" constant="16" id="L42-4K-2gC"/>
-                                    <constraint firstAttribute="trailing" secondItem="eRo-iy-Kb4" secondAttribute="trailing" constant="32" id="OL0-Oj-1Hf"/>
-                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="32" id="OPB-65-MRR"/>
-                                    <constraint firstItem="DRF-mH-FH9" firstAttribute="top" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="10" id="TkC-5C-zhc"/>
+                                    <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="40" id="L8m-lm-wdv"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
+                                    <constraint firstItem="CSB-wF-AuN" firstAttribute="width" secondItem="P50-Gu-XAf" secondAttribute="width" id="bIO-Eg-glR"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
+                                    <constraint firstItem="CSB-wF-AuN" firstAttribute="centerX" secondItem="P50-Gu-XAf" secondAttribute="centerX" constant="150" id="tDH-T2-yUS"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="raX-Lh-Emm">
+                                <rect key="frame" x="-80" y="553.5" width="248.5" height="72"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="uK1-yi-9no" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.7" id="B45-Oe-l1e"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="MgU-LC-JAW"/>
+                            <constraint firstItem="uK1-yi-9no" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ntj-vW-WA0"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="raX-Lh-Emm" secondAttribute="bottom" multiplier="1.3" id="RrL-hJ-ZSg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="P50-Gu-XAf" secondAttribute="trailing" constant="16" id="VHH-7p-jl7"/>
+                            <constraint firstItem="uK1-yi-9no" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="WyS-mD-zxn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="raX-Lh-Emm" secondAttribute="leading" constant="80" id="b0N-ZG-nV1"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-8" id="fZ2-sm-7y4"/>
+                            <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.8" id="med-Ff-uyj"/>
+                            <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
+                            <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="zZV-kg-Wf8">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-81-l15">
-                                <rect key="frame" x="355" y="12.5" width="39" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="uYs-9O-2v3"/>
-                                    <constraint firstAttribute="width" constant="39" id="wFe-Bc-l1o"/>
-                                </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="person.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Epg-8c-7S3"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" image="person.fill" catalog="system" style="plain" id="Z7g-ND-v2I">
+                            <color key="tintColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" id="Gxy-Fa-FLN"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundRectView" destination="uK1-yi-9no" id="6hR-UO-5Pb"/>
+                        <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
+                        <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
+                        <outlet property="mediumCloudImageView" destination="raX-Lh-Emm" id="pHq-N5-5r9"/>
                         <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
                         <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
@@ -320,11 +340,11 @@
             </objects>
             <point key="canvasLocation" x="2813" y="117"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--探索-->
         <scene sceneID="05H-Yl-rt1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1IB-79-FYv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="safari.fill" catalog="system" id="Bvg-6h-xVd"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="safari.fill" catalog="system" id="Bvg-6h-xVd"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="HEI-DS-zix"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -344,8 +364,10 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="map_big_cloud" width="342" height="149"/>
+        <image name="map_medium_cloud" width="188" height="57"/>
         <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="safari.fill" catalog="system" width="128" height="121"/>
         <image name="vini_amaze" width="317.5" height="337"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
