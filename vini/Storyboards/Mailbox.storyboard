@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pEC-LX-oiM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Mailbox View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="MailboxViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="w9o-9R-iaA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="w9o-9R-iaA" secondAttribute="bottom" id="7S5-Fi-Tif"/>
+                            <constraint firstItem="w9o-9R-iaA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GQR-n4-sur"/>
+                            <constraint firstItem="w9o-9R-iaA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="HDO-op-L0B"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9o-9R-iaA" secondAttribute="trailing" id="kEA-St-pbg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HCc-nC-172">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="bVF-Lq-LHH">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapSetting:" destination="Y6W-OH-hqX" id="tbH-sx-vXy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
+                        <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
+                        <segue destination="TIW-zz-Rn2" kind="presentation" identifier="ShowSettings" id="zSs-aJ-d4u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="ndm-Uj-ww7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="TIW-zz-Rn2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8Qi-eH-k6e"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hO7-PP-eyX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1043" y="556"/>
+        </scene>
+        <!--Mail Detail View Controller-->
+        <scene sceneID="rSq-4B-RAA">
+            <objects>
+                <viewController id="z4r-4Y-byP" customClass="MailDetailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XUq-dx-NKA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IHv-1K-m8k">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Je-HT-MEs"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="5Je-HT-MEs" firstAttribute="trailing" secondItem="IHv-1K-m8k" secondAttribute="trailing" id="0LW-jx-10W"/>
+                            <constraint firstItem="IHv-1K-m8k" firstAttribute="leading" secondItem="5Je-HT-MEs" secondAttribute="leading" id="afO-Mb-AIN"/>
+                            <constraint firstItem="IHv-1K-m8k" firstAttribute="top" secondItem="5Je-HT-MEs" secondAttribute="top" id="cZZ-fh-F66"/>
+                            <constraint firstItem="5Je-HT-MEs" firstAttribute="bottom" secondItem="IHv-1K-m8k" secondAttribute="bottom" id="oDN-jO-TWv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cns-lo-BgV">
+                        <barButtonItem key="rightBarButtonItem" image="trash.fill" catalog="system" style="plain" id="npr-3d-XiY">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mhb-fm-sOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="99.776785714285708"/>
+        </scene>
+        <!--信箱-->
+        <scene sceneID="QXw-3G-E3c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pEC-LX-oiM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="信箱" image="envelope.fill" catalog="system" id="U9U-p6-YaS"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tia-uk-hyP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Tbz-EY-paZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFj-Gv-shZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="100.44642857142857"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="envelope.fill" catalog="system" width="128" height="93"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+    </resources>
+</document>

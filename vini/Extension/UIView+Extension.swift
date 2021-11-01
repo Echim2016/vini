@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 extension UIView {
     
@@ -124,8 +125,39 @@ public extension UIView {
             },
             completion: nil
         )
-        
-        
     }
 }
 
+// Lottie Animations
+extension UIView {
+    
+    func showWaveAnimation() {
+        let animationView = AnimationView(name: "82892-wave")
+        animationView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .loop
+        
+        self.addSubview(animationView)
+        animationView.play()
+    }
+
+    func clearAnimation() {
+        
+        self.subviews.forEach { subview in
+            if let view = subview as? AnimationView {
+                view.removeFromSuperview()
+            }
+        }
+    }
+}
+
+// MARK: - Corner Settings -
+extension UIView {
+    
+    func setupCorner() {
+        
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layoutIfNeeded()
+    }
+    
+}

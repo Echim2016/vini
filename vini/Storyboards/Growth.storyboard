@@ -58,11 +58,11 @@
             </objects>
             <point key="canvasLocation" x="1809" y="117"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--成長-->
         <scene sceneID="X3f-mq-4mk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="checklist" catalog="system" id="skg-9d-VCj"/>
+                    <tabBarItem key="tabBarItem" title="成長" image="checklist" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p21-RL-vk3">

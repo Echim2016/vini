@@ -9,7 +9,7 @@ import UIKit
 
 protocol MapScrollViewDataSource: AnyObject {
     
-    func infoOfUsers(_ mapScrollView: MapScrollView) -> [Vini]
+    func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView]
 }
 
 class MapScrollView: UIView {
@@ -22,7 +22,7 @@ class MapScrollView: UIView {
     
     weak var dataSource: MapScrollViewDataSource?
     
-    private var infosOfUsers: [Vini] = []
+    private var infosOfUsers: [ViniView] = []
     
     var currentDataLocation: Int = 0
     
@@ -31,7 +31,7 @@ class MapScrollView: UIView {
         scrollView.backgroundColor = .clear
         scrollView.bounces = false
         scrollView.isPagingEnabled = false
-        scrollView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.1)
+        scrollView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.5)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
@@ -100,8 +100,8 @@ class MapScrollView: UIView {
             defaultMapView.translatesAutoresizingMaskIntoConstraints = false
             defaultMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
             defaultMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
-            defaultMapView.backgroundColor = colors[index]
-            defaultMapView.backgroundColor = .B2
+//            defaultMapView.backgroundColor = colors[index]
+            defaultMapView.backgroundColor = .clear
             
         }
         
@@ -142,15 +142,15 @@ extension MapScrollView: UIScrollViewDelegate {
                                 
                 let newMapView = UIView()
                 
-                let random = Int.random(in: 0...5)
-                newMapView.backgroundColor = colors[random]
-                newMapView.backgroundColor = .B2
+//                let random = Int.random(in: 0...5)
+//                newMapView.backgroundColor = colors[random]
+                newMapView.backgroundColor = .clear
                 mapStackView.insertArrangedSubview(newMapView, at: 0)
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
-                var vinis: [Vini] = []
+                var vinis: [ViniView] = []
                 
                 let location = currentDataLocation * numberOfViniPerMap
                 
@@ -187,16 +187,16 @@ extension MapScrollView: UIScrollViewDelegate {
                                 
                 let newMapView = UIView()
                 
-                let random = Int.random(in: 0...5)
-                newMapView.backgroundColor = colors[random]
-                newMapView.backgroundColor = .B2
+//                let random = Int.random(in: 0...5)
+//                newMapView.backgroundColor = colors[random]
+                newMapView.backgroundColor = .clear
                 mapStackView.addArrangedSubview(newMapView)
     
                 newMapView.translatesAutoresizingMaskIntoConstraints = false
                 newMapView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
-                var vinis: [Vini] = []
+                var vinis: [ViniView] = []
                 
                 let location = currentDataLocation * numberOfViniPerMap
                 
@@ -225,7 +225,7 @@ extension MapScrollView: UIScrollViewDelegate {
 
 extension UIView {
     
-    func spawnViniRandomly(vinis: [Vini]) {
+    func spawnViniRandomly(vinis: [ViniView]) {
         
         let numberOfVinis = vinis.count - 1
         
@@ -236,9 +236,10 @@ extension UIView {
         let height = self.frame.height - 120
         
         var positions: [(Int, Int)] = [
-            (Int(arc4random_uniform(UInt32(width))),
-             Int(arc4random_uniform(UInt32(height))))
+           (Int.random(in: 0...Int(width)),
+            Int.random(in: 224...Int(height)))
         ]
+        
         var randomX = 0
         var randomY = 0
         
@@ -248,8 +249,8 @@ extension UIView {
             
             while !exist {
                 
-                randomX = Int(arc4random_uniform(UInt32(width)))
-                randomY = Int(arc4random_uniform(UInt32(height)))
+                randomX = Int.random(in: 0...Int(width))
+                randomY = Int.random(in: 224...Int(height))
                 
                 for position in positions {
                     if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 60 {
@@ -266,10 +267,11 @@ extension UIView {
         
         for index in 0...numberOfVinis {
             
-            let viniView = Vini(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
-            viniView.name = vinis[index].name
-            viniView.wondering = vinis[index].wondering
-            viniView.viniImageView.image = UIImage(named: vinis[index].viniType)
+            let viniView = ViniView(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
+            viniView.data.id = vinis[index].data.id
+            viniView.data.name = vinis[index].data.name
+            viniView.data.wondering = vinis[index].data.wondering
+            viniView.viniImageView.image = UIImage(named: vinis[index].data.viniType)
 //            viniView.float(duration: 0.5)
             
             self.addSubview(viniView)
