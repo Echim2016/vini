@@ -42,6 +42,15 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */; };
+		9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */; };
+		9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAF27310AC600AF3F73 /* InsightTitle.swift */; };
+		9C9E93AD2730D26A00FA3773 /* ArchivedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93AB2730D26A00FA3773 /* ArchivedCardCell.swift */; };
+		9C9E93AE2730D26A00FA3773 /* ArchivedCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9E93AC2730D26A00FA3773 /* ArchivedCardCell.xib */; };
+		9C9E93B12730D36500FA3773 /* ArchivedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93AF2730D36500FA3773 /* ArchivedCardCollectionViewCell.swift */; };
+		9C9E93B22730D36500FA3773 /* ArchivedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9E93B02730D36500FA3773 /* ArchivedCardCollectionViewCell.xib */; };
+		9C9E93B42730D49400FA3773 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */; };
+		9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93B82730DA1400FA3773 /* AchievementSection.swift */; };
 		9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA42C7D2726B278007F9589 /* Discover.storyboard */; };
 		9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C802726B293007F9589 /* DiscoverViewController.swift */; };
 		9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA42C832727968B007F9589 /* MapScrollView.swift */; };
@@ -114,6 +123,15 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightCollectionViewCell.xib; sourceTree = "<group>"; };
+		9C840CAF27310AC600AF3F73 /* InsightTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTitle.swift; sourceTree = "<group>"; };
+		9C9E93AB2730D26A00FA3773 /* ArchivedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedCardCell.swift; sourceTree = "<group>"; };
+		9C9E93AC2730D26A00FA3773 /* ArchivedCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedCardCell.xib; sourceTree = "<group>"; };
+		9C9E93AF2730D36500FA3773 /* ArchivedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C9E93B02730D36500FA3773 /* ArchivedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		9C9E93B82730DA1400FA3773 /* AchievementSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSection.swift; sourceTree = "<group>"; };
 		9CA42C7D2726B278007F9589 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		9CA42C802726B293007F9589 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		9CA42C832727968B007F9589 /* MapScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScrollView.swift; sourceTree = "<group>"; };
@@ -223,6 +241,44 @@
 			path = Growth;
 			sourceTree = "<group>";
 		};
+		9C9E93AA2730D23E00FA3773 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				9C9E93BB2730E44F00FA3773 /* Archived Card */,
+				9C9E93BA2730E44800FA3773 /* Insight */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		9C9E93B52730D9CD00FA3773 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				9C9E93B82730DA1400FA3773 /* AchievementSection.swift */,
+				9C840CAF27310AC600AF3F73 /* InsightTitle.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		9C9E93BA2730E44800FA3773 /* Insight */ = {
+			isa = PBXGroup;
+			children = (
+				9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */,
+				9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */,
+			);
+			path = Insight;
+			sourceTree = "<group>";
+		};
+		9C9E93BB2730E44F00FA3773 /* Archived Card */ = {
+			isa = PBXGroup;
+			children = (
+				9C9E93AB2730D26A00FA3773 /* ArchivedCardCell.swift */,
+				9C9E93AC2730D26A00FA3773 /* ArchivedCardCell.xib */,
+				9C9E93AF2730D36500FA3773 /* ArchivedCardCollectionViewCell.swift */,
+				9C9E93B02730D36500FA3773 /* ArchivedCardCollectionViewCell.xib */,
+			);
+			path = "Archived Card";
+			sourceTree = "<group>";
+		};
 		9CA42C7F2726B283007F9589 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +338,7 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C9E93AA2730D23E00FA3773 /* Achievement */,
 				9C021D4E272E40DC009A7581 /* Settings */,
 				9CEE9DAC272B9ED0006CCA06 /* Mailbox */,
 				9CA42C8227279660007F9589 /* Discover */,
@@ -313,6 +370,7 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C9E93B52730D9CD00FA3773 /* Achievement */,
 				9C021D55272E4579009A7581 /* Settings */,
 				9CEE9DB7272BD58D006CCA06 /* Mailbox */,
 				9CEE9DB6272BD571006CCA06 /* Discover */,
@@ -332,6 +390,7 @@
 				9C021D45272D4334009A7581 /* UIViewController+Extension.swift */,
 				9C021D47272D469A009A7581 /* Timestamp+Extension.swift */,
 				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
+				9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -512,17 +571,20 @@
 				9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */,
 				9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */,
 				9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */,
+				9C9E93AE2730D26A00FA3773 /* ArchivedCardCell.xib in Resources */,
 				9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */,
 				9CA45FCA2722890C00AA9CF0 /* Conclusion.storyboard in Resources */,
 				9CA42C7E2726B278007F9589 /* Discover.storyboard in Resources */,
 				9CEE9DA8272B9AAB006CCA06 /* Achievement.storyboard in Resources */,
 				9CEE9DA3272AA84A006CCA06 /* Mailbox.storyboard in Resources */,
+				9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */,
 				9C021D57272E53C6009A7581 /* TimePicker.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9C021D52272E40FB009A7581 /* SettingsItemCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
 				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
+				9C9E93B22730D36500FA3773 /* ArchivedCardCollectionViewCell.xib in Resources */,
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
@@ -604,6 +666,7 @@
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
+				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
 				9C021D46272D4334009A7581 /* UIViewController+Extension.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
@@ -614,10 +677,13 @@
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
 				9C021D48272D469A009A7581 /* Timestamp+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
+				9C9E93AD2730D26A00FA3773 /* ArchivedCardCell.swift in Sources */,
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
 				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
+				9C9E93B12730D36500FA3773 /* ArchivedCardCollectionViewCell.swift in Sources */,
+				9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C021D43272D4189009A7581 /* MailContentCell.swift in Sources */,
 				9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */,
@@ -626,11 +692,13 @@
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
 				9C021D5B272E5E91009A7581 /* TimeOptions.swift in Sources */,
 				9C021D51272E40FB009A7581 /* SettingsItemCell.swift in Sources */,
+				9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */,
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
+				9C9E93B42730D49400FA3773 /* UICollectionView+Extension.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
