@@ -11,6 +11,8 @@ class CreateGrowthContentCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var welcomeMessageLabel: UILabel!
+    
     @IBOutlet weak var cellBackgroundView: UIView!
     
     @IBOutlet weak var createGrowthContentCardButton: UIButton!
@@ -29,10 +31,6 @@ class CreateGrowthContentCell: UITableViewCell {
         setCurrentDate()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
     
     func setCurrentDate() {
         
@@ -40,6 +38,12 @@ class CreateGrowthContentCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMMM d"
         dateLabel.text = dateFormatter.string(from: date)
+    }
+    
+    func setupCellForArchivedMode() {
+        
+        welcomeMessageLabel.text = "歡迎回來，希望你能在此得到新的啟發。"
+        createGrowthContentCardButton.isHidden = true
     }
     
 }

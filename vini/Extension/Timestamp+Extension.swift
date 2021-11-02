@@ -10,12 +10,12 @@ import FirebaseFirestore
 
 extension Timestamp {
     
-    func toString() -> String {
+    func toString(format: DateFormat) -> String {
         
         let date = self.dateValue()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        dateFormatter.dateFormat = format.rawValue
         
         return dateFormatter.string(from: date)
     }
@@ -25,4 +25,10 @@ extension Timestamp {
         return self.dateValue()
     }
     
+}
+
+enum DateFormat: String {
+    
+    case ymdFormat = "yyyy/MM/dd"
+    case mailFormat = "yyyy/MM/dd HH:mm"
 }

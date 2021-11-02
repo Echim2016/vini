@@ -36,9 +36,9 @@ class GrowthPageViewController: UIViewController {
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
-        fetchGrowthCards()
-        
         userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
+        
+        fetchGrowthCards()
     }
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
@@ -90,17 +90,20 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
-        GrowthCardProvider.shared.fetchData { result in
+        if let userID = userDefault.value(forKey: "id") as? String {
             
-            switch result {
-            case .success(let cards):
+            GrowthCardProvider.shared.fetchData(userID: userID, isArchived: false) { result in
                 
-                self.data = cards
-                self.tableView.reloadData()
-                
-            case .failure(let error):
-                
-                print(error)
+                switch result {
+                case .success(let cards):
+                    
+                    self.data = cards
+                    self.tableView.reloadData()
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
             }
         }
     }

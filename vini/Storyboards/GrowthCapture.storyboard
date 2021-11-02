@@ -374,7 +374,7 @@
         <!--Navigation Controller-->
         <scene sceneID="feq-eu-Ywv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GJw-ih-adG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GrowthCaptureNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GJw-ih-adG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXH-Zb-6ya">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

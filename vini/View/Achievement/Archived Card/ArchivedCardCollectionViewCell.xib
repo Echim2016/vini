@@ -20,8 +20,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5oY-AA-Zl7">
                         <rect key="frame" x="0.0" y="44" width="328" height="439"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3Z-Ff-ksG">
+                                <rect key="frame" x="0.0" y="0.0" width="328" height="439"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何更快進入專注模式" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwD-g6-2Po">
-                                <rect key="frame" x="20" y="335" width="288" height="34"/>
+                                <rect key="frame" x="20" y="300" width="288" height="34"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -33,41 +37,43 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="其實忙碌跟運動並不衝突，不能用忙碌作為藉口，而是可以去思考在這個狀態下，可以如何有效運用時間，甚至讓運動帶來的效果反過來提升工作生產力。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iUn-pe-WiK">
-                                <rect key="frame" x="20" y="31.5" width="288" height="263.5"/>
+                                <rect key="frame" x="20" y="38.5" width="288" height="241.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzF-X3-z8x">
-                                <rect key="frame" x="258" y="275" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzF-X3-z8x">
+                                <rect key="frame" x="258" y="369" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="sdM-7X-Mhw"/>
                                     <constraint firstAttribute="width" constant="50" id="tHg-Ul-qaJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="→">
-                                    <color key="titleColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
+                                <state key="normal" title="→"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Ttg-ws-MLQ" firstAttribute="leading" secondItem="5oY-AA-Zl7" secondAttribute="leading" constant="20" id="6sT-nF-gi0"/>
                             <constraint firstAttribute="trailing" secondItem="iUn-pe-WiK" secondAttribute="trailing" constant="20" id="8Gk-t8-pg8"/>
+                            <constraint firstAttribute="trailing" secondItem="L3Z-Ff-ksG" secondAttribute="trailing" id="8Iz-Cf-nBl"/>
+                            <constraint firstAttribute="bottom" secondItem="L3Z-Ff-ksG" secondAttribute="bottom" id="DNO-bN-g5X"/>
                             <constraint firstAttribute="trailing" secondItem="uwD-g6-2Po" secondAttribute="trailing" constant="20" id="Ero-9M-0pT"/>
+                            <constraint firstItem="mzF-X3-z8x" firstAttribute="bottom" secondItem="L3Z-Ff-ksG" secondAttribute="bottom" constant="-20" id="V1B-5L-JSY"/>
                             <constraint firstItem="uwD-g6-2Po" firstAttribute="leading" secondItem="5oY-AA-Zl7" secondAttribute="leading" constant="20" id="VUi-0h-aH7"/>
                             <constraint firstAttribute="bottom" secondItem="Ttg-ws-MLQ" secondAttribute="bottom" constant="20" id="Vap-eO-jzL"/>
-                            <constraint firstItem="mzF-X3-z8x" firstAttribute="top" secondItem="iUn-pe-WiK" secondAttribute="bottom" constant="-20" id="Xra-cM-4sI"/>
+                            <constraint firstItem="L3Z-Ff-ksG" firstAttribute="leading" secondItem="5oY-AA-Zl7" secondAttribute="leading" id="bRq-e8-1sr"/>
                             <constraint firstItem="iUn-pe-WiK" firstAttribute="leading" secondItem="5oY-AA-Zl7" secondAttribute="leading" constant="20" id="byG-Jx-QX6"/>
-                            <constraint firstItem="iUn-pe-WiK" firstAttribute="bottom" secondItem="uwD-g6-2Po" secondAttribute="top" constant="-40" id="cF6-pd-znC"/>
-                            <constraint firstAttribute="bottom" secondItem="uwD-g6-2Po" secondAttribute="bottom" constant="70" id="lQO-tW-DgK"/>
+                            <constraint firstItem="iUn-pe-WiK" firstAttribute="bottom" secondItem="uwD-g6-2Po" secondAttribute="top" constant="-20" id="cF6-pd-znC"/>
                             <constraint firstAttribute="trailing" secondItem="mzF-X3-z8x" secondAttribute="trailing" constant="20" id="nt3-i7-uDU"/>
-                            <constraint firstItem="iUn-pe-WiK" firstAttribute="height" secondItem="5oY-AA-Zl7" secondAttribute="height" multiplier="0.6" id="x8y-OC-t8z"/>
+                            <constraint firstItem="uwD-g6-2Po" firstAttribute="top" secondItem="5oY-AA-Zl7" secondAttribute="top" constant="300" id="qQf-qw-oUI"/>
+                            <constraint firstItem="iUn-pe-WiK" firstAttribute="height" secondItem="5oY-AA-Zl7" secondAttribute="height" multiplier="0.55" id="x8y-OC-t8z"/>
                             <constraint firstAttribute="trailing" secondItem="Ttg-ws-MLQ" secondAttribute="trailing" constant="20" id="zqK-B0-d74"/>
+                            <constraint firstItem="L3Z-Ff-ksG" firstAttribute="top" secondItem="5oY-AA-Zl7" secondAttribute="top" id="zzN-e0-kld"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -81,8 +87,9 @@
             </constraints>
             <size key="customSize" width="328" height="483"/>
             <connections>
+                <outlet property="archivedTimeLabel" destination="Ttg-ws-MLQ" id="uq7-rO-2qQ"/>
+                <outlet property="cellBackgroundView" destination="L3Z-Ff-ksG" id="eZE-zW-dDi"/>
                 <outlet property="conclusionTextView" destination="iUn-pe-WiK" id="JJR-Sv-LVH"/>
-                <outlet property="dataLabel" destination="Ttg-ws-MLQ" id="lt3-mZ-qtI"/>
                 <outlet property="growthCardTitleLabel" destination="uwD-g6-2Po" id="Gfg-Lf-rzb"/>
                 <outlet property="rightArrowButton" destination="mzF-X3-z8x" id="IY4-ku-QS5"/>
             </connections>

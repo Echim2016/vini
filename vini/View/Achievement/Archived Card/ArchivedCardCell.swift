@@ -14,18 +14,16 @@ class ArchivedCardCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.selectionStyle = .none
         self.backgroundColor = .clear
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
         collectionView.backgroundColor = .clear
-        
         collectionView.showsHorizontalScrollIndicator = false
     }
     
     func setupLayoutForGrowthCards() {
+        
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         collectionView.registerCellWithNib(
             identifier: String(describing: ArchivedCardCollectionViewCell.self),
@@ -36,10 +34,10 @@ class ArchivedCardCell: UITableViewCell {
 
         flowLayout.itemSize = CGSize(
             width: Int(2.0 / 3.0 * self.collectionView.frame.width) ,
-            height: Int(self.collectionView.frame.height)
+            height: Int(self.collectionView.frame.height * 0.95)
         )
 
-        flowLayout.sectionInset = UIEdgeInsets(top: 5.0, left: 0.0, bottom: 24.0, right: 16.0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 5.0, left: 16.0, bottom: 24.0, right: 16.0)
 
         flowLayout.minimumInteritemSpacing = 0
 

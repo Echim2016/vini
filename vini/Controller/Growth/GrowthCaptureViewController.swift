@@ -125,6 +125,13 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    var isInArchivedMode: Bool = false {
+        didSet {
+            editButton.isEnabled = !isInArchivedMode
+            editButton.isHidden = isInArchivedMode
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -436,6 +443,11 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             
             cell.isHidden = hasArchived
             
+            if isInArchivedMode {
+                
+                cell.setupCellForArchivedMode()
+            }
+            
             return cell
             
         } else {
@@ -456,13 +468,13 @@ extension GrowthCaptureViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        editButton.isHidden = scrollView.contentOffset.y != 0
+        editButton.isHidden = scrollView.contentOffset.y != 0 || isInArchivedMode
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         // Disable welcome cell's content menu
-        if indexPath.row == 0 {
+        if indexPath.row == 0 || isInArchivedMode {
             
             return nil
             
@@ -650,6 +662,9 @@ extension GrowthCaptureViewController {
         archiveButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         
         archiveButton.addTarget(self, action: #selector(tapShowArchiveViewButton(_:)), for: .touchUpInside)
+        
+        archiveButton.alpha = isInArchivedMode ? 0 : 1
+        archiveButton.isEnabled = !isInArchivedMode
         
         sparkVini.alpha = 0
         

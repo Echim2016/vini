@@ -25,16 +25,62 @@ class AchievementViewController: UIViewController {
     
     var insightTitles = InsightTitle.allCases
     
+    var growthCards: [GrowthCard] = []
+    
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: ArchivedCardCell.identifier, bundle: nil)
+        
+        setupNavigationController(title: "成就")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        fetchGrowthCards()
+    }
+    
+    @objc func tapShowCardDetailButton(_ sender: UIButton) {
         
-        setupNavigationController(title: "成就")
+        let storyboard = UIStoryboard(name: "GrowthCapture", bundle: nil)
+        
+        if let navigationController = storyboard.instantiateViewController(withIdentifier: "GrowthCaptureNav") as? UINavigationController,
+           let controller = navigationController.topViewController as? GrowthCaptureViewController {
+            
+            controller.headerEmoji = growthCards[sender.tag].emoji
+            controller.headerTitle = growthCards[sender.tag].title
+            controller.growthCardID = growthCards[sender.tag].id
+            controller.isInArchivedMode = true
+            
+            present(navigationController, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+extension AchievementViewController {
+    
+    func fetchGrowthCards() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+            
+            GrowthCardProvider.shared.fetchData(userID: userID, isArchived: true) { result in
+                
+                switch result {
+                case .success(let cards):
+                    
+                    self.growthCards = cards
+                    self.collectionViewForGrowthCards?.reloadData()
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
     }
     
 }
@@ -125,7 +171,6 @@ extension AchievementViewController: UITableViewDataSource {
     }
 }
 
-
 // MARK: - Collection View -
 extension AchievementViewController: UICollectionViewDelegate {
     
@@ -138,9 +183,9 @@ extension AchievementViewController: UICollectionViewDataSource {
         switch collectionView {
             
         case collectionViewForGrowthCards:
-            return 5
+            return growthCards.count
         case collectionViewForInsights:
-            return 4
+            return insightTitles.count
         default:
             return 0
         }
@@ -163,6 +208,9 @@ extension AchievementViewController: UICollectionViewDataSource {
 
                 return cell
             }
+            
+            cardCell.setupCell(growthCard: growthCards[indexPath.row], index: indexPath.row)
+            cardCell.rightArrowButton.addTarget(self, action: #selector(tapShowCardDetailButton(_:)), for: .touchUpInside)
 
             return cardCell
             
