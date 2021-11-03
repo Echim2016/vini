@@ -135,7 +135,7 @@ extension MailDetailViewController: UITableViewDataSource {
 
             cell.setupCell(
                 senderName: mail.senderDisplayName,
-                title: mail.sentTime?.toString() ?? "",
+                title: mail.sentTime?.toString(format: .mailFormat) ?? "",
                 image: mail.senderViniType
             )
             

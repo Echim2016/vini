@@ -70,6 +70,8 @@ class SetGrowthContentCardViewController: UIViewController {
     var newImageIsSet: Bool = false
     var currentStatus = Status.create
     
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -128,22 +130,27 @@ extension SetGrowthContentCardViewController {
     
     private func addGrowthContentCard() {
         
-        GrowthContentProvider.shared.addGrowthContents(
-            id: growthCardID,
-            title: titleToAdd,
-            content: contentToAdd,
-            imageView: contentImageView) { result in
+        if let userID = userDefault.value(forKey: "id") as? String {
             
-            switch result {
-            case .success(let message):
-                print(message)
-                self.growthCaptureVC?.fetchGrowthContents()
-                self.dismiss(animated: true, completion: nil)
-                
-            case .failure(let error):
-                print(error)
-            }
+            GrowthContentProvider.shared.addGrowthContents(
+                id: growthCardID,
+                userID: userID,
+                title: titleToAdd,
+                content: contentToAdd,
+                imageView: contentImageView) { result in
+                    
+                    switch result {
+                    case .success(let message):
+                        print(message)
+                        self.growthCaptureVC?.fetchGrowthContents()
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
         }
+        
     }
     
     private func updateGrowthContentCard() {

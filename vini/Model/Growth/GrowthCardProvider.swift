@@ -15,10 +15,11 @@ class GrowthCardProvider {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
+    func fetchData(userID: String, isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
         
-        db.collection("Growth_Cards").whereField("is_archived", isEqualTo: false).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
-            
+        // swiftlint:disable line_length
+        db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+            // swiftlint:able line_length
             if let error = error {
                 
                 completion(.failure(error))
