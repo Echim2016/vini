@@ -45,6 +45,8 @@ class GrowthPageViewController: UIViewController {
         performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
     }
     
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let navigationController = segue.destination as? UINavigationController,

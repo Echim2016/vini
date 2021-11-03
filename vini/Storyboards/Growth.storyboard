@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Reflection-->
+        <scene sceneID="6to-mG-cWx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Reflection" id="mwy-5l-L4D" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aIJ-P9-rvh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EFX-O7-be3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056" y="-307"/>
+        </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
@@ -31,8 +41,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sou-lj-HrM">
+                        <barButtonItem key="leftBarButtonItem" image="moon.stars.fill" catalog="system" id="dJ2-Ea-YFQ">
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="mwy-5l-L4D" kind="presentation" id="SyV-QS-0lz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Dtq-cs-3tW">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapCreateNewGrowthCardButton:" destination="Y6W-OH-hqX" id="Klt-G8-DNY"/>
                             </connections>
@@ -95,5 +111,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checklist" catalog="system" width="128" height="105"/>
+        <image name="moon.stars.fill" catalog="system" width="124" height="128"/>
     </resources>
 </document>

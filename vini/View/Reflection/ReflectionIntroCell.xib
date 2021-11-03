@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ReflectionIntroCell" customModule="vini" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-YK-UoE">
+                        <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天過得還好嗎？" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWC-nq-tEG">
+                                <rect key="frame" x="50" y="128" width="240" height="42"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d2-3I-dfN">
+                                <rect key="frame" x="50" y="362" width="304" height="45"/>
+                                <string key="text">謝謝你留給自己這段時間，
+找個舒服的地方開始反思吧！</string>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEz-xs-vH8">
+                                <rect key="frame" x="50" y="668" width="2" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="jya-eM-M0R"/>
+                                    <constraint firstAttribute="width" constant="2" id="muV-Wf-7qz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="HEz-xs-vH8" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="JP6-aO-e44"/>
+                            <constraint firstItem="AWC-nq-tEG" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="VFv-jd-eEM"/>
+                            <constraint firstAttribute="trailing" secondItem="2d2-3I-dfN" secondAttribute="trailing" constant="60" id="Yde-cM-yX6"/>
+                            <constraint firstItem="AWC-nq-tEG" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="128" id="ciR-bJ-aue"/>
+                            <constraint firstAttribute="bottom" secondItem="HEz-xs-vH8" secondAttribute="bottom" id="mfc-u7-bpf"/>
+                            <constraint firstItem="2d2-3I-dfN" firstAttribute="top" secondItem="AWC-nq-tEG" secondAttribute="bottom" constant="192" id="qgi-8d-yrQ"/>
+                            <constraint firstItem="2d2-3I-dfN" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="rC6-gD-5Uj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="LO9-YK-UoE" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="Bjn-0D-VKI"/>
+                <constraint firstItem="LO9-YK-UoE" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="H6J-tS-iJZ"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="LO9-YK-UoE" secondAttribute="bottom" id="QBE-Ag-xE8"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="LO9-YK-UoE" secondAttribute="trailing" id="QOK-xN-Nnq"/>
+            </constraints>
+            <size key="customSize" width="414" height="896"/>
+            <connections>
+                <outlet property="cellBackgroundView" destination="LO9-YK-UoE" id="QMJ-2x-MHX"/>
+            </connections>
+            <point key="canvasLocation" x="328.98550724637681" y="376.33928571428572"/>
+        </collectionViewCell>
+    </objects>
+</document>
