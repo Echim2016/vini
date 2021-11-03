@@ -22,8 +22,8 @@ class ArchivedCardCell: UITableViewCell {
     
     func setupLayoutForGrowthCards() {
         
-        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         collectionView.registerCellWithNib(
             identifier: String(describing: ArchivedCardCollectionViewCell.self),
@@ -50,6 +50,9 @@ class ArchivedCardCell: UITableViewCell {
     
     func setupLayoutForInsight(width: CGFloat) {
         
+//        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+//        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
         collectionView.registerCellWithNib(
             identifier: String(describing: InsightCollectionViewCell.self),
             bundle: nil
@@ -66,7 +69,7 @@ class ArchivedCardCell: UITableViewCell {
 
         flowLayout.minimumInteritemSpacing = 3.0
 
-        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.minimumLineSpacing = 3.0
         
         flowLayout.scrollDirection = .vertical
 

@@ -12,7 +12,7 @@ enum InsightTitle: Int, CaseIterable {
     case totalGrowthContentCards = 0
     case totalArchivedCards
     case currentStreak
-    case mostRecordedTimeInterval
+    case totalCardsInApp
     
     var title: String {
         
@@ -27,8 +27,8 @@ enum InsightTitle: Int, CaseIterable {
         case .currentStreak:
             return "連續紀錄天數"
             
-        case .mostRecordedTimeInterval:
-            return "最常記下學習的時段"
+        case .totalCardsInApp:
+            return "平台卡片總數"
         }
         
     }

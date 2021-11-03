@@ -77,7 +77,7 @@ class GrowthContentProvider {
         }
     }
     
-    func addGrowthContents(id: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+    func addGrowthContents(id: String, userID: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = self.db.collection("Growth_Contents").document()
         
@@ -85,6 +85,7 @@ class GrowthContentProvider {
             
             let growthContent = GrowthContent(
                 id: document.documentID,
+                userID: userID,
                 growthCardId: self.db.collection("Growth_Cards").document(id),
                 title: title,
                 content: content,

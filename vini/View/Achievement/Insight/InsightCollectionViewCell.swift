@@ -18,15 +18,17 @@ class InsightCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 18
         
+        self.backgroundColor = .clear
+        
         let layer = CAGradientLayer()
-        layer.frame = self.cellBackgroundView.bounds
+        layer.frame = self.bounds
         layer.colors = [
             UIColor.B2.cgColor,
             UIColor.B1.cgColor
         ]
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 2, y: 1)
-        self.cellBackgroundView.layer.insertSublayer(layer, at: 0)
+        self.layer.insertSublayer(layer, at: 0)
         
         self.isUserInteractionEnabled = false
     }

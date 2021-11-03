@@ -16,7 +16,7 @@ class AchievementViewController: UIViewController {
             tableView.separatorStyle = .none
         }
     }
-    
+        
     var collectionViewForGrowthCards: UICollectionView?
     
     var collectionViewForInsights: UICollectionView?
@@ -24,6 +24,8 @@ class AchievementViewController: UIViewController {
     var sectionTitles = AchievementSection.allCases
     
     var insightTitles = InsightTitle.allCases
+    
+    var insightDict: [InsightTitle : String] = [:]
     
     var growthCards: [GrowthCard] = []
     
@@ -41,6 +43,7 @@ class AchievementViewController: UIViewController {
         super.viewWillAppear(animated)
 
         fetchGrowthCards()
+        fetchInsights()
     }
     
     @objc func tapShowCardDetailButton(_ sender: UIButton) {
@@ -73,7 +76,34 @@ extension AchievementViewController {
                 case .success(let cards):
                     
                     self.growthCards = cards
-                    self.collectionViewForGrowthCards?.reloadData()
+                    DispatchQueue.main.async {
+                        
+                        self.collectionViewForGrowthCards?.reloadData()
+                    }
+                    
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func fetchInsights() {
+        
+        if let userID = userDefault.value(forKey: "id") as? String {
+        
+            InsightManager.shared.fetchInsights(userID: userID) { result in
+                
+                switch result {
+                case .success(let insightDict):
+                    
+                    self.insightDict = insightDict
+                    DispatchQueue.main.async {
+                        
+                        self.collectionViewForInsights?.reloadData()
+                    }
                     
                 case .failure(let error):
                     
@@ -105,7 +135,7 @@ extension AchievementViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        450
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -227,7 +257,7 @@ extension AchievementViewController: UICollectionViewDataSource {
             }
             
             let title = insightTitles[indexPath.row].title
-            let data = "43"
+            let data = insightDict[insightTitles[indexPath.row]] ?? "00"
             insightCell.setupCell(title: title, data: data)
             
             return insightCell

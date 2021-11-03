@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct GrowthContent: Codable {
     
     var id: String
+    var userID: String
     var growthCardId: DocumentReference
     var title: String
     var content: String
@@ -20,6 +21,7 @@ struct GrowthContent: Codable {
     enum CodingKeys: String, CodingKey {
         
         case id
+        case userID = "user_id"
         case growthCardId = "growth_card_id"
         case title
         case content
