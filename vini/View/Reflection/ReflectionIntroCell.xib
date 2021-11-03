@@ -20,17 +20,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-YK-UoE">
                         <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天過得還好嗎？" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWC-nq-tEG">
-                                <rect key="frame" x="50" y="128" width="240" height="42"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_moon" translatesAutoresizingMaskIntoConstraints="NO" id="Uty-KU-zq4">
+                                <rect key="frame" x="249" y="80" width="145" height="145"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2d2-3I-dfN">
-                                <rect key="frame" x="50" y="362" width="304" height="45"/>
+                                <rect key="frame" x="50" y="517.5" width="304" height="50.5"/>
                                 <string key="text">謝謝你留給自己這段時間，
 找個舒服的地方開始反思吧！</string>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -42,15 +39,27 @@
                                     <constraint firstAttribute="width" constant="2" id="muV-Wf-7qz"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWC-nq-tEG">
+                                <rect key="frame" x="50" y="128" width="256" height="90"/>
+                                <string key="text">Hi!
+今天過得還好嗎？</string>
+                                <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Uty-KU-zq4" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="80" id="6x3-he-U6v"/>
                             <constraint firstItem="HEz-xs-vH8" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="JP6-aO-e44"/>
+                            <constraint firstAttribute="trailing" secondItem="Uty-KU-zq4" secondAttribute="trailing" constant="20" id="OUX-tG-Iwd"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="VFv-jd-eEM"/>
                             <constraint firstAttribute="trailing" secondItem="2d2-3I-dfN" secondAttribute="trailing" constant="60" id="Yde-cM-yX6"/>
+                            <constraint firstAttribute="bottom" secondItem="2d2-3I-dfN" secondAttribute="bottom" constant="250" id="aet-aV-RAT"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="128" id="ciR-bJ-aue"/>
+                            <constraint firstItem="Uty-KU-zq4" firstAttribute="width" secondItem="LO9-YK-UoE" secondAttribute="width" multiplier="0.35" id="hls-qY-NGZ"/>
                             <constraint firstAttribute="bottom" secondItem="HEz-xs-vH8" secondAttribute="bottom" id="mfc-u7-bpf"/>
-                            <constraint firstItem="2d2-3I-dfN" firstAttribute="top" secondItem="AWC-nq-tEG" secondAttribute="bottom" constant="192" id="qgi-8d-yrQ"/>
+                            <constraint firstItem="Uty-KU-zq4" firstAttribute="width" secondItem="Uty-KU-zq4" secondAttribute="height" multiplier="1:1" id="pmj-fW-89b"/>
                             <constraint firstItem="2d2-3I-dfN" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="rC6-gD-5Uj"/>
                         </constraints>
                     </view>
@@ -66,8 +75,14 @@
             <size key="customSize" width="414" height="896"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="LO9-YK-UoE" id="QMJ-2x-MHX"/>
+                <outlet property="introContentLabel" destination="2d2-3I-dfN" id="cdq-vz-LuD"/>
+                <outlet property="introTitleLabel" destination="AWC-nq-tEG" id="uS2-YI-zHE"/>
+                <outlet property="moonImageView" destination="Uty-KU-zq4" id="YVP-w0-Mj9"/>
             </connections>
             <point key="canvasLocation" x="328.98550724637681" y="376.33928571428572"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="map_moon" width="51" height="51"/>
+    </resources>
 </document>

@@ -20,8 +20,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6f-rn-Ftx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_big_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-5I-Hey">
-                                <rect key="frame" x="83" y="200" width="248" height="149"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="SoU-5I-Hey">
+                                <rect key="frame" x="-70" y="100" width="290" height="145"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SoU-5I-Hey" secondAttribute="height" multiplier="2:1" id="tUa-KB-mu0"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ksb-br-O06">
                                 <rect key="frame" x="134.5" y="722" width="145" height="45"/>
@@ -33,16 +36,36 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                 <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="繼續成長 →"/>
+                                <state key="normal" title="我準備好了"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNp-zl-3oT">
+                                <rect key="frame" x="108" y="373" width="198" height="50.5"/>
+                                <string key="text">謝謝你把時間留給自己，
+明天又會是很棒的一天。</string>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BzZ-bF-8sm">
+                                <rect key="frame" x="372" y="0.0" width="2" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="ISB-L9-hQ9"/>
+                                    <constraint firstAttribute="width" constant="2" id="NEw-1g-2Ut"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="SoU-5I-Hey" firstAttribute="width" secondItem="R6f-rn-Ftx" secondAttribute="width" multiplier="0.6" id="1dc-DX-Mp8"/>
+                            <constraint firstItem="SoU-5I-Hey" firstAttribute="width" secondItem="R6f-rn-Ftx" secondAttribute="width" multiplier="0.7" id="1dc-DX-Mp8"/>
+                            <constraint firstItem="SoU-5I-Hey" firstAttribute="leading" secondItem="R6f-rn-Ftx" secondAttribute="leading" constant="-70" id="4NI-PB-LhA"/>
+                            <constraint firstItem="BzZ-bF-8sm" firstAttribute="top" secondItem="R6f-rn-Ftx" secondAttribute="top" id="KJ5-Ng-mma"/>
                             <constraint firstItem="ksb-br-O06" firstAttribute="centerX" secondItem="R6f-rn-Ftx" secondAttribute="centerX" id="UJj-qV-6ZG"/>
-                            <constraint firstItem="SoU-5I-Hey" firstAttribute="centerX" secondItem="R6f-rn-Ftx" secondAttribute="centerX" id="gVj-mO-AaJ"/>
+                            <constraint firstItem="rNp-zl-3oT" firstAttribute="centerX" secondItem="R6f-rn-Ftx" secondAttribute="centerX" id="gzy-Ou-Bjg"/>
+                            <constraint firstItem="rNp-zl-3oT" firstAttribute="centerY" secondItem="R6f-rn-Ftx" secondAttribute="centerY" constant="-50" id="jGm-aq-QNe"/>
                             <constraint firstAttribute="bottom" secondItem="ksb-br-O06" secondAttribute="bottom" constant="129" id="kHT-sF-fPQ"/>
-                            <constraint firstItem="SoU-5I-Hey" firstAttribute="top" secondItem="R6f-rn-Ftx" secondAttribute="top" constant="200" id="vA5-IG-bJw"/>
+                            <constraint firstAttribute="trailing" secondItem="BzZ-bF-8sm" secondAttribute="trailing" constant="40" id="oCG-6L-Jn5"/>
+                            <constraint firstItem="SoU-5I-Hey" firstAttribute="top" secondItem="R6f-rn-Ftx" secondAttribute="top" constant="100" id="vA5-IG-bJw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -56,13 +79,13 @@
             </constraints>
             <size key="customSize" width="414" height="896"/>
             <connections>
+                <outlet property="cloudImageView" destination="SoU-5I-Hey" id="g1q-By-GX4"/>
                 <outlet property="continueButton" destination="ksb-br-O06" id="E5i-xA-m6G"/>
-                <outlet property="outroCloudImageView" destination="SoU-5I-Hey" id="6Ek-Jy-4k1"/>
             </connections>
             <point key="canvasLocation" x="395.6521739130435" y="379.01785714285711"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="map_big_cloud" width="342" height="149"/>
+        <image name="map_medium_cloud" width="188" height="57"/>
     </resources>
 </document>

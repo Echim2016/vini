@@ -42,6 +42,7 @@
 		9C51A3CC273277B200F85CE4 /* ReflectionPracticeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3CA273277B200F85CE4 /* ReflectionPracticeCell.xib */; };
 		9C51A3CF2732783B00F85CE4 /* ReflectionOutroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3CD2732783B00F85CE4 /* ReflectionOutroCell.swift */; };
 		9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3CE2732783B00F85CE4 /* ReflectionOutroCell.xib */; };
+		9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */; };
 		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
 		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
 		9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */; };
@@ -133,6 +134,7 @@
 		9C51A3CA273277B200F85CE4 /* ReflectionPracticeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReflectionPracticeCell.xib; sourceTree = "<group>"; };
 		9C51A3CD2732783B00F85CE4 /* ReflectionOutroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionOutroCell.swift; sourceTree = "<group>"; };
 		9C51A3CE2732783B00F85CE4 /* ReflectionOutroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReflectionOutroCell.xib; sourceTree = "<group>"; };
+		9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionManager.swift; sourceTree = "<group>"; };
 		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
 		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
 		9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthCardCell.xib; sourceTree = "<group>"; };
@@ -266,6 +268,14 @@
 				9C51A3CA273277B200F85CE4 /* ReflectionPracticeCell.xib */,
 				9C51A3CD2732783B00F85CE4 /* ReflectionOutroCell.swift */,
 				9C51A3CE2732783B00F85CE4 /* ReflectionOutroCell.xib */,
+			);
+			path = Reflection;
+			sourceTree = "<group>";
+		};
+		9C51A3D1273290DB00F85CE4 /* Reflection */ = {
+			isa = PBXGroup;
+			children = (
+				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
 			);
 			path = Reflection;
 			sourceTree = "<group>";
@@ -414,6 +424,7 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C51A3D1273290DB00F85CE4 /* Reflection */,
 				9C9E93B52730D9CD00FA3773 /* Achievement */,
 				9C021D55272E4579009A7581 /* Settings */,
 				9CEE9DB7272BD58D006CCA06 /* Mailbox */,
@@ -749,6 +760,7 @@
 				9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */,
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
+				9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */,
 				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */,
