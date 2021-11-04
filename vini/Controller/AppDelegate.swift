@@ -8,15 +8,31 @@
 import UIKit
 import Firebase
 import IQKeyboardManagerSwift
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
         UITabBar.appearance().tintColor = .white
+        
+        // User Notifications
+        UNUserNotificationCenter.current().delegate = self
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            if granted {
+                print("User gave permissions for local notifications")
+            }
+        }
+        
+        // Update reflection notification
+        NotificationManager.shared.setupNotificationSchedule()
+        
         return true
     }
 
@@ -34,4 +50,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+}
+
+extension AppDelegate {
+    
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            
+            completionHandler([.alert])
+    }
+    
+    // This function will be called right after user tap on the notification
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void) {
+            
+            if response.notification.request.identifier == "reflection" {
+                
+                guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+                    return
+                }
+                
+                // Instantiate and present the reflection view controller
+                let reflectionStoryboard = UIStoryboard(name: "Reflection", bundle: nil)
+                
+                if let reflectionVC = reflectionStoryboard.instantiateViewController(withIdentifier: "Reflection") as? ReflectionViewController,
+                   let tabBarVC = rootViewController as? UITabBarController {
+                    
+                    tabBarVC.selectedIndex = 0
+                    tabBarVC.selectedViewController?.present(reflectionVC, animated: true, completion: nil)
+                }
+            }
+            
+            
+            completionHandler()
+        }
 }
