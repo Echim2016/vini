@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TimePickerViewController: UIViewController {
     
@@ -31,7 +32,6 @@ class TimePickerViewController: UIViewController {
         super.viewDidLoad()
 
         self.isModalInPresentation = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +53,7 @@ class TimePickerViewController: UIViewController {
         
         view.endEditing(true)
         
+        NotificationManager.shared.setupNotificationSchedule(hour: hourToUpdate)
         updateReflectionTime()
     }
 
@@ -104,6 +105,8 @@ extension TimePickerViewController {
             }
         }
     }
+    
+    
 }
 
 extension TimePickerViewController: UIPickerViewDelegate {

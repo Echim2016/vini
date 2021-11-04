@@ -34,6 +34,7 @@
 		9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A6133271E9B780013D63A /* GrowthContentCell.xib */; };
 		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
+		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
 		9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */; };
@@ -126,6 +127,7 @@
 		9C1A6133271E9B780013D63A /* GrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthContentCell.xib; sourceTree = "<group>"; };
 		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
 		9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionIntroCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,14 @@
 				9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */,
 			);
 			path = "Growth Card";
+			sourceTree = "<group>";
+		};
+		9C35AACE273378CF007795D8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9C35AACF27338C3B007795D8 /* NotificationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		9C51A3C127326B0C00F85CE4 /* Reflection */ = {
@@ -377,6 +387,7 @@
 				9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */,
 				9C05B224271EB38900C78620 /* Third Party Wrapper */,
 				9CC1E4D7271BE59300F17190 /* Extension */,
+				9C35AACE273378CF007795D8 /* Managers */,
 				9CC1E4D9271BE63F00F17190 /* Storyboards */,
 				9CC1E4D6271BE58900F17190 /* Model */,
 				9CC1E4D4271BE57E00F17190 /* View */,
@@ -762,6 +773,7 @@
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */,
 				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
+				9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
