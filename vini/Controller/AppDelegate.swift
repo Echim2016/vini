@@ -33,7 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Update reflection notification
         NotificationManager.shared.setupNotificationSchedule()
         
+        let firebaseAuth = Auth.auth()
+
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+        
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -84,7 +93,6 @@ extension AppDelegate {
                     tabBarVC.selectedViewController?.present(reflectionVC, animated: true, completion: nil)
                 }
             }
-            
             
             completionHandler()
         }
