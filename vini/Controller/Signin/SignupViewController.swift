@@ -26,6 +26,8 @@ class SignupViewController: UIViewController {
     var notificationButton = NextButton()
     
     var startButton = NextButton()
+    
+    var displayNameToUpdate = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,16 @@ class SignupViewController: UIViewController {
     @objc func tapNextButton(_ sender: UIButton) {
         
         view.endEditing(true)
-        hideContentAnimation()
+        
+        updateDisplayName { sucesss in
+            if sucesss {
+                self.hideContentAnimation()
+            } else {
+                self.nameTextView.text = ""
+                // show error message
+            }
+        }
+        
     }
     
     @objc func tapNotificationButton(_ sender: UIButton) {
@@ -62,13 +73,61 @@ class SignupViewController: UIViewController {
     
     @objc func tapStartButton(_ sender: UIButton) {
         
-//        askForNotificationAuthorization()
+        redirectToHomePage()
     }
 }
 
 extension SignupViewController: UITextViewDelegate {
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        guard let text = textView.text,
+              !text.isEmpty else {
+                  textView.text = ""
+                  return
+              }
+        
+        self.displayNameToUpdate = text
+    }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let currentText = textView.text ?? ""
+
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+        return updatedText.count <= 8
+    }
+    
+}
+
+extension SignupViewController {
+    
+    func updateDisplayName(completion: @escaping (Bool) -> Void) {
+        
+        if let userID = UserManager.shared.userID {
+            
+            UserManager.shared.updateReflectionTime(
+                userID: userID,
+                name: displayNameToUpdate) { result in
+                    switch result {
+                    case .success(_):
+                        completion(true)
+                    case .failure(let error):
+                        print(error)
+                        completion(false)
+                    }
+                }
+        } else {
+            
+            completion(false)
+        }
+        
+        
+        
+    }
 }
 
 extension SignupViewController {
@@ -94,9 +153,11 @@ extension SignupViewController {
     
     func setupTextView() {
     
+        nameTextView.textContentType = .name
         nameTextView.layer.cornerRadius = 10
         nameTextView.tintColor = UIColor.white
         nameTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0)
+        nameTextView.textContainer.maximumNumberOfLines = 1
     }
     
     func setupNextButton() {
@@ -192,10 +253,10 @@ extension SignupViewController {
     
     func showRemindsContentAnimation() {
         
-        titleLabel.text = "每日反思時段"
+        titleLabel.text = "\(displayNameToUpdate) 今天過得還好嗎？\n反思是 Vini 很重視的每日儀式。"
         remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
 //        remindsLabel.textColor = .white
-        remindsLabel.text = "Vini會帶你進行一次簡單的反思練習，你也可以在這段時間看見其他使用者寫給你的私信。"
+        remindsLabel.text = "每到晚上的指定時間，Vini 會帶你進行一次簡單的反思練習，你也可以在這段時間看見其他使用者寫給你的私信。"
         
         let yTransform = CGAffineTransform(translationX: 0, y: -60)
         
@@ -243,13 +304,24 @@ extension SignupViewController {
         )
     }
     
+    func setupStartMessage() {
+        
+        titleLabel.text = "\(displayNameToUpdate)，\n謝謝你把時間留給成長。"
+        titleLabel.alpha = 0
+        remindsLabel.alpha = 0
+    }
+    
     func showStartButton() {
         
+        hideNotificationButton()
+        setupStartMessage()
+        
         UIView.animate(
-            withDuration: 1.0,
-            delay: 0.1,
+            withDuration: 2.0,
+            delay: 0.3,
             options: .curveEaseInOut,
             animations: {
+                self.titleLabel.alpha = 1
                 self.startButton.alpha = 1
             },
             completion: nil
@@ -268,16 +340,25 @@ extension SignupViewController {
                 let storyboard = UIStoryboard(name: "TimePicker", bundle: nil)
                 if let vc = storyboard.instantiateViewController(withIdentifier: "TimePicker") as? TimePickerViewController {
                     
-//                    self.navigationController?.pushViewController(vc, animated: false)
+                    vc.delegate = self
                     vc.modalPresentationStyle = .automatic
                     vc.modalTransitionStyle = .crossDissolve
-//                    vc.view.backgroundColor = .clear
                     
                     self.present(vc, animated: true, completion: nil)
                 }
-                
-                
             }
+        }
+    }
+    
+    func redirectToHomePage() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            
+            homeVC.modalPresentationStyle = .fullScreen
+            homeVC.modalTransitionStyle = .crossDissolve
+            
+            self.present(homeVC, animated: true, completion: nil)
         }
     }
 }

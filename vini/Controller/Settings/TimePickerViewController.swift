@@ -10,6 +10,8 @@ import UserNotifications
 
 class TimePickerViewController: UIViewController {
     
+    weak var delegate: UIViewController?
+    
     @IBOutlet weak var windowView: UIView!
     @IBOutlet weak var viniImageView: UIImageView!
     
@@ -25,6 +27,8 @@ class TimePickerViewController: UIViewController {
     var hourToUpdate: Int = 23
     
     var timeOptions = TimeOptions.allCases
+    
+    var isUpdated = false
     
     let userDefault = UserDefaults.standard
     
@@ -42,6 +46,16 @@ class TimePickerViewController: UIViewController {
         cancelButton.setupCorner()
         viniImageView.float(duration: 0.8)
         getReflectionTime()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let signupVC = delegate as? SignupViewController,
+           isUpdated {
+            
+            signupVC.showStartButton()
+        }
     }
     
     @IBAction func tapCancelButton(_ sender: Any) {
@@ -97,6 +111,7 @@ extension TimePickerViewController {
                 case .success(let success):
                     
                     print(success)
+                    self.isUpdated = true
                     self.dismiss(animated: true, completion: nil)
                     
                 case . failure(let error):

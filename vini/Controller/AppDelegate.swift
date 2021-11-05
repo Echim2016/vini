@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 //        } catch let signOutError as NSError {
 //            print("Error signing out: %@", signOutError)
 //        }
-//        
+
         return true
         
     }

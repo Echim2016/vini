@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCO-97-WZh">
-                                <rect key="frame" x="72.5" y="80.5" width="269" height="581.5"/>
+                                <rect key="frame" x="72.5" y="100.5" width="269" height="581.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_small_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-1S-Gcb">
                                         <rect key="frame" x="54" y="184" width="161" height="53"/>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfS-2g-LWn">
-                                        <rect key="frame" x="-42.5" y="27.5" width="240" height="67.5"/>
+                                        <rect key="frame" x="-42.5" y="7.5" width="240" height="67.5"/>
                                         <string key="text">那是一個新世界。
 由微小的信念所組成。</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
@@ -57,7 +57,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VCO-97-WZh" secondAttribute="bottom" constant="200" id="LnV-eS-MJw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VCO-97-WZh" secondAttribute="bottom" constant="180" id="LnV-eS-MJw"/>
                             <constraint firstItem="FfS-2g-LWn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="YBN-Ej-XZI"/>
                             <constraint firstItem="FfS-2g-LWn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="af0-Ur-P3d"/>
                             <constraint firstItem="VCO-97-WZh" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="mo6-GG-IzC"/>

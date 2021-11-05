@@ -15,7 +15,7 @@ struct User: Codable {
     var displayName: String
     var wondering: String
     var isPublished: Bool
-    var preferredReflectionTime: Int
+    var preferredReflectionTime: Int?
     var createdTime: Timestamp?
     
     enum CodingKeys: String, CodingKey {

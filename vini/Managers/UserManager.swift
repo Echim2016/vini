@@ -42,6 +42,26 @@ class UserManager {
         }
     }
     
+    func updateReflectionTime(userID: String, name: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        let document = db.collection("Users").document(userID)
+        
+        let updateDict = [
+            "display_name": name
+        ]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success(true))
+            }
+        }
+    }
+    
     
       
 }
