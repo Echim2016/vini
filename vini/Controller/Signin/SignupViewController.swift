@@ -318,7 +318,7 @@ extension SignupViewController {
         
         UIView.animate(
             withDuration: 2.0,
-            delay: 0.3,
+            delay: 0.1,
             options: .curveEaseInOut,
             animations: {
                 self.titleLabel.alpha = 1
