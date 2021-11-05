@@ -15,22 +15,61 @@ class SigninViewController: UIViewController {
 
     fileprivate var currentNonce: String?
 
+    @IBOutlet weak var welcomeMessageLabel: UILabel!
+    @IBOutlet weak var welcomeBackgroundView: UIView!
+    @IBOutlet weak var cloudImageView: UIImageView!
+    
+    var signInButton: ASAuthorizationAppleIDButton?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupSignInButton()
     }
     
-    func setupSignInButton() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
-        button.addTarget(self, action: #selector(handleSignInWithAppleTapped), for: .touchUpInside)
-        button.center = view.center
-        view.addSubview(button)
+        setupBackgroundView()
     }
     
+ 
     @objc func handleSignInWithAppleTapped() {
         performSignIn()
+    }
+    
+    @IBAction func tapTransitionButton(_ sender: Any) {
+        
+        let xScaleFactor = self.view.frame.size.width / welcomeBackgroundView.frame.width
+        let yScaleFactor = self.view.frame.size.height / welcomeBackgroundView.frame.height
+        
+        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
+        
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.welcomeBackgroundView.transform = scaleTransform
+                self.cloudImageView.alpha = 0
+                self.signInButton?.alpha = 0
+                self.welcomeMessageLabel.alpha = 0
+            },
+            completion: { _ in
+                
+                let storyboard = UIStoryboard(name: "Signup", bundle: nil)
+                if let vc = storyboard.instantiateViewController(withIdentifier: "SignUp") as? SignupViewController {
+                    
+                    self.navigationController?.pushViewController(vc, animated: false)
+                    
+//                    self.present(vc, animated: false, completion: nil)
+                }
+            }
+                
+            )
+        
     }
     
     func performSignIn() {
@@ -48,7 +87,7 @@ class SigninViewController: UIViewController {
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName]
+        request.requestedScopes = [.fullName, .email]
         
         let nonce =  randomNonceString()
         request.nonce = sha256(nonce)
@@ -93,30 +132,31 @@ class SigninViewController: UIViewController {
     
     @available(iOS 13, *)
     private func sha256(_ input: String) -> String {
-      let inputData = Data(input.utf8)
-      let hashedData = SHA256.hash(data: inputData)
-      let hashString = hashedData.compactMap {
-        String(format: "%02x", $0)
-      }.joined()
-
-      return hashString
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
     }
-
+    
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
-      let nonce = randomNonceString()
-      currentNonce = nonce
-      let appleIDProvider = ASAuthorizationAppleIDProvider()
-      let request = appleIDProvider.createRequest()
-      request.requestedScopes = [.fullName, .email]
-      request.nonce = sha256(nonce)
-
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-      authorizationController.delegate = self
-      authorizationController.presentationContextProvider = self
-      authorizationController.performRequests()
+        
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
-
+    
 }
 
 extension SigninViewController: ASAuthorizationControllerPresentationContextProviding {
@@ -172,16 +212,24 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                             switch result {
                             case .success(let success):
                                 print(success)
+                                
+//                                let storyboard = UIStoryboard(name: "Signup", bundle: nil)
+//                                if let vc = storyboard.instantiateViewController(withIdentifier: "SignUp") as? SignupViewController {
+//
+//                                    self.navigationController?.pushViewController(vc, animated: true)
+//                                }
+                                
+                                self.tapTransitionButton(self.signInButton)
+                                
                             case .failure(let error):
                                 print(error)
                             }
                         }
-                        
-                        
                     }
                     
+                    
+                    
                 }
-                
             }
         }
     }
@@ -191,4 +239,43 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
         print("Sign in with Apple errored: \(error)")
     }
     
+}
+
+extension SigninViewController {
+    
+    func setupSignInButton() {
+        
+        let button = ASAuthorizationAppleIDButton(type: .signIn, style: .white)
+        button.addTarget(self, action: #selector(handleSignInWithAppleTapped), for: .touchUpInside)
+        
+        self.view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+            button.heightAnchor.constraint(equalToConstant: 40),
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.topAnchor.constraint(equalTo: welcomeBackgroundView.bottomAnchor, constant: 100)
+        ])
+        
+        self.signInButton = button
+        
+        view.addSubview(button)
+    }
+    
+    func setupBackgroundView() {
+        
+        let layer = CAGradientLayer()
+        layer.frame = self.welcomeBackgroundView.bounds
+        layer.colors = [
+            UIColor(red: 248/255, green: 129/255, blue: 117/255, alpha: 1.0).cgColor,
+            UIColor(red: 85/255, green: 80/255, blue: 126/255, alpha: 1.0).cgColor,
+            UIColor.B1.cgColor
+        ]
+        layer.startPoint = CGPoint(x: 200, y: 0)
+        layer.endPoint = CGPoint(x: 200, y: 1)
+        self.welcomeBackgroundView.layer.insertSublayer(layer, at: 0)
+        
+        cloudImageView.float(duration: 1.8)
+    }
 }

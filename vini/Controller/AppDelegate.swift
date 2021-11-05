@@ -24,23 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // User Notifications
         UNUserNotificationCenter.current().delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("User gave permissions for local notifications")
-            }
-        }
+      
         
         // Update reflection notification
         NotificationManager.shared.setupNotificationSchedule()
         
-        let firebaseAuth = Auth.auth()
-
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-        
+//        let firebaseAuth = Auth.auth()
+//
+//        do {
+//            try firebaseAuth.signOut()
+//        } catch let signOutError as NSError {
+//            print("Error signing out: %@", signOutError)
+//        }
+//        
         return true
         
     }

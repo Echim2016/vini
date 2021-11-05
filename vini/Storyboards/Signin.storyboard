@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="72W-J5-lo5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -15,13 +15,98 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCO-97-WZh">
+                                <rect key="frame" x="72.5" y="80.5" width="269" height="581.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_small_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-1S-Gcb">
+                                        <rect key="frame" x="54" y="184" width="161" height="53"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN2-Pa-Xow">
+                                        <rect key="frame" x="94.5" y="195.5" width="80" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Jaj-Ws-68j"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="saz-bW-8sd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
+                                        <connections>
+                                            <action selector="tapTransitionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="l6u-UQ-fQ6"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfS-2g-LWn">
+                                        <rect key="frame" x="-42.5" y="27.5" width="240" height="67.5"/>
+                                        <string key="text">那是一個新世界。
+由微小的信念所組成。</string>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="IN2-Pa-Xow" firstAttribute="centerY" secondItem="hKf-1S-Gcb" secondAttribute="centerY" id="1aW-oG-BAK"/>
+                                    <constraint firstItem="IN2-Pa-Xow" firstAttribute="centerX" secondItem="hKf-1S-Gcb" secondAttribute="centerX" id="Em0-DE-lvd"/>
+                                    <constraint firstItem="hKf-1S-Gcb" firstAttribute="centerX" secondItem="VCO-97-WZh" secondAttribute="centerX" id="IYK-vs-X7a"/>
+                                    <constraint firstItem="hKf-1S-Gcb" firstAttribute="width" secondItem="VCO-97-WZh" secondAttribute="width" multiplier="0.6" id="aeK-Ef-Ymr"/>
+                                    <constraint firstItem="hKf-1S-Gcb" firstAttribute="centerY" secondItem="VCO-97-WZh" secondAttribute="centerY" constant="-80" id="nlb-YD-sBS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VCO-97-WZh" secondAttribute="bottom" constant="200" id="LnV-eS-MJw"/>
+                            <constraint firstItem="FfS-2g-LWn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="YBN-Ej-XZI"/>
+                            <constraint firstItem="FfS-2g-LWn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="af0-Ur-P3d"/>
+                            <constraint firstItem="VCO-97-WZh" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.65" id="mo6-GG-IzC"/>
+                            <constraint firstItem="VCO-97-WZh" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="oa5-Vi-FSS"/>
+                            <constraint firstItem="VCO-97-WZh" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.6" constant="44" id="xpm-7t-m2f"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="tdJ-dT-Zyy"/>
+                    <connections>
+                        <outlet property="cloudImageView" destination="hKf-1S-Gcb" id="uPx-Ko-MQ2"/>
+                        <outlet property="welcomeBackgroundView" destination="VCO-97-WZh" id="V64-GP-c0e"/>
+                        <outlet property="welcomeMessageLabel" destination="FfS-2g-LWn" id="rsy-ew-Zrp"/>
+                        <segue destination="cVe-P6-tyg" kind="show" identifier="ShowSignupPage" id="t5V-pn-X1b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="102"/>
+            <point key="canvasLocation" x="1034.7826086956522" y="101.78571428571428"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="kp7-c9-MVZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Signup" id="cVe-P6-tyg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0en-1u-53I"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwg-Pj-Ttj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1899" y="102"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="V6f-Q3-BUt">
+            <objects>
+                <navigationController storyboardIdentifier="SignInNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="72W-J5-lo5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NTR-h9-gCO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="rec-OT-YrD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u8x-RX-QsI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124.6376811594203" y="101.78571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map_small_cloud" width="159" height="53"/>
+    </resources>
 </document>

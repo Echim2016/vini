@@ -26,6 +26,7 @@
 		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
 		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
 		9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */; };
+		9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0631C127352A9300AF9F48 /* NextButton.swift */; };
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
 		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
 		9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */; };
@@ -55,6 +56,8 @@
 		9C6C3D922733A83D00F45247 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* Signin.storyboard */; };
 		9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D942733A85A00F45247 /* SigninViewController.swift */; };
 		9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D982733D4DC00F45247 /* UserManager.swift */; };
+		9C6C3D9D27340BCC00F45247 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9C27340BCC00F45247 /* Signup.storyboard */; };
+		9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9E27340C0800F45247 /* SignupViewController.swift */; };
 		9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */; };
 		9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */; };
 		9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAF27310AC600AF3F73 /* InsightTitle.swift */; };
@@ -122,6 +125,7 @@
 		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
 		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
 		9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGrowthContentCardViewController.swift; sourceTree = "<group>"; };
+		9C0631C127352A9300AF9F48 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
 		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
 		9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		9C6C3D942733A85A00F45247 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		9C6C3D962733A90300F45247 /* vini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vini.entitlements; sourceTree = "<group>"; };
 		9C6C3D982733D4DC00F45247 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		9C6C3D9C27340BCC00F45247 /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		9C6C3D9E27340C0800F45247 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightCollectionViewCell.xib; sourceTree = "<group>"; };
 		9C840CAF27310AC600AF3F73 /* InsightTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTitle.swift; sourceTree = "<group>"; };
@@ -314,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				9C6C3D942733A85A00F45247 /* SigninViewController.swift */,
+				9C6C3D9E27340C0800F45247 /* SignupViewController.swift */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -430,6 +437,7 @@
 				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
 				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
 				9CA66FA3272308B200E85F28 /* EmojiTextField.swift */,
+				9C0631C127352A9300AF9F48 /* NextButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,6 +502,7 @@
 				9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */,
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
 				9C6C3D912733A83D00F45247 /* Signin.storyboard */,
+				9C6C3D9C27340BCC00F45247 /* Signup.storyboard */,
 				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
 				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
@@ -679,6 +688,7 @@
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
+				9C6C3D9D27340BCC00F45247 /* Signup.storyboard in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
@@ -757,6 +767,7 @@
 				9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
+				9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
@@ -787,6 +798,7 @@
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
 				9C021D5B272E5E91009A7581 /* TimeOptions.swift in Sources */,
+				9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */,
 				9C021D51272E40FB009A7581 /* SettingsItemCell.swift in Sources */,
 				9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */,
 				9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */,

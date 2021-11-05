@@ -25,7 +25,7 @@ struct User: Codable {
         case displayName = "display_name"
         case wondering
         case isPublished = "is_published"
-        case preferredReflectionTime = "preferred_reflection_time"
+        case preferredReflectionTime = "preferred_reflection_hour"
         case createdTime = "created_time"
     }
     

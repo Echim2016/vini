@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             
             let storyboard = UIStoryboard(name: "Signin", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignIn")
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInNavigationController")
 
             window?.rootViewController = initialViewController
             window?.makeKeyAndVisible()

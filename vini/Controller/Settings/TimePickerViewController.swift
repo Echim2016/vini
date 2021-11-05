@@ -54,6 +54,7 @@ class TimePickerViewController: UIViewController {
         view.endEditing(true)
         
         NotificationManager.shared.setupNotificationSchedule(hour: hourToUpdate)
+        
         updateReflectionTime()
     }
 
@@ -63,7 +64,7 @@ extension TimePickerViewController {
     
     func getReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
+        if let userID = UserManager.shared.userID {
             
             MailManager.shared.getReflectionTime(
                 id: userID) { result in
@@ -84,8 +85,8 @@ extension TimePickerViewController {
     
     func updateReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-            
+        if let userID = UserManager.shared.userID {
+
             MailManager.shared.updateReflectionTime(
                 userID: userID,
                 time: hourToUpdate
@@ -105,7 +106,6 @@ extension TimePickerViewController {
             }
         }
     }
-    
     
 }
 
