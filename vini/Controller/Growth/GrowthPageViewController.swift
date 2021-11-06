@@ -90,23 +90,19 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
-        if let userID = UserManager.shared.userID {
+        GrowthCardProvider.shared.fetchData(isArchived: false) { result in
             
-            GrowthCardProvider.shared.fetchData(userID: userID, isArchived: false) { result in
+            switch result {
+            case .success(let cards):
                 
-                switch result {
-                case .success(let cards):
-                    
-                    self.data = cards
-                    self.tableView.reloadData()
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+                self.data = cards
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
-
     }
     
     private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
@@ -114,7 +110,7 @@ extension GrowthPageViewController {
         GrowthCardProvider.shared.deleteGrowthCard(id: id) { result in
             
             switch result {
-            case .success(let success):
+            case .success(_):
                 
                 completion(true)
                 
