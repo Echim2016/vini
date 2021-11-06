@@ -30,7 +30,7 @@ class TimePickerViewController: UIViewController {
     
     var isUpdated = false
     
-    let userDefault = UserDefaults.standard
+//    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,10 +78,9 @@ extension TimePickerViewController {
     
     func getReflectionTime() {
         
-        if let userID = UserManager.shared.userID {
+//        if let userID = UserManager.shared.userID {
             
-            MailManager.shared.getReflectionTime(
-                id: userID) { result in
+            MailManager.shared.getReflectionTime() { result in
                     switch result {
                         
                     case .success(let hour):
@@ -94,15 +93,14 @@ extension TimePickerViewController {
                         print(error)
                     }
                 }
-        }
+//        }
     }
     
     func updateReflectionTime() {
         
-        if let userID = UserManager.shared.userID {
+//        if let userID = UserManager.shared.userID {
 
             MailManager.shared.updateReflectionTime(
-                userID: userID,
                 time: hourToUpdate
             ) { result in
                 
@@ -119,7 +117,7 @@ extension TimePickerViewController {
                     print(error)
                 }
             }
-        }
+//        }
     }
     
 }

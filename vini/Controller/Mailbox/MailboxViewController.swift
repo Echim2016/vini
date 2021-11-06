@@ -25,7 +25,7 @@ class MailboxViewController: UIViewController {
     
     var mails: [Mail] = []
     
-    let userDefault = UserDefaults.standard
+//    let userDefault = UserDefaults.standard
     
     var preferredReflectionTime: Int = 23
     
@@ -65,9 +65,9 @@ extension MailboxViewController {
     
     func fetchMails() {
 
-        if let userID = userDefault.value(forKey: "id") as? String {
+//        if let userID = userDefault.value(forKey: "id") as? String {
         
-            MailManager.shared.fetchData(id: userID) { result in
+            MailManager.shared.fetchData() { result in
                 switch result {
                 case .success(let mails):
                     
@@ -79,13 +79,13 @@ extension MailboxViewController {
                     print(error)
                 }
             }
-        } 
+//        }
     }
     
     func getReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-            MailManager.shared.getReflectionTime(id: userID) { result in
+//        if let userID = userDefault.value(forKey: "id") as? String {
+            MailManager.shared.getReflectionTime() { result in
                 switch result {
                 case .success(let startTime):
                     
@@ -96,7 +96,7 @@ extension MailboxViewController {
                     print(error)
                 }
             }
-        }
+//        }
     }
 }
 
