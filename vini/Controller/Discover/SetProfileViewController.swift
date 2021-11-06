@@ -39,9 +39,7 @@ class SetProfileViewController: UIViewController {
     @IBOutlet weak var viniSelectorView: UIView!
     
     @IBOutlet weak var isPublishedSwitch: UISwitch!
-    
-    let userDefault = UserDefaults.standard
-    
+        
     var user: User = User() {
         didSet {
     
@@ -98,46 +96,39 @@ class SetProfileViewController: UIViewController {
 extension SetProfileViewController {
     
     func fetchProfile() {
-        
-        if let userID = userDefault.value(forKey: "id") as? String {
-            
-            DiscoverUserManager.shared.fetchUserProfile(id: userID) { result in
-                switch result {
-                case .success(let user):
                     
-                    self.user = user
-                    print(user)
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+        DiscoverUserManager.shared.fetchUserProfile() { result in
+            switch result {
+            case .success(let user):
+                
+                self.user = user
+                print(user)
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
-    
+        
     }
     
     func saveProfile() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
+        DiscoverUserManager.shared.updateUserStatus(
+            wondering: user.wondering,
+            name: user.displayName,
+            viniType: viniAssets[currentViniIndex].name,
+            isOn: isPublishedSwitch.isOn
+        ) { result in
             
-            DiscoverUserManager.shared.updateUserStatus(
-                id: userID,
-                wondering: user.wondering,
-                name: user.displayName,
-                viniType: viniAssets[currentViniIndex].name,
-                isOn: isPublishedSwitch.isOn
-            ) { result in
+            switch result {
+            case .success:
                 
-                switch result {
-                case .success:
-                    
-                    self.dismiss(animated: true, completion: nil)
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+                self.dismiss(animated: true, completion: nil)
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }
@@ -176,8 +167,9 @@ extension SetProfileViewController: UITableViewDataSource {
             cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
             cell.textView.accessibilityLabel = "wondering"
             cell.textView.text = user.wondering
+            
         case 1:
-            cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Town 裡面的名稱")
+            cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Cloud 裡面的名稱")
             cell.textView.accessibilityLabel = "displayName"
             cell.textView.text = user.displayName
         default:
