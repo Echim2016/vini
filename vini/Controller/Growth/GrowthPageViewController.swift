@@ -90,7 +90,7 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
+        if let userID = UserManager.shared.userID {
             
             GrowthCardProvider.shared.fetchData(userID: userID, isArchived: false) { result in
                 
@@ -106,6 +106,7 @@ extension GrowthPageViewController {
                 }
             }
         }
+
     }
     
     private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {

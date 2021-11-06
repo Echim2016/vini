@@ -32,13 +32,17 @@ class SigninViewController: UIViewController {
         
         setupBackgroundView()
     }
-    
  
     @objc func handleSignInWithAppleTapped() {
+        
         performSignIn()
     }
     
     @IBAction func tapTransitionButton(_ sender: Any) {
+        
+    }
+    
+    func redirectToSignUpPage() {
         
         let xScaleFactor = self.view.frame.size.width / welcomeBackgroundView.frame.width
         let yScaleFactor = self.view.frame.size.height / welcomeBackgroundView.frame.height
@@ -66,10 +70,19 @@ class SigninViewController: UIViewController {
                     
 //                    self.present(vc, animated: false, completion: nil)
                 }
-            }
-                
-            )
+            })
+    }
+    
+    func redirectToHomePage() {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            
+            homeVC.modalPresentationStyle = .fullScreen
+            homeVC.modalTransitionStyle = .crossDissolve
+            
+            self.present(homeVC, animated: true, completion: nil)
+        }
     }
     
     func performSignIn() {
@@ -199,7 +212,6 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                 }
                 
                 // User is signed in to Firebase with Apple.
-                
                 if let auth = authResult,
                    let isNewUser = auth.additionalUserInfo?.isNewUser {
                    
@@ -212,23 +224,19 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                             switch result {
                             case .success(let success):
                                 print(success)
-                                
-//                                let storyboard = UIStoryboard(name: "Signup", bundle: nil)
-//                                if let vc = storyboard.instantiateViewController(withIdentifier: "SignUp") as? SignupViewController {
-//
-//                                    self.navigationController?.pushViewController(vc, animated: true)
-//                                }
-                                
-                                self.tapTransitionButton(self.signInButton)
+//                                self.tapTransitionButton(self.signInButton)
+                                self.redirectToSignUpPage()
                                 
                             case .failure(let error):
                                 print(error)
                             }
                         }
+                    } else {
+                        
+                        // if user is not new user, redirect to home page
+                        self.redirectToHomePage()
                     }
-                    
-                    
-                    
+
                 }
             }
         }

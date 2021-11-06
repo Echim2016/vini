@@ -376,29 +376,34 @@ extension GrowthCaptureViewController {
     
     private func createGrowthCard() {
         
-        var growthCard: GrowthCard = GrowthCard(
-            id: "",
-            title: headerTitleToUpdate,
-            emoji: headerEmojiToUpdate,
-            isStarred: false,
-            isArchived: false,
-            archivedTime: nil,
-            contents: nil,
-            conclusion: nil,
-            createdTime: nil
-        )
-        
-        GrowthCardProvider.shared.addData(growthCard: &growthCard) { result in
+        if let userID = UserManager.shared.userID {
             
-            switch result {
-            case .success(let message):
-                print(message)
-                self.growthCardID = growthCard.id
-                self.headerTitle = growthCard.title
-            case .failure(let error):
-                print(error)
+            var growthCard: GrowthCard = GrowthCard(
+                id: "",
+                userID: userID,
+                title: headerTitleToUpdate,
+                emoji: headerEmojiToUpdate,
+                isStarred: false,
+                isArchived: false,
+                archivedTime: nil,
+                contents: nil,
+                conclusion: nil,
+                createdTime: nil
+            )
+            
+            GrowthCardProvider.shared.addData(growthCard: &growthCard) { result in
+                
+                switch result {
+                case .success(let message):
+                    print(message)
+                    self.growthCardID = growthCard.id
+                    self.headerTitle = growthCard.title
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
+        
     }
     
     private func archiveGrowthCard(completion: @escaping (Bool) -> Void) {

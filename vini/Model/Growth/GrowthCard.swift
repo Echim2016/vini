@@ -11,6 +11,7 @@ import FirebaseFirestore
 struct GrowthCard: Codable {
     
     var id: String
+    var userID: String
     var title: String
     var emoji: String
     var isStarred: Bool
@@ -23,6 +24,7 @@ struct GrowthCard: Codable {
     enum CodingKeys: String, CodingKey {
         
         case id
+        case userID = "user_id"
         case title
         case emoji
         case isStarred = "is_starred"

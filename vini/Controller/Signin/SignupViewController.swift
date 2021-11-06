@@ -125,8 +125,6 @@ extension SignupViewController {
             completion(false)
         }
         
-        
-        
     }
 }
 
