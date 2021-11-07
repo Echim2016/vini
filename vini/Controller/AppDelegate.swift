@@ -74,9 +74,8 @@ extension AppDelegate {
                 }
                 
                 // Instantiate and present the reflection view controller
-                let reflectionStoryboard = UIStoryboard(name: "Reflection", bundle: nil)
-                
-                if let reflectionVC = reflectionStoryboard.instantiateViewController(withIdentifier: "Reflection") as? ReflectionViewController,
+//                let reflectionStoryboard = UIStoryboard(name: "Reflection", bundle: nil)
+                if let reflectionVC = UIStoryboard.reflection.instantiateViewController(withIdentifier: StoryboardCategory.reflection.rawValue) as? ReflectionViewController,
                    let tabBarVC = rootViewController as? UITabBarController {
                     
                     tabBarVC.selectedIndex = 0

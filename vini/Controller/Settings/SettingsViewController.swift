@@ -65,8 +65,8 @@ extension SettingsViewController: UITableViewDelegate {
                 print("Error signing out: %@", signOutError)
             }
             
-            let storyboard = UIStoryboard(name: "Signin", bundle: nil)
-            if let signinNav = storyboard.instantiateViewController(withIdentifier: "SignInNavigationController") as? UINavigationController {
+//            let storyboard = UIStoryboard(name: "Signin", bundle: nil)
+            if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
                 
                 signinNav.modalPresentationStyle = .fullScreen
                 

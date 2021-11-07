@@ -53,10 +53,10 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
-		9C6C3D922733A83D00F45247 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* Signin.storyboard */; };
+		9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* SignIn.storyboard */; };
 		9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D942733A85A00F45247 /* SigninViewController.swift */; };
 		9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D982733D4DC00F45247 /* UserManager.swift */; };
-		9C6C3D9D27340BCC00F45247 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9C27340BCC00F45247 /* Signup.storyboard */; };
+		9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */; };
 		9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9E27340C0800F45247 /* SignupViewController.swift */; };
 		9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */; };
 		9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */; };
@@ -82,6 +82,7 @@
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
+		9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */; };
 		9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* ViniView.swift */; };
 		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
 		9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */; };
@@ -152,11 +153,11 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
-		9C6C3D912733A83D00F45247 /* Signin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signin.storyboard; sourceTree = "<group>"; };
+		9C6C3D912733A83D00F45247 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9C6C3D942733A85A00F45247 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		9C6C3D962733A90300F45247 /* vini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vini.entitlements; sourceTree = "<group>"; };
 		9C6C3D982733D4DC00F45247 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		9C6C3D9C27340BCC00F45247 /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		9C6C3D9E27340C0800F45247 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CC1E4CE271BE53600F17190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		9CEAC5122728060C00C98B96 /* ViniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViniView.swift; sourceTree = "<group>"; };
 		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
 		9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 				9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */,
 				9C840CB727323B4200AF3F73 /* Date+Extension.swift */,
+				9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -501,8 +504,8 @@
 			children = (
 				9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */,
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
-				9C6C3D912733A83D00F45247 /* Signin.storyboard */,
-				9C6C3D9C27340BCC00F45247 /* Signup.storyboard */,
+				9C6C3D912733A83D00F45247 /* SignIn.storyboard */,
+				9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */,
 				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
 				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
@@ -661,7 +664,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C6C3D922733A83D00F45247 /* Signin.storyboard in Resources */,
+				9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */,
 				9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */,
 				9C021D44272D4189009A7581 /* MailContentCell.xib in Resources */,
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
@@ -688,7 +691,7 @@
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
-				9C6C3D9D27340BCC00F45247 /* Signup.storyboard in Resources */,
+				9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
@@ -816,6 +819,7 @@
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,
+				9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
 				9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */,
 				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,

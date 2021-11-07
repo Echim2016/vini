@@ -46,9 +46,9 @@ class AchievementViewController: UIViewController {
     
     @objc func tapShowCardDetailButton(_ sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: "GrowthCapture", bundle: nil)
+        let storyboard = UIStoryboard.growthCapture
         
-        if let navigationController = storyboard.instantiateViewController(withIdentifier: "GrowthCaptureNav") as? UINavigationController,
+        if let navigationController = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.growthCapture.rawValue) as? UINavigationController,
            let controller = navigationController.topViewController as? GrowthCaptureViewController {
             
             controller.headerEmoji = growthCards[sender.tag].emoji

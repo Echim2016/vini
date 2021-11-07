@@ -335,8 +335,8 @@ extension SignupViewController {
             
             DispatchQueue.main.async {
                 
-                let storyboard = UIStoryboard(name: "TimePicker", bundle: nil)
-                if let vc = storyboard.instantiateViewController(withIdentifier: "TimePicker") as? TimePickerViewController {
+                let storyboard = UIStoryboard.timePicker
+                if let vc = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.timePicker.rawValue) as? TimePickerViewController {
                     
                     vc.delegate = self
                     vc.modalPresentationStyle = .automatic

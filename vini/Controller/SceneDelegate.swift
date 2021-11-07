@@ -23,19 +23,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Auth.auth().currentUser != nil {
             
             // the user is logged in, then redirect to home page
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+            if let tabBarController = UIStoryboard.main.instantiateViewController(withIdentifier: StoryboardCategory.main.rawValue) as? UITabBarController {
                 self.window?.rootViewController = tabBarController
                 self.window?.makeKeyAndVisible()
             }
             
         } else {
             
-            let storyboard = UIStoryboard(name: "Signin", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "SignInNavigationController")
-
-            window?.rootViewController = initialViewController
-            window?.makeKeyAndVisible()
+            if let signinVC = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? SigninViewController {
+                
+                window?.rootViewController = signinVC
+                window?.makeKeyAndVisible()
+            }
         }
     }
 

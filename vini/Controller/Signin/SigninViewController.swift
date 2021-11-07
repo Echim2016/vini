@@ -12,6 +12,11 @@ import CryptoKit
 import grpc
 
 class SigninViewController: UIViewController {
+    
+    private enum NextPage {
+        case signup
+        case home
+    }
 
     fileprivate var currentNonce: String?
 
@@ -40,49 +45,6 @@ class SigninViewController: UIViewController {
     
     @IBAction func tapTransitionButton(_ sender: Any) {
         
-    }
-    
-    func redirectToSignUpPage() {
-        
-        let xScaleFactor = self.view.frame.size.width / welcomeBackgroundView.frame.width
-        let yScaleFactor = self.view.frame.size.height / welcomeBackgroundView.frame.height
-        
-        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
-        
-        UIView.animate(
-            withDuration: 2.0,
-            delay: 0.0,
-            usingSpringWithDamping: 2.0,
-            initialSpringVelocity: 3.0,
-            options: .curveEaseIn,
-            animations: {
-                self.welcomeBackgroundView.transform = scaleTransform
-                self.cloudImageView.alpha = 0
-                self.signInButton?.alpha = 0
-                self.welcomeMessageLabel.alpha = 0
-            },
-            completion: { _ in
-                
-                let storyboard = UIStoryboard(name: "Signup", bundle: nil)
-                if let vc = storyboard.instantiateViewController(withIdentifier: "SignUp") as? SignupViewController {
-                    
-                    self.navigationController?.pushViewController(vc, animated: false)
-                    
-//                    self.present(vc, animated: false, completion: nil)
-                }
-            })
-    }
-    
-    func redirectToHomePage() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-            
-            homeVC.modalPresentationStyle = .fullScreen
-            homeVC.modalTransitionStyle = .crossDissolve
-            
-            self.present(homeVC, animated: true, completion: nil)
-        }
     }
     
     func performSignIn() {
@@ -224,9 +186,8 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                             switch result {
                             case .success(let success):
                                 print(success)
-//                                self.tapTransitionButton(self.signInButton)
-                                self.redirectToSignUpPage()
-                                
+                                self.redirectToNextPage(next: .signup)
+
                             case .failure(let error):
                                 print(error)
                             }
@@ -234,9 +195,8 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                     } else {
                         
                         // if user is not new user, redirect to home page
-                        self.redirectToHomePage()
+                        self.redirectToNextPage(next: .home)
                     }
-
                 }
             }
         }
@@ -285,5 +245,70 @@ extension SigninViewController {
         self.welcomeBackgroundView.layer.insertSublayer(layer, at: 0)
         
         cloudImageView.float(duration: 1.8)
+    }
+}
+
+
+// MARK: - Animation -
+extension SigninViewController {
+    
+    private func redirectToNextPage(next: NextPage) {
+        
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseIn,
+            animations: {
+                self.welcomeMessageLabel.frame.origin.y -= 50
+                self.welcomeMessageLabel.alpha = 0
+                self.signInButton?.frame.origin.y += 50
+                self.signInButton?.alpha = 0
+            },
+            completion: { _ in
+                
+                self.redirectToNextPageAnimation(next: next)
+            })
+    }
+    
+    private func redirectToNextPageAnimation(next: NextPage) {
+        
+        let xScaleFactor = self.view.frame.size.width / welcomeBackgroundView.frame.width
+        let yScaleFactor = self.view.frame.size.height / welcomeBackgroundView.frame.height
+        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
+        
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.welcomeBackgroundView.transform = scaleTransform
+                self.cloudImageView.transform = CGAffineTransform(scaleX: 0.4, y: 0.4)
+                self.cloudImageView.alpha = 0
+            },
+            completion: { _ in
+                
+                switch next {
+                case .signup:
+                    
+                    if let vc = UIStoryboard.signUp.instantiateViewController(withIdentifier: StoryboardCategory.signUp.rawValue) as? SignupViewController {
+
+                        self.navigationController?.pushViewController(vc, animated: false)
+                    }
+                    
+                case .home:
+                   
+                    if let homeVC = UIStoryboard.main.instantiateViewController(withIdentifier: StoryboardCategory.main.rawValue) as? UITabBarController {
+
+                        homeVC.modalPresentationStyle = .custom
+                        homeVC.modalTransitionStyle = .crossDissolve
+
+                        self.present(homeVC, animated: true, completion: nil)
+                    }
+                }
+            })
     }
 }
