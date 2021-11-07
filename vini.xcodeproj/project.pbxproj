@@ -53,6 +53,9 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9C697F212737D25800EDBBCB /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F202737D25800EDBBCB /* Alert.storyboard */; };
+		9C697F242737D4C200EDBBCB /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F232737D4C200EDBBCB /* AlertViewController.swift */; };
+		9C697F272737DB1000EDBBCB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F262737DB1000EDBBCB /* Alert.swift */; };
 		9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* SignIn.storyboard */; };
 		9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D942733A85A00F45247 /* SigninViewController.swift */; };
 		9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D982733D4DC00F45247 /* UserManager.swift */; };
@@ -153,6 +156,9 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9C697F202737D25800EDBBCB /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		9C697F232737D4C200EDBBCB /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		9C697F262737DB1000EDBBCB /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9C6C3D912733A83D00F45247 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9C6C3D942733A85A00F45247 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		9C6C3D962733A90300F45247 /* vini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vini.entitlements; sourceTree = "<group>"; };
@@ -328,6 +334,22 @@
 			path = "Growth Content Card";
 			sourceTree = "<group>";
 		};
+		9C697F222737D4AF00EDBBCB /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				9C697F232737D4C200EDBBCB /* AlertViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		9C697F252737DB0000EDBBCB /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				9C697F262737DB1000EDBBCB /* Alert.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		9C6C3D932733A84700F45247 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +474,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C697F222737D4AF00EDBBCB /* Alert */,
 				9C6C3D932733A84700F45247 /* Signin */,
 				9C51A3C127326B0C00F85CE4 /* Reflection */,
 				9CEE9DA9272B9AB1006CCA06 /* Achievement */,
@@ -468,6 +491,7 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9C697F252737DB0000EDBBCB /* Alert */,
 				9C9E93B52730D9CD00FA3773 /* Achievement */,
 				9C021D55272E4579009A7581 /* Settings */,
 				9CEE9DB7272BD58D006CCA06 /* Mailbox */,
@@ -518,8 +542,9 @@
 				9CEE9DA2272AA84A006CCA06 /* Mailbox.storyboard */,
 				9C021D49272D96BD009A7581 /* Settings.storyboard */,
 				9CEE9DA7272B9AAB006CCA06 /* Achievement.storyboard */,
-				9C021D56272E53C6009A7581 /* TimePicker.storyboard */,
 				9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */,
+				9C021D56272E53C6009A7581 /* TimePicker.storyboard */,
+				9C697F202737D25800EDBBCB /* Alert.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -695,6 +720,7 @@
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
+				9C697F212737D25800EDBBCB /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +797,7 @@
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
 				9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */,
+				9C697F242737D4C200EDBBCB /* AlertViewController.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
@@ -808,6 +835,7 @@
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */,
+				9C697F272737DB1000EDBBCB /* Alert.swift in Sources */,
 				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
 				9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */,
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
