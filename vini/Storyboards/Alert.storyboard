@@ -11,7 +11,7 @@
         <!--Alert View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="Y6W-OH-hqX" customClass="AlertViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="AlertViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,10 +20,10 @@
                                 <rect key="frame" x="62" y="328" width="290" height="250"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sfa-mh-Yg3">
-                                        <rect key="frame" x="50" y="195" width="190" height="40"/>
+                                        <rect key="frame" x="50" y="200" width="190" height="35"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e0-ay-HAJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="87" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="87" height="35"/>
                                                 <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -32,7 +32,7 @@
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r4P-W7-XN8">
-                                                <rect key="frame" x="103" y="0.0" width="87" height="40"/>
+                                                <rect key="frame" x="103" y="0.0" width="87" height="35"/>
                                                 <color key="backgroundColor" white="1" alpha="0.050600165549999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -42,7 +42,7 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="9f8-Pk-WnI"/>
+                                            <constraint firstAttribute="height" constant="35" id="9f8-Pk-WnI"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPU-QN-5sw">

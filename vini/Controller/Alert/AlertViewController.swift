@@ -20,6 +20,8 @@ class AlertViewController: UIViewController {
     
     var alertType: Alert?
     
+    var viniType = UIImage.AssetIdentifier.alert
+    
     var onCancel: (() -> Void)?
     
     var onConfirm: (() -> Void)?
@@ -27,6 +29,8 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.isModalInPresentation = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +79,9 @@ extension AlertViewController {
         viniImageView.float(duration: 1.8)
         
         alertView.layer.cornerRadius = 25
-        cancelButton.layer.cornerRadius = 20
-        confirmButton.layer.cornerRadius = 20
+        cancelButton.layer.cornerRadius = 18
+        confirmButton.layer.cornerRadius = 18
+        
+        viniImageView.image = UIImage(assetIdentifier: viniType)
     }
 }
