@@ -10,6 +10,7 @@ import Foundation
 enum SettingsSection: Int, CaseIterable {
     
     case notificationSettings = 0
+    case accountSettings
     
     var title: String {
         
@@ -17,6 +18,9 @@ enum SettingsSection: Int, CaseIterable {
             
         case .notificationSettings:
             return "提醒設定"
+            
+        case .accountSettings:
+            return "帳戶設定"
         }
     }
     

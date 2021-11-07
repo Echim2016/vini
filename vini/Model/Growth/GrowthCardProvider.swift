@@ -15,35 +15,39 @@ class GrowthCardProvider {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(userID: String, isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
+    func fetchData(isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
         
-        // swiftlint:disable line_length
-        db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
-            // swiftlint:able line_length
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                var growthCards = [GrowthCard]()
-                
-                for document in querySnapshot!.documents {
+        if let userID = UserManager.shared.userID {
+            
+            // swiftlint:disable line_length
+            db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+                // swiftlint:able line_length
+                if let error = error {
                     
-                    do {
-                        if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
+                    completion(.failure(error))
+                } else {
+                    
+                    var growthCards = [GrowthCard]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
+                                
+                                growthCards.append(growthCard)
+                            }
                             
-                            growthCards.append(growthCard)
+                        } catch {
+                            
+                            completion(.failure(error))
                         }
-                        
-                    } catch {
-                        
-                        completion(.failure(error))
                     }
+                    
+                    completion(.success(growthCards))
                 }
-                
-                completion(.success(growthCards))
             }
         }
+        
     }
     
     func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {

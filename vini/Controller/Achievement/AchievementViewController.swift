@@ -28,9 +28,7 @@ class AchievementViewController: UIViewController {
     var insightDict: [InsightTitle : String] = [:]
     
     var growthCards: [GrowthCard] = []
-    
-    let userDefault = UserDefaults.standard
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,9 +46,9 @@ class AchievementViewController: UIViewController {
     
     @objc func tapShowCardDetailButton(_ sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: "GrowthCapture", bundle: nil)
+        let storyboard = UIStoryboard.growthCapture
         
-        if let navigationController = storyboard.instantiateViewController(withIdentifier: "GrowthCaptureNav") as? UINavigationController,
+        if let navigationController = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.growthCapture.rawValue) as? UINavigationController,
            let controller = navigationController.topViewController as? GrowthCaptureViewController {
             
             controller.headerEmoji = growthCards[sender.tag].emoji
@@ -68,47 +66,41 @@ extension AchievementViewController {
     
     func fetchGrowthCards() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
+        GrowthCardProvider.shared.fetchData(isArchived: true) { result in
             
-            GrowthCardProvider.shared.fetchData(userID: userID, isArchived: true) { result in
+            switch result {
+            case .success(let cards):
                 
-                switch result {
-                case .success(let cards):
+                self.growthCards = cards
+                DispatchQueue.main.async {
                     
-                    self.growthCards = cards
-                    DispatchQueue.main.async {
-                        
-                        self.collectionViewForGrowthCards?.reloadData()
-                    }
-                    
-                    
-                case .failure(let error):
-                    
-                    print(error)
+                    self.collectionViewForGrowthCards?.reloadData()
                 }
+                
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }
     
     func fetchInsights() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-        
-            InsightManager.shared.fetchInsights(userID: userID) { result in
+        InsightManager.shared.fetchInsights() { result in
+            
+            switch result {
+            case .success(let insightDict):
                 
-                switch result {
-                case .success(let insightDict):
+                self.insightDict = insightDict
+                DispatchQueue.main.async {
                     
-                    self.insightDict = insightDict
-                    DispatchQueue.main.async {
-                        
-                        self.collectionViewForInsights?.reloadData()
-                    }
-                    
-                case .failure(let error):
-                    
-                    print(error)
+                    self.collectionViewForInsights?.reloadData()
                 }
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }
@@ -232,10 +224,7 @@ extension AchievementViewController: UICollectionViewDataSource {
                 for: indexPath
             )
 
-            guard let cardCell = cell as? ArchivedCardCollectionViewCell
-    //              let product = datas[indexPath.section][indexPath.row] as? Product
-            else {
-
+            guard let cardCell = cell as? ArchivedCardCollectionViewCell else {
                 return cell
             }
             
@@ -250,9 +239,7 @@ extension AchievementViewController: UICollectionViewDataSource {
                 for: indexPath
             )
 
-            guard let insightCell = cell as? InsightCollectionViewCell
-            else {
-
+            guard let insightCell = cell as? InsightCollectionViewCell else {
                 return cell
             }
             

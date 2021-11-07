@@ -24,9 +24,7 @@ class MailboxViewController: UIViewController {
     }
     
     var mails: [Mail] = []
-    
-    let userDefault = UserDefaults.standard
-    
+        
     var preferredReflectionTime: Int = 23
     
     override func viewDidLoad() {
@@ -64,37 +62,32 @@ class MailboxViewController: UIViewController {
 extension MailboxViewController {
     
     func fetchMails() {
-
-        if let userID = userDefault.value(forKey: "id") as? String {
         
-            MailManager.shared.fetchData(id: userID) { result in
-                switch result {
-                case .success(let mails):
-                    
-                    self.mails = mails
-                    self.tableView.reloadData()
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+        MailManager.shared.fetchData() { result in
+            switch result {
+            case .success(let mails):
+                
+                self.mails = mails
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                
+                print(error)
             }
-        } 
+        }
     }
     
     func getReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-            MailManager.shared.getReflectionTime(id: userID) { result in
-                switch result {
-                case .success(let startTime):
-                    
-                    self.preferredReflectionTime = startTime
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+        MailManager.shared.getReflectionTime() { result in
+            switch result {
+            case .success(let startTime):
+                
+                self.preferredReflectionTime = startTime
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }

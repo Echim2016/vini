@@ -26,6 +26,7 @@
 		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
 		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
 		9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */; };
+		9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0631C127352A9300AF9F48 /* NextButton.swift */; };
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
 		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
 		9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */; };
@@ -52,6 +53,11 @@
 		9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */; };
 		9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */; };
 		9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC92D271D553400DE4E42 /* GrowthContent.swift */; };
+		9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* SignIn.storyboard */; };
+		9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D942733A85A00F45247 /* SigninViewController.swift */; };
+		9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D982733D4DC00F45247 /* UserManager.swift */; };
+		9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */; };
+		9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D9E27340C0800F45247 /* SignupViewController.swift */; };
 		9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */; };
 		9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */; };
 		9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAF27310AC600AF3F73 /* InsightTitle.swift */; };
@@ -76,6 +82,7 @@
 		9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C6271BE53500F17190 /* Main.storyboard */; };
 		9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C9271BE53600F17190 /* Assets.xcassets */; };
 		9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */; };
+		9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */; };
 		9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* ViniView.swift */; };
 		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
 		9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */; };
@@ -119,6 +126,7 @@
 		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
 		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
 		9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGrowthContentCardViewController.swift; sourceTree = "<group>"; };
+		9C0631C127352A9300AF9F48 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
 		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
 		9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +153,12 @@
 		9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardProvider.swift; sourceTree = "<group>"; };
 		9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCard.swift; sourceTree = "<group>"; };
 		9C5FC92D271D553400DE4E42 /* GrowthContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContent.swift; sourceTree = "<group>"; };
+		9C6C3D912733A83D00F45247 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		9C6C3D942733A85A00F45247 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		9C6C3D962733A90300F45247 /* vini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vini.entitlements; sourceTree = "<group>"; };
+		9C6C3D982733D4DC00F45247 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		9C6C3D9E27340C0800F45247 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9C840CAB2730E9C900AF3F73 /* InsightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C840CAC2730E9C900AF3F73 /* InsightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsightCollectionViewCell.xib; sourceTree = "<group>"; };
 		9C840CAF27310AC600AF3F73 /* InsightTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTitle.swift; sourceTree = "<group>"; };
@@ -171,6 +185,7 @@
 		9CC1E4C9271BE53600F17190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC1E4CC271BE53600F17190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CC1E4CE271BE53600F17190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		9CEAC5122728060C00C98B96 /* ViniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViniView.swift; sourceTree = "<group>"; };
 		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
 		9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				9C35AACF27338C3B007795D8 /* NotificationManager.swift */,
+				9C6C3D982733D4DC00F45247 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -300,6 +316,15 @@
 				9CF72A3F27242C3000747089 /* CongratsViewController.swift */,
 			);
 			path = Growth;
+			sourceTree = "<group>";
+		};
+		9C6C3D932733A84700F45247 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				9C6C3D942733A85A00F45247 /* SigninViewController.swift */,
+				9C6C3D9E27340C0800F45247 /* SignupViewController.swift */,
+			);
+			path = Signin;
 			sourceTree = "<group>";
 		};
 		9C9E93AA2730D23E00FA3773 /* Achievement */ = {
@@ -383,6 +408,7 @@
 		9CC1E4BF271BE53500F17190 /* vini */ = {
 			isa = PBXGroup;
 			children = (
+				9C6C3D962733A90300F45247 /* vini.entitlements */,
 				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
 				9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */,
 				9C05B224271EB38900C78620 /* Third Party Wrapper */,
@@ -413,6 +439,7 @@
 				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
 				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
 				9CA66FA3272308B200E85F28 /* EmojiTextField.swift */,
+				9C0631C127352A9300AF9F48 /* NextButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -420,6 +447,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C6C3D932733A84700F45247 /* Signin */,
 				9C51A3C127326B0C00F85CE4 /* Reflection */,
 				9CEE9DA9272B9AB1006CCA06 /* Achievement */,
 				9C5FC928271D4F4F00DE4E42 /* Growth */,
@@ -458,6 +486,7 @@
 				9CA66FA12723059E00E85F28 /* String+Extension.swift */,
 				9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */,
 				9C840CB727323B4200AF3F73 /* Date+Extension.swift */,
+				9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -475,6 +504,8 @@
 			children = (
 				9CC1E4CB271BE53600F17190 /* LaunchScreen.storyboard */,
 				9CC1E4C6271BE53500F17190 /* Main.storyboard */,
+				9C6C3D912733A83D00F45247 /* SignIn.storyboard */,
+				9C6C3D9C27340BCC00F45247 /* SignUp.storyboard */,
 				9C5FC91C271D226E00DE4E42 /* Growth.storyboard */,
 				9C1A612C271E65450013D63A /* GrowthCapture.storyboard */,
 				9CA45FC92722890C00AA9CF0 /* Conclusion.storyboard */,
@@ -633,6 +664,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */,
 				9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */,
 				9C021D44272D4189009A7581 /* MailContentCell.xib in Resources */,
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
@@ -659,6 +691,7 @@
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
+				9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
@@ -737,6 +770,7 @@
 				9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
+				9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
@@ -759,6 +793,7 @@
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
 				9C9E93B12730D36500FA3773 /* ArchivedCardCollectionViewCell.swift in Sources */,
 				9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */,
+				9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
 				9C021D43272D4189009A7581 /* MailContentCell.swift in Sources */,
 				9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */,
@@ -766,6 +801,7 @@
 				9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */,
 				9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */,
 				9C021D5B272E5E91009A7581 /* TimeOptions.swift in Sources */,
+				9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */,
 				9C021D51272E40FB009A7581 /* SettingsItemCell.swift in Sources */,
 				9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */,
 				9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */,
@@ -783,7 +819,9 @@
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,
+				9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
+				9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */,
 				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,
 				9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */,
 				9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */,
@@ -938,8 +976,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = vini/vini.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
@@ -951,11 +990,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.echim.vini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -970,8 +1010,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = vini/vini.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
@@ -983,11 +1024,12 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.echim.vini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

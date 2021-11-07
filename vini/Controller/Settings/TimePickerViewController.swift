@@ -10,6 +10,8 @@ import UserNotifications
 
 class TimePickerViewController: UIViewController {
     
+    weak var delegate: UIViewController?
+    
     @IBOutlet weak var windowView: UIView!
     @IBOutlet weak var viniImageView: UIImageView!
     
@@ -26,7 +28,9 @@ class TimePickerViewController: UIViewController {
     
     var timeOptions = TimeOptions.allCases
     
-    let userDefault = UserDefaults.standard
+    var isUpdated = false
+    
+//    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,16 @@ class TimePickerViewController: UIViewController {
         getReflectionTime()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let signupVC = delegate as? SignupViewController,
+           isUpdated {
+            
+            signupVC.showStartButton()
+        }
+    }
+    
     @IBAction func tapCancelButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -54,6 +68,7 @@ class TimePickerViewController: UIViewController {
         view.endEditing(true)
         
         NotificationManager.shared.setupNotificationSchedule(hour: hourToUpdate)
+        
         updateReflectionTime()
     }
 
@@ -63,10 +78,9 @@ extension TimePickerViewController {
     
     func getReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
+//        if let userID = UserManager.shared.userID {
             
-            MailManager.shared.getReflectionTime(
-                id: userID) { result in
+            MailManager.shared.getReflectionTime() { result in
                     switch result {
                         
                     case .success(let hour):
@@ -79,15 +93,14 @@ extension TimePickerViewController {
                         print(error)
                     }
                 }
-        }
+//        }
     }
     
     func updateReflectionTime() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-            
+//        if let userID = UserManager.shared.userID {
+
             MailManager.shared.updateReflectionTime(
-                userID: userID,
                 time: hourToUpdate
             ) { result in
                 
@@ -96,6 +109,7 @@ extension TimePickerViewController {
                 case .success(let success):
                     
                     print(success)
+                    self.isUpdated = true
                     self.dismiss(animated: true, completion: nil)
                     
                 case . failure(let error):
@@ -103,9 +117,8 @@ extension TimePickerViewController {
                     print(error)
                 }
             }
-        }
+//        }
     }
-    
     
 }
 

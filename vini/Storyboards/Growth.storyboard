@@ -77,7 +77,7 @@
         <!--成長-->
         <scene sceneID="X3f-mq-4mk">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GrowthNav" automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="成長" image="checklist" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

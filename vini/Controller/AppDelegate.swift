@@ -24,16 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // User Notifications
         UNUserNotificationCenter.current().delegate = self
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("User gave permissions for local notifications")
-            }
-        }
+      
         
         // Update reflection notification
         NotificationManager.shared.setupNotificationSchedule()
         
+
+
         return true
+        
     }
 
     // MARK: UISceneSession Lifecycle
@@ -75,16 +74,14 @@ extension AppDelegate {
                 }
                 
                 // Instantiate and present the reflection view controller
-                let reflectionStoryboard = UIStoryboard(name: "Reflection", bundle: nil)
-                
-                if let reflectionVC = reflectionStoryboard.instantiateViewController(withIdentifier: "Reflection") as? ReflectionViewController,
+//                let reflectionStoryboard = UIStoryboard(name: "Reflection", bundle: nil)
+                if let reflectionVC = UIStoryboard.reflection.instantiateViewController(withIdentifier: StoryboardCategory.reflection.rawValue) as? ReflectionViewController,
                    let tabBarVC = rootViewController as? UITabBarController {
                     
                     tabBarVC.selectedIndex = 0
                     tabBarVC.selectedViewController?.present(reflectionVC, animated: true, completion: nil)
                 }
             }
-            
             
             completionHandler()
         }

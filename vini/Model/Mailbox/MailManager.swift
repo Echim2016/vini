@@ -15,34 +15,32 @@ class MailManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(id: String, completion: @escaping (Result<[Mail], Error>) -> Void) {
+    func fetchData(completion: @escaping (Result<[Mail], Error>) -> Void) {
         
-        let ref = db.collection("Mailboxes").document(id)
-        
-        ref.collection("Mails").getDocuments() { (querySnapshot, error) in
+        if let userID = UserManager.shared.userID {
             
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                var mails = [Mail]()
-                
-                for document in querySnapshot!.documents {
+            let ref = db.collection("Mailboxes").document(userID)
+            ref.collection("Mails").getDocuments() { (querySnapshot, error) in
+        
+                if let error = error {
                     
-                    do {
-                        if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                            mails.append(mail)
+                    completion(.failure(error))
+                } else {
+                    
+                    var mails = [Mail]()
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
+                                mails.append(mail)
+                            }
+                            
+                        } catch {
+                            completion(.failure(error))
                         }
-                        
-                    } catch {
-                        
-                        completion(.failure(error))
                     }
-                    
+                    completion(.success(mails))
                 }
-                
-                completion(.success(mails))
             }
         }
     }
@@ -73,80 +71,93 @@ class MailManager {
         }
     }
     
-    func deleteMail(userID: String, mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteMail(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        db.collection("Mailboxes").document(userID).collection("Mails").document(mailID).delete() { err in
-            
-            if let err = err {
-                print("Error removing mail: \(err)")
-                completion(.failure(err))
-            } else {
-                print("Mail successfully removed!")
+        if let userID = UserManager.shared.userID {
+        
+            db.collection("Mailboxes").document(userID).collection("Mails").document(mailID).delete() { err in
+                
+                if let err = err {
+                    print("Error removing mail: \(err)")
+                    completion(.failure(err))
+                } else {
+                    print("Mail successfully removed!")
                     
                     completion(.success("Success"))
-            }
-        }
-        
-    }
-    
-    func updateReadTime(userID: String, mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        let document = db.collection("Mailboxes").document(userID).collection("Mails").document(mailID)
-        
-        let updateDict = [
-            "read_timestamp": Timestamp(date: Date())
-        ]
-        
-        document.updateData(updateDict) { error in
-            
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                completion(.success("Success"))
-            }
-        }
-    }
-    
-    func getReflectionTime(id: String, completion: @escaping (Result<Int, Error>) -> Void) {
-        
-        db.collection("Users").document(id).getDocument() { (document, error) in
-            
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                if let document = document {
-                    
-                    guard let startTime = document.get("preferred_reflection_hour") as? Int else {
-                        return
-                    }
-                    
-                    completion(.success(startTime))
                 }
             }
         }
     }
     
-    func updateReflectionTime(userID: String, time: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateReadTime(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Users").document(userID)
-        
-        let updateDict = [
-            "preferred_reflection_hour": time
-        ]
-        
-        document.updateData(updateDict) { error in
+        if let userID = UserManager.shared.userID {
             
-            if let error = error {
+            let document = db.collection("Mailboxes").document(userID).collection("Mails").document(mailID)
+            
+            let updateDict = [
+                "read_timestamp": Timestamp(date: Date())
+            ]
+            
+            document.updateData(updateDict) { error in
                 
-                completion(.failure(error))
-            } else {
-                
-                completion(.success("Success"))
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
             }
         }
+        
+    }
+    
+    func getReflectionTime(completion: @escaping (Result<Int, Error>) -> Void) {
+        
+        if let userID = UserManager.shared.userID {
+            
+            db.collection("Users").document(userID).getDocument() { (document, error) in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    if let document = document {
+                        
+                        guard let startTime = document.get("preferred_reflection_hour") as? Int else {
+                            return
+                        }
+                        
+                        completion(.success(startTime))
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateReflectionTime(time: Int, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        if let userID = UserManager.shared.userID {
+            
+            let document = db.collection("Users").document(userID)
+            
+            let updateDict = [
+                "preferred_reflection_hour": time
+            ]
+            
+            document.updateData(updateDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
+            }
+        }
+        
     }
 }

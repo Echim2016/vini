@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
@@ -21,9 +22,9 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    var sections: [SettingsSection] = [.notificationSettings]
+    var sections: [SettingsSection] = [.notificationSettings, .accountSettings]
     
-    var rowTitles: [[String]] = [["每日反思時間"]]
+    var rowTitles: [[String]] = [["每日反思時間"], ["登出"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,33 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
+        switch (indexPath.section, indexPath.row) {
+            
+        case (0, 0):
+            performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
+            
+        case (1, 0):
+            
+            let firebaseAuth = Auth.auth()
+    
+            do {
+                try firebaseAuth.signOut()
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
+            
+//            let storyboard = UIStoryboard(name: "Signin", bundle: nil)
+            if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
+                
+                signinNav.modalPresentationStyle = .fullScreen
+                
+                present(signinNav, animated: true, completion: nil)
+            }
+            
+        default:
+            break
+            
+        }
     }
     
 }

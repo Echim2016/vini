@@ -69,9 +69,7 @@ class SetGrowthContentCardViewController: UIViewController {
     var imageURL: String?
     var newImageIsSet: Bool = false
     var currentStatus = Status.create
-    
-    let userDefault = UserDefaults.standard
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -129,8 +127,8 @@ class SetGrowthContentCardViewController: UIViewController {
 extension SetGrowthContentCardViewController {
     
     private func addGrowthContentCard() {
-        
-        if let userID = userDefault.value(forKey: "id") as? String {
+                
+        if let userID = UserManager.shared.userID {
             
             GrowthContentProvider.shared.addGrowthContents(
                 id: growthCardID,
@@ -150,7 +148,7 @@ extension SetGrowthContentCardViewController {
                     }
                 }
         }
-        
+                
     }
     
     private func updateGrowthContentCard() {

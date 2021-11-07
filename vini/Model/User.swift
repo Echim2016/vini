@@ -15,6 +15,8 @@ struct User: Codable {
     var displayName: String
     var wondering: String
     var isPublished: Bool
+    var preferredReflectionTime: Int?
+    var createdTime: Timestamp?
     
     enum CodingKeys: String, CodingKey {
         
@@ -23,13 +25,17 @@ struct User: Codable {
         case displayName = "display_name"
         case wondering
         case isPublished = "is_published"
+        case preferredReflectionTime = "preferred_reflection_hour"
+        case createdTime = "created_time"
     }
     
     init() {
         self.id = ""
-        self.viniType = ""
+        self.viniType = UIImage.AssetIdentifier.amaze.name
         self.displayName = "Vini"
-        self.wondering = "How to sleep well?"
-        self.isPublished = false
+        self.wondering = ""
+        self.isPublished = true
+        self.preferredReflectionTime = 23
+        self.createdTime = Timestamp(date: Date())
     }
 }
