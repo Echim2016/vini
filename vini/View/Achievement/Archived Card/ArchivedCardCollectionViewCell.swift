@@ -43,5 +43,12 @@ class ArchivedCardCollectionViewCell: UICollectionViewCell {
         
         rightArrowButton.tag = index
     }
+    
+    override var isHighlighted: Bool {
+        
+        didSet {
+            toggleIsHighlighted()
+        }
+    }
 
 }

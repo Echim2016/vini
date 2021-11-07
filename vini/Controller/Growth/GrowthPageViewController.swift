@@ -43,10 +43,17 @@ class GrowthPageViewController: UIViewController {
         
 //        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
         
-        fetchGrowthCards()
+//        fetchGrowthCards()
         
         getReflectionTime()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchGrowthCards()
+    }
+    
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
         performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)

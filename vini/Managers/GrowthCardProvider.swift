@@ -168,4 +168,24 @@ class GrowthCardProvider {
             }
         }
     }
+    
+    func unarchiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document(id)
+        
+        let updateDict = [
+            "is_archived": false
+        ] as [String : Any]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
 }

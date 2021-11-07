@@ -105,6 +105,22 @@ extension AchievementViewController {
         }
     }
     
+    func unarchiveGrowthCard(id: String) {
+        
+        GrowthCardProvider.shared.unarchiveGrowthCard(id: id) { result in
+            switch result {
+            case .success(let success):
+                
+                print(success)
+                self.fetchGrowthCards()
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
 }
 
 // MARK: - Table View -
@@ -195,6 +211,27 @@ extension AchievementViewController: UITableViewDataSource {
 
 // MARK: - Collection View -
 extension AchievementViewController: UICollectionViewDelegate {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
+            return self.makeContextMenu(index: indexPath.row)
+        })
+    }
+    
+    func makeContextMenu(index: Int) -> UIMenu {
+        
+        let unarchive = UIAction(
+            title: "解除封存",
+            image: UIImage(systemName: "arrow.uturn.forward")
+        ) { action in
+            
+            self.unarchiveGrowthCard(id: self.growthCards[index].id)
+        }
+        
+        return UIMenu(title: "", children: [unarchive])
+    }
     
 }
 
