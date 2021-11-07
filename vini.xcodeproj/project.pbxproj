@@ -273,6 +273,12 @@
 			children = (
 				9C35AACF27338C3B007795D8 /* NotificationManager.swift */,
 				9C6C3D982733D4DC00F45247 /* UserManager.swift */,
+				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
+				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
+				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
+				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
+				9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */,
+				9C840CB527313D9A00AF3F73 /* InsightManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -298,14 +304,6 @@
 			path = Reflection;
 			sourceTree = "<group>";
 		};
-		9C51A3D1273290DB00F85CE4 /* Reflection */ = {
-			isa = PBXGroup;
-			children = (
-				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
-			);
-			path = Reflection;
-			sourceTree = "<group>";
-		};
 		9C5FC928271D4F4F00DE4E42 /* Growth */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +314,18 @@
 				9CF72A3F27242C3000747089 /* CongratsViewController.swift */,
 			);
 			path = Growth;
+			sourceTree = "<group>";
+		};
+		9C697F1F2737CD9800EDBBCB /* Growth Content Card */ = {
+			isa = PBXGroup;
+			children = (
+				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
+				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
+				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
+				9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */,
+				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
+			);
+			path = "Growth Content Card";
 			sourceTree = "<group>";
 		};
 		9C6C3D932733A84700F45247 /* Signin */ = {
@@ -341,7 +351,6 @@
 			children = (
 				9C9E93B82730DA1400FA3773 /* AchievementSection.swift */,
 				9C840CAF27310AC600AF3F73 /* InsightTitle.swift */,
-				9C840CB527313D9A00AF3F73 /* InsightManager.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -427,17 +436,13 @@
 		9CC1E4D4271BE57E00F17190 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C05B227271EB45B00C78620 /* Growth Card */,
+				9C697F1F2737CD9800EDBBCB /* Growth Content Card */,
 				9C51A3C427326BE400F85CE4 /* Reflection */,
 				9C9E93AA2730D23E00FA3773 /* Achievement */,
 				9C021D4E272E40DC009A7581 /* Settings */,
 				9CEE9DAC272B9ED0006CCA06 /* Mailbox */,
 				9CA42C8227279660007F9589 /* Discover */,
-				9C05B227271EB45B00C78620 /* Growth Card */,
-				9C1A6132271E9B780013D63A /* GrowthContentCell.swift */,
-				9C1A6133271E9B780013D63A /* GrowthContentCell.xib */,
-				9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */,
-				9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */,
-				9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */,
 				9CA66FA3272308B200E85F28 /* EmojiTextField.swift */,
 				9C0631C127352A9300AF9F48 /* NextButton.swift */,
 			);
@@ -463,7 +468,6 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9C51A3D1273290DB00F85CE4 /* Reflection */,
 				9C9E93B52730D9CD00FA3773 /* Achievement */,
 				9C021D55272E4579009A7581 /* Settings */,
 				9CEE9DB7272BD58D006CCA06 /* Mailbox */,
@@ -523,8 +527,6 @@
 		9CEAC5162728FCB100C98B96 /* Growth */ = {
 			isa = PBXGroup;
 			children = (
-				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
-				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
 				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
 				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
 			);
@@ -572,7 +574,6 @@
 		9CEE9DB6272BD571006CCA06 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -580,7 +581,6 @@
 		9CEE9DB7272BD58D006CCA06 /* Mailbox */ = {
 			isa = PBXGroup;
 			children = (
-				9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */,
 				9CEE9DBA272BD5F1006CCA06 /* Mail.swift */,
 			);
 			path = Mailbox;

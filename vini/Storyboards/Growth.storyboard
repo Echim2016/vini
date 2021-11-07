@@ -16,7 +16,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFX-O7-be3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1056" y="-307"/>
+            <point key="canvasLocation" x="1588" y="-316"/>
         </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -72,7 +72,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51c-BN-rNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="117"/>
+            <point key="canvasLocation" x="1951" y="135"/>
         </scene>
         <!--成長-->
         <scene sceneID="X3f-mq-4mk">
