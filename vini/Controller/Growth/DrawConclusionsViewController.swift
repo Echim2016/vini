@@ -39,6 +39,10 @@ class DrawConclusionsViewController: UIViewController {
         
         setupNavBar()
         
+        setupNavigationController(title: "我的學習結論", titleColor: .B2)
+        
+        navigationController?.navigationBar.titleTextAttributes
+        
         fetchConclusion()
     }
     

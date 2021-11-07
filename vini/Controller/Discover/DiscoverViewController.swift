@@ -44,7 +44,7 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupMapScrollView()
-        setupNavigationController(title: "探索")
+        setupNavigationController(title: "探索", titleColor: .white)
         fetchUserInfo()
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20

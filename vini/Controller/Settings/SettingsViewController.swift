@@ -13,6 +13,8 @@ class SettingsViewController: UIViewController {
     private enum Segue: String {
         
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
+        
+        case showLogOutAlert = "ShowLogOutAlert"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -36,12 +38,49 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupNavigationController(title: "設定")
+        setupNavigationController(title: "設定", titleColor: .white)
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        case Segue.showLogOutAlert.rawValue:
+            
+            if let vc = segue.destination as? AlertViewController {
+                
+                vc.alertType = .logOutAlert
+                
+                vc.onConfirm = {
+                    
+                    let firebaseAuth = Auth.auth()
+            
+                    do {
+                        try firebaseAuth.signOut()
+                    } catch let signOutError as NSError {
+                        print("Error signing out: %@", signOutError)
+                    }
+                    
+                    if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
+                        
+                        if let sceneDelegate: SceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                            print("app")
+                            sceneDelegate.window?.rootViewController = signinNav
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }
+                    }
+                }
+            }
+            
+        default:
+            break
+        }
+        
     }
     
 }
@@ -53,25 +92,12 @@ extension SettingsViewController: UITableViewDelegate {
         switch (indexPath.section, indexPath.row) {
             
         case (0, 0):
+            
             performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
             
         case (1, 0):
             
-            let firebaseAuth = Auth.auth()
-    
-            do {
-                try firebaseAuth.signOut()
-            } catch let signOutError as NSError {
-                print("Error signing out: %@", signOutError)
-            }
-            
-//            let storyboard = UIStoryboard(name: "Signin", bundle: nil)
-            if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
-                
-                signinNav.modalPresentationStyle = .fullScreen
-                
-                present(signinNav, animated: true, completion: nil)
-            }
+            performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
             
         default:
             break

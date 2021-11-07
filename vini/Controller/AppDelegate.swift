@@ -24,13 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // User Notifications
         UNUserNotificationCenter.current().delegate = self
         
-      
-        
         // Update reflection notification
         NotificationManager.shared.setupNotificationSchedule()
         
-
-
         return true
         
     }
