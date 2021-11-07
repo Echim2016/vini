@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupNavigationController(title: "設定")
+        setupNavigationController(title: "設定", titleColor: .white)
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {

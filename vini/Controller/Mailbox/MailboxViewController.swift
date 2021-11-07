@@ -38,7 +38,7 @@ class MailboxViewController: UIViewController {
         
         fetchMails()
         getReflectionTime()
-        setupNavigationController(title: "收信匣")
+        setupNavigationController(title: "收信匣", titleColor: .white)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

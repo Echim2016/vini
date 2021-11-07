@@ -52,7 +52,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert Message" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiF-Lc-Pe4">
-                                        <rect key="frame" x="20" y="72" width="250" height="22.5"/>
+                                        <rect key="frame" x="20" y="80" width="250" height="22.5"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                     <constraint firstItem="sfa-mh-Yg3" firstAttribute="centerX" secondItem="ZOl-PT-bop" secondAttribute="centerX" id="3Si-ZX-54h"/>
                                     <constraint firstAttribute="height" constant="250" id="97w-L8-qlW"/>
                                     <constraint firstAttribute="bottom" secondItem="sfa-mh-Yg3" secondAttribute="bottom" constant="15" id="FCi-b2-Ab9"/>
-                                    <constraint firstItem="oiF-Lc-Pe4" firstAttribute="top" secondItem="aPU-QN-5sw" secondAttribute="bottom" constant="8" id="Lor-s5-eHw"/>
+                                    <constraint firstItem="oiF-Lc-Pe4" firstAttribute="top" secondItem="aPU-QN-5sw" secondAttribute="bottom" constant="16" id="Lor-s5-eHw"/>
                                     <constraint firstItem="1e0-ay-HAJ" firstAttribute="width" secondItem="ZOl-PT-bop" secondAttribute="width" multiplier="0.3" id="TeB-aL-b4b"/>
                                     <constraint firstItem="oiF-Lc-Pe4" firstAttribute="leading" secondItem="ZOl-PT-bop" secondAttribute="leading" constant="20" id="Y6o-AA-59R"/>
                                     <constraint firstItem="aPU-QN-5sw" firstAttribute="centerX" secondItem="ZOl-PT-bop" secondAttribute="centerX" id="kAp-Qv-too"/>

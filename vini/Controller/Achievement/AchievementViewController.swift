@@ -34,7 +34,7 @@ class AchievementViewController: UIViewController {
         
         tableView.registerCellWithNib(identifier: ArchivedCardCell.identifier, bundle: nil)
         
-        setupNavigationController(title: "成就")
+        setupNavigationController(title: "成就", titleColor: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
