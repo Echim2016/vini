@@ -350,10 +350,10 @@ extension SignupViewController {
     
     func redirectToHomePage() {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let homeVC = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+        let storyboard = UIStoryboard.main
+        if let homeVC = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.main.rawValue) as? UITabBarController {
             
-            homeVC.modalPresentationStyle = .fullScreen
+            homeVC.modalPresentationStyle = .custom
             homeVC.modalTransitionStyle = .crossDissolve
             
             self.present(homeVC, animated: true, completion: nil)

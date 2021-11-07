@@ -32,8 +32,8 @@ class SigninViewController: UIViewController {
         setupSignInButton()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         setupBackgroundView()
     }
@@ -41,10 +41,6 @@ class SigninViewController: UIViewController {
     @objc func handleSignInWithAppleTapped() {
         
         performSignIn()
-    }
-    
-    @IBAction func tapTransitionButton(_ sender: Any) {
-        
     }
     
     func performSignIn() {

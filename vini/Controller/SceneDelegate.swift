@@ -30,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else {
             
-            if let signinVC = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? SigninViewController {
+            if let signinVC = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
                 
                 window?.rootViewController = signinVC
                 window?.makeKeyAndVisible()
