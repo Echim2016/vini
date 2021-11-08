@@ -20,7 +20,7 @@ class MailManager {
         if let userID = UserManager.shared.userID {
             
             let ref = db.collection("Mailboxes").document(userID)
-            ref.collection("Mails").getDocuments() { (querySnapshot, error) in
+            ref.collection("Mails").order(by: "sent_time", descending: true).getDocuments() { (querySnapshot, error) in
         
                 if let error = error {
                     
