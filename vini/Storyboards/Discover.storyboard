@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK1-yi-9no">
-                                <rect key="frame" x="62" y="103" width="290" height="580"/>
+                                <rect key="frame" x="62" y="103" width="290" height="652.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
@@ -89,15 +89,21 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="raX-Lh-Emm" secondAttribute="leading" constant="80" id="b0N-ZG-nV1"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-8" id="fZ2-sm-7y4"/>
-                            <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.8" id="med-Ff-uyj"/>
+                            <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.9" id="med-Ff-uyj"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="map.fill" catalog="system" id="gTu-ih-TBe">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapMapButton:" destination="Y6W-OH-hqX" id="pvQ-Bx-fPj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="person.fill" catalog="system" style="plain" id="Z7g-ND-v2I">
-                            <color key="tintColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" id="Gxy-Fa-FLN"/>
                             </connections>
@@ -114,11 +120,12 @@
                         <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
                         <segue destination="mYz-9F-MJZ" kind="presentation" identifier="ShowProfileSetting" id="5QQ-b6-FJo"/>
                         <segue destination="uU4-Kf-FoS" kind="presentation" identifier="ShowSendMailPage" id="3sJ-e1-wwm"/>
+                        <segue destination="wmy-Y4-1zY" kind="presentation" identifier="ShowMap" id="xWZ-re-9Fa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952.1739130434785" y="116.51785714285714"/>
+            <point key="canvasLocation" x="1912" y="117"/>
         </scene>
         <!--Send Mail View Controller-->
         <scene sceneID="IJ0-76-XeH">
@@ -210,7 +217,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="865"/>
+            <point key="canvasLocation" x="1912" y="889"/>
+        </scene>
+        <!--DiscoverMap-->
+        <scene sceneID="Qxw-MA-Hjt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DiscoverMap" id="wmy-Y4-1zY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OOv-uw-733" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2460" y="-298"/>
         </scene>
         <!--Set Profile View Controller-->
         <scene sceneID="deg-u7-xvh">
@@ -364,6 +379,7 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
         <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>

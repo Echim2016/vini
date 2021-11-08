@@ -14,6 +14,7 @@ class DiscoverViewController: UIViewController {
         
         case showProfileSetting = "ShowProfileSetting"
         case showSendMailPage = "ShowSendMailPage"
+        case showMap = "ShowMap"
     }
     
     @IBOutlet weak var backgroundRectView: UIView!
@@ -37,7 +38,7 @@ class DiscoverViewController: UIViewController {
         
         mapView.isUserInteractionEnabled = true
         
-        setupBackgroundRectView()
+//        setupBackgroundRectView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,12 @@ class DiscoverViewController: UIViewController {
         
         view.bringSubviewToFront(headerView)
         view.bringSubviewToFront(mediumCloudImageView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        setupBackgroundRectView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -132,6 +139,11 @@ class DiscoverViewController: UIViewController {
     @IBAction func tapSendMailButton(_ sender: Any) {
         
         performSegue(withIdentifier: Segue.showSendMailPage.rawValue, sender: nil)
+    }
+    
+    @IBAction func tapMapButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showMap.rawValue, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
