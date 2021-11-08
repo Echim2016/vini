@@ -19,8 +19,6 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var backgroundRectView: UIView!
     @IBOutlet weak var bigCloudImageView: UIImageView!
     @IBOutlet weak var mediumCloudImageView: UIImageView!
-    
-
     @IBOutlet weak var backgroundRectWidth: NSLayoutConstraint!
     
     let mapView = MapScrollView()
@@ -46,7 +44,7 @@ class DiscoverViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupMapScrollView()
-        setupNavigationController(title: "探索")
+        setupNavigationController(title: "探索", titleColor: .white)
         fetchUserInfo()
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20

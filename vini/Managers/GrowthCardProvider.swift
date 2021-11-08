@@ -15,34 +15,39 @@ class GrowthCardProvider {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
+    func fetchData(isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
         
-        db.collection("Growth_Cards").whereField("is_archived", isEqualTo: false).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+        if let userID = UserManager.shared.userID {
             
-            if let error = error {
-                
-                completion(.failure(error))
-            } else {
-                
-                var growthCards = [GrowthCard]()
-                
-                for document in querySnapshot!.documents {
+            // swiftlint:disable line_length
+            db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+                // swiftlint:able line_length
+                if let error = error {
                     
-                    do {
-                        if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
+                    completion(.failure(error))
+                } else {
+                    
+                    var growthCards = [GrowthCard]()
+                    
+                    for document in querySnapshot!.documents {
+                        
+                        do {
+                            if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
+                                
+                                growthCards.append(growthCard)
+                            }
                             
-                            growthCards.append(growthCard)
+                        } catch {
+                            
+                            completion(.failure(error))
                         }
-                        
-                    } catch {
-                        
-                        completion(.failure(error))
                     }
+                    
+                    completion(.success(growthCards))
                 }
-                
-                completion(.success(growthCards))
             }
         }
+        
     }
     
     func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {
@@ -150,6 +155,26 @@ class GrowthCardProvider {
         let updateDict = [
             "is_archived": true,
             "archived_time": Timestamp(date: Date())
+        ] as [String : Any]
+        
+        document.updateData(updateDict) { error in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("Success"))
+            }
+        }
+    }
+    
+    func unarchiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        let document = db.collection("Growth_Cards").document(id)
+        
+        let updateDict = [
+            "is_archived": false
         ] as [String : Any]
         
         document.updateData(updateDict) { error in

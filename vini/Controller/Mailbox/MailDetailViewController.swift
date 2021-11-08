@@ -54,11 +54,9 @@ extension MailDetailViewController {
     
     func updateReadStatus() {
         
-        if mail.readTimestamp == nil,
-           let userID = userDefault.value(forKey: "id") as? String {
+        if mail.readTimestamp == nil {
             
             MailManager.shared.updateReadTime(
-                userID: userID,
                 mailID: mail.id
             ) { result in
                 switch result {
@@ -76,21 +74,16 @@ extension MailDetailViewController {
     
     func deleteMail() {
         
-        if let userID = userDefault.value(forKey: "id") as? String {
-            
-            MailManager.shared.deleteMail(
-                userID: userID,
-                mailID: mail.id) { result in
-                    switch result {
-                    case .success:
-                        
-                        self.navigationController?.popViewController(animated: true)
-                        
-                    case .failure(let error):
-                        
-                        print(error)
-                    }
-                }
+        MailManager.shared.deleteMail(mailID: mail.id) { result in
+            switch result {
+            case .success:
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
         }
         
     }
@@ -135,7 +128,7 @@ extension MailDetailViewController: UITableViewDataSource {
 
             cell.setupCell(
                 senderName: mail.senderDisplayName,
-                title: mail.sentTime?.toString() ?? "",
+                title: mail.sentTime?.toString(format: .mailFormat) ?? "",
                 image: mail.senderViniType
             )
             

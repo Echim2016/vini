@@ -13,6 +13,9 @@ class GrowthPageViewController: UIViewController {
         
         case showGrowthCapture = "ShowGrowthCapture"
         case createNewGrowthCard = "CreateNewGrowthCard"
+        case showReflectionAlert = "ShowReflectionAlert"
+        case showReflectionPage = "ShowReflectionPage"
+
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -25,7 +28,9 @@ class GrowthPageViewController: UIViewController {
     
     var data: [GrowthCard] = []
     
-    let userDefault = UserDefaults.standard
+    var reflectionHour = 23
+    
+//    let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +41,43 @@ class GrowthPageViewController: UIViewController {
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
-        fetchGrowthCards()
+//        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
         
-        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
+//        fetchGrowthCards()
+        
+        getReflectionTime()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchGrowthCards()
+    }
+    
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
         performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
     }
     
+    @IBAction func tapReflectionButton(_ sender: Any) {
+    
+        let currentHour = Calendar.current.component(.hour, from: Date())
+
+        if currentHour != reflectionHour {
+            
+            performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
+        } else {
+            
+            performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)
+        }
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alertController = segue.destination as? AlertViewController {
+            
+            alertController.alertType = .reflectionTimeAlert
+        }
         
         if let navigationController = segue.destination as? UINavigationController,
            let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
@@ -66,7 +98,7 @@ class GrowthPageViewController: UIViewController {
             case Segue.createNewGrowthCard.rawValue:
                 
                 growthCaptureVC.isInCreateCardMode = true
-
+                
             default:
                 break
             }
@@ -90,7 +122,7 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
-        GrowthCardProvider.shared.fetchData { result in
+        GrowthCardProvider.shared.fetchData(isArchived: false) { result in
             
             switch result {
             case .success(let cards):
@@ -110,7 +142,7 @@ extension GrowthPageViewController {
         GrowthCardProvider.shared.deleteGrowthCard(id: id) { result in
             
             switch result {
-            case .success(let success):
+            case .success(_):
                 
                 completion(true)
                 
@@ -118,6 +150,21 @@ extension GrowthPageViewController {
                 
                 print(error)
                 completion(false)
+            }
+        }
+    }
+    
+    private func getReflectionTime() {
+        
+        MailManager.shared.getReflectionTime { result in
+            switch result {
+            case .success(let hour):
+                
+                self.reflectionHour = hour
+                
+            case .failure(let error):
+                
+                print(error)
             }
         }
     }

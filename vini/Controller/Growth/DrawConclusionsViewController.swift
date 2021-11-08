@@ -39,6 +39,10 @@ class DrawConclusionsViewController: UIViewController {
         
         setupNavBar()
         
+        setupNavigationController(title: "我的學習結論", titleColor: .B2)
+        
+        navigationController?.navigationBar.titleTextAttributes
+        
         fetchConclusion()
     }
     
@@ -96,14 +100,17 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        
+        conclusionHasEdited = true
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         
         guard let text = textView.text,
               !text.isEmpty else {
                   return
               }
-        
-        conclusionHasEdited = true
         
         switch textView {
         case conclusionTextView:

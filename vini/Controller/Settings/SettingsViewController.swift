@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
     
     private enum Segue: String {
         
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
+        
+        case showLogOutAlert = "ShowLogOutAlert"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -21,9 +24,9 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    var sections: [SettingsSection] = [.notificationSettings]
+    var sections: [SettingsSection] = [.notificationSettings, .accountSettings]
     
-    var rowTitles: [[String]] = [["每日反思時間"]]
+    var rowTitles: [[String]] = [["每日反思時間"], ["登出"]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +38,49 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupNavigationController(title: "設定")
+        setupNavigationController(title: "設定", titleColor: .white)
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        case Segue.showLogOutAlert.rawValue:
+            
+            if let vc = segue.destination as? AlertViewController {
+                
+                vc.alertType = .logOutAlert
+                
+                vc.onConfirm = {
+                    
+                    let firebaseAuth = Auth.auth()
+            
+                    do {
+                        try firebaseAuth.signOut()
+                    } catch let signOutError as NSError {
+                        print("Error signing out: %@", signOutError)
+                    }
+                    
+                    if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
+                        
+                        if let sceneDelegate: SceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                            print("app")
+                            sceneDelegate.window?.rootViewController = signinNav
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }
+                    }
+                }
+            }
+            
+        default:
+            break
+        }
+        
     }
     
 }
@@ -49,7 +89,20 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
+        switch (indexPath.section, indexPath.row) {
+            
+        case (0, 0):
+            
+            performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
+            
+        case (1, 0):
+            
+            performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
+            
+        default:
+            break
+            
+        }
     }
     
 }

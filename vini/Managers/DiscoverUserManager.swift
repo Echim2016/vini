@@ -51,56 +51,63 @@ class DiscoverUserManager {
         }
     }
     
-    func updateUserStatus(id: String, wondering: String, name: String, viniType: String, isOn: Bool, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateUserStatus(wondering: String, name: String, viniType: String, isOn: Bool, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Users").document(id)
-        
-        let updateDict = [
-            "display_name": name,
-            "wondering": wondering,
-            "vini_type": viniType,
-            "is_published": isOn
-        ] as [String: Any]
-        
-        document.updateData(updateDict) { error in
+        if let userID = UserManager.shared.userID {
             
-            if let error = error {
+            let document = db.collection("Users").document(userID)
+            
+            let updateDict = [
+                "display_name": name,
+                "wondering": wondering,
+                "vini_type": viniType,
+                "is_published": isOn
+            ] as [String: Any]
+            
+            document.updateData(updateDict) { error in
                 
-                completion(.failure(error))
-            } else {
-                
-                completion(.success("Success"))
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Success"))
+                }
             }
         }
+        
     }
     
-    func fetchUserProfile(id: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func fetchUserProfile(completion: @escaping (Result<User, Error>) -> Void) {
         
-        db.collection("Users").document(id).getDocument { (document, error) in
+        if let userID = UserManager.shared.userID {
             
-            if let error = error {
+            db.collection("Users").document(userID).getDocument { (document, error) in
                 
-                completion(.failure(error))
-            } else {
-                
-                if let document = document {
+                if let error = error {
                     
-                    var user = User()
+                    completion(.failure(error))
+                } else {
                     
-                    do {
-                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                    if let document = document {
+                        
+                        var user = User()
+                        
+                        do {
+                            if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                                
+                                user = userInfo
+                            }
                             
-                            user = userInfo
+                        } catch {
+                            
+                            completion(.failure(error))
                         }
                         
-                    } catch {
-                        
-                        completion(.failure(error))
+                        completion(.success(user))
                     }
                     
-                    completion(.success(user))
                 }
-                
             }
         }
     }

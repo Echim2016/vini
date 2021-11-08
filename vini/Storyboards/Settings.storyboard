@@ -42,11 +42,20 @@
                     <connections>
                         <outlet property="tableView" destination="KzP-cJ-Gyv" id="V95-g0-B4U"/>
                         <segue destination="Skc-NN-kdY" kind="presentation" identifier="ShowReflectionTimeSetting" animates="NO" id="4Lj-PC-rOB"/>
+                        <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="97.767857142857139"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="rHd-xO-gDM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="rdC-1a-42Z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlh-QA-heV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="98"/>
         </scene>
         <!--TimePicker-->
         <scene sceneID="elx-sb-8AH">
