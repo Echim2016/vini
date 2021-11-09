@@ -15,9 +15,9 @@ class DiscoverUserManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(completion: @escaping (Result<[ViniView], Error>) -> Void) {
+    func fetchData(category: String, completion: @escaping (Result<[ViniView], Error>) -> Void) {
         
-        db.collection("Users").whereField("is_published", isEqualTo: true).getDocuments() { (querySnapshot, error) in
+        db.collection("Users").whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 

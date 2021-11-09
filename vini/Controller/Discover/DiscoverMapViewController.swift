@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol CloudCategoryProtocol: AnyObject {
+    
+    func didSelectCloudCategory(_ category: CloudCategory)
+}
+
 class DiscoverMapViewController: UIViewController {
 
     @IBOutlet weak var modalBackgroundView: UIView!
@@ -17,6 +22,7 @@ class DiscoverMapViewController: UIViewController {
             collectionView.dataSource = self
             collectionView.isPagingEnabled = true
             collectionView.isScrollEnabled = false
+            collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.5)
         }
     }
     @IBOutlet weak var leftArrowButton: UIButton!
@@ -25,24 +31,32 @@ class DiscoverMapViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     
-    var currentSelectedIndex: CGFloat = 0 {
+    weak var delegate: CloudCategoryProtocol?
+    
+    var currentSelectedCategory: CloudCategory = .career
+    
+    var currentSelectedIndex: Int = 0 {
         didSet {
             
-            if currentSelectedIndex > 3 {
-                currentSelectedIndex = 3
-            }
-            
-            if currentSelectedIndex < 0 {
+            if currentSelectedIndex > mapCategory.count - 1 {
                 currentSelectedIndex = 0
             }
             
+            if currentSelectedIndex < 0 {
+                currentSelectedIndex = mapCategory.count - 1
+            }
+                        
+            currentSelectedCategory = mapCategory[currentSelectedIndex]
+                        
             let contenOffset = CGPoint(
-                x: collectionView.frame.width * currentSelectedIndex,
+                x: collectionView.frame.width * CGFloat(currentSelectedIndex),
                 y: collectionView.contentOffset.y)
             
-            collectionView.setContentOffset(contenOffset, animated: true)
+            collectionView.setContentOffset(contenOffset, animated: false)
         }
     }
+    
+    let mapCategory: [CloudCategory] = CloudCategory.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,18 +75,17 @@ class DiscoverMapViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         setupCollectionViewLayout()
+        currentSelectedIndex = mapCategory.firstIndex(of: currentSelectedCategory) ?? 0
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        currentSelectedIndex = 0
-    }
-    
     
     @IBAction func tapLeftArrowButton(_ sender: Any) {
         
@@ -84,7 +97,6 @@ class DiscoverMapViewController: UIViewController {
         currentSelectedIndex += 1
     }
     
-    
     @IBAction func tapCancelButton(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
@@ -92,6 +104,7 @@ class DiscoverMapViewController: UIViewController {
     
     @IBAction func tapConfirmButton(_ sender: Any) {
         
+        delegate?.didSelectCloudCategory(currentSelectedCategory)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -99,38 +112,33 @@ class DiscoverMapViewController: UIViewController {
 
 extension DiscoverMapViewController: UICollectionViewDelegate {
     
-   
-    
 }
 
 extension DiscoverMapViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        mapCategory.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: MapCategoryCell.self),
+            withReuseIdentifier: String(describing: CloudCategoryCell.self),
             for: indexPath
         )
 
-        guard let mapCell = cell as? MapCategoryCell else {
+        guard let mapCell = cell as? CloudCategoryCell else {
             return cell
         }
         
-        if indexPath.row == 1 {
-            mapCell.mapBackgroundView.backgroundColor = .S1
-        }
-        
+        mapCell.setupCell(category: mapCategory[indexPath.row])
+
         return mapCell
     }
-    
     
     func setupCollectionViewLayout() {
         
         collectionView.registerCellWithNib(
-            identifier: String(describing: MapCategoryCell.self),
+            identifier: String(describing: CloudCategoryCell.self),
             bundle: nil
         )
                 

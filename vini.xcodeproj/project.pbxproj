@@ -58,9 +58,10 @@
 		9C697F272737DB1000EDBBCB /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F262737DB1000EDBBCB /* Alert.swift */; };
 		9C697F2B27391C8A00EDBBCB /* DiscoverMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F2A27391C8A00EDBBCB /* DiscoverMapViewController.swift */; };
 		9C697F2D27391D0800EDBBCB /* DiscoverMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F2C27391D0800EDBBCB /* DiscoverMap.storyboard */; };
-		9C697F3027391F3200EDBBCB /* MapCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F2E27391F3200EDBBCB /* MapCategoryCell.swift */; };
-		9C697F3127391F3200EDBBCB /* MapCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F2F27391F3200EDBBCB /* MapCategoryCell.xib */; };
-		9C697F33273938D100EDBBCB /* DiscoverMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F32273938D100EDBBCB /* DiscoverMap.swift */; };
+		9C697F3027391F3200EDBBCB /* CloudCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F2E27391F3200EDBBCB /* CloudCategoryCell.swift */; };
+		9C697F3127391F3200EDBBCB /* CloudCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F2F27391F3200EDBBCB /* CloudCategoryCell.xib */; };
+		9C697F33273938D100EDBBCB /* CloudCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F32273938D100EDBBCB /* CloudCategory.swift */; };
+		9C697F35273A22BA00EDBBCB /* CaseIterable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */; };
 		9C6C3D922733A83D00F45247 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C3D912733A83D00F45247 /* SignIn.storyboard */; };
 		9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D942733A85A00F45247 /* SigninViewController.swift */; };
 		9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C3D982733D4DC00F45247 /* UserManager.swift */; };
@@ -166,9 +167,10 @@
 		9C697F262737DB1000EDBBCB /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		9C697F2A27391C8A00EDBBCB /* DiscoverMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverMapViewController.swift; sourceTree = "<group>"; };
 		9C697F2C27391D0800EDBBCB /* DiscoverMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverMap.storyboard; sourceTree = "<group>"; };
-		9C697F2E27391F3200EDBBCB /* MapCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCategoryCell.swift; sourceTree = "<group>"; };
-		9C697F2F27391F3200EDBBCB /* MapCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCategoryCell.xib; sourceTree = "<group>"; };
-		9C697F32273938D100EDBBCB /* DiscoverMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscoverMap.swift; path = vini/View/Discover/DiscoverMap.swift; sourceTree = SOURCE_ROOT; };
+		9C697F2E27391F3200EDBBCB /* CloudCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudCategoryCell.swift; sourceTree = "<group>"; };
+		9C697F2F27391F3200EDBBCB /* CloudCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CloudCategoryCell.xib; sourceTree = "<group>"; };
+		9C697F32273938D100EDBBCB /* CloudCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudCategory.swift; path = vini/View/Discover/CloudCategory.swift; sourceTree = SOURCE_ROOT; };
+		9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extension.swift"; sourceTree = "<group>"; };
 		9C6C3D912733A83D00F45247 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		9C6C3D942733A85A00F45247 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		9C6C3D962733A90300F45247 /* vini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vini.entitlements; sourceTree = "<group>"; };
@@ -425,8 +427,8 @@
 				9CEAC5122728060C00C98B96 /* ViniView.swift */,
 				9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */,
 				9CEE9D9D27295084006CCA06 /* SetProfileCell.xib */,
-				9C697F2E27391F3200EDBBCB /* MapCategoryCell.swift */,
-				9C697F2F27391F3200EDBBCB /* MapCategoryCell.xib */,
+				9C697F2E27391F3200EDBBCB /* CloudCategoryCell.swift */,
+				9C697F2F27391F3200EDBBCB /* CloudCategoryCell.xib */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -528,6 +530,7 @@
 				9C9E93B32730D49400FA3773 /* UICollectionView+Extension.swift */,
 				9C840CB727323B4200AF3F73 /* Date+Extension.swift */,
 				9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */,
+				9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -613,7 +616,7 @@
 		9CEE9DB6272BD571006CCA06 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				9C697F32273938D100EDBBCB /* DiscoverMap.swift */,
+				9C697F32273938D100EDBBCB /* CloudCategory.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -722,7 +725,7 @@
 				9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */,
 				9C021D57272E53C6009A7581 /* TimePicker.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
-				9C697F3127391F3200EDBBCB /* MapCategoryCell.xib in Resources */,
+				9C697F3127391F3200EDBBCB /* CloudCategoryCell.xib in Resources */,
 				9C51A3CC273277B200F85CE4 /* ReflectionPracticeCell.xib in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9C021D52272E40FB009A7581 /* SettingsItemCell.xib in Resources */,
@@ -840,6 +843,7 @@
 				9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */,
 				9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
+				9C697F35273A22BA00EDBBCB /* CaseIterable+Extension.swift in Sources */,
 				9C021D43272D4189009A7581 /* MailContentCell.swift in Sources */,
 				9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */,
 				9C021D4C272D96DA009A7581 /* SettingsViewController.swift in Sources */,
@@ -853,7 +857,7 @@
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,
 				9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */,
-				9C697F3027391F3200EDBBCB /* MapCategoryCell.swift in Sources */,
+				9C697F3027391F3200EDBBCB /* CloudCategoryCell.swift in Sources */,
 				9C697F272737DB1000EDBBCB /* Alert.swift in Sources */,
 				9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */,
 				9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */,
@@ -868,7 +872,7 @@
 				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,
 				9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
-				9C697F33273938D100EDBBCB /* DiscoverMap.swift in Sources */,
+				9C697F33273938D100EDBBCB /* CloudCategory.swift in Sources */,
 				9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */,
 				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,
 				9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */,
