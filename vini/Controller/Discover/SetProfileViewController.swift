@@ -33,6 +33,7 @@ class SetProfileViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
+            tableView.showsVerticalScrollIndicator = false
         }
     }
     
@@ -47,9 +48,22 @@ class SetProfileViewController: UIViewController {
             self.viniImageView.image = UIImage(named: user.viniType)
             let types = viniAssets.map { $0.name }
             self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
+            self.selectedIndex = cloudCategorySelection.firstIndex(where: { item in
+                item.category.category == user.cloudCategory
+            }) ?? 0
+            cloudCategorySelection[selectedIndex].isChecked = true
             self.tableView.reloadData()
         }
     }
+    
+    var cloudCategorySelection: [CloudCategorySelection] = [
+        CloudCategorySelection(category: CloudCategory.career),
+        CloudCategorySelection(category: CloudCategory.relationship),
+        CloudCategorySelection(category: CloudCategory.selfGrowth),
+        CloudCategorySelection(category: CloudCategory.lifestyle)
+    ]
+    
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,17 +71,26 @@ class SetProfileViewController: UIViewController {
         self.isModalInPresentation = true
         
         tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: SetCloudCategoryTitleCell.identifier, bundle: nil)
+        tableView.registerCellWithNib(identifier: SetCloudCategoryCell.identifier, bundle: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viniImageView.float(duration: 0.5)
+        viniImageView.float(duration: 0.9)
         viniSelectorView.setBottomCurve()
         fetchProfile()
-
     }
 
+    @IBAction func tapSwitch(_ sender: Any) {
+    
+        if sender is UISwitch {
+            
+            tableView.reloadData()
+        }
+    }
+    
     @IBAction func tapDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -118,7 +141,8 @@ extension SetProfileViewController {
             wondering: user.wondering,
             name: user.displayName,
             viniType: viniAssets[currentViniIndex].name,
-            isOn: isPublishedSwitch.isOn
+            isOn: isPublishedSwitch.isOn,
+            category: cloudCategorySelection[selectedIndex].category.category
         ) { result in
             
             switch result {
@@ -136,12 +160,30 @@ extension SetProfileViewController {
 
 extension SetProfileViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+            
+        case 3...6:
+            
+            let lastIndexPath = IndexPath(row: selectedIndex + 3, section: 0)
+            cloudCategorySelection[selectedIndex].isChecked = false
+            cloudCategorySelection[indexPath.row - 3].isChecked = true
+            selectedIndex = indexPath.row - 3
+            tableView.reloadRows(at: [lastIndexPath, indexPath], with: .none)
+            
+        default:
+            break
+        }
+        
+    }
+    
 }
 
 extension SetProfileViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        3 + cloudCategorySelection.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -152,33 +194,80 @@ extension SetProfileViewController: UITableViewDataSource {
         100
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        80
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        UIView()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SetProfileCell.identifier,
-            for: indexPath
-        ) as? SetProfileCell else {
-            fatalError()
-        }
         
         switch indexPath.row {
             
         case 0:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SetProfileCell.identifier,
+                for: indexPath
+            ) as? SetProfileCell else {
+                fatalError()
+            }
             cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
+            cell.textView.delegate = self
             cell.textView.accessibilityLabel = "wondering"
             cell.textView.text = user.wondering
+            cell.isHidden = !isPublishedSwitch.isOn
+            return cell
             
         case 1:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SetProfileCell.identifier,
+                for: indexPath
+            ) as? SetProfileCell else {
+                fatalError()
+            }
             cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Cloud 裡面的名稱")
+            cell.textView.delegate = self
             cell.textView.accessibilityLabel = "displayName"
             cell.textView.text = user.displayName
+            cell.isHidden = !isPublishedSwitch.isOn
+
+            return cell
+            
+        case 2:
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SetCloudCategoryTitleCell.identifier,
+                for: indexPath
+            ) as? SetCloudCategoryTitleCell else {
+                fatalError()
+            }
+            cell.isHidden = !isPublishedSwitch.isOn
+
+            return cell
+            
+        case 3...6:
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SetCloudCategoryCell.identifier,
+                for: indexPath
+            ) as? SetCloudCategoryCell else {
+                fatalError()
+            }
+            
+            cell.setupCell(
+                title: cloudCategorySelection[indexPath.row - 3].category.title,
+                isChecked: cloudCategorySelection[indexPath.row - 3].isChecked
+            )
+            cell.isHidden = !isPublishedSwitch.isOn
+
+            return cell
+
         default:
-            break
+            return UITableViewCell()
         }
         
-        cell.textView.delegate = self
-        
-        return cell
     }
     
 }
@@ -207,5 +296,4 @@ extension SetProfileViewController: UITextViewDelegate {
             break
         }
     }
-
 }
