@@ -24,7 +24,7 @@ class DiscoverViewController: UIViewController {
     
     let mapView = MapScrollView()
     
-    var cloudCategory: CloudCategory = .career
+    var cloudCategory: CloudCategory = .selfGrowth
     
     private var infoOfUsers: [ViniView] = []
         
