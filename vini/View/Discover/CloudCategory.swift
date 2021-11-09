@@ -97,3 +97,15 @@ enum CloudCategory: Int, CaseIterable {
     }
     
 }
+
+struct CloudCategorySelection {
+    
+    var category: CloudCategory
+    var isChecked: Bool
+    
+    init(category: CloudCategory, isChecked: Bool = false) {
+        
+        self.category = category
+        self.isChecked = isChecked
+    }
+}

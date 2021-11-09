@@ -51,7 +51,7 @@ class DiscoverUserManager {
         }
     }
     
-    func updateUserStatus(wondering: String, name: String, viniType: String, isOn: Bool, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateUserStatus(wondering: String, name: String, viniType: String, isOn: Bool, category: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
@@ -61,6 +61,7 @@ class DiscoverUserManager {
                 "display_name": name,
                 "wondering": wondering,
                 "vini_type": viniType,
+                "cloud_category": category,
                 "is_published": isOn
             ] as [String: Any]
             
