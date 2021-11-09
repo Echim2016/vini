@@ -83,6 +83,14 @@ class SetProfileViewController: UIViewController {
         fetchProfile()
     }
 
+    @IBAction func tapSwitch(_ sender: Any) {
+    
+        if sender is UISwitch {
+            
+            tableView.reloadData()
+        }
+    }
+    
     @IBAction func tapDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -187,7 +195,7 @@ extension SetProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        50
+        80
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -209,6 +217,7 @@ extension SetProfileViewController: UITableViewDataSource {
             cell.textView.delegate = self
             cell.textView.accessibilityLabel = "wondering"
             cell.textView.text = user.wondering
+            cell.isHidden = !isPublishedSwitch.isOn
             return cell
             
         case 1:
@@ -222,6 +231,8 @@ extension SetProfileViewController: UITableViewDataSource {
             cell.textView.delegate = self
             cell.textView.accessibilityLabel = "displayName"
             cell.textView.text = user.displayName
+            cell.isHidden = !isPublishedSwitch.isOn
+
             return cell
             
         case 2:
@@ -232,6 +243,8 @@ extension SetProfileViewController: UITableViewDataSource {
             ) as? SetCloudCategoryTitleCell else {
                 fatalError()
             }
+            cell.isHidden = !isPublishedSwitch.isOn
+
             return cell
             
         case 3...6:
@@ -247,7 +260,8 @@ extension SetProfileViewController: UITableViewDataSource {
                 title: cloudCategorySelection[indexPath.row - 3].category.title,
                 isChecked: cloudCategorySelection[indexPath.row - 3].isChecked
             )
-            
+            cell.isHidden = !isPublishedSwitch.isOn
+
             return cell
 
         default:
@@ -282,5 +296,4 @@ extension SetProfileViewController: UITextViewDelegate {
             break
         }
     }
-
 }

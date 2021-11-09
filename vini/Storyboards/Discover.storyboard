@@ -283,6 +283,9 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgd-iJ-jtv">
                                                     <rect key="frame" x="128" y="0.0" width="51" height="31"/>
                                                     <color key="onTintColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <connections>
+                                                        <action selector="tapSwitch:" destination="mYz-9F-MJZ" eventType="valueChanged" id="UvU-n9-aU4"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </stackView>
