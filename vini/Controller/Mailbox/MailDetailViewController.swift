@@ -10,6 +10,12 @@ import RSKPlaceholderTextView
 
 class MailDetailViewController: UIViewController {
     
+    private enum Segue: String {
+        
+        case showBlockAlert = "ShowBlockAlert"
+        case showDeleteAlert = "ShowDeleteAlert"
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -45,9 +51,44 @@ class MailDetailViewController: UIViewController {
     
     @IBAction func tapDeleteButton(_ sender: Any) {
         
-        deleteMail()
+        showDeleteMailAlert()
     }
     
+    @IBAction func tapBlockUser(_ sender: Any) {
+        
+        showBlockUserAlert()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            switch segue.identifier {
+                
+            case Segue.showBlockAlert.rawValue:
+                
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
+                }
+                
+            case Segue.showDeleteAlert.rawValue:
+                
+                alert.alertType = .deleteMailAlert
+                alert.onConfirm = {
+                    
+                    self.deleteMail()
+                }
+                
+            default:
+                break
+                
+            }
+            
+        }
+
+    }
 }
 
 extension MailDetailViewController {
@@ -85,7 +126,32 @@ extension MailDetailViewController {
                 print(error)
             }
         }
+    }
+    
+    func showDeleteMailAlert() {
         
+        performSegue(withIdentifier: Segue.showDeleteAlert.rawValue, sender: nil)
+    }
+    
+    func showBlockUserAlert() {
+        
+        performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: nil)
+    }
+    
+    func blockUser() {
+        
+        UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
+            
+            switch result {
+            case .success:
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
 }
 

@@ -23,20 +23,29 @@ class MailboxViewController: UIViewController {
         }
     }
     
-    var mails: [Mail] = []
+    var mails: [Mail] = [] {
+        didSet {
+            remindsLabel.isHidden = !mails.isEmpty
+        }
+    }
         
     var preferredReflectionTime: Int = 23
+    
+    var userBlockList: [String] = []
+    
+    @IBOutlet weak var remindsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mails = []
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchMails()
+        fetchMailsWithoutBlockList()
         getReflectionTime()
         setupNavigationController(title: "收信匣", titleColor: .white)
     }
@@ -61,9 +70,28 @@ class MailboxViewController: UIViewController {
 
 extension MailboxViewController {
     
-    func fetchMails() {
+    func fetchMailsWithoutBlockList() {
         
-        MailManager.shared.fetchData() { result in
+        DiscoverUserManager.shared.fetchUserProfile { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.userBlockList = user.blockList
+                self.fetchMails(blockList: self.userBlockList)
+                
+            case.failure(let error):
+                
+                print(error)
+                
+            }
+        }
+    }
+    
+    func fetchMails(blockList: [String]) {
+        
+        MailManager.shared.fetchData(blockList: blockList) { result in
             switch result {
             case .success(let mails):
                 
@@ -72,6 +100,7 @@ extension MailboxViewController {
                 
             case .failure(let error):
                 
+                self.mails = []
                 print(error)
             }
         }

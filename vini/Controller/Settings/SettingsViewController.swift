@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
         
         case showLogOutAlert = "ShowLogOutAlert"
+        
+        case showBlockList = "ShowBlockList"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -26,13 +28,14 @@ class SettingsViewController: UIViewController {
     
     var sections: [SettingsSection] = [.notificationSettings, .accountSettings]
     
-    var rowTitles: [[String]] = [["每日反思時間"], ["登出"]]
+    var rowTitles: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: SettingsItemCell.identifier, bundle: nil)
-
+        
+        rowTitles = sections.map { $0.settingItems }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +98,12 @@ extension SettingsViewController: UITableViewDelegate {
             
             performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
             
+            
         case (1, 0):
+            
+            performSegue(withIdentifier: Segue.showBlockList.rawValue, sender: nil)
+            
+        case (1, 1):
             
             performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
             
@@ -110,7 +118,7 @@ extension SettingsViewController: UITableViewDelegate {
 extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        rowTitles[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -17,6 +17,8 @@ class UserManager {
     
     let userID = Auth.auth().currentUser?.uid
     
+    var userBlockList: [String]?
+    
     func createNewUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = db.collection("Users").document(user.id)
@@ -60,6 +62,88 @@ class UserManager {
                 completion(.success(true))
             }
         }
+    }
+    
+    func fetchUser(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        db.collection("Users").document(userID).getDocument { (document, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                if let document = document {
+                    
+                    var user = User()
+                    
+                    do {
+                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
+                            user = userInfo
+                            self.userBlockList = user.blockList
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                    
+                    completion(.success(user))
+                }
+                
+            }
+        }
+        
+    }
+    
+    func blockUser(blockUserID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        if let userID = self.userID {
+            
+            let document = db.collection("Users").document(userID)
+            
+            let updateDict = [
+                "block_list": FieldValue.arrayUnion([blockUserID])
+            ]
+            
+            document.updateData(updateDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    self.userBlockList?.append(blockUserID)
+                    completion(.success(true))
+                }
+            }
+        }
+    }
+    
+    func unblockUser(blockUserID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        if let userID = userID {
+            
+            let document = db.collection("Users").document(userID)
+            
+            let updateDict = [
+                "block_list": FieldValue.arrayRemove([blockUserID])
+            ]
+            
+            document.updateData(updateDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    self.userBlockList?.removeObject(object: blockUserID)
+                    completion(.success(true))
+                }
+            }
+        }
+        
     }
     
 }

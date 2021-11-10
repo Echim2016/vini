@@ -15,7 +15,7 @@ class DiscoverUserManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(category: String, completion: @escaping (Result<[ViniView], Error>) -> Void) {
+    func fetchData(category: String, blockList: [String], completion: @escaping (Result<[ViniView], Error>) -> Void) {
         
         db.collection("Users").whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments() { (querySnapshot, error) in
             
@@ -31,12 +31,16 @@ class DiscoverUserManager {
                     do {
                         if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             
-                            let vini = ViniView()
-                            vini.data.id = userInfo.id
-                            vini.data.name = userInfo.displayName
-                            vini.data.wondering = userInfo.wondering
-                            vini.data.viniType = userInfo.viniType
-                            vinis.append(vini)
+                            if !blockList.contains(userInfo.id) {
+                                
+                                let vini = ViniView()
+                                vini.data.id = userInfo.id
+                                vini.data.name = userInfo.displayName
+                                vini.data.wondering = userInfo.wondering
+                                vini.data.viniType = userInfo.viniType
+                                vinis.append(vini)
+                            }
+                            
                         }
                         
                     } catch {

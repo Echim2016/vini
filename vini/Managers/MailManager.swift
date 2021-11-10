@@ -15,7 +15,7 @@ class MailManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(completion: @escaping (Result<[Mail], Error>) -> Void) {
+    func fetchData(blockList: [String], completion: @escaping (Result<[Mail], Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
@@ -32,7 +32,12 @@ class MailManager {
                         
                         do {
                             if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                                mails.append(mail)
+                                
+                                
+                                if !blockList.contains(mail.senderID) {
+                                    
+                                    mails.append(mail)
+                                }
                             }
                             
                         } catch {

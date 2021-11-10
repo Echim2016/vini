@@ -24,4 +24,16 @@ enum SettingsSection: Int, CaseIterable {
         }
     }
     
+    var settingItems: [String] {
+        
+        switch self {
+            
+        case .notificationSettings:
+            return ["每日反思時間"]
+            
+        case .accountSettings:
+            return ["已封鎖的使用者" ,"登出"]
+        }
+    }
+    
 }
