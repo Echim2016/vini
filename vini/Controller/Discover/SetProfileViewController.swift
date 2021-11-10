@@ -40,14 +40,13 @@ class SetProfileViewController: UIViewController {
     @IBOutlet weak var viniSelectorView: UIView!
     
     @IBOutlet weak var isPublishedSwitch: UISwitch!
+    
+    weak var delegate: DiscoverProtocol?
         
     var user: User = User() {
         didSet {
     
             self.isPublishedSwitch.isOn = user.isPublished
-            self.viniImageView.image = UIImage(named: user.viniType)
-            let types = viniAssets.map { $0.name }
-            self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
             self.selectedIndex = cloudCategorySelection.firstIndex(where: { item in
                 item.category.category == user.cloudCategory
             }) ?? 0
@@ -125,14 +124,15 @@ extension SetProfileViewController {
             case .success(let user):
                 
                 self.user = user
-                print(user)
+                let types = self.viniAssets.map { $0.name }
+                self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
+                self.viniImageView.image = UIImage(named: user.viniType)
                 
             case .failure(let error):
                 
                 print(error)
             }
         }
-        
     }
     
     func saveProfile() {
@@ -148,6 +148,7 @@ extension SetProfileViewController {
             switch result {
             case .success:
                 
+                self.delegate?.didSelectCloudCategory(self.cloudCategorySelection[self.selectedIndex].category)
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
@@ -164,7 +165,7 @@ extension SetProfileViewController: UITableViewDelegate {
         
         switch indexPath.row {
             
-        case 3...6:
+        case 3..<3 + cloudCategorySelection.count:
             
             let lastIndexPath = IndexPath(row: selectedIndex + 3, section: 0)
             cloudCategorySelection[selectedIndex].isChecked = false
@@ -295,5 +296,16 @@ extension SetProfileViewController: UITextViewDelegate {
         default:
             break
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        let currentText = textView.text ?? ""
+
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+
+        return updatedText.count <= 18
     }
 }

@@ -148,6 +148,11 @@ class DiscoverViewController: UIViewController {
             destination.delegate = self
             destination.currentSelectedCategory = cloudCategory
         }
+        
+        if let destination = segue.destination as? SetProfileViewController {
+            
+            destination.delegate = self
+        }
 
     }
     
