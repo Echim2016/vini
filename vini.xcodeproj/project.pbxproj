@@ -27,6 +27,10 @@
 		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
 		9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */; };
 		9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0631C127352A9300AF9F48 /* NextButton.swift */; };
+		9C178062273AA2D600097E3C /* BlockList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C178061273AA2D600097E3C /* BlockList.storyboard */; };
+		9C178064273AA2EF00097E3C /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C178063273AA2EF00097E3C /* BlockListViewController.swift */; };
+		9C178067273AA38000097E3C /* BlockUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C178065273AA38000097E3C /* BlockUserCell.swift */; };
+		9C178068273AA38000097E3C /* BlockUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C178066273AA38000097E3C /* BlockUserCell.xib */; };
 		9C1A6129271D6D4B0013D63A /* MyGrowthCardsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */; };
 		9C1A612D271E65450013D63A /* GrowthCapture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A612C271E65450013D63A /* GrowthCapture.storyboard */; };
 		9C1A612F271E65660013D63A /* GrowthCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */; };
@@ -140,6 +144,10 @@
 		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
 		9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGrowthContentCardViewController.swift; sourceTree = "<group>"; };
 		9C0631C127352A9300AF9F48 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
+		9C178061273AA2D600097E3C /* BlockList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BlockList.storyboard; sourceTree = "<group>"; };
+		9C178063273AA2EF00097E3C /* BlockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewController.swift; sourceTree = "<group>"; };
+		9C178065273AA38000097E3C /* BlockUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserCell.swift; sourceTree = "<group>"; };
+		9C178066273AA38000097E3C /* BlockUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlockUserCell.xib; sourceTree = "<group>"; };
 		9C1A6128271D6D4B0013D63A /* MyGrowthCardsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrowthCardsHeader.swift; sourceTree = "<group>"; };
 		9C1A612C271E65450013D63A /* GrowthCapture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GrowthCapture.storyboard; sourceTree = "<group>"; };
 		9C1A612E271E65660013D63A /* GrowthCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +262,7 @@
 			children = (
 				9C021D4B272D96DA009A7581 /* SettingsViewController.swift */,
 				9C021D58272E53DF009A7581 /* TimePickerViewController.swift */,
+				9C178063273AA2EF00097E3C /* BlockListViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -263,6 +272,8 @@
 			children = (
 				9C021D4F272E40FB009A7581 /* SettingsItemCell.swift */,
 				9C021D50272E40FB009A7581 /* SettingsItemCell.xib */,
+				9C178065273AA38000097E3C /* BlockUserCell.swift */,
+				9C178066273AA38000097E3C /* BlockUserCell.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -570,6 +581,7 @@
 				9C697F2C27391D0800EDBBCB /* DiscoverMap.storyboard */,
 				9CEE9DA2272AA84A006CCA06 /* Mailbox.storyboard */,
 				9C021D49272D96BD009A7581 /* Settings.storyboard */,
+				9C178061273AA2D600097E3C /* BlockList.storyboard */,
 				9CEE9DA7272B9AAB006CCA06 /* Achievement.storyboard */,
 				9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */,
 				9C021D56272E53C6009A7581 /* TimePicker.storyboard */,
@@ -747,6 +759,7 @@
 				9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */,
 				9C9E93B22730D36500FA3773 /* ArchivedCardCollectionViewCell.xib in Resources */,
 				9C697F2D27391D0800EDBBCB /* DiscoverMap.storyboard in Resources */,
+				9C178068273AA38000097E3C /* BlockUserCell.xib in Resources */,
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
@@ -755,6 +768,7 @@
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
 				9C697F212737D25800EDBBCB /* Alert.storyboard in Resources */,
+				9C178062273AA2D600097E3C /* BlockList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +860,7 @@
 				9C021D48272D469A009A7581 /* Timestamp+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
 				9C9E93AD2730D26A00FA3773 /* ArchivedCardCell.swift in Sources */,
+				9C178067273AA38000097E3C /* BlockUserCell.swift in Sources */,
 				9C840CB627313D9A00AF3F73 /* InsightManager.swift in Sources */,
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
 				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
@@ -868,6 +883,7 @@
 				9C6C3D9F27340C0800F45247 /* SignupViewController.swift in Sources */,
 				9C021D51272E40FB009A7581 /* SettingsItemCell.swift in Sources */,
 				9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */,
+				9C178064273AA2EF00097E3C /* BlockListViewController.swift in Sources */,
 				9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */,
 				9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */,
 				9CA42C812726B293007F9589 /* DiscoverViewController.swift in Sources */,

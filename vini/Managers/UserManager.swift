@@ -62,4 +62,36 @@ class UserManager {
         }
     }
     
+    func fetchUser(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        db.collection("Users").document(userID).getDocument { (document, error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                if let document = document {
+                    
+                    var user = User()
+                    
+                    do {
+                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
+                            
+                            user = userInfo
+                        }
+                        
+                    } catch {
+                        
+                        completion(.failure(error))
+                    }
+                    
+                    completion(.success(user))
+                }
+                
+            }
+        }
+        
+    }
+    
 }

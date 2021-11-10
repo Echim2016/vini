@@ -43,6 +43,7 @@
                         <outlet property="tableView" destination="KzP-cJ-Gyv" id="V95-g0-B4U"/>
                         <segue destination="Skc-NN-kdY" kind="presentation" identifier="ShowReflectionTimeSetting" animates="NO" id="4Lj-PC-rOB"/>
                         <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
+                        <segue destination="6bQ-9j-hGV" kind="show" identifier="ShowBlockList" id="zK9-6h-YYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -56,6 +57,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlh-QA-heV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1681" y="98"/>
+        </scene>
+        <!--BlockList-->
+        <scene sceneID="g1E-Z0-AEG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="BlockList" id="6bQ-9j-hGV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="us1-42-yqD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cqf-Pt-9bV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="192"/>
         </scene>
         <!--TimePicker-->
         <scene sceneID="elx-sb-8AH">
