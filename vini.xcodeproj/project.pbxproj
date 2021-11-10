@@ -81,6 +81,8 @@
 		9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAF27310AC600AF3F73 /* InsightTitle.swift */; };
 		9C840CB627313D9A00AF3F73 /* InsightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CB527313D9A00AF3F73 /* InsightManager.swift */; };
 		9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CB727323B4200AF3F73 /* Date+Extension.swift */; };
+		9C95786A273BDE770056F757 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C957869273BDE770056F757 /* TabBarItem.swift */; };
+		9C95786C273BDFBA0056F757 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95786B273BDFBA0056F757 /* CustomTabBarController.swift */; };
 		9C9E93AD2730D26A00FA3773 /* ArchivedCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93AB2730D26A00FA3773 /* ArchivedCardCell.swift */; };
 		9C9E93AE2730D26A00FA3773 /* ArchivedCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C9E93AC2730D26A00FA3773 /* ArchivedCardCell.xib */; };
 		9C9E93B12730D36500FA3773 /* ArchivedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E93AF2730D36500FA3773 /* ArchivedCardCollectionViewCell.swift */; };
@@ -200,6 +202,8 @@
 		9C840CAF27310AC600AF3F73 /* InsightTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTitle.swift; sourceTree = "<group>"; };
 		9C840CB527313D9A00AF3F73 /* InsightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightManager.swift; sourceTree = "<group>"; };
 		9C840CB727323B4200AF3F73 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9C957869273BDE770056F757 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		9C95786B273BDFBA0056F757 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		9C9E93AB2730D26A00FA3773 /* ArchivedCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedCardCell.swift; sourceTree = "<group>"; };
 		9C9E93AC2730D26A00FA3773 /* ArchivedCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedCardCell.xib; sourceTree = "<group>"; };
 		9C9E93AF2730D36500FA3773 /* ArchivedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedCardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -392,6 +396,14 @@
 			path = Signin;
 			sourceTree = "<group>";
 		};
+		9C95786D273BE0540056F757 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				9C95786B273BDFBA0056F757 /* CustomTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		9C9E93AA2730D23E00FA3773 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +526,7 @@
 		9CC1E4D5271BE58400F17190 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C95786D273BE0540056F757 /* TabBar */,
 				9C697F222737D4AF00EDBBCB /* Alert */,
 				9C6C3D932733A84700F45247 /* Signin */,
 				9C51A3C127326B0C00F85CE4 /* Reflection */,
@@ -538,6 +551,7 @@
 				9CEE9DB6272BD571006CCA06 /* Discover */,
 				9CEAC5162728FCB100C98B96 /* Growth */,
 				9CEE9DA0272A8F9E006CCA06 /* User.swift */,
+				9C957869273BDE770056F757 /* TabBarItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -845,6 +859,7 @@
 				9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */,
 				9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */,
 				9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */,
+				9C95786A273BDE770056F757 /* TabBarItem.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
 				9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */,
@@ -902,6 +917,7 @@
 				9C9E93B42730D49400FA3773 /* UICollectionView+Extension.swift in Sources */,
 				9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,
+				9C95786C273BDFBA0056F757 /* CustomTabBarController.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,

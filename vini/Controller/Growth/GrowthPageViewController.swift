@@ -29,9 +29,7 @@ class GrowthPageViewController: UIViewController {
     var data: [GrowthCard] = []
     
     var reflectionHour = 23
-    
-//    let userDefault = UserDefaults.standard
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +38,6 @@ class GrowthPageViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
-        
-//        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
-        
-//        fetchGrowthCards()
         
         getReflectionTime()
     }
