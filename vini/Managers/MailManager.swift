@@ -163,6 +163,36 @@ class MailManager {
                 }
             }
         }
+    }
+    
+    func fetchNumberOfUnreadMails(completion: @escaping (Result<String, Error>) -> Void) {
+        
+        if let userID = UserManager.shared.userID {
+            
+            var count = 0
+            
+            db.collection("Mailboxes").document(userID).collection("Mails").getDocuments { (querySnapshot, err) in
+                
+                if let err = err {
+                    print("Error getting number of mails: \(err)")
+                    completion(.failure(err))
+                    
+                } else {
+                    
+                    guard let querySnapshot = querySnapshot else { return }
+                    
+                    for document in querySnapshot.documents {
+                        
+                        if document.get("read_timestamp") == nil {
+                            count += 1
+                        }
+                    }
+                        
+                    completion(.success("\(count)"))
+                    
+                }
+            }
+        }
         
     }
 }
