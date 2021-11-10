@@ -45,9 +45,6 @@ class SetProfileViewController: UIViewController {
         didSet {
     
             self.isPublishedSwitch.isOn = user.isPublished
-            self.viniImageView.image = UIImage(named: user.viniType)
-            let types = viniAssets.map { $0.name }
-            self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
             self.selectedIndex = cloudCategorySelection.firstIndex(where: { item in
                 item.category.category == user.cloudCategory
             }) ?? 0
@@ -125,14 +122,15 @@ extension SetProfileViewController {
             case .success(let user):
                 
                 self.user = user
-                print(user)
+                let types = self.viniAssets.map { $0.name }
+                self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
+                self.viniImageView.image = UIImage(named: user.viniType)
                 
             case .failure(let error):
                 
                 print(error)
             }
         }
-        
     }
     
     func saveProfile() {
