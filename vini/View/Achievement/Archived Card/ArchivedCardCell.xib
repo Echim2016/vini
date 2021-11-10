@@ -30,18 +30,29 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCC-OR-Jkj">
+                        <rect key="frame" x="148.5" y="175.5" width="169" height="39.5"/>
+                        <string key="text">Vini 沒有發現已封存的卡片
+快去累積微小學習吧！</string>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="zqG-oa-R95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YmE-Ye-cW0"/>
                     <constraint firstAttribute="bottom" secondItem="zqG-oa-R95" secondAttribute="bottom" id="eaB-gF-ook"/>
+                    <constraint firstItem="pCC-OR-Jkj" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gOf-TA-jcg"/>
                     <constraint firstItem="zqG-oa-R95" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="hWw-RU-Ocq"/>
+                    <constraint firstItem="pCC-OR-Jkj" firstAttribute="centerY" secondItem="zqG-oa-R95" secondAttribute="centerY" constant="-30" id="kzS-jO-RT6"/>
                     <constraint firstAttribute="trailing" secondItem="zqG-oa-R95" secondAttribute="trailing" constant="16" id="wO9-J4-CrY"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="zqG-oa-R95" id="zTc-Is-MNl"/>
+                <outlet property="remindsLabel" destination="pCC-OR-Jkj" id="RUH-c8-zpz"/>
             </connections>
             <point key="canvasLocation" x="-83" y="242"/>
         </tableViewCell>

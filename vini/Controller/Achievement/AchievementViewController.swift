@@ -27,7 +27,14 @@ class AchievementViewController: UIViewController {
     
     var insightDict: [InsightTitle : String] = [:]
     
-    var growthCards: [GrowthCard] = []
+    var growthCards: [GrowthCard] = [] {
+        didSet {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ArchivedCardCell {
+                
+                cell.remindsLabel.isHidden = !growthCards.isEmpty
+            }
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()

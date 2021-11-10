@@ -11,6 +11,8 @@ class ArchivedCardCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var remindsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
