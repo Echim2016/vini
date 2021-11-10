@@ -115,6 +115,29 @@ class UserManager {
                 }
             }
         }
+    }
+    
+    func unblockUser(blockUserID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        if let userID = userID {
+            
+            let document = db.collection("Users").document(userID)
+            
+            let updateDict = [
+                "block_list": FieldValue.arrayRemove([blockUserID])
+            ]
+            
+            document.updateData(updateDict) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success(true))
+                }
+            }
+        }
         
     }
     

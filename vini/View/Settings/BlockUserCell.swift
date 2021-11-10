@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol BlockUserProtocol: AnyObject {
+    
+    func didTapUnblockButton(_ cell: BlockUserCell)
+}
+
 class BlockUserCell: UITableViewCell {
 
     @IBOutlet weak var blockUserName: UILabel!
     @IBOutlet weak var unblockButton: UIButton!
     
+    weak var delegate: BlockUserProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        unblockButton.addTarget(self, action: #selector(tapUnlockButton(_:)), for: .touchUpInside)
     }
 
     override func layoutSubviews() {
@@ -27,4 +35,10 @@ class BlockUserCell: UITableViewCell {
         
         blockUserName.text = user.displayName
     }
+    
+    @objc func tapUnlockButton(_ sender: UIButton) {
+        
+        delegate?.didTapUnblockButton(self)
+    }
 }
+

@@ -8,6 +8,11 @@
 import UIKit
 
 class BlockListViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showUnblockUserAlert = "ShowUnblockUserAlert"
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -47,6 +52,21 @@ class BlockListViewController: UIViewController {
         blockUsers = []
         fetchUserProfile()
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController,
+        let indexPath = sender as? IndexPath {
+            
+            let blockUserID = blockUsers[indexPath.row].id
+            
+            alert.alertType = .unblockUserAlert
+            alert.onConfirm = {
+                
+                self.unblockUser(id: blockUserID, indexPath: indexPath)
+            }
+        }
     }
 
 }
@@ -96,7 +116,38 @@ extension BlockListViewController {
             }
             
         }
+    }
+    
+    func unblockUser(id: String, indexPath: IndexPath) {
         
+        UserManager.shared.unblockUser(blockUserID: id) { result in
+            switch result {
+                
+            case .success(let success):
+                
+                if success {
+                    
+                    self.userBlockList.remove(at: indexPath.row)
+                    self.blockUsers.remove(at: indexPath.row)
+                    self.tableView.reloadData()
+                }
+                
+            case.failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+}
+
+extension BlockListViewController: BlockUserProtocol {
+    
+    func didTapUnblockButton(_ cell: BlockUserCell) {
+        
+        if let indexPath = tableView.indexPath(for: cell) {
+                        
+            performSegue(withIdentifier: Segue.showUnblockUserAlert.rawValue, sender: indexPath)
+        }
     }
 }
 
@@ -125,6 +176,7 @@ extension BlockListViewController: UITableViewDataSource {
         }
         
         cell.setupCell(user: blockUsers[indexPath.row])
+        cell.delegate = self
         
         return cell
     }
