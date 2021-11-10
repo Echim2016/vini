@@ -81,7 +81,7 @@ class UserManager {
                         if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             
                             user = userInfo
-                            self.userBlockList = user.blockList ?? []
+                            self.userBlockList = user.blockList
                         }
                         
                     } catch {
@@ -114,6 +114,7 @@ class UserManager {
                     completion(.failure(error))
                 } else {
                     
+                    self.userBlockList?.append(blockUserID)
                     completion(.success(true))
                 }
             }
@@ -137,6 +138,7 @@ class UserManager {
                     completion(.failure(error))
                 } else {
                     
+                    self.userBlockList?.removeObject(object: blockUserID)
                     completion(.success(true))
                 }
             }

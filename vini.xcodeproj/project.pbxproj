@@ -39,6 +39,7 @@
 		9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C1A6133271E9B780013D63A /* GrowthContentCell.xib */; };
 		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
+		9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C208077273BB51B00F6614F /* Array+Extension.swift */; };
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
@@ -156,6 +157,7 @@
 		9C1A6133271E9B780013D63A /* GrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthContentCell.xib; sourceTree = "<group>"; };
 		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9C208077273BB51B00F6614F /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				9C840CB727323B4200AF3F73 /* Date+Extension.swift */,
 				9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */,
 				9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */,
+				9C208077273BB51B00F6614F /* Array+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
+				9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */,
 				9C021D46272D4334009A7581 /* UIViewController+Extension.swift in Sources */,
 				9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */,
 				9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */,
