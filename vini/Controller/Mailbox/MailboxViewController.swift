@@ -78,11 +78,8 @@ extension MailboxViewController {
                 
             case .success(let user):
                 
-                if let userBlockList = user.blockList {
-                    
-                    self.userBlockList = userBlockList
-                    self.fetchMails(blockList: self.userBlockList)
-                }
+                self.userBlockList = user.blockList
+                self.fetchMails(blockList: self.userBlockList)
                 
             case.failure(let error):
                 

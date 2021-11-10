@@ -9,6 +9,11 @@ import UIKit
 
 class SendMailViewController: UIViewController {
     
+    private enum Segue: String {
+        
+        case showBlockUserAlert = "ShowBlockUserAlert"
+    }
+    
     @IBOutlet weak var receipientNameLabel: UILabel!
     @IBOutlet weak var replyTitleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
@@ -17,7 +22,7 @@ class SendMailViewController: UIViewController {
     
     var mailToSend = Mail()
     
-    let userDefault = UserDefaults.standard
+    weak var delegate: DiscoverProtocol?
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -53,6 +58,22 @@ class SendMailViewController: UIViewController {
         sendMail()
     }
     
+    @IBAction func tapBlockButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertType = .blockUserAlert
+            alert.onConfirm = {
+                
+                self.blockUser()
+            }
+        }
+    }
 }
 
 extension SendMailViewController {
@@ -79,6 +100,27 @@ extension SendMailViewController {
                 }
             }
         }
+    }
+    
+    func blockUser() {
+        
+        if let receipientID = receipient?.data.id {
+            
+            UserManager.shared.blockUser(blockUserID: receipientID) { result in
+                
+                switch result {
+                case .success:
+                    
+                    self.delegate?.willDisplayDiscoverPage()
+                    self.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
+            }
+        }
+        
     }
     
 }

@@ -39,7 +39,6 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.isUserInteractionEnabled = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +68,7 @@ class DiscoverViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        fetchUserInfo()
+        fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
     }
     
@@ -141,6 +140,7 @@ class DiscoverViewController: UIViewController {
         if let destination = segue.destination as? SendMailViewController {
             
             destination.receipient = currentSelectedVini
+            destination.delegate = self
         }
         
         if let destination = segue.destination as? DiscoverMapViewController {
@@ -226,9 +226,37 @@ extension DiscoverViewController {
 
 extension DiscoverViewController {
     
-    func fetchUserInfo() {
+    func fetchUserInfoWithoutBlockList() {
         
-        DiscoverUserManager.shared.fetchData(category: cloudCategory.category) { result in
+        if let blockList = UserManager.shared.userBlockList {
+            
+            self.fetchUserInfo(blockList: blockList)
+            
+        } else {
+            
+            DiscoverUserManager.shared.fetchUserProfile { result in
+                
+                switch result {
+                    
+                case .success(let user):
+                    
+                    self.fetchUserInfo(blockList: user.blockList)
+                    
+                case.failure(let error):
+                    
+                    print(error)
+                    
+                }
+            }
+        }
+        
+    }
+    
+    func fetchUserInfo(blockList: [String]) {
+        
+        DiscoverUserManager.shared.fetchData(
+            category: cloudCategory.category,
+            blockList: blockList) { result in
             switch result {
             case .success(let vinis):
                 
@@ -253,14 +281,21 @@ extension DiscoverViewController: MapScrollViewDataSource {
     
 }
 
-extension DiscoverViewController: CloudCategoryProtocol {
+extension DiscoverViewController: DiscoverProtocol {
     
     func didSelectCloudCategory(_ category: CloudCategory) {
         
         // reload vinis when user changes cloud category
         self.cloudCategory = category
         self.setupBackgroundRectView()
-        self.fetchUserInfo()
+        self.fetchUserInfoWithoutBlockList()
+        self.resetTitle()
+    }
+    
+    func willDisplayDiscoverPage() {
+        
+        self.setupBackgroundRectView()
+        self.fetchUserInfoWithoutBlockList()
         self.resetTitle()
     }
 }

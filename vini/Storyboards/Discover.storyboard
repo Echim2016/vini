@@ -142,16 +142,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Qk-LW-3kR">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Qk-LW-3kR">
                                             <rect key="frame" x="36" y="80" width="342" height="59"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="寄給: Astrid" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-x5-yFv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="25.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="寄給: User Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-x5-yFv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回覆: Wondering" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-X4-zLA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回覆: Wondering" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-X4-zLA">
                                                     <rect key="frame" x="0.0" y="33.5" width="139.5" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -181,7 +181,7 @@
                                     <action selector="tapDismissButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="Vsq-gr-nba"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voA-kc-dFZ" userLabel="Close Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voA-kc-dFZ" userLabel="Send Button">
                                 <rect key="frame" x="358" y="16.5" width="40" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="4jv-iD-o1a"/>
@@ -194,6 +194,19 @@
                                     <action selector="tapSendButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="vZ9-7s-rR7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wb-Vm-BUy" userLabel="Block Button">
+                                <rect key="frame" x="308" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PGl-iQ-WIo"/>
+                                    <constraint firstAttribute="width" constant="40" id="vnA-1D-v9V"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="exclamationmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBlockButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="d8m-UX-mY9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xQS-pD-DTc"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -203,8 +216,10 @@
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="voA-kc-dFZ" secondAttribute="trailing" constant="16" id="EWw-Ju-7Ie"/>
                             <constraint firstItem="zEv-mD-dAj" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" id="J2k-11-D4d"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="bottom" secondItem="zEv-mD-dAj" secondAttribute="bottom" id="R9l-3U-wDF"/>
+                            <constraint firstItem="3wb-Vm-BUy" firstAttribute="centerY" secondItem="voA-kc-dFZ" secondAttribute="centerY" id="dfw-HL-vNl"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="zEv-mD-dAj" secondAttribute="trailing" id="f0Q-mI-uoB"/>
                             <constraint firstItem="YRC-AW-vdy" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="l0l-7R-R7c"/>
+                            <constraint firstItem="voA-kc-dFZ" firstAttribute="leading" secondItem="3wb-Vm-BUy" secondAttribute="trailing" constant="10" id="nbp-te-X4h"/>
                             <constraint firstItem="zEv-mD-dAj" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" id="w5V-1c-ZHM"/>
                         </constraints>
                     </view>
@@ -213,11 +228,20 @@
                         <outlet property="receipientNameLabel" destination="ZAd-x5-yFv" id="iiq-XL-hxf"/>
                         <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
                         <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
+                        <segue destination="Ayu-0f-hTk" kind="presentation" identifier="ShowBlockUserAlert" id="AMd-p3-ig0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="889"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="BmT-tb-gSN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="Ayu-0f-hTk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXC-VZ-GxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912" y="1310"/>
         </scene>
         <!--DiscoverMap-->
         <scene sceneID="Qxw-MA-Hjt">
@@ -382,6 +406,7 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>

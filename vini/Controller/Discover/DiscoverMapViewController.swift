@@ -7,9 +7,11 @@
 
 import UIKit
 
-protocol CloudCategoryProtocol: AnyObject {
+protocol DiscoverProtocol: AnyObject {
     
     func didSelectCloudCategory(_ category: CloudCategory)
+    
+    func willDisplayDiscoverPage()
 }
 
 class DiscoverMapViewController: UIViewController {
@@ -31,7 +33,7 @@ class DiscoverMapViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     
-    weak var delegate: CloudCategoryProtocol?
+    weak var delegate: DiscoverProtocol?
     
     var currentSelectedCategory: CloudCategory = .career
     

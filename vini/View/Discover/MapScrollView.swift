@@ -105,7 +105,7 @@ class MapScrollView: UIView {
             mapStackView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
         
-        for _ in 0..<numberOfMapsInStack {
+        for index in 0..<numberOfMapsInStack {
             
             let defaultMapView = UIView()
             mapStackView.addArrangedSubview(defaultMapView)

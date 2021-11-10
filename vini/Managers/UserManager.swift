@@ -17,6 +17,8 @@ class UserManager {
     
     let userID = Auth.auth().currentUser?.uid
     
+    var userBlockList: [String]?
+    
     func createNewUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
         
         let document = db.collection("Users").document(user.id)
@@ -79,6 +81,7 @@ class UserManager {
                         if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
                             
                             user = userInfo
+                            self.userBlockList = user.blockList ?? []
                         }
                         
                     } catch {
