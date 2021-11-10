@@ -13,7 +13,7 @@ class MailDetailViewController: UIViewController {
     private enum Segue: String {
         
         case showBlockAlert = "ShowBlockAlert"
-        
+        case showDeleteAlert = "ShowDeleteAlert"
     }
     
     @IBOutlet weak var tableView: UITableView! {
@@ -51,7 +51,7 @@ class MailDetailViewController: UIViewController {
     
     @IBAction func tapDeleteButton(_ sender: Any) {
         
-        deleteMail()
+        showDeleteMailAlert()
     }
     
     @IBAction func tapBlockUser(_ sender: Any) {
@@ -61,26 +61,33 @@ class MailDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        switch segue.identifier {
+        if let alert = segue.destination as? AlertViewController {
             
-        case Segue.showBlockAlert.rawValue:
-            
-            if let alert = segue.destination as? AlertViewController {
+            switch segue.identifier {
+                
+            case Segue.showBlockAlert.rawValue:
                 
                 alert.alertType = .blockUserAlert
-                
                 alert.onConfirm = {
-                 
+                    
                     self.blockUser()
                 }
+                
+            case Segue.showDeleteAlert.rawValue:
+                
+                alert.alertType = .deleteMailAlert
+                alert.onConfirm = {
+                    
+                    self.deleteMail()
+                }
+                
+            default:
+                break
+                
             }
             
-        default:
-            break
-            
-            
         }
-        
+
     }
 }
 
@@ -119,6 +126,11 @@ extension MailDetailViewController {
                 print(error)
             }
         }
+    }
+    
+    func showDeleteMailAlert() {
+        
+        performSegue(withIdentifier: Segue.showDeleteAlert.rawValue, sender: nil)
     }
     
     func showBlockUserAlert() {

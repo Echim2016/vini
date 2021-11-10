@@ -12,6 +12,7 @@ enum Alert {
     case reflectionTimeAlert
     case logOutAlert
     case blockUserAlert
+    case deleteMailAlert
     
     var title: String {
         
@@ -24,7 +25,10 @@ enum Alert {
             return "登出"
             
         case .blockUserAlert:
-            return "封鎖此使用者？"
+            return "封鎖此使用者"
+            
+        case .deleteMailAlert:
+            return "刪除"
             
         }
     }
@@ -39,6 +43,9 @@ enum Alert {
             return "您確定要登出嗎？"
         case .blockUserAlert:
             return "您將不會在 Vini Cloud 及收信匣看到此使用者的內容，您可以隨時在設定頁解除封鎖。"
+            
+        case .deleteMailAlert:
+            return "您確定要刪除此信件嗎？"
         }
     }
     

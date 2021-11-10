@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
                         <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowBlockAlert" id="ZbI-Z2-8wC"/>
+                        <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowDeleteAlert" id="WCU-8b-YyV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhb-fm-sOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -120,7 +121,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="I2d-Ta-vGL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wed-z1-SqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2688" y="100"/>
+            <point key="canvasLocation" x="2600" y="100"/>
         </scene>
         <!--信箱-->
         <scene sceneID="QXw-3G-E3c">
@@ -151,6 +152,9 @@
             <point key="canvasLocation" x="131.8840579710145" y="100.44642857142857"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WCU-8b-YyV"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="exclamationmark.bubble.fill" catalog="system" width="128" height="110"/>
