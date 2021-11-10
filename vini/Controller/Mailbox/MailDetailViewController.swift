@@ -41,12 +41,14 @@ class MailDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupNavBarBackButton()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         updateReadStatus()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func tapDeleteButton(_ sender: Any) {

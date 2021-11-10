@@ -165,7 +165,7 @@ class MailManager {
         }
     }
     
-    func fetchNumberOfUnreadMails(completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchNumberOfUnreadMails(completion: @escaping (Result<Int, Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
@@ -188,7 +188,7 @@ class MailManager {
                         }
                     }
                         
-                    completion(.success("\(count)"))
+                    completion(.success(count))
                     
                 }
             }
