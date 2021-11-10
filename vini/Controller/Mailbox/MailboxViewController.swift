@@ -38,13 +38,13 @@ class MailboxViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mails = []
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        mails = []
         fetchMailsWithoutBlockList()
         getReflectionTime()
         setupNavigationController(title: "收信匣", titleColor: .white)
