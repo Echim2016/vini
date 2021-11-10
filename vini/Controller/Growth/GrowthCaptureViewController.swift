@@ -646,7 +646,7 @@ extension GrowthCaptureViewController {
             buttonStackView.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -32)
         ])
         
-        let conclusionButton = UIButton()
+        let conclusionButton = MainButton()
         conclusionButton.layer.cornerRadius = 21
         buttonStackView.addArrangedSubview(conclusionButton)
         
@@ -657,7 +657,7 @@ extension GrowthCaptureViewController {
         
         conclusionButton.addTarget(self, action: #selector(tapDrawConclusionsButton(_:)), for: .touchUpInside)
         
-        let archiveButton = UIButton()
+        let archiveButton = MainButton()
         archiveButton.layer.cornerRadius = 21
         buttonStackView.addArrangedSubview(archiveButton)
         

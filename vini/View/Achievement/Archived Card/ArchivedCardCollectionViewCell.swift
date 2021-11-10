@@ -47,7 +47,7 @@ class ArchivedCardCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         
         didSet {
-            toggleIsHighlighted()
+            itemIsHighlighted()
         }
     }
 
