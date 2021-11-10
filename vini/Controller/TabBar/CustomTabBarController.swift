@@ -48,7 +48,6 @@ class CustomTabBarController: UITabBarController {
                 if let tabBarItems = self.tabBar.items {
                     let tabItem = tabBarItems[TabBarItem.mailbox.rawValue]
                     tabItem.badgeValue = count
-                    tabItem.badgeColor = .red
                 }
                 
             case .failure(let error):

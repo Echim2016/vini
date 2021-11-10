@@ -386,7 +386,7 @@
         <scene sceneID="05H-Yl-rt1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1IB-79-FYv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="探索" image="safari.fill" catalog="system" id="Bvg-6h-xVd"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="cloud.fill" catalog="system" id="Bvg-6h-xVd"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="HEI-DS-zix"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -406,13 +406,13 @@
     </scenes>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
         <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="safari.fill" catalog="system" width="128" height="121"/>
         <image name="vini_amaze" width="317.5" height="337"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
