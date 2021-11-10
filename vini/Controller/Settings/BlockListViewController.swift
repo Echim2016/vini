@@ -61,10 +61,13 @@ extension BlockListViewController {
                 
             case .success(let user):
                 
-                self.userBlockList = user.blockList
-                
-                if !self.userBlockList.isEmpty {
-                    self.fetchBlockUsersList(list: self.userBlockList)
+                if let userBlockList = user.blockList {
+                    
+                    self.userBlockList = userBlockList
+                    
+                    if !self.userBlockList.isEmpty {
+                        self.fetchBlockUsersList(list: self.userBlockList)
+                    }
                 }
                 
             case.failure(let error):

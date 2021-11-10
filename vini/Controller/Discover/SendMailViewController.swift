@@ -60,7 +60,7 @@ extension SendMailViewController {
     func sendMail() {
         
         if let receipient = receipient,
-           let senderID = userDefault.value(forKey: "id") as? String {
+           let senderID = UserManager.shared.userID {
             
             mailToSend.displayWondering = receipient.data.wondering
             mailToSend.senderViniType = receipient.data.viniType

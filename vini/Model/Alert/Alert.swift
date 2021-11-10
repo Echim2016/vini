@@ -10,8 +10,8 @@ import Foundation
 enum Alert {
     
     case reflectionTimeAlert
-    
     case logOutAlert
+    case blockUserAlert
     
     var title: String {
         
@@ -22,6 +22,9 @@ enum Alert {
             
         case .logOutAlert:
             return "登出"
+            
+        case .blockUserAlert:
+            return "封鎖此使用者？"
             
         }
     }
@@ -34,6 +37,8 @@ enum Alert {
             return "反思功能僅在每日反思時段開放，晚點再回來看看吧！"
         case .logOutAlert:
             return "您確定要登出嗎？"
+        case .blockUserAlert:
+            return "您將不會在 Vini Cloud 及收信匣看到此使用者的內容，您可以隨時在設定頁解除封鎖。"
         }
     }
     

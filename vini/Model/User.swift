@@ -16,7 +16,7 @@ struct User: Codable {
     var wondering: String
     var isPublished: Bool
     var cloudCategory: String?
-    var blockList: [String]
+    var blockList: [String]?
     var preferredReflectionTime: Int?
     var createdTime: Timestamp?
     

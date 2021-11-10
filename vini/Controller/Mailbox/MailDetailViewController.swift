@@ -10,6 +10,12 @@ import RSKPlaceholderTextView
 
 class MailDetailViewController: UIViewController {
     
+    private enum Segue: String {
+        
+        case showBlockAlert = "ShowBlockAlert"
+        
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -48,6 +54,34 @@ class MailDetailViewController: UIViewController {
         deleteMail()
     }
     
+    @IBAction func tapBlockUser(_ sender: Any) {
+        
+        showBlockUserAlert()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        case Segue.showBlockAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
+                
+                alert.alertType = .blockUserAlert
+                
+                alert.onConfirm = {
+                 
+                    self.blockUser()
+                }
+            }
+            
+        default:
+            break
+            
+            
+        }
+        
+    }
 }
 
 extension MailDetailViewController {
@@ -85,7 +119,27 @@ extension MailDetailViewController {
                 print(error)
             }
         }
+    }
+    
+    func showBlockUserAlert() {
         
+        performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: nil)
+    }
+    
+    func blockUser() {
+        
+        UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
+            
+            switch result {
+            case .success:
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
 }
 

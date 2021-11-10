@@ -20,13 +20,21 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前收信匣沒有信件哦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8p-aj-kOa">
+                                <rect key="frame" x="130" y="440.5" width="154" height="20"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="w9o-9R-iaA" secondAttribute="bottom" id="7S5-Fi-Tif"/>
+                            <constraint firstItem="R8p-aj-kOa" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="COR-7V-Ihp"/>
                             <constraint firstItem="w9o-9R-iaA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GQR-n4-sur"/>
                             <constraint firstItem="w9o-9R-iaA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="HDO-op-L0B"/>
+                            <constraint firstItem="R8p-aj-kOa" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="TfT-ye-cu6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9o-9R-iaA" secondAttribute="trailing" id="kEA-St-pbg"/>
                         </constraints>
                     </view>
@@ -39,6 +47,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="remindsLabel" destination="R8p-aj-kOa" id="3Az-a9-ngD"/>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
                         <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
                         <segue destination="TIW-zz-Rn2" kind="presentation" identifier="ShowSettings" id="zSs-aJ-d4u"/>
@@ -81,20 +90,37 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cns-lo-BgV">
-                        <barButtonItem key="rightBarButtonItem" image="trash.fill" catalog="system" style="plain" id="npr-3d-XiY">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="trash.fill" catalog="system" style="plain" id="npr-3d-XiY">
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="exclamationmark.bubble.fill" catalog="system" id="f6K-F2-73d">
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="tapBlockUser:" destination="z4r-4Y-byP" id="PVx-1S-FYE"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
+                        <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowBlockAlert" id="ZbI-Z2-8wC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhb-fm-sOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="99.776785714285708"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="yUu-DK-24U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="I2d-Ta-vGL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wed-z1-SqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2688" y="100"/>
         </scene>
         <!--信箱-->
         <scene sceneID="QXw-3G-E3c">
@@ -127,6 +153,7 @@
     </scenes>
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
+        <image name="exclamationmark.bubble.fill" catalog="system" width="128" height="110"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
