@@ -33,7 +33,18 @@ class UserManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    self.createNewMailBox { result in
+                        
+                        switch result {
+                            
+                        case .success(let success):
+                            print(success)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
+                    
+                    completion(.success("Create new user success!"))
                 }
             }
             
@@ -42,6 +53,26 @@ class UserManager {
             print(error)
             completion(.failure(error))
         }
+    }
+    
+    func createNewMailBox(completion: @escaping (Result<String, Error>) -> Void) {
+        
+        if let userID = self.userID {
+            
+            let document = db.collection("Mailboxes").document(userID)
+  
+            document.setData(["created_time": Timestamp(date: Date())]) { error in
+                
+                if let error = error {
+                    
+                    completion(.failure(error))
+                } else {
+                    
+                    completion(.success("Create New Mailbox Success"))
+                }
+            }
+        }
+        
     }
     
     func updateReflectionTime(userID: String, name: String, completion: @escaping (Result<Bool, Error>) -> Void) {
