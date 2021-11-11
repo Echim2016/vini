@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class GrowthPageViewController: UIViewController {
     
@@ -27,7 +28,15 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    var data: [GrowthCard] = []
+    @IBOutlet weak var remindsLabel: UILabel!
+    
+    var data: [GrowthCard] = [] {
+        
+        didSet {
+            
+            remindsLabel.isHidden = !data.isEmpty
+        }
+    }
     
     var reflectionHour = 23
         
@@ -220,7 +229,7 @@ extension GrowthPageViewController: UITableViewDataSource {
             return MyGrowthCardsHeader()
         }
         
-        header.titleLabel.text = "我的成長項目"
+        header.titleLabel.text = data.isEmpty ?  "" : "我的成長項目"
         
         return header
     }
@@ -235,6 +244,7 @@ extension GrowthPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "ShowGrowthCapture", sender: indexPath.row)
+        Haptic.play(".", delay: 0.1)
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
