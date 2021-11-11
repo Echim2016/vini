@@ -16,7 +16,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFX-O7-be3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="-295"/>
+            <point key="canvasLocation" x="1586" y="-27"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="gkj-An-5xo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="RHF-YT-BuR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YyP-uw-jXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="21"/>
         </scene>
         <!--Alert-->
         <scene sceneID="p56-go-kvo">
@@ -24,7 +32,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="MX8-7N-eAE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bii-M9-NO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="-249"/>
+            <point key="canvasLocation" x="1601" y="87"/>
         </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -68,6 +76,7 @@
                         <segue destination="ZxX-bD-lW4" kind="presentation" identifier="CreateNewGrowthCard" id="7dB-Gn-XTz"/>
                         <segue destination="mwy-5l-L4D" kind="presentation" identifier="ShowReflectionPage" id="ufz-Pa-FHt"/>
                         <segue destination="MX8-7N-eAE" kind="presentation" identifier="ShowReflectionAlert" id="Qm3-H0-MVu"/>
+                        <segue destination="RHF-YT-BuR" kind="presentation" id="5Ht-wS-Euz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -82,7 +91,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51c-BN-rNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="135"/>
+            <point key="canvasLocation" x="1647" y="269"/>
         </scene>
         <!--成長-->
         <scene sceneID="X3f-mq-4mk">

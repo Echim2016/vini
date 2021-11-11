@@ -135,9 +135,20 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-Ec-MQt" userLabel="Expand View">
                                 <rect key="frame" x="0.0" y="268" width="414" height="0.0"/>
+                                <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 20 字" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0p-Be-PqF">
+                                        <rect key="frame" x="33" y="5" width="348" height="18.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
+                                        <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Z0p-Be-PqF" secondAttribute="trailing" constant="33" id="11h-dQ-rtg"/>
+                                    <constraint firstItem="Z0p-Be-PqF" firstAttribute="leading" secondItem="Sea-Ec-MQt" secondAttribute="leading" constant="33" id="WlE-GQ-HPq"/>
                                     <constraint firstAttribute="height" id="kGE-PM-zvt"/>
+                                    <constraint firstItem="Z0p-Be-PqF" firstAttribute="top" secondItem="Sea-Ec-MQt" secondAttribute="top" constant="5" id="zFB-M9-2GN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -190,6 +201,7 @@
                     <connections>
                         <outlet property="archiveButton" destination="Hx4-bE-cn7" id="pIJ-wJ-OQg"/>
                         <outlet property="archiveIntroLabel" destination="Zcp-rY-F2G" id="9vi-Ln-nfQ"/>
+                        <outlet property="characterLimitLabel" destination="Z0p-Be-PqF" id="hmY-83-PWF"/>
                         <outlet property="editButton" destination="9TS-sv-2aH" id="R0K-ub-wFI"/>
                         <outlet property="emojiTextField" destination="GHv-Qb-oWh" id="aEw-CQ-rAH"/>
                         <outlet property="expandView" destination="Sea-Ec-MQt" id="Lyy-BQ-ULq"/>

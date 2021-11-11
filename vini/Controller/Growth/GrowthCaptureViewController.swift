@@ -53,12 +53,16 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var characterLimitLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
             tableView.dataSource = self
         }
     }
+    
+    let titleCharactersLimit = 18
     
     var buttonStackView: UIStackView = {
        
@@ -117,6 +121,7 @@ class GrowthCaptureViewController: UIViewController {
         didSet {
             emojiTextField.isEnabled = isInEditMode
             headerTitleTextView.isEditable = isInEditMode
+            characterLimitLabel.isHidden = !isInEditMode
             tableView.isScrollEnabled = !isInEditMode
             
             let imageName = isInEditMode ? "checkmark.circle.fill" : "pencil.circle.fill"
@@ -218,6 +223,7 @@ class GrowthCaptureViewController: UIViewController {
             } else {
                 
                 hideEditPage()
+                headerTitleTextView.text = headerTitle
             }
             
         } else {
@@ -485,7 +491,7 @@ extension GrowthCaptureViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        // Disable welcome cell's content menu
+        // Disable welcome cell's context menu
         if indexPath.row == 0 || isInArchivedMode {
             
             return nil
@@ -549,18 +555,37 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
         
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        switch textView {
+            
+        case headerTitleTextView:
+            
+            let currentText = textView.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+            
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+            characterLimitLabel.text = "\(updatedText.count) / \(titleCharactersLimit)"
+            
+            return updatedText.count < titleCharactersLimit
+            
+        default:
+            return true
+        }
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         
         switch textView {
         case headerTitleTextView:
             
             guard let text = textView.text,
-                  text.count <= 20 else {
-                      textView.text = ""
+                  !text.isEmpty else {
+                      textView.text = headerTitle
                       return
                   }
-            
-            headerTitleToUpdate = text
+                        
+            headerTitleToUpdate = textView.text
             
         default:
             break
@@ -628,6 +653,8 @@ extension GrowthCaptureViewController {
         headerTitleTextView.placeholder = "輸入成長項目標題..."
         headerTitleTextView.tintColor = UIColor.B2
         headerTitleTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        
+        characterLimitLabel.text = "\(headerTitleTextView.text.count) / \(titleCharactersLimit)"
     }
     
     func setupHeaderView() {
