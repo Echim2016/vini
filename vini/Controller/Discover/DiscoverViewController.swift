@@ -76,8 +76,8 @@ class DiscoverViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         backgroundRectView.alpha = 0.1
-        wonderingLabel.alpha = 0.1
-        nameLabel.alpha = 0.1
+        wonderingLabel.alpha = 0
+        nameLabel.alpha = 0
         bigCloudImageView.alpha = 0
         mediumCloudImageView.alpha = 0
         mapView.clearStackSubviews()

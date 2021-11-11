@@ -108,7 +108,7 @@
         <scene sceneID="X3f-mq-4mk">
             <objects>
                 <navigationController storyboardIdentifier="GrowthNav" automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="成長" image="checklist" catalog="system" id="skg-9d-VCj"/>
+                    <tabBarItem key="tabBarItem" title="成長" image="bolt.fill" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p21-RL-vk3">
@@ -140,7 +140,7 @@
         <segue reference="7dB-Gn-XTz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="checklist" catalog="system" width="128" height="105"/>
+        <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="moon.stars.fill" catalog="system" width="124" height="128"/>
     </resources>
 </document>

@@ -21,14 +21,6 @@ class CustomTabBarController: UITabBarController {
         fetchMailsForBadgeValue()
     }
     
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//
-//        if item.title == TabBarItem.mailbox.title {
-//            
-//            fetchMailsForBadgeValue()
-//        }
-//    }
-    
     func setupTabBarItemTitle() {
         
         let tabBarItems = TabBarItem.allCases
