@@ -373,12 +373,14 @@ extension GrowthCaptureViewController {
         textFieldDidChangeSelection(emojiTextField)
         textViewDidEndEditing(headerTitleTextView)
 
-        GrowthCardProvider.shared.updateGrowthCard(id: growthCardID, emoji: headerEmojiToUpdate, title: headerTitleToUpdate) { result in
+        GrowthCardProvider.shared.updateGrowthCard(id: growthCardID, emoji: headerEmojiToUpdate, title: headerTitleToUpdate) { [self] result in
             
             switch result {
             case .success(let message):
                 
                 print(message)
+                self.headerTitle = self.headerTitleToUpdate
+                self.headerEmoji = self.headerEmojiToUpdate
                 self.hideEditPage()
                 
             case .failure(let error):
