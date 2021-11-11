@@ -37,7 +37,7 @@ extension String {
 extension Character {
     
     var isSimpleEmoji: Bool {
-        return unicodeScalars.count == 1 && unicodeScalars.first?.properties.isEmojiPresentation ?? false
+        return unicodeScalars.count == 1 && unicodeScalars.first?.properties.isEmoji ?? false
     }
 
     var isCombinedIntoEmoji: Bool {

@@ -536,7 +536,9 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             
             guard let text = textField.text,
                   text.count < 2,
-                  (text.isSingleEmoji || text.isEmpty) else {
+                  (text.containsOnlyEmoji || text.isEmpty) else {
+                      print(textField.text?.count)
+                      print(textField.text?.containsOnlyEmoji)
                       textField.text = headerEmoji
                       return
                   }
