@@ -395,11 +395,20 @@
                         <outlet property="tableView" destination="qhZ-h2-oyv" id="q3T-ro-zuH"/>
                         <outlet property="viniImageView" destination="5yp-6u-VgF" id="ELS-bl-0ee"/>
                         <outlet property="viniSelectorView" destination="NDV-Be-l71" id="AL2-wW-6yl"/>
+                        <segue destination="GP6-PN-eUd" kind="presentation" identifier="ShowEmptyInputAlert" id="h79-0T-CtI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZy-hA-eln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2813" y="117"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="ewq-bf-eFM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="GP6-PN-eUd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lu4-Z5-Ugb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3420" y="117"/>
         </scene>
         <!--探索-->
         <scene sceneID="05H-Yl-rt1">

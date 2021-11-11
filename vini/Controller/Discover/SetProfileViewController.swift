@@ -8,6 +8,11 @@
 import UIKit
 
 class SetProfileViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showEmptyInputAlert = "ShowEmptyInputAlert"
+    }
 
     @IBOutlet weak var viniImageView: UIImageView!
     
@@ -98,9 +103,13 @@ class SetProfileViewController: UIViewController {
         
         view.endEditing(true)
 
-        if !user.wondering.isEmpty,
-           !user.displayName.isEmpty {
+        if (!user.wondering.isEmpty && !user.displayName.isEmpty) || !isPublishedSwitch.isOn {
+            
             saveProfile()
+            
+        } else {
+            
+            performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
         }
     }
     
@@ -112,6 +121,14 @@ class SetProfileViewController: UIViewController {
     @IBAction func tapRightArrowButton(_ sender: Any) {
         
         currentViniIndex += 1
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertType = .emptyInputAlert
+        }
     }
 }
 
