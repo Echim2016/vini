@@ -8,12 +8,18 @@
 import UIKit
 import PhotosUI
 import RSKPlaceholderTextView
+import Haptica
 
 class SetGrowthContentCardViewController: UIViewController {
     
     enum Status {
         case create
         case edit
+    }
+    
+    private enum Segue: String {
+        
+        case showUpdateContentCardAlert = "ShowUpdateContentCardAlert"
     }
     
     weak var growthCaptureVC: GrowthCaptureViewController?
@@ -115,11 +121,27 @@ class SetGrowthContentCardViewController: UIViewController {
         switch currentStatus {
             
         case .create:
+            Haptic.play(".", delay: 0)
             addGrowthContentCard()
         case .edit:
-            updateGrowthContentCard()
+            
+            Haptic.play(".", delay: 0)
+            performSegue(withIdentifier: Segue.showUpdateContentCardAlert.rawValue, sender: nil)
             
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertType = .updateContentCardAlert
+            alert.onConfirm = {
+                
+                self.updateGrowthContentCard()
+            }
+        }
+        
     }
 }
 
@@ -151,7 +173,7 @@ extension SetGrowthContentCardViewController {
                 
     }
     
-    private func updateGrowthContentCard() {
+    func updateGrowthContentCard() {
         
         GrowthContentProvider.shared.updateGrowthContents(
             contentID: contentCardID,

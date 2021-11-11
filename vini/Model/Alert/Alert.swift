@@ -22,6 +22,8 @@ enum Alert {
     
     case sendMailAlert
     
+    case updateContentCardAlert
+    
     var title: String {
         
         switch self {
@@ -50,6 +52,9 @@ enum Alert {
         case .sendMailAlert:
             return "Vini 將為你寄出信件"
             
+        case .updateContentCardAlert:
+            return "更新卡片"
+            
         }
     }
     
@@ -76,6 +81,9 @@ enum Alert {
             
         case .sendMailAlert:
             return "您確定要寄出此信件嗎？"
+            
+        case .updateContentCardAlert:
+            return "您確定要更新這張卡片嗎？"
         }
     }
     

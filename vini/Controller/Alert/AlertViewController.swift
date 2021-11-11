@@ -58,6 +58,7 @@ class AlertViewController: UIViewController {
     @objc func tapConfirmButton(_ sender: UIButton) {
         
         defer {
+            Haptic.play(".", delay: 0)
             self.dismiss(animated: true, completion: nil)
         }
         let onConfirm = self.onConfirm
