@@ -15,6 +15,7 @@ class GrowthPageViewController: UIViewController {
         case createNewGrowthCard = "CreateNewGrowthCard"
         case showReflectionAlert = "ShowReflectionAlert"
         case showReflectionPage = "ShowReflectionPage"
+        case showDeletionAlert = "ShowDeletionAlert"
 
     }
 
@@ -70,7 +71,33 @@ class GrowthPageViewController: UIViewController {
         
         if let alertController = segue.destination as? AlertViewController {
             
-            alertController.alertType = .reflectionTimeAlert
+            switch segue.identifier {
+                
+            case Segue.showReflectionAlert.rawValue:
+                alertController.alertType = .reflectionTimeAlert
+                
+            case Segue.showDeletionAlert.rawValue:
+                alertController.alertType = .deleteGrowthCardAlert
+                
+                if let indexPath = sender as? IndexPath {
+                    
+                    alertController.onConfirm = {
+                        
+                        let id = self.data[indexPath.row].id
+                        
+                        self.deleteGrowthCard(id: id) { success in
+                            if success {
+                                self.data.remove(at: indexPath.row)
+                                self.tableView.deleteRows(at: [indexPath], with: .left)
+                            }
+                        }
+                    }
+                }
+                
+            default:
+                break
+
+            }
         }
         
         if let navigationController = segue.destination as? UINavigationController,
@@ -217,14 +244,7 @@ extension GrowthPageViewController: UITableViewDelegate {
             image: UIImage(systemName: "trash.fill"),
             attributes: [.destructive]) { _ in
                 
-                let id = self.data[indexPath.row].id
-                
-                self.deleteGrowthCard(id: id) { success in
-                    if success {
-                        self.data.remove(at: indexPath.row)
-                        self.tableView.deleteRows(at: [indexPath], with: .left)
-                    }
-                }
+                self.performSegue(withIdentifier: Segue.showDeletionAlert.rawValue, sender: indexPath)
             }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in

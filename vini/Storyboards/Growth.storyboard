@@ -32,7 +32,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="MX8-7N-eAE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bii-M9-NO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="87"/>
+            <point key="canvasLocation" x="1645" y="91"/>
         </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -76,7 +76,7 @@
                         <segue destination="ZxX-bD-lW4" kind="presentation" identifier="CreateNewGrowthCard" id="7dB-Gn-XTz"/>
                         <segue destination="mwy-5l-L4D" kind="presentation" identifier="ShowReflectionPage" id="ufz-Pa-FHt"/>
                         <segue destination="MX8-7N-eAE" kind="presentation" identifier="ShowReflectionAlert" id="Qm3-H0-MVu"/>
-                        <segue destination="RHF-YT-BuR" kind="presentation" id="5Ht-wS-Euz"/>
+                        <segue destination="RHF-YT-BuR" kind="presentation" identifier="ShowDeletionAlert" id="5Ht-wS-Euz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

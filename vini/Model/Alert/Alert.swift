@@ -14,6 +14,7 @@ enum Alert {
     case blockUserAlert
     case unblockUserAlert
     case deleteMailAlert
+    case deleteGrowthCardAlert
     
     var title: String {
         
@@ -34,6 +35,9 @@ enum Alert {
         case .deleteMailAlert:
             return "刪除"
             
+        case .deleteGrowthCardAlert:
+            return "刪除"
+            
         }
     }
     
@@ -51,6 +55,9 @@ enum Alert {
             return "您確定要解除封鎖此使用者嗎？"
         case .deleteMailAlert:
             return "您確定要刪除此信件嗎？"
+            
+        case .deleteGrowthCardAlert:
+            return "您確定要刪除此成長卡片嗎？所有微小學習內容將會一併刪除。"
         }
     }
     
