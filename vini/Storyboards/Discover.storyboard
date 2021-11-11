@@ -189,7 +189,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="paperplane.circle.fill" catalog="system"/>
+                                <state key="normal" backgroundImage="checkmark.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="tapSendButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="vZ9-7s-rR7"/>
                                 </connections>
@@ -227,6 +227,7 @@
                         <outlet property="headerView" destination="DaJ-Lm-jVb" id="zl6-Hn-H4e"/>
                         <outlet property="receipientNameLabel" destination="ZAd-x5-yFv" id="iiq-XL-hxf"/>
                         <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
+                        <outlet property="sendMailButton" destination="voA-kc-dFZ" id="nmK-vx-tAn"/>
                         <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
                         <segue destination="Ayu-0f-hTk" kind="presentation" identifier="ShowBlockUserAlert" id="AMd-p3-ig0"/>
                         <segue destination="Xut-N5-4qI" kind="presentation" identifier="ShowEmptyInputAlert" id="PT2-Pd-cEG"/>
@@ -235,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="889"/>
+            <point key="canvasLocation" x="1911.594202898551" y="888.61607142857144"/>
         </scene>
         <!--Alert-->
         <scene sceneID="tP2-FH-RAQ">
@@ -429,7 +430,6 @@
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
-        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="vini_amaze" width="317.5" height="337"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>

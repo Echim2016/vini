@@ -19,6 +19,7 @@ class SendMailViewController: UIViewController {
     @IBOutlet weak var receipientNameLabel: UILabel!
     @IBOutlet weak var replyTitleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var sendMailButton: UIButton!
     
     var receipient: ViniView?
     
@@ -49,6 +50,10 @@ class SendMailViewController: UIViewController {
         headerView.setBottomCurve()
         
         setupHeaderInfo()
+        
+        if #available(iOS 14, *) {
+            setupButton()
+        }
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {
@@ -230,5 +235,11 @@ extension SendMailViewController {
             receipientNameLabel.text = "寄給：" +  receipient.data.name
             replyTitleLabel.text = "回覆：" + receipient.data.wondering
         }
+    }
+    
+    func setupButton() {
+        
+        sendMailButton.setBackgroundImage(UIImage(systemName: "paperplane.circle.fill"), for: .normal)
+        
     }
 }

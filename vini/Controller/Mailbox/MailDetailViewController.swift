@@ -26,8 +26,6 @@ class MailDetailViewController: UIViewController {
     
     var mail: Mail = Mail()
     
-    let userDefault = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

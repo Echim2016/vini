@@ -13,7 +13,7 @@ extension UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
+            style: .done,
             target: self,
             action: #selector(tapBackBarButtonItem(_:))
         )

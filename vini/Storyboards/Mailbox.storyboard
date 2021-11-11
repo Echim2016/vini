@@ -97,7 +97,7 @@
                                     <action selector="tapDeleteButton:" destination="z4r-4Y-byP" id="sXj-Ak-hGz"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="exclamationmark.bubble.fill" catalog="system" id="f6K-F2-73d">
+                            <barButtonItem image="exclamationmark.bubble.fill" catalog="system" id="f6K-F2-73d">
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="tapBlockUser:" destination="z4r-4Y-byP" id="PVx-1S-FYE"/>
