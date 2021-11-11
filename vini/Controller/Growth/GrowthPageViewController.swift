@@ -133,7 +133,7 @@ extension GrowthPageViewController {
     
     private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
         
-        GrowthCardProvider.shared.deleteGrowthCard(id: id) { result in
+        GrowthCardProvider.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
             case .success(_):
@@ -146,6 +146,7 @@ extension GrowthPageViewController {
                 completion(false)
             }
         }
+        
     }
     
     private func getReflectionTime() {

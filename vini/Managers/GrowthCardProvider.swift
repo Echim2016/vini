@@ -133,19 +133,57 @@ class GrowthCardProvider {
         }
     }
     
-    func deleteGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        db.collection("Growth_Cards").document(id).delete() { err in
-            
-            if let err = err {
-                print("Error removing growth card: \(err)")
-                completion(.failure(err))
-            } else {
-                print("Growth card successfully removed!")
+    func deleteGrowthCardAndRelatedCards(id: String, completion: @escaping (Result<String, Error>) -> Void) {
                     
-                    completion(.success("Success"))
+        let batch = db.batch()
+        
+        let growthCardRef = db.collection("Growth_Cards").document(id)
+        batch.deleteDocument(growthCardRef)
+        
+        GrowthContentProvider.shared.fetchGrowthContents(id: id) { result in
+            
+            switch result {
+                
+            case .success(let cards):
+                
+                cards.forEach { card in
+                    
+                    let growthContentCardsRef = self.db.collection("Growth_Contents").document(card.id)
+                    batch.deleteDocument(growthContentCardsRef)
+                    
+                    if !card.image.isEmpty {
+                        
+                        GrowthContentProvider.shared.deleteGrowthContentCardImage(id: card.id) { result in
+                            switch result {
+                            case .success(let success):
+                                print("Content image deleted! \(success)")
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                    }
+                }
+                
+                batch.commit { err in
+                    
+                    if let err = err {
+                        
+                        print("Error deleting cards \(err)")
+                        completion(.failure(err))
+                        
+                    } else {
+                        
+                        print("Success deleting cards!")
+                        completion(.success("Cards deleted!"))
+                        
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
             }
         }
+        
     }
     
     func archiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {

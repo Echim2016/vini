@@ -30,7 +30,7 @@ extension String {
     }
 
     var emojiScalars: [UnicodeScalar] {
-        return filter{ $0.isEmoji }.flatMap { $0.unicodeScalars }
+        return filter { $0.isEmoji }.flatMap { $0.unicodeScalars }
     }
 }
 
