@@ -211,7 +211,14 @@ class GrowthCaptureViewController: UIViewController {
         
         if isInEditMode {
             
-            hideEditPage()
+            if isInCreateCardMode {
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            } else {
+                
+                hideEditPage()
+            }
             
         } else {
             
