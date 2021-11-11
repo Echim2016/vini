@@ -12,6 +12,8 @@ class SendMailViewController: UIViewController {
     private enum Segue: String {
         
         case showBlockUserAlert = "ShowBlockUserAlert"
+        case showEmptyInputAlert = "ShowEmptyInputAlert"
+        case showSendMailAlert = "ShowSendMailAlert"
     }
     
     @IBOutlet weak var receipientNameLabel: UILabel!
@@ -29,6 +31,7 @@ class SendMailViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
+            tableView.showsVerticalScrollIndicator = false
         }
     }
     
@@ -55,7 +58,14 @@ class SendMailViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: Any) {
         
-        sendMail()
+        if mailToSend.content.isEmpty || mailToSend.senderDisplayName.isEmpty {
+            
+            performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
+        } else {
+            
+            performSegue(withIdentifier: Segue.showSendMailAlert.rawValue, sender: nil)
+        }
+        
     }
     
     @IBAction func tapBlockButton(_ sender: Any) {
@@ -67,10 +77,30 @@ class SendMailViewController: UIViewController {
         
         if let alert = segue.destination as? AlertViewController {
             
-            alert.alertType = .blockUserAlert
-            alert.onConfirm = {
+            switch segue.identifier {
                 
-                self.blockUser()
+            case Segue.showBlockUserAlert.rawValue:
+                
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
+                }
+                
+            case Segue.showEmptyInputAlert.rawValue:
+                
+                alert.alertType = .emptyInputAlert
+                
+            case Segue.showSendMailAlert.rawValue:
+                
+                alert.alertType = .sendMailAlert
+                alert.onConfirm = {
+                    
+                    self.sendMail()
+                }
+                
+            default:
+                break
             }
         }
     }

@@ -229,11 +229,29 @@
                         <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
                         <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
                         <segue destination="Ayu-0f-hTk" kind="presentation" identifier="ShowBlockUserAlert" id="AMd-p3-ig0"/>
+                        <segue destination="Xut-N5-4qI" kind="presentation" identifier="ShowEmptyInputAlert" id="PT2-Pd-cEG"/>
+                        <segue destination="NxM-dn-U2q" kind="presentation" identifier="ShowSendMailAlert" id="TQx-km-KaK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="889"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="tP2-FH-RAQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="Xut-N5-4qI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBb-Wi-Bfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="889"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="f49-Yf-pmU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="NxM-dn-U2q" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCy-9b-xXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="927"/>
         </scene>
         <!--Alert-->
         <scene sceneID="BmT-tb-gSN">

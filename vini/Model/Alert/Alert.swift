@@ -11,10 +11,16 @@ enum Alert {
     
     case reflectionTimeAlert
     case logOutAlert
+    
     case blockUserAlert
     case unblockUserAlert
+    
     case deleteMailAlert
     case deleteGrowthCardAlert
+    
+    case emptyInputAlert
+    
+    case sendMailAlert
     
     var title: String {
         
@@ -38,6 +44,12 @@ enum Alert {
         case .deleteGrowthCardAlert:
             return "刪除"
             
+        case .emptyInputAlert:
+            return "無法成功傳送"
+            
+        case .sendMailAlert:
+            return "Vini 將為你寄出信件"
+            
         }
     }
     
@@ -58,6 +70,12 @@ enum Alert {
             
         case .deleteGrowthCardAlert:
             return "您確定要刪除此成長卡片嗎？所有微小學習內容將會一併刪除。"
+            
+        case .emptyInputAlert:
+            return "您的輸入內容似乎不完整，請確認完成所有欄位後再嘗試一次！"
+            
+        case .sendMailAlert:
+            return "您確定要寄出此信件嗎？"
         }
     }
     
