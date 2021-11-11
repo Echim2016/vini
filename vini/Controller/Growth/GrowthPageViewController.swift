@@ -60,6 +60,7 @@ class GrowthPageViewController: UIViewController {
     
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
     }
     
@@ -70,6 +71,7 @@ class GrowthPageViewController: UIViewController {
         if currentHour != reflectionHour {
             
             performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
+            
         } else {
             
             performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)

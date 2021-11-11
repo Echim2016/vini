@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 protocol DiscoverProtocol: AnyObject {
     
@@ -91,11 +92,13 @@ class DiscoverMapViewController: UIViewController {
     
     @IBAction func tapLeftArrowButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         currentSelectedIndex -= 1
     }
     
     @IBAction func tapRightArrowButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         currentSelectedIndex += 1
     }
     
@@ -107,6 +110,7 @@ class DiscoverMapViewController: UIViewController {
     @IBAction func tapConfirmButton(_ sender: Any) {
         
         delegate?.didSelectCloudCategory(currentSelectedCategory)
+        Haptic.play(".-.", delay: 0.3)
         self.dismiss(animated: true, completion: nil)
     }
     

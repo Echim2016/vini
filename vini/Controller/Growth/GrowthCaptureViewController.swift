@@ -253,16 +253,19 @@ class GrowthCaptureViewController: UIViewController {
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: growthCardID)
     }
     
     @objc func tapDrawConclusionsButton(_ sender: UIButton) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.drawConclusions.rawValue, sender: nil)
     }
     
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
+        Haptic.play(".", delay: 0)
         showArchiveButton()
     }
     
