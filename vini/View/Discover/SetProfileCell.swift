@@ -29,7 +29,7 @@ class SetProfileCell: UITableViewCell {
         titleLabel.text = title
         textView.placeholder = NSString(utf8String: placeholder)
         textView.tintColor = UIColor.S1
-        textView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        textView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
     }
     
     func setTextViewHeight(height: CGFloat) {
@@ -37,5 +37,4 @@ class SetProfileCell: UITableViewCell {
         textViewHeight.constant = height
         self.layoutIfNeeded()
     }
-    
 }

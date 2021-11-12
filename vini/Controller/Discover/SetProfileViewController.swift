@@ -48,17 +48,7 @@ class SetProfileViewController: UIViewController {
     
     weak var delegate: DiscoverProtocol?
         
-    var user: User = User() {
-        didSet {
-    
-            self.isPublishedSwitch.isOn = user.isPublished
-            self.selectedIndex = cloudCategorySelection.firstIndex(where: { item in
-                item.category.category == user.cloudCategory
-            }) ?? 0
-            cloudCategorySelection[selectedIndex].isChecked = true
-            self.tableView.reloadData()
-        }
-    }
+    var user: User = User()
     
     var cloudCategorySelection: [CloudCategorySelection] = [
         CloudCategorySelection(category: CloudCategory.career),
@@ -144,6 +134,12 @@ extension SetProfileViewController {
                 let types = self.viniAssets.map { $0.name }
                 self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
                 self.viniImageView.image = UIImage(named: user.viniType)
+                self.isPublishedSwitch.isOn = user.isPublished
+                self.selectedIndex = self.cloudCategorySelection.firstIndex(where: { item in
+                    item.category.category == user.cloudCategory
+                }) ?? 0
+                self.cloudCategorySelection[self.selectedIndex].isChecked = true
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 
@@ -300,8 +296,7 @@ extension SetProfileViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        guard let text = textView.text,
-              !text.isEmpty else {
+        guard let text = textView.text else {
                   return
               }
 
