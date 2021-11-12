@@ -24,6 +24,15 @@ class SetGrowthContentCardViewController: UIViewController {
     
     weak var growthCaptureVC: GrowthCaptureViewController?
     
+    @IBOutlet weak var photoLibraryButton: UIButton! {
+        didSet {
+            
+            if #available(iOS 14, *) {
+                photoLibraryButton.setBackgroundImage(UIImage(systemName: "photo.circle.fill"), for: .normal)
+            }
+        }
+    }
+    
     @IBOutlet weak var introLabel: UILabel! {
         didSet {
             introLabel.text = "關於「\(contentIntroText)」..."

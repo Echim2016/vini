@@ -336,7 +336,7 @@
                                         </constraints>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="photo.circle.fill" catalog="system"/>
+                                        <state key="normal" backgroundImage="photo.fill.on.rectangle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="tapAlbumButton:" destination="F69-GU-DzG" eventType="touchUpInside" id="7kY-Za-mfJ"/>
                                         </connections>
@@ -375,6 +375,7 @@
                         <outlet property="contentTextView" destination="Mo6-vz-tCL" id="umG-aR-Cdv"/>
                         <outlet property="imageLabel" destination="MaG-WD-tpl" id="E1F-RM-G2g"/>
                         <outlet property="introLabel" destination="mAQ-2f-Rih" id="O6L-6B-Kpq"/>
+                        <outlet property="photoLibraryButton" destination="37j-Hm-j3C" id="vVR-N7-cWc"/>
                         <outlet property="titleIntroLabel" destination="dUn-bP-oav" id="MTc-1N-heA"/>
                         <outlet property="titleTextView" destination="Zq7-UH-jTE" id="kEG-9w-Qpe"/>
                         <segue destination="THK-eX-Hoh" kind="presentation" identifier="ShowUpdateContentCardAlert" id="JKY-YI-v7f"/>
@@ -431,7 +432,7 @@
         <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
