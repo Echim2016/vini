@@ -81,6 +81,8 @@
 		9C840CB027310AC600AF3F73 /* InsightTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CAF27310AC600AF3F73 /* InsightTitle.swift */; };
 		9C840CB627313D9A00AF3F73 /* InsightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CB527313D9A00AF3F73 /* InsightManager.swift */; };
 		9C840CB827323B4200AF3F73 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C840CB727323B4200AF3F73 /* Date+Extension.swift */; };
+		9C8A36AE273E349000D57873 /* PrivacyPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C8A36AD273E349000D57873 /* PrivacyPolicy.storyboard */; };
+		9C8A36B0273E34B100D57873 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8A36AF273E34B100D57873 /* PrivacyPolicyViewController.swift */; };
 		9C95786A273BDE770056F757 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C957869273BDE770056F757 /* TabBarItem.swift */; };
 		9C95786C273BDFBA0056F757 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95786B273BDFBA0056F757 /* CustomTabBarController.swift */; };
 		9C95786F273BEEED0056F757 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95786E273BEEED0056F757 /* UIButton+Extension.swift */; };
@@ -204,6 +206,8 @@
 		9C840CAF27310AC600AF3F73 /* InsightTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightTitle.swift; sourceTree = "<group>"; };
 		9C840CB527313D9A00AF3F73 /* InsightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightManager.swift; sourceTree = "<group>"; };
 		9C840CB727323B4200AF3F73 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		9C8A36AD273E349000D57873 /* PrivacyPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrivacyPolicy.storyboard; sourceTree = "<group>"; };
+		9C8A36AF273E34B100D57873 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		9C957869273BDE770056F757 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		9C95786B273BDFBA0056F757 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		9C95786E273BEEED0056F757 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				9C021D4B272D96DA009A7581 /* SettingsViewController.swift */,
 				9C021D58272E53DF009A7581 /* TimePickerViewController.swift */,
 				9C178063273AA2EF00097E3C /* BlockListViewController.swift */,
+				9C8A36AF273E34B100D57873 /* PrivacyPolicyViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				9C178061273AA2D600097E3C /* BlockList.storyboard */,
 				9CEE9DA7272B9AAB006CCA06 /* Achievement.storyboard */,
 				9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */,
+				9C8A36AD273E349000D57873 /* PrivacyPolicy.storyboard */,
 				9C021D56272E53C6009A7581 /* TimePicker.storyboard */,
 				9C697F202737D25800EDBBCB /* Alert.storyboard */,
 			);
@@ -786,6 +792,7 @@
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
+				9C8A36AE273E349000D57873 /* PrivacyPolicy.storyboard in Resources */,
 				9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
@@ -930,6 +937,7 @@
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
 				9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */,
 				9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */,
+				9C8A36B0273E34B100D57873 /* PrivacyPolicyViewController.swift in Sources */,
 				9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */,
 				9C697F38273A643900EDBBCB /* SetCloudCategoryTitleCell.swift in Sources */,
 				9C697F33273938D100EDBBCB /* CloudCategory.swift in Sources */,

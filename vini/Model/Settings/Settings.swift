@@ -9,18 +9,22 @@ import Foundation
 
 enum SettingsSection: Int, CaseIterable {
     
-    case notificationSettings = 0
-    case accountSettings
+    case notification = 0
+    case account
+    case about
     
     var title: String {
         
         switch self {
             
-        case .notificationSettings:
+        case .notification:
             return "提醒設定"
             
-        case .accountSettings:
+        case .account:
             return "帳戶設定"
+            
+        case .about:
+            return "關於 Vini"
         }
     }
     
@@ -28,11 +32,14 @@ enum SettingsSection: Int, CaseIterable {
         
         switch self {
             
-        case .notificationSettings:
+        case .notification:
             return ["每日反思時間"]
             
-        case .accountSettings:
+        case .account:
             return ["已封鎖的使用者" ,"登出"]
+            
+        case .about:
+            return ["隱私權政策"]
         }
     }
     

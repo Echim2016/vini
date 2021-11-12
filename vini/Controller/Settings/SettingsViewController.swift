@@ -17,6 +17,8 @@ class SettingsViewController: UIViewController {
         case showLogOutAlert = "ShowLogOutAlert"
         
         case showBlockList = "ShowBlockList"
+        
+        case showPrivacyPage = "ShowPrivacyPage"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -26,7 +28,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    var sections: [SettingsSection] = [.notificationSettings, .accountSettings]
+    var sections: [SettingsSection] = SettingsSection.allCases
     
     var rowTitles: [[String]] = []
     
@@ -98,7 +100,6 @@ extension SettingsViewController: UITableViewDelegate {
             
             performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
             
-            
         case (1, 0):
             
             performSegue(withIdentifier: Segue.showBlockList.rawValue, sender: nil)
@@ -106,6 +107,10 @@ extension SettingsViewController: UITableViewDelegate {
         case (1, 1):
             
             performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
+            
+        case (SettingsSection.about.rawValue, 0):
+            
+            performSegue(withIdentifier: Segue.showPrivacyPage.rawValue, sender: nil)
             
         default:
             break

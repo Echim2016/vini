@@ -44,6 +44,7 @@
                         <segue destination="Skc-NN-kdY" kind="presentation" identifier="ShowReflectionTimeSetting" animates="NO" id="4Lj-PC-rOB"/>
                         <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
                         <segue destination="6bQ-9j-hGV" kind="show" identifier="ShowBlockList" id="zK9-6h-YYD"/>
+                        <segue destination="Z0K-wj-Aj3" kind="show" identifier="ShowPrivacyPage" id="CCl-lP-hai"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -67,6 +68,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqf-Pt-9bV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1680" y="192"/>
+        </scene>
+        <!--PrivacyPolicy-->
+        <scene sceneID="E3e-xz-fuK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PrivacyPolicy" id="Z0K-wj-Aj3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MNb-XN-ESe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVR-sE-J37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="282"/>
         </scene>
         <!--TimePicker-->
         <scene sceneID="elx-sb-8AH">
