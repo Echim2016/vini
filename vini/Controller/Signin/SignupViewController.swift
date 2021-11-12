@@ -21,6 +21,8 @@ class SignupViewController: UIViewController {
     }
     @IBOutlet weak var remindsLabel: UILabel!
     
+    @IBOutlet weak var charactersLimitLabel: UILabel!
+    
     var nextButton = NextButton()
     
     var notificationButton = NextButton()
@@ -28,6 +30,8 @@ class SignupViewController: UIViewController {
     var startButton = NextButton()
     
     var displayNameToUpdate = ""
+    
+    let displayNameCharactersLimit = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +102,11 @@ extension SignupViewController: UITextViewDelegate {
 
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
 
-        return updatedText.count <= 8
+        let count = updatedText.count < displayNameCharactersLimit ? updatedText.count : displayNameCharactersLimit
+        
+        charactersLimitLabel.text = "\(count) / \(displayNameCharactersLimit)"
+        
+        return updatedText.count <= displayNameCharactersLimit
     }
     
 }
@@ -156,6 +164,7 @@ extension SignupViewController {
         nameTextView.tintColor = UIColor.white
         nameTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0)
         nameTextView.textContainer.maximumNumberOfLines = 1
+        charactersLimitLabel.text = "\(nameTextView.text.count) / \(displayNameCharactersLimit)"
     }
     
     func setupNextButton() {
@@ -237,10 +246,12 @@ extension SignupViewController {
                 self.nameTextView.frame.origin.y -= 30
                 self.remindsLabel.frame.origin.y -= 30
                 self.nextButton.frame.origin.y -= 30
+                self.charactersLimitLabel.frame.origin.y -= 30
                 self.titleLabel.alpha = 0
                 self.nameTextView.alpha = 0
                 self.remindsLabel.alpha = 0
                 self.nextButton.alpha = 0
+                self.charactersLimitLabel.alpha = 0
             },
             completion: { _ in
                 
