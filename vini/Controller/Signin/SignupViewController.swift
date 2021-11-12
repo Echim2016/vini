@@ -59,15 +59,21 @@ class SignupViewController: UIViewController {
         
         view.endEditing(true)
         
-        updateDisplayName { sucesss in
-            if sucesss {
-                self.hideContentAnimation()
-            } else {
-                self.nameTextView.text = ""
-                // show error message
+        if !displayNameToUpdate.isEmpty {
+            
+            updateDisplayName { sucesss in
+                if sucesss {
+                    self.hideContentAnimation()
+                } else {
+                    self.nameTextView.text = ""
+                    self.nameTextView.shake(count: 5, for: 0.2, withTranslation: 2)
+                }
             }
+        } else {
+            
+            self.nameTextView.shake(count: 5, for: 0.3, withTranslation: 3)
         }
-        
+       
     }
     
     @objc func tapNotificationButton(_ sender: UIButton) {
