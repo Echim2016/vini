@@ -30,14 +30,14 @@ extension String {
     }
 
     var emojiScalars: [UnicodeScalar] {
-        return filter{ $0.isEmoji }.flatMap { $0.unicodeScalars }
+        return filter { $0.isEmoji }.flatMap { $0.unicodeScalars }
     }
 }
 
 extension Character {
     
     var isSimpleEmoji: Bool {
-        return unicodeScalars.count == 1 && unicodeScalars.first?.properties.isEmojiPresentation ?? false
+        return unicodeScalars.count == 1 && unicodeScalars.first?.properties.isEmoji ?? false
     }
 
     var isCombinedIntoEmoji: Bool {

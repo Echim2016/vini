@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class AlertViewController: UIViewController {
 
@@ -37,6 +38,7 @@ class AlertViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupAlert()
+        Haptic.play("o", delay: 0)
     }
     
     @objc func tapCancelButton(_ sender: UIButton) {
@@ -56,6 +58,7 @@ class AlertViewController: UIViewController {
     @objc func tapConfirmButton(_ sender: UIButton) {
         
         defer {
+            Haptic.play(".", delay: 0)
             self.dismiss(animated: true, completion: nil)
         }
         let onConfirm = self.onConfirm

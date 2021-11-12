@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class AchievementViewController: UIViewController {
 
@@ -27,7 +28,14 @@ class AchievementViewController: UIViewController {
     
     var insightDict: [InsightTitle : String] = [:]
     
-    var growthCards: [GrowthCard] = []
+    var growthCards: [GrowthCard] = [] {
+        didSet {
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? ArchivedCardCell {
+                
+                cell.remindsLabel.isHidden = !growthCards.isEmpty
+            }
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +64,7 @@ class AchievementViewController: UIViewController {
             controller.growthCardID = growthCards[sender.tag].id
             controller.isInArchivedMode = true
             
+            Haptic.play(".", delay: 0)
             present(navigationController, animated: true, completion: nil)
         }
     }
@@ -211,13 +220,23 @@ extension AchievementViewController: UITableViewDataSource {
 
 // MARK: - Collection View -
 extension AchievementViewController: UICollectionViewDelegate {
-    
-    
+   
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
-            return self.makeContextMenu(index: indexPath.row)
-        })
+        switch collectionView {
+            
+        case collectionViewForGrowthCards:
+            
+            return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
+                return self.makeContextMenu(index: indexPath.row)
+            })
+            
+        default:
+            
+            return nil
+            
+        }
+        
     }
     
     func makeContextMenu(index: Int) -> UIMenu {
@@ -225,7 +244,7 @@ extension AchievementViewController: UICollectionViewDelegate {
         let unarchive = UIAction(
             title: "解除封存",
             image: UIImage(systemName: "arrow.uturn.forward")
-        ) { action in
+        ) { _ in
             
             self.unarchiveGrowthCard(id: self.growthCards[index].id)
         }

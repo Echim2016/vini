@@ -12,11 +12,14 @@ class SendMailViewController: UIViewController {
     private enum Segue: String {
         
         case showBlockUserAlert = "ShowBlockUserAlert"
+        case showEmptyInputAlert = "ShowEmptyInputAlert"
+        case showSendMailAlert = "ShowSendMailAlert"
     }
     
     @IBOutlet weak var receipientNameLabel: UILabel!
     @IBOutlet weak var replyTitleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var sendMailButton: UIButton!
     
     var receipient: ViniView?
     
@@ -29,6 +32,7 @@ class SendMailViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
+            tableView.showsVerticalScrollIndicator = false
         }
     }
     
@@ -46,6 +50,10 @@ class SendMailViewController: UIViewController {
         headerView.setBottomCurve()
         
         setupHeaderInfo()
+        
+        if #available(iOS 14, *) {
+            setupButton()
+        }
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {
@@ -55,7 +63,14 @@ class SendMailViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: Any) {
         
-        sendMail()
+        if mailToSend.content.isEmpty || mailToSend.senderDisplayName.isEmpty {
+            
+            performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
+        } else {
+            
+            performSegue(withIdentifier: Segue.showSendMailAlert.rawValue, sender: nil)
+        }
+        
     }
     
     @IBAction func tapBlockButton(_ sender: Any) {
@@ -67,10 +82,30 @@ class SendMailViewController: UIViewController {
         
         if let alert = segue.destination as? AlertViewController {
             
-            alert.alertType = .blockUserAlert
-            alert.onConfirm = {
+            switch segue.identifier {
                 
-                self.blockUser()
+            case Segue.showBlockUserAlert.rawValue:
+                
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
+                }
+                
+            case Segue.showEmptyInputAlert.rawValue:
+                
+                alert.alertType = .emptyInputAlert
+                
+            case Segue.showSendMailAlert.rawValue:
+                
+                alert.alertType = .sendMailAlert
+                alert.onConfirm = {
+                    
+                    self.sendMail()
+                }
+                
+            default:
+                break
             }
         }
     }
@@ -200,5 +235,11 @@ extension SendMailViewController {
             receipientNameLabel.text = "寄給：" +  receipient.data.name
             replyTitleLabel.text = "回覆：" + receipient.data.wondering
         }
+    }
+    
+    func setupButton() {
+        
+        sendMailButton.setBackgroundImage(UIImage(systemName: "paperplane.circle.fill"), for: .normal)
+        
     }
 }

@@ -69,6 +69,17 @@ class UserManager {
                 } else {
                     
                     completion(.success("Create New Mailbox Success"))
+                    
+                    MailManager.shared.sendWelcomeMail { result in
+                        
+                        switch result {
+                            
+                        case .success(let success):
+                            print(success)
+                        case .failure(let error):
+                            print(error)
+                        }
+                    }
                 }
             }
         }

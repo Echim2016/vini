@@ -11,6 +11,7 @@ class SettingsItemCell: UITableViewCell {
 
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var rightArrowLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,12 @@ class SettingsItemCell: UITableViewCell {
         layer.startPoint = CGPoint(x: 0, y: 0)
         layer.endPoint = CGPoint(x: 2, y: 3)
         self.cellBackgroundView.layer.insertSublayer(layer, at: 0)
+        
+        if #available(iOS 14, *) {
+        
+            rightArrowLabel.isHidden = false
+        }
+        
     }
     
     func setupCell(title: String){

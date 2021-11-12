@@ -16,7 +16,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFX-O7-be3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="-295"/>
+            <point key="canvasLocation" x="1586" y="-27"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="gkj-An-5xo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="RHF-YT-BuR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YyP-uw-jXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="21"/>
         </scene>
         <!--Alert-->
         <scene sceneID="p56-go-kvo">
@@ -24,7 +32,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="MX8-7N-eAE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bii-M9-NO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="-249"/>
+            <point key="canvasLocation" x="1645" y="91"/>
         </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -38,6 +46,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4y-KB-RaR">
+                                <rect key="frame" x="109" y="431" width="196" height="39.5"/>
+                                <string key="text">Vini 沒有發現你的成長項目，
+點擊右上角的＋號開始新增吧！</string>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -46,6 +62,8 @@
                             <constraint firstItem="9mx-OD-6ya" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cNy-az-I8r"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9mx-OD-6ya" secondAttribute="trailing" id="f1a-Xs-5fD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9mx-OD-6ya" secondAttribute="bottom" id="fOt-6x-Vjx"/>
+                            <constraint firstItem="g4y-KB-RaR" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="qHd-37-LOU"/>
+                            <constraint firstItem="g4y-KB-RaR" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="rkL-yt-a8Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sou-lj-HrM">
@@ -63,11 +81,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="remindsLabel" destination="g4y-KB-RaR" id="tKu-6u-0hX"/>
                         <outlet property="tableView" destination="9mx-OD-6ya" id="hWx-07-vNl"/>
                         <segue destination="ZxX-bD-lW4" kind="presentation" identifier="ShowGrowthCapture" id="fiL-rE-pnI"/>
                         <segue destination="ZxX-bD-lW4" kind="presentation" identifier="CreateNewGrowthCard" id="7dB-Gn-XTz"/>
                         <segue destination="mwy-5l-L4D" kind="presentation" identifier="ShowReflectionPage" id="ufz-Pa-FHt"/>
                         <segue destination="MX8-7N-eAE" kind="presentation" identifier="ShowReflectionAlert" id="Qm3-H0-MVu"/>
+                        <segue destination="RHF-YT-BuR" kind="presentation" identifier="ShowDeletionAlert" id="5Ht-wS-Euz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -82,13 +102,13 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51c-BN-rNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="135"/>
+            <point key="canvasLocation" x="1647" y="269"/>
         </scene>
         <!--成長-->
         <scene sceneID="X3f-mq-4mk">
             <objects>
                 <navigationController storyboardIdentifier="GrowthNav" automaticallyAdjustsScrollViewInsets="NO" id="u0x-WS-qgL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="成長" image="checklist" catalog="system" id="skg-9d-VCj"/>
+                    <tabBarItem key="tabBarItem" title="成長" image="bolt.fill" catalog="system" id="skg-9d-VCj"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p21-RL-vk3">
@@ -120,7 +140,7 @@
         <segue reference="7dB-Gn-XTz"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="checklist" catalog="system" width="128" height="105"/>
+        <image name="bolt.fill" catalog="system" width="101" height="128"/>
         <image name="moon.stars.fill" catalog="system" width="124" height="128"/>
     </resources>
 </document>

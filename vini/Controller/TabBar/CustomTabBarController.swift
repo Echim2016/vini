@@ -21,14 +21,6 @@ class CustomTabBarController: UITabBarController {
         fetchMailsForBadgeValue()
     }
     
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-
-        if item.title == TabBarItem.mailbox.title {
-            
-            fetchMailsForBadgeValue()
-        }
-    }
-    
     func setupTabBarItemTitle() {
         
         let tabBarItems = TabBarItem.allCases
@@ -47,7 +39,7 @@ class CustomTabBarController: UITabBarController {
                 
                 if let tabBarItems = self.tabBar.items {
                     let tabItem = tabBarItems[TabBarItem.mailbox.rawValue]
-                    tabItem.badgeValue = count
+                    tabItem.badgeValue = count == 0 ? nil : "\(count)"
                 }
                 
             case .failure(let error):

@@ -26,7 +26,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eP-cA-7hP">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="→" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eP-cA-7hP">
                                 <rect key="frame" x="353" y="16.5" width="20" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="15I-0a-lo4"/>
@@ -58,6 +58,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="6TR-EU-qic" id="eOt-LC-cUh"/>
+                <outlet property="rightArrowLabel" destination="9eP-cA-7hP" id="zns-AI-1OS"/>
                 <outlet property="titleLabel" destination="cOl-63-slW" id="zxQ-UK-0Gs"/>
             </connections>
             <point key="canvasLocation" x="173.18840579710147" y="85.714285714285708"/>

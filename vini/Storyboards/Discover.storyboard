@@ -29,14 +29,14 @@
                                             <constraint firstAttribute="width" secondItem="CSB-wF-AuN" secondAttribute="height" multiplier="342:149" id="V1c-Jb-r5c"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到 Vini Cloud" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到 Vini Cloud" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
                                         <rect key="frame" x="16" y="32" width="350" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請左滑或右滑開始探索" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRo-iy-Kb4">
                                         <rect key="frame" x="16" y="158.5" width="180" height="25.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
@@ -189,7 +189,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="paperplane.circle.fill" catalog="system"/>
+                                <state key="normal" backgroundImage="checkmark.circle.fill" catalog="system"/>
                                 <connections>
                                     <action selector="tapSendButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="vZ9-7s-rR7"/>
                                 </connections>
@@ -227,13 +227,32 @@
                         <outlet property="headerView" destination="DaJ-Lm-jVb" id="zl6-Hn-H4e"/>
                         <outlet property="receipientNameLabel" destination="ZAd-x5-yFv" id="iiq-XL-hxf"/>
                         <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
+                        <outlet property="sendMailButton" destination="voA-kc-dFZ" id="nmK-vx-tAn"/>
                         <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
                         <segue destination="Ayu-0f-hTk" kind="presentation" identifier="ShowBlockUserAlert" id="AMd-p3-ig0"/>
+                        <segue destination="Xut-N5-4qI" kind="presentation" identifier="ShowEmptyInputAlert" id="PT2-Pd-cEG"/>
+                        <segue destination="NxM-dn-U2q" kind="presentation" identifier="ShowSendMailAlert" id="TQx-km-KaK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="889"/>
+            <point key="canvasLocation" x="1911.594202898551" y="888.61607142857144"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="tP2-FH-RAQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="Xut-N5-4qI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBb-Wi-Bfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2494" y="889"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="f49-Yf-pmU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="NxM-dn-U2q" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCy-9b-xXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="927"/>
         </scene>
         <!--Alert-->
         <scene sceneID="BmT-tb-gSN">
@@ -376,11 +395,20 @@
                         <outlet property="tableView" destination="qhZ-h2-oyv" id="q3T-ro-zuH"/>
                         <outlet property="viniImageView" destination="5yp-6u-VgF" id="ELS-bl-0ee"/>
                         <outlet property="viniSelectorView" destination="NDV-Be-l71" id="AL2-wW-6yl"/>
+                        <segue destination="GP6-PN-eUd" kind="presentation" identifier="ShowEmptyInputAlert" id="h79-0T-CtI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZy-hA-eln" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2813" y="117"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="ewq-bf-eFM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="GP6-PN-eUd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lu4-Z5-Ugb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3420" y="117"/>
         </scene>
         <!--探索-->
         <scene sceneID="05H-Yl-rt1">
@@ -393,6 +421,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vsi-S6-DYz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -411,7 +447,6 @@
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
-        <image name="paperplane.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="vini_amaze" width="317.5" height="337"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>

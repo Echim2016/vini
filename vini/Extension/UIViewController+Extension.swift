@@ -11,12 +11,25 @@ extension UIViewController {
     
     func setupNavBarBackButton() {
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
-            target: self,
-            action: #selector(tapBackBarButtonItem(_:))
-        )
+        if #available(iOS 14, *) {
+        
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "chevron.backward"),
+                style: .done,
+                target: self,
+                action: #selector(tapBackBarButtonItem(_:))
+            )
+            
+        } else {
+            
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "←",
+                style: .done,
+                target: self,
+                action: #selector(tapBackBarButtonItem(_:))
+            )
+        }
+        
         navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
     }
     

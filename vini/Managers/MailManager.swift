@@ -76,6 +76,39 @@ class MailManager {
         }
     }
     
+    func sendWelcomeMail(completion: @escaping (Result<String, Error>) -> Void) {
+        
+        if let id = UserManager.shared.userID {
+            
+            var welcomeMail = Mail()
+            welcomeMail.setupWelcomeMail()
+            
+            let document = db.collection("Mailboxes").document(id).collection("Mails").document()
+            welcomeMail.id = document.documentID
+            welcomeMail.receipientID = id
+            welcomeMail.sentTime = Timestamp(date: Date())
+            
+            do {
+                
+                try document.setData(from: welcomeMail) { error in
+                    
+                    if let error = error {
+                        
+                        completion(.failure(error))
+                    } else {
+                        
+                        completion(.success("Success"))
+                    }
+                }
+                
+            } catch let error {
+                
+                print(error)
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func deleteMail(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
@@ -165,7 +198,7 @@ class MailManager {
         }
     }
     
-    func fetchNumberOfUnreadMails(completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchNumberOfUnreadMails(completion: @escaping (Result<Int, Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
@@ -188,7 +221,7 @@ class MailManager {
                         }
                     }
                         
-                    completion(.success("\(count)"))
+                    completion(.success(count))
                     
                 }
             }

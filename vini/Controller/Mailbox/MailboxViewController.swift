@@ -47,6 +47,7 @@ class MailboxViewController: UIViewController {
         
         fetchMailsWithoutBlockList()
         getReflectionTime()
+        updateBadgeValue()
         setupNavigationController(title: "收信匣", titleColor: .white)
     }
     
@@ -103,6 +104,14 @@ extension MailboxViewController {
                 self.mails = []
                 print(error)
             }
+        }
+    }
+    
+    func updateBadgeValue() {
+        
+        if let tabBar = self.tabBarController as? CustomTabBarController {
+            
+            tabBar.fetchMailsForBadgeValue()
         }
     }
     

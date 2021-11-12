@@ -26,8 +26,6 @@ class MailDetailViewController: UIViewController {
     
     var mail: Mail = Mail()
     
-    let userDefault = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,12 +39,14 @@ class MailDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupNavBarBackButton()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         updateReadStatus()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func tapDeleteButton(_ sender: Any) {

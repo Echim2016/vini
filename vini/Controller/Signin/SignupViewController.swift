@@ -126,6 +126,20 @@ extension SignupViewController {
         }
         
     }
+    
+//    func sendWelcomeMail() {
+//        
+//        MailManager.shared.sendWelcomeMail { result in
+//            switch result {
+//            case .success(let success):
+//                print(success)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+//    
+//    
 }
 
 extension SignupViewController {

@@ -35,6 +35,7 @@ class SigninViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        self.navigationController?.navigationBar.isHidden = true
         setupBackgroundView()
     }
  
@@ -58,7 +59,7 @@ class SigninViewController: UIViewController {
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         
         let nonce =  randomNonceString()
         request.nonce = sha256(nonce)
@@ -119,7 +120,7 @@ class SigninViewController: UIViewController {
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         request.nonce = sha256(nonce)
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
@@ -188,6 +189,8 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                                 print(error)
                             }
                         }
+                        
+                        
                     } else {
                         
                         // if user is not new user, redirect to home page
