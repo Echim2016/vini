@@ -379,11 +379,20 @@
                         <outlet property="titleIntroLabel" destination="dUn-bP-oav" id="MTc-1N-heA"/>
                         <outlet property="titleTextView" destination="Zq7-UH-jTE" id="kEG-9w-Qpe"/>
                         <segue destination="THK-eX-Hoh" kind="presentation" identifier="ShowUpdateContentCardAlert" id="JKY-YI-v7f"/>
+                        <segue destination="I8p-aA-edR" kind="presentation" identifier="ShowEmptyInputAlert" id="p4K-Ph-zMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXI-Eu-pXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952" y="860"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="EAh-Tg-J45">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="I8p-aA-edR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNp-gq-B1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="1231"/>
         </scene>
         <!--Alert-->
         <scene sceneID="EZP-na-wcZ">

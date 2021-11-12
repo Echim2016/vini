@@ -20,6 +20,7 @@ class SetGrowthContentCardViewController: UIViewController {
     private enum Segue: String {
         
         case showUpdateContentCardAlert = "ShowUpdateContentCardAlert"
+        case showEmptyInputAlert = "ShowEmptyInputAlert"
     }
     
     weak var growthCaptureVC: GrowthCaptureViewController?
@@ -127,27 +128,49 @@ class SetGrowthContentCardViewController: UIViewController {
         textViewDidEndEditing(contentTextView)
         textViewDidEndEditing(titleTextView)
         
-        switch currentStatus {
+        if titleToAdd.isEmpty || contentToAdd.isEmpty {
             
-        case .create:
-            Haptic.play(".", delay: 0)
-            addGrowthContentCard()
-        case .edit:
+            performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
             
-            Haptic.play(".", delay: 0)
-            performSegue(withIdentifier: Segue.showUpdateContentCardAlert.rawValue, sender: nil)
+        } else {
             
+            switch currentStatus {
+                
+            case .create:
+                
+                Haptic.play(".", delay: 0)
+                addGrowthContentCard()
+                
+            case .edit:
+                
+                Haptic.play(".", delay: 0)
+                performSegue(withIdentifier: Segue.showUpdateContentCardAlert.rawValue, sender: nil)
+            }
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let alert = segue.destination as? AlertViewController {
             
-            alert.alertType = .updateContentCardAlert
-            alert.onConfirm = {
+            switch segue.identifier {
+ 
+            case Segue.showUpdateContentCardAlert.rawValue:
                 
-                self.updateGrowthContentCard()
+                alert.alertType = .updateContentCardAlert
+                alert.onConfirm = {
+                    
+                    self.updateGrowthContentCard()
+                }
+                
+            case Segue.showEmptyInputAlert.rawValue:
+                
+                alert.alertType = .emptyInputAlert
+            
+            default:
+                break
+            
             }
         }
         

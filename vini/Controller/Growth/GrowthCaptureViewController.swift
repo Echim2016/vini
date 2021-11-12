@@ -570,9 +570,12 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             guard let stringRange = Range(range, in: currentText) else { return false }
             
             let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-            characterLimitLabel.text = "\(updatedText.count) / \(titleCharactersLimit)"
             
-            return updatedText.count < titleCharactersLimit
+            let count = updatedText.count < titleCharactersLimit ? updatedText.count : titleCharactersLimit
+            
+            characterLimitLabel.text = "\(count) / \(titleCharactersLimit)"
+                        
+            return updatedText.count <= titleCharactersLimit
             
         default:
             return true
