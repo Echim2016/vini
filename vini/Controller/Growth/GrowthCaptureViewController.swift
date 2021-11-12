@@ -535,6 +535,18 @@ extension GrowthCaptureViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0.2
+
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
+    
 }
 
 // MARK: - Text Field & Text View -
