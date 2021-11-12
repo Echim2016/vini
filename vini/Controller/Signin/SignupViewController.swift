@@ -126,20 +126,7 @@ extension SignupViewController {
         }
         
     }
-    
-//    func sendWelcomeMail() {
-//        
-//        MailManager.shared.sendWelcomeMail { result in
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-//    
-//    
+
 }
 
 extension SignupViewController {
@@ -165,7 +152,6 @@ extension SignupViewController {
     
     func setupTextView() {
     
-        nameTextView.textContentType = .name
         nameTextView.layer.cornerRadius = 10
         nameTextView.tintColor = UIColor.white
         nameTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0)
