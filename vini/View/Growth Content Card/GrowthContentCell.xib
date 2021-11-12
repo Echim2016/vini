@@ -21,29 +21,29 @@
                         <rect key="frame" x="32" y="16" width="538" height="376"/>
                         <subviews>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="pDB-jP-Wxr">
-                                <rect key="frame" x="16" y="16" width="506" height="344"/>
+                                <rect key="frame" x="20" y="20" width="498" height="336"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content TItle" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viS-zm-HjW">
-                                        <rect key="frame" x="0.0" y="0.0" width="506" height="28"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="498" height="28"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Content" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrd-1X-lhM">
-                                        <rect key="frame" x="0.0" y="59" width="506" height="22.5"/>
+                                        <rect key="frame" x="0.0" y="56.5" width="498" height="22.5"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="256" verticalCompressionResistancePriority="754" translatesAutoresizingMaskIntoConstraints="NO" id="xNH-Zm-Ri4">
-                                        <rect key="frame" x="0.0" y="113" width="506" height="180"/>
+                                        <rect key="frame" x="0.0" y="107.5" width="498" height="180"/>
                                         <color key="backgroundColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="EMD-T0-3sV"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" text="2021/10/11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fkT-uN-hUq">
-                                        <rect key="frame" x="0.0" y="324" width="506" height="20"/>
+                                        <rect key="frame" x="0.0" y="316" width="498" height="20"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                         <color key="textColor" red="0.82745098039215681" green="0.86274509803921573" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -56,10 +56,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="pDB-jP-Wxr" firstAttribute="top" secondItem="oPF-FI-67K" secondAttribute="top" constant="16" id="2NZ-W6-lfu"/>
-                            <constraint firstAttribute="bottom" secondItem="pDB-jP-Wxr" secondAttribute="bottom" constant="16" id="O0H-t7-sGK"/>
-                            <constraint firstItem="pDB-jP-Wxr" firstAttribute="leading" secondItem="oPF-FI-67K" secondAttribute="leading" constant="16" id="iHw-8K-jzb"/>
-                            <constraint firstAttribute="trailing" secondItem="pDB-jP-Wxr" secondAttribute="trailing" constant="16" id="l9D-kX-XX9"/>
+                            <constraint firstItem="pDB-jP-Wxr" firstAttribute="top" secondItem="oPF-FI-67K" secondAttribute="top" constant="20" id="2NZ-W6-lfu"/>
+                            <constraint firstAttribute="bottom" secondItem="pDB-jP-Wxr" secondAttribute="bottom" constant="20" id="O0H-t7-sGK"/>
+                            <constraint firstItem="pDB-jP-Wxr" firstAttribute="leading" secondItem="oPF-FI-67K" secondAttribute="leading" constant="20" id="iHw-8K-jzb"/>
+                            <constraint firstAttribute="trailing" secondItem="pDB-jP-Wxr" secondAttribute="trailing" constant="20" id="l9D-kX-XX9"/>
                         </constraints>
                     </view>
                 </subviews>
