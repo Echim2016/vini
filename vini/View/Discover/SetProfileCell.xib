@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="個人狀態" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xzn-XO-mAl">
-                        <rect key="frame" x="32" y="8" width="449" height="75"/>
+                        <rect key="frame" x="32" y="8" width="64" height="75"/>
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
@@ -33,21 +33,30 @@
                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 / 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfY-FI-fnc">
+                        <rect key="frame" x="447.5" y="8" width="33.5" height="75"/>
+                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="0.30000517380000002" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="rXG-59-sZj" secondAttribute="bottom" constant="8" id="5wS-RV-vFC"/>
-                    <constraint firstAttribute="trailing" secondItem="Xzn-XO-mAl" secondAttribute="trailing" constant="32" id="92s-6i-G5Q"/>
+                    <constraint firstItem="rXG-59-sZj" firstAttribute="top" secondItem="WfY-FI-fnc" secondAttribute="bottom" constant="8" id="BQQ-bc-7vI"/>
                     <constraint firstItem="rXG-59-sZj" firstAttribute="top" secondItem="Xzn-XO-mAl" secondAttribute="bottom" constant="8" id="I0H-O7-7Sb"/>
                     <constraint firstItem="Xzn-XO-mAl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="WLq-gX-In6"/>
                     <constraint firstAttribute="trailing" secondItem="rXG-59-sZj" secondAttribute="trailing" constant="32" id="bja-u2-e1l"/>
                     <constraint firstItem="Xzn-XO-mAl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="nL7-1n-ovp"/>
+                    <constraint firstItem="WfY-FI-fnc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nvM-Ws-E52"/>
+                    <constraint firstAttribute="trailing" secondItem="WfY-FI-fnc" secondAttribute="trailing" constant="32" id="qTD-CL-Uwo"/>
                     <constraint firstItem="rXG-59-sZj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="znk-w7-fIb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="charactersLimitLabel" destination="WfY-FI-fnc" id="fGl-gT-DyX"/>
                 <outlet property="textView" destination="rXG-59-sZj" id="nYf-9U-IOc"/>
                 <outlet property="textViewHeight" destination="prS-ye-PtM" id="fSo-HA-8MT"/>
                 <outlet property="titleLabel" destination="Xzn-XO-mAl" id="eue-x8-imI"/>
