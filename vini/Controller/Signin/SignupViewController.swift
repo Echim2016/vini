@@ -252,7 +252,7 @@ extension SignupViewController {
     func showRemindsContentAnimation() {
         
         titleLabel.text = "\(displayNameToUpdate) 今天過得還好嗎？\n反思是 Vini 很重視的每日儀式。"
-        remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
+//        remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
 //        remindsLabel.textColor = .white
         remindsLabel.text = "每到晚上的指定時間，Vini 會帶你進行一次簡單的反思練習，你也可以在這段時間看見其他使用者寫給你的私信。"
         

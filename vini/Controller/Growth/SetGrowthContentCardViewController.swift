@@ -202,11 +202,11 @@ extension SetGrowthContentCardViewController {
         
         contentTextView.placeholder = "我的新發現/學習是..."
         contentTextView.tintColor = UIColor.S1
-        contentTextView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        contentTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
         
         titleTextView.placeholder = "為這個學習下一個標題..."
         titleTextView.tintColor = UIColor.S1
-        titleTextView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        titleTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
     }
 }
 
