@@ -70,6 +70,7 @@ class DiscoverViewController: UIViewController {
         
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
+        showBackgroundViewScaleUpAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,10 +85,16 @@ class DiscoverViewController: UIViewController {
         resetTitle()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        resetBackgroundViewScaleUpAnimation()
+    }
+    
     @objc private func onTap(_ gesture: UIGestureRecognizer) {
-
+        
         let touchPoint = gesture.location(in: self.mapView.mapStackView)
-                
+        
         self.mapView.mapStackView.arrangedSubviews.filter { $0.frame.contains(touchPoint)}.forEach { map  in
             
             let location = gesture.location(in: map)
@@ -163,7 +170,7 @@ extension DiscoverViewController {
     func setupMapScrollView() {
         
         mapView.dataSource = self
-        
+                
         self.view.addSubview(mapView)
                 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
@@ -283,7 +290,7 @@ extension DiscoverViewController: MapScrollViewDataSource {
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         return infoOfUsers
     }
-    
+
 }
 
 extension DiscoverViewController: DiscoverProtocol {
@@ -316,5 +323,51 @@ extension DiscoverViewController {
                 self.mediumCloudImageView.alpha = 1
             }
         )
+    }
+    
+    func resetBackgroundViewScaleUpAnimation() {
+        
+//        let xScaleFactor = 0.7
+//        let yScaleFactor = 0.9
+//        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
+        
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.backgroundRectView.transform = .identity
+                
+            },
+            completion: { _ in
+                
+              
+            })
+    }
+    
+    func showBackgroundViewScaleUpAnimation() {
+        
+        guard backgroundRectView.frame.width < self.view.frame.size.width else { return }
+        
+        let xScaleFactor = self.view.frame.size.width / backgroundRectView.frame.width
+        let yScaleFactor = self.view.frame.size.height / backgroundRectView.frame.height
+        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
+        
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.backgroundRectView.transform = scaleTransform
+                
+            },
+            completion: { _ in
+                
+              
+            })
     }
 }
