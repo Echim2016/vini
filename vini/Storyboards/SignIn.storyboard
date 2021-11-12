@@ -23,7 +23,7 @@
                                         <rect key="frame" x="58" y="184" width="174" height="53"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfS-2g-LWn">
-                                        <rect key="frame" x="-32" y="7.5" width="240" height="67.5"/>
+                                        <rect key="frame" x="-32" y="47.5" width="240" height="67.5"/>
                                         <string key="text">那是一個新世界。
 由微小的信念所組成。</string>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
@@ -38,13 +38,45 @@
                                     <constraint firstItem="hKf-1S-Gcb" firstAttribute="centerY" secondItem="VCO-97-WZh" secondAttribute="centerY" constant="-80" id="nlb-YD-sBS"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bZT-Ob-bFe">
+                                <rect key="frame" x="62" y="802" width="216" height="26"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登入即代表您接受並同意 Vini 的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90J-lU-kY6">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="26"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="10"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiD-Mf-TqK">
+                                        <rect key="frame" x="146" y="0.0" width="70" height="26"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="《隱私權政策》">
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="10" name="PingFangTC-Regular"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapPrivacyPolicyButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9dk-KP-AVI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="bZT-Ob-bFe" firstAttribute="top" secondItem="VCO-97-WZh" secondAttribute="bottom" constant="120" id="G9A-YJ-s2p"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VCO-97-WZh" secondAttribute="bottom" constant="180" id="LnV-eS-MJw"/>
                             <constraint firstItem="FfS-2g-LWn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="YBN-Ej-XZI"/>
-                            <constraint firstItem="FfS-2g-LWn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="af0-Ur-P3d"/>
+                            <constraint firstItem="FfS-2g-LWn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="af0-Ur-P3d"/>
+                            <constraint firstItem="bZT-Ob-bFe" firstAttribute="leading" secondItem="VCO-97-WZh" secondAttribute="leading" id="kBY-Wt-B7T"/>
                             <constraint firstItem="VCO-97-WZh" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.7" id="mo6-GG-IzC"/>
                             <constraint firstItem="VCO-97-WZh" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="oa5-Vi-FSS"/>
                             <constraint firstItem="VCO-97-WZh" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.6" constant="44" id="xpm-7t-m2f"/>
@@ -53,14 +85,24 @@
                     <navigationItem key="navigationItem" id="tdJ-dT-Zyy"/>
                     <connections>
                         <outlet property="cloudImageView" destination="hKf-1S-Gcb" id="uPx-Ko-MQ2"/>
+                        <outlet property="privacyInfoStackView" destination="bZT-Ob-bFe" id="Z8x-MZ-QmQ"/>
                         <outlet property="welcomeBackgroundView" destination="VCO-97-WZh" id="V64-GP-c0e"/>
                         <outlet property="welcomeMessageLabel" destination="FfS-2g-LWn" id="rsy-ew-Zrp"/>
                         <segue destination="cVe-P6-tyg" kind="show" identifier="ShowSignupPage" id="t5V-pn-X1b"/>
+                        <segue destination="4kT-8E-tY9" kind="presentation" identifier="ShowPrivacyPage" id="OVQ-k2-uAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1034.7826086956522" y="101.78571428571428"/>
+        </scene>
+        <!--PrivacyPolicy-->
+        <scene sceneID="IUz-p3-45K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PrivacyPolicy" id="4kT-8E-tY9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWW-pX-cr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="540"/>
         </scene>
         <!--Signup-->
         <scene sceneID="kp7-c9-MVZ">
