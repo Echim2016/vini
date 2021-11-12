@@ -30,14 +30,30 @@
                             <constraint firstItem="UBc-sJ-uxN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dX5-ti-axc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rXU-Sw-e23"/>
+                    <navigationItem key="navigationItem" id="rXU-Sw-e23">
+                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="6Z9-xi-88n">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapSettingsButton:" destination="Y6W-OH-hqX" id="krR-1p-itm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="UBc-sJ-uxN" id="IIA-GJ-4Yj"/>
+                        <segue destination="jHM-2f-mmQ" kind="presentation" identifier="ShowSettings" id="v2Q-4D-PVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="unO-na-1jg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="jHM-2f-mmQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymy-mh-8ad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647" y="100"/>
         </scene>
         <!--成就-->
         <scene sceneID="Nia-Hy-mhs">
@@ -70,5 +86,6 @@
     </scenes>
     <resources>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

@@ -12,7 +12,6 @@ class MailboxViewController: UIViewController {
     private enum Segue: String {
         
         case showDetailMail = "ShowDetailMail"
-        case showSettings = "ShowSettings"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -60,11 +59,6 @@ class MailboxViewController: UIViewController {
                 destination.mail = mails[index]
             }
         }
-    }
-
-    @IBAction func tapSetting(_ sender: Any) {
-        
-        performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
     }
     
 }

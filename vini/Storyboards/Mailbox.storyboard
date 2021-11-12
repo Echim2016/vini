@@ -38,34 +38,16 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9o-9R-iaA" secondAttribute="trailing" id="kEA-St-pbg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HCc-nC-172">
-                        <barButtonItem key="rightBarButtonItem" title="設定" image="gearshape.fill" catalog="system" id="bVF-Lq-LHH">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="tapSetting:" destination="Y6W-OH-hqX" id="tbH-sx-vXy"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="HCc-nC-172"/>
                     <connections>
                         <outlet property="remindsLabel" destination="R8p-aj-kOa" id="3Az-a9-ngD"/>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
                         <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
-                        <segue destination="TIW-zz-Rn2" kind="presentation" identifier="ShowSettings" id="zSs-aJ-d4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="ndm-Uj-ww7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="TIW-zz-Rn2" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8Qi-eH-k6e"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hO7-PP-eyX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1043" y="556"/>
         </scene>
         <!--Mail Detail View Controller-->
         <scene sceneID="rSq-4B-RAA">
@@ -158,7 +140,6 @@
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="exclamationmark.bubble.fill" catalog="system" width="128" height="110"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

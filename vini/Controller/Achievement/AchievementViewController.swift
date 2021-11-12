@@ -9,6 +9,11 @@ import UIKit
 import Haptica
 
 class AchievementViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showSettings = "ShowSettings"
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -50,6 +55,12 @@ class AchievementViewController: UIViewController {
 
         fetchGrowthCards()
         fetchInsights()
+    }
+    
+    @IBAction func tapSettingsButton(_ sender: Any) {
+   
+        performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
+
     }
     
     @objc func tapShowCardDetailButton(_ sender: UIButton) {
@@ -120,7 +131,6 @@ extension AchievementViewController {
             switch result {
             case .success(let success):
                 
-                print(success)
                 self.fetchGrowthCards()
                 
             case .failure(let error):
