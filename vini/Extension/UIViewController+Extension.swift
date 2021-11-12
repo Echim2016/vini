@@ -53,4 +53,21 @@ extension UIViewController {
 
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
+    
+    func setupBlurBackground(layer: Int) {
+        
+        view.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(blurView, at: layer)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+    }
 }

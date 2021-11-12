@@ -70,6 +70,7 @@ class DiscoverMapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setupBlurBackground(layer: 2)
         modalBackgroundView.layer.cornerRadius = 25
         leftArrowButton.layer.cornerRadius = 25
         rightArrowButton.layer.cornerRadius = 25
