@@ -25,6 +25,7 @@ class PrivacyPolicyViewController: UIViewController {
     func setupWebView() {
         
         guard let url = URL(string: privacyURL) else {
+            VProgressHUD.showFailure()
             return
         }
         

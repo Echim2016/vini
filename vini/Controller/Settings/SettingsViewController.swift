@@ -67,14 +67,15 @@ class SettingsViewController: UIViewController {
             
                     do {
                         try firebaseAuth.signOut()
+                                                
                     } catch let signOutError as NSError {
                         print("Error signing out: %@", signOutError)
+                        VProgressHUD.showFailure()
                     }
                     
                     if let signinNav = UIStoryboard.signIn.instantiateViewController(withIdentifier: StoryboardCategory.signIn.rawValue) as? UINavigationController {
                         
                         if let sceneDelegate: SceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-                            print("app")
                             sceneDelegate.window?.rootViewController = signinNav
                             sceneDelegate.window?.makeKeyAndVisible()
                         }

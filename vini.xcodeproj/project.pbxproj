@@ -50,6 +50,7 @@
 		9C51A3CF2732783B00F85CE4 /* ReflectionOutroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3CD2732783B00F85CE4 /* ReflectionOutroCell.swift */; };
 		9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3CE2732783B00F85CE4 /* ReflectionOutroCell.xib */; };
 		9C51A3D3273290ED00F85CE4 /* ReflectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */; };
+		9C5E7523273F90160052021D /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E7522273F90160052021D /* JGProgressHUDWrapper.swift */; };
 		9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC91C271D226E00DE4E42 /* Growth.storyboard */; };
 		9C5FC922271D25DB00DE4E42 /* GrowthCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */; };
 		9C5FC923271D25DB00DE4E42 /* GrowthCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */; };
@@ -174,6 +175,7 @@
 		9C51A3CD2732783B00F85CE4 /* ReflectionOutroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionOutroCell.swift; sourceTree = "<group>"; };
 		9C51A3CE2732783B00F85CE4 /* ReflectionOutroCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReflectionOutroCell.xib; sourceTree = "<group>"; };
 		9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionManager.swift; sourceTree = "<group>"; };
+		9C5E7522273F90160052021D /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		9C5FC91C271D226E00DE4E42 /* Growth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Growth.storyboard; sourceTree = "<group>"; };
 		9C5FC920271D25DB00DE4E42 /* GrowthCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCardCell.swift; sourceTree = "<group>"; };
 		9C5FC921271D25DB00DE4E42 /* GrowthCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrowthCardCell.xib; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */,
+				9C5E7522273F90160052021D /* JGProgressHUDWrapper.swift */,
 			);
 			path = "Third Party Wrapper";
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				9CEE9DA1272A8F9E006CCA06 /* User.swift in Sources */,
 				9C021D59272E53DF009A7581 /* TimePickerViewController.swift in Sources */,
 				9C5FC927271D4E1900DE4E42 /* UITableView+Extension.swift in Sources */,
+				9C5E7523273F90160052021D /* JGProgressHUDWrapper.swift in Sources */,
 				9C51A3CB273277B200F85CE4 /* ReflectionPracticeCell.swift in Sources */,
 				9C021D48272D469A009A7581 /* Timestamp+Extension.swift in Sources */,
 				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,

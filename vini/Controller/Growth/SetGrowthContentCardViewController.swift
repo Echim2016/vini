@@ -184,6 +184,8 @@ extension SetGrowthContentCardViewController {
                 
         if let userID = UserManager.shared.userID {
             
+            VProgressHUD.show()
+            
             GrowthContentProvider.shared.addGrowthContents(
                 id: growthCardID,
                 userID: userID,
@@ -194,11 +196,17 @@ extension SetGrowthContentCardViewController {
                     switch result {
                     case .success(let message):
                         print(message)
+                        
                         self.growthCaptureVC?.fetchGrowthContents()
+                        
+                        VProgressHUD.showSuccess()
+                        
                         self.dismiss(animated: true, completion: nil)
                         
                     case .failure(let error):
                         print(error)
+                        
+                        VProgressHUD.showFailure()
                     }
                 }
         }
@@ -206,6 +214,8 @@ extension SetGrowthContentCardViewController {
     }
     
     func updateGrowthContentCard() {
+        
+        VProgressHUD.show()
         
         GrowthContentProvider.shared.updateGrowthContents(
             contentID: contentCardID,
@@ -217,10 +227,12 @@ extension SetGrowthContentCardViewController {
             case .success(let message):
                 print(message)
                 self.growthCaptureVC?.fetchGrowthContents()
+                VProgressHUD.showSuccess()
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
                 print(error)
+                VProgressHUD.showFailure()
             }
         }
     }

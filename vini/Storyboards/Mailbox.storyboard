@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前收信匣沒有信件哦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8p-aj-kOa">
-                                <rect key="frame" x="130" y="440.5" width="154" height="20"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vini 沒有在信箱裡發現新的信件呢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8p-aj-kOa">
+                                <rect key="frame" x="101.5" y="440.5" width="211" height="20"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -88,6 +88,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="blockUserButton" destination="f6K-F2-73d" id="h2z-Qz-3ak"/>
                         <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
                         <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowBlockAlert" id="ZbI-Z2-8wC"/>
                         <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowDeleteAlert" id="WCU-8b-YyV"/>

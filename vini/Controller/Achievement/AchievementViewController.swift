@@ -97,17 +97,17 @@ extension AchievementViewController {
                     self.collectionViewForGrowthCards?.reloadData()
                 }
                 
-                
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "讀取已封存卡片時出了一些問題")
             }
         }
     }
     
     func fetchInsights() {
         
-        InsightManager.shared.fetchInsights() { result in
+        InsightManager.shared.fetchInsights { result in
             
             switch result {
             case .success(let insightDict):
@@ -120,6 +120,7 @@ extension AchievementViewController {
                 
             case .failure(let error):
                 
+                VProgressHUD.showFailure(text: "洞察數據讀取出了一些問題")
                 print(error)
             }
         }
@@ -127,15 +128,19 @@ extension AchievementViewController {
     
     func unarchiveGrowthCard(id: String) {
         
+        VProgressHUD.show()
+        
         GrowthCardProvider.shared.unarchiveGrowthCard(id: id) { result in
             switch result {
             case .success(let success):
                 
                 self.fetchGrowthCards()
+                VProgressHUD.showSuccess()
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure()
             }
         }
     }

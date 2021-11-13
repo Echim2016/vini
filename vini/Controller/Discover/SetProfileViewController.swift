@@ -132,6 +132,8 @@ class SetProfileViewController: UIViewController {
 extension SetProfileViewController {
     
     func fetchProfile() {
+        
+        VProgressHUD.show()
                     
         DiscoverUserManager.shared.fetchUserProfile() { result in
             switch result {
@@ -148,14 +150,19 @@ extension SetProfileViewController {
                 self.cloudCategorySelection[self.selectedIndex].isChecked = true
                 self.tableView.reloadData()
                 
+                VProgressHUD.dismiss()
+                
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "出了一些問題，請重新再試")
             }
         }
     }
     
     func saveProfile() {
+        
+        VProgressHUD.show()
         
         DiscoverUserManager.shared.updateUserStatus(
             wondering: user.wondering,
@@ -168,12 +175,14 @@ extension SetProfileViewController {
             switch result {
             case .success:
                 
+                VProgressHUD.showSuccess()
                 self.delegate?.didSelectCloudCategory(self.cloudCategorySelection[self.selectedIndex].category)
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "設定個人狀態時出了一些問題，請重新再試")
             }
         }
     }

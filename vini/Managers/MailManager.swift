@@ -15,6 +15,8 @@ class MailManager {
     
     lazy var db = Firestore.firestore()
     
+    let welcomeMailSenderID = "WelcomeMail"
+    
     func fetchData(blockList: [String], completion: @escaping (Result<[Mail], Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {

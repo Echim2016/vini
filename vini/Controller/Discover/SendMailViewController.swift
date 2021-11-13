@@ -118,6 +118,8 @@ extension SendMailViewController {
         if let receipient = receipient,
            let senderID = UserManager.shared.userID {
             
+            VProgressHUD.show()
+            
             mailToSend.displayWondering = receipient.data.wondering
             mailToSend.senderViniType = receipient.data.viniType
             mailToSend.receipientID = receipient.data.id
@@ -128,12 +130,17 @@ extension SendMailViewController {
                 switch result {
                 case .success(let message):
                     print(message)
+                    VProgressHUD.showSuccess()
                     self.dismiss(animated: true, completion: nil)
                     
                 case .failure(let error):
                     print(error)
+                    VProgressHUD.showFailure(text: "信件寄送出了一些問題，請重新再試")
                 }
             }
+        } else {
+            
+            VProgressHUD.showFailure(text: "信件讀取出了一些問題")
         }
     }
     
@@ -141,19 +148,26 @@ extension SendMailViewController {
         
         if let receipientID = receipient?.data.id {
             
+            VProgressHUD.show()
+            
             UserManager.shared.blockUser(blockUserID: receipientID) { result in
                 
                 switch result {
                 case .success:
                     
+                    VProgressHUD.dismiss()
                     self.delegate?.willDisplayDiscoverPage()
                     self.dismiss(animated: true, completion: nil)
                     
                 case .failure(let error):
                     
                     print(error)
+                    VProgressHUD.showFailure(text: "封鎖時出了一些問題，請重新再試")
                 }
             }
+        } else {
+            
+            VProgressHUD.showFailure(text: "封鎖時出了一些問題")
         }
         
     }
@@ -182,7 +196,7 @@ extension SendMailViewController: UITableViewDataSource {
         switch indexPath.row {
             
         case 0:
-            cell.setupCell(title: "顯示名稱", placeholder: "我想要顯示在對方收信匣的名稱是...")
+            cell.setupCell(title: "顯示名稱", placeholder: "我想要顯示在對方信箱裡的名稱是...")
             cell.textView.accessibilityLabel = "displayName"
             
         case 1:

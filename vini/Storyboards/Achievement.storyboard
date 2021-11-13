@@ -31,7 +31,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rXU-Sw-e23">
-                        <barButtonItem key="rightBarButtonItem" image="gearshape.fill" catalog="system" id="6Z9-xi-88n">
+                        <barButtonItem key="rightBarButtonItem" title="設定" image="gearshape.fill" catalog="system" id="6Z9-xi-88n">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="tapSettingsButton:" destination="Y6W-OH-hqX" id="krR-1p-itm"/>

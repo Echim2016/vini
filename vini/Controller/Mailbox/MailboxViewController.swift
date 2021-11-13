@@ -47,7 +47,7 @@ class MailboxViewController: UIViewController {
         fetchMailsWithoutBlockList()
         getReflectionTime()
         updateBadgeValue()
-        setupNavigationController(title: "收信匣", titleColor: .white)
+        setupNavigationController(title: "信箱", titleColor: .white)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,6 +67,8 @@ extension MailboxViewController {
     
     func fetchMailsWithoutBlockList() {
         
+        VProgressHUD.show()
+        
         DiscoverUserManager.shared.fetchUserProfile { result in
             
             switch result {
@@ -79,6 +81,7 @@ extension MailboxViewController {
             case.failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "信件讀取出了一些問題")
                 
             }
         }
@@ -90,6 +93,7 @@ extension MailboxViewController {
             switch result {
             case .success(let mails):
                 
+                VProgressHUD.dismiss()
                 self.mails = mails
                 self.tableView.reloadData()
                 
@@ -97,6 +101,7 @@ extension MailboxViewController {
                 
                 self.mails = []
                 print(error)
+                VProgressHUD.showFailure(text: "信件讀取出了一些問題")
             }
         }
     }
