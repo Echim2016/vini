@@ -47,18 +47,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-DY-HX5" userLabel="Close Button">
+                                <rect key="frame" x="20" y="20.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HCH-n3-ScE"/>
+                                    <constraint firstAttribute="width" constant="40" id="O2f-2U-jEz"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Uty-KU-zq4" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="80" id="6x3-he-U6v"/>
                             <constraint firstItem="HEz-xs-vH8" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="JP6-aO-e44"/>
                             <constraint firstAttribute="trailing" secondItem="Uty-KU-zq4" secondAttribute="trailing" constant="20" id="OUX-tG-Iwd"/>
+                            <constraint firstItem="bBA-DY-HX5" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="20" id="QgL-06-Vbb"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="VFv-jd-eEM"/>
                             <constraint firstAttribute="trailing" secondItem="2d2-3I-dfN" secondAttribute="trailing" constant="60" id="Yde-cM-yX6"/>
                             <constraint firstAttribute="bottom" secondItem="2d2-3I-dfN" secondAttribute="bottom" constant="250" id="aet-aV-RAT"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="128" id="ciR-bJ-aue"/>
                             <constraint firstItem="Uty-KU-zq4" firstAttribute="width" secondItem="LO9-YK-UoE" secondAttribute="width" multiplier="0.35" id="hls-qY-NGZ"/>
                             <constraint firstAttribute="bottom" secondItem="HEz-xs-vH8" secondAttribute="bottom" id="mfc-u7-bpf"/>
+                            <constraint firstItem="bBA-DY-HX5" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="20" id="ovy-dS-taO"/>
                             <constraint firstItem="Uty-KU-zq4" firstAttribute="width" secondItem="Uty-KU-zq4" secondAttribute="height" multiplier="1:1" id="pmj-fW-89b"/>
                             <constraint firstItem="2d2-3I-dfN" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="rC6-gD-5Uj"/>
                         </constraints>
@@ -75,6 +87,7 @@
             <size key="customSize" width="414" height="896"/>
             <connections>
                 <outlet property="cellBackgroundView" destination="LO9-YK-UoE" id="QMJ-2x-MHX"/>
+                <outlet property="dismissButton" destination="bBA-DY-HX5" id="kQV-2r-uZm"/>
                 <outlet property="introContentLabel" destination="2d2-3I-dfN" id="cdq-vz-LuD"/>
                 <outlet property="introTitleLabel" destination="AWC-nq-tEG" id="uS2-YI-zHE"/>
                 <outlet property="moonImageView" destination="Uty-KU-zq4" id="YVP-w0-Mj9"/>
@@ -84,5 +97,6 @@
     </objects>
     <resources>
         <image name="map_moon" width="51" height="51"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

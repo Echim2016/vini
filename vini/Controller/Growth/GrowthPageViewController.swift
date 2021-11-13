@@ -49,13 +49,13 @@ class GrowthPageViewController: UIViewController {
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
-        getReflectionTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchGrowthCards()
+        getReflectionTime()
     }
     
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
