@@ -24,7 +24,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="RHF-YT-BuR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YyP-uw-jXM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1586" y="21"/>
+            <point key="canvasLocation" x="1778" y="25"/>
         </scene>
         <!--Alert-->
         <scene sceneID="p56-go-kvo">
@@ -32,7 +32,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="MX8-7N-eAE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bii-M9-NO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1645" y="91"/>
+            <point key="canvasLocation" x="1903" y="104"/>
         </scene>
         <!--Growth Page View Controller-->
         <scene sceneID="s0d-6b-0kx">

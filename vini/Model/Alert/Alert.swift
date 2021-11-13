@@ -17,6 +17,7 @@ enum Alert {
     
     case deleteMailAlert
     case deleteGrowthCardAlert
+    case deleteGrowthContentCardAlert
     
     case emptyInputAlert
     
@@ -44,6 +45,9 @@ enum Alert {
             return "刪除"
             
         case .deleteGrowthCardAlert:
+            return "刪除"
+            
+        case .deleteGrowthContentCardAlert:
             return "刪除"
             
         case .emptyInputAlert:
@@ -75,6 +79,9 @@ enum Alert {
             
         case .deleteGrowthCardAlert:
             return "您確定要刪除此成長卡片嗎？所有微小學習內容將會一併刪除。"
+            
+        case .deleteGrowthContentCardAlert:
+            return "您確定要刪除此微小學習卡片嗎？"
             
         case .emptyInputAlert:
             return "您的輸入內容似乎不完整，請確認完成所有欄位後再嘗試一次！"

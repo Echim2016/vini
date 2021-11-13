@@ -20,6 +20,7 @@ class GrowthCaptureViewController: UIViewController {
         case drawConclusions = "DrawConclusions"
         case showArchiveView = "ShowArchiveView"
         case showCongratsPage = "ShowCongratsPage"
+        case showDeleteGrowthContentCardAlert = "ShowDeleteGrowthContentCardAlert"
     }
     
     weak var growthPageVC: GrowthPageViewController?
@@ -209,6 +210,28 @@ class GrowthCaptureViewController: UIViewController {
         if let destinationVC = segue.destination as? CongratsViewController {
             
             destinationVC.growthPageVC = growthPageVC
+        }
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            if let indexPath = sender as? IndexPath {
+                
+                alert.alertType = .deleteGrowthContentCardAlert
+                alert.onConfirm = {
+                    
+                    let id = self.data[indexPath.row - 1].id
+                    let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                    
+                    self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
+                        
+                        if success {
+                            self.data.remove(at: indexPath.row - 1)
+                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        }
+                    }
+                }
+            }
+            
         }
     }
     
@@ -517,16 +540,8 @@ extension GrowthCaptureViewController: UITableViewDelegate {
                 image: UIImage(systemName: "trash.fill"),
                 attributes: [.destructive]) { _ in
                     
-                    let id = self.data[indexPath.row - 1].id
-                    let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                    self.performSegue(withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue, sender: indexPath)
                     
-                    self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
-                        
-                        if success {
-                            self.data.remove(at: indexPath.row - 1)
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
-                        }
-                    }
                 }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in

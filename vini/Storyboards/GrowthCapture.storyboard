@@ -217,11 +217,20 @@
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="EditGrowthContentCard" id="ayE-PI-VOL"/>
                         <segue destination="ZeT-yR-ien" kind="show" identifier="DrawConclusions" id="q0G-b0-Oyf"/>
                         <segue destination="0d6-dM-goE" kind="presentation" identifier="ShowCongratsPage" id="Z7q-mW-2w8"/>
+                        <segue destination="2ax-mj-DPG" kind="presentation" identifier="ShowDeleteGrowthContentCardAlert" id="EcZ-pS-ud9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="109.82142857142857"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="urM-7w-Ifg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="2ax-mj-DPG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kVx-Ps-DMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2762" y="15"/>
         </scene>
         <!--Conclusion-->
         <scene sceneID="CpK-jg-J3L">
