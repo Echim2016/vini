@@ -32,6 +32,7 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wonderingLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var mapButton: UIView!
     
     var currentSelectedVini: ViniView = ViniView()
     
@@ -50,7 +51,7 @@ class DiscoverViewController: UIViewController {
         sendButton.layer.cornerRadius = 20
         self.bigCloudImageView.float(duration: 1.6)
         self.mediumCloudImageView.float(duration: 2.0)
-        
+        self.navigationController?.navigationBar.isHidden = true
         view.bringSubviewToFront(headerView)
         view.bringSubviewToFront(mediumCloudImageView)
     }
@@ -326,11 +327,7 @@ extension DiscoverViewController {
     }
     
     func resetBackgroundViewScaleUpAnimation() {
-        
-//        let xScaleFactor = 0.7
-//        let yScaleFactor = 0.9
-//        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
-        
+    
         UIView.animate(
             withDuration: 2.0,
             delay: 0.0,
@@ -341,10 +338,8 @@ extension DiscoverViewController {
                 self.backgroundRectView.transform = .identity
                 
             },
-            completion: { _ in
-                
-              
-            })
+            completion: nil
+        )
     }
     
     func showBackgroundViewScaleUpAnimation() {
@@ -363,7 +358,7 @@ extension DiscoverViewController {
             options: .curveEaseIn,
             animations: {
                 self.backgroundRectView.transform = scaleTransform
-                
+                self.view.bringSubviewToFront(self.mapButton)
             },
             completion: { _ in
                 

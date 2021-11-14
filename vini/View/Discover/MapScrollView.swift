@@ -260,7 +260,7 @@ extension UIView {
                 randomY = Int.random(in: 224...Int(height))
                 
                 for position in positions {
-                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 60 {
+                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 62 {
                         exist = true
                     } else {
                         exist = false

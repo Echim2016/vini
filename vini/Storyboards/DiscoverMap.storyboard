@@ -21,7 +21,7 @@
                                 <rect key="frame" x="-80" y="591.5" width="248.5" height="71.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_big_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="7AW-NH-mIO">
-                                <rect key="frame" x="150" y="110" width="414" height="180.5"/>
+                                <rect key="frame" x="170.5" y="110" width="373" height="162.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7AW-NH-mIO" secondAttribute="height" multiplier="342:149" id="eCq-B8-nXu"/>
                                 </constraints>
@@ -141,7 +141,7 @@
                             <constraint firstItem="NCd-zJ-SnY" firstAttribute="width" secondItem="6Cb-Pm-zkk" secondAttribute="width" multiplier="0.3" id="YpU-H6-ESe"/>
                             <constraint firstItem="SU0-IU-FtR" firstAttribute="top" secondItem="6Cb-Pm-zkk" secondAttribute="bottom" constant="16" id="Yz7-T7-vAU"/>
                             <constraint firstItem="7AW-NH-mIO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" multiplier="2.5" id="Ziq-q1-C91"/>
-                            <constraint firstItem="7AW-NH-mIO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="Znk-93-xwU"/>
+                            <constraint firstItem="7AW-NH-mIO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="Znk-93-xwU"/>
                             <constraint firstItem="juT-oN-NMo" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.6" id="a6t-cL-2va"/>
                             <constraint firstItem="6Cb-Pm-zkk" firstAttribute="top" secondItem="BPa-VV-nVF" secondAttribute="bottom" constant="8" id="gPK-fG-PnN"/>
                             <constraint firstItem="Gkb-xV-DbJ" firstAttribute="centerY" secondItem="6Cb-Pm-zkk" secondAttribute="centerY" id="ivF-51-rW9"/>

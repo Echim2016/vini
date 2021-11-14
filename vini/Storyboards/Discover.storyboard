@@ -21,14 +21,40 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_big_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="CSB-wF-AuN">
-                                <rect key="frame" x="166" y="132" width="382" height="166.5"/>
+                                <rect key="frame" x="170.5" y="202.5" width="373" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CSB-wF-AuN" secondAttribute="height" multiplier="342:149" id="V1c-Jb-r5c"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
-                                <rect key="frame" x="16" y="96" width="382" height="224"/>
+                                <rect key="frame" x="16" y="98" width="382" height="224"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMo-Xr-mmH" userLabel="MapButton">
+                                        <rect key="frame" x="302" y="-9.5" width="35" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="mmW-gC-dzK"/>
+                                            <constraint firstAttribute="height" constant="35" id="u2m-pf-aKc"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="map.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapMapButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yEH-Y7-W75"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-E5-Aft" userLabel="ProfileButton">
+                                        <rect key="frame" x="347" y="-9.5" width="35" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="clT-vc-Vk4"/>
+                                            <constraint firstAttribute="width" constant="35" id="hcs-YX-2kz"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="person.crop.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mVK-55-nQj"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到 Vini Cloud" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
                                         <rect key="frame" x="16" y="32" width="350" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,13 +87,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hMo-Xr-mmH" secondAttribute="trailing" constant="45" id="1S2-SX-Add"/>
                                     <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
                                     <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="CIA-zA-jnB"/>
                                     <constraint firstAttribute="bottom" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="40" id="Ivz-y3-X0d"/>
                                     <constraint firstAttribute="trailing" secondItem="ISw-Aw-LEI" secondAttribute="trailing" constant="16" id="L42-4K-2gC"/>
                                     <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="40" id="L8m-lm-wdv"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
+                                    <constraint firstItem="hMo-Xr-mmH" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="eH2-nP-VHq"/>
+                                    <constraint firstItem="w5e-E5-Aft" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="l7N-r9-PL9"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="w5e-E5-Aft" secondAttribute="trailing" id="oyj-P9-jmc"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="raX-Lh-Emm">
@@ -82,13 +112,13 @@
                             <constraint firstItem="uK1-yi-9no" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ntj-vW-WA0"/>
                             <constraint firstItem="CSB-wF-AuN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" constant="150" id="P0y-PB-5O7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="raX-Lh-Emm" secondAttribute="bottom" multiplier="1.3" id="RrL-hJ-ZSg"/>
-                            <constraint firstItem="CSB-wF-AuN" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.922705" id="TZz-jQ-fv9"/>
+                            <constraint firstItem="CSB-wF-AuN" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.9" id="TZz-jQ-fv9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="P50-Gu-XAf" secondAttribute="trailing" constant="16" id="VHH-7p-jl7"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="WyS-mD-zxn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="raX-Lh-Emm" secondAttribute="leading" constant="80" id="b0N-ZG-nV1"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
-                            <constraint firstItem="CSB-wF-AuN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" multiplier="1.5" id="f9t-bI-wQh"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-8" id="fZ2-sm-7y4"/>
+                            <constraint firstItem="CSB-wF-AuN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" multiplier="2.3" id="f9t-bI-wQh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="fZ2-sm-7y4"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.9" id="med-Ff-uyj"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
@@ -96,24 +126,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="liE-yO-0Fy">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="map.fill" catalog="system" id="gTu-ih-TBe">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="tapMapButton:" destination="Y6W-OH-hqX" id="pvQ-Bx-fPj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="person.fill" catalog="system" style="plain" id="Z7g-ND-v2I">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="tapProfileSettingButton:" destination="Y6W-OH-hqX" id="Gxy-Fa-FLN"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundRectView" destination="uK1-yi-9no" id="6hR-UO-5Pb"/>
                         <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
                         <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
+                        <outlet property="mapButton" destination="P50-Gu-XAf" id="eOU-Uk-1X3"/>
                         <outlet property="mediumCloudImageView" destination="raX-Lh-Emm" id="pHq-N5-5r9"/>
                         <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
@@ -444,10 +463,10 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="map.fill" catalog="system" width="128" height="110"/>
+        <image name="map.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="vini_amaze" width="317.5" height="337"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
