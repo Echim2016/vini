@@ -382,7 +382,7 @@ extension AchievementViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateUserNameLabel),
-            name: Notification.Name(rawValue: "updateUserName"),
+            name: Notification.Name(rawValue: "updateUserInfo"),
             object: nil
         )
     }

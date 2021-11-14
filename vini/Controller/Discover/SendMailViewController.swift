@@ -16,14 +16,17 @@ class SendMailViewController: UIViewController {
         case showSendMailAlert = "ShowSendMailAlert"
     }
     
+    @IBOutlet weak var senderNameLabel: UILabel!
     @IBOutlet weak var receipientNameLabel: UILabel!
     @IBOutlet weak var replyTitleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var sendMailButton: UIButton!
     
-    var receipient: ViniView?
+    var contentTextView: UITextView?
     
+    var receipient: ViniView?
     var mailToSend = Mail()
+    var user: User?
     
     weak var delegate: DiscoverProtocol?
     
@@ -33,6 +36,7 @@ class SendMailViewController: UIViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.showsVerticalScrollIndicator = false
+            tableView.isScrollEnabled = true
         }
     }
     
@@ -63,7 +67,7 @@ class SendMailViewController: UIViewController {
     
     @IBAction func tapSendButton(_ sender: Any) {
         
-        if mailToSend.content.isEmpty || mailToSend.senderDisplayName.isEmpty {
+        if mailToSend.content.isEmpty {
             
             performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
         } else {
@@ -124,6 +128,7 @@ extension SendMailViewController {
             mailToSend.senderViniType = receipient.data.viniType
             mailToSend.receipientID = receipient.data.id
             mailToSend.senderID = senderID
+            mailToSend.senderDisplayName = user?.displayName ?? "Vini"
             
             MailManager.shared.sendMails(mail: &mailToSend) { result in
                 
@@ -181,7 +186,7 @@ extension SendMailViewController: UITableViewDelegate {
 extension SendMailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -193,21 +198,10 @@ extension SendMailViewController: UITableViewDataSource {
             fatalError()
         }
         
-        switch indexPath.row {
-            
-        case 0:
-            cell.setupCell(title: "顯示名稱", placeholder: "我想要顯示在對方信箱裡的名稱是...")
-            cell.textView.accessibilityLabel = "displayName"
-            
-        case 1:
-            cell.setupCell(title: "回覆內容", placeholder: "關於這個狀態，我想分享...")
-            cell.textView.accessibilityLabel = "content"
-            cell.setTextViewHeight(height: self.view.frame.height)
-        default:
-            break
-        }
-        
+        cell.setupCell(title: "回覆內容", placeholder: "關於這個狀態，我想分享...")
+        cell.setTextViewHeight(height: self.view.frame.height - 300)
         cell.textView.delegate = self
+        contentTextView = cell.textView
         
         return cell
     }
@@ -229,11 +223,11 @@ extension SendMailViewController: UITextViewDelegate {
                   return
               }
         
-        switch textView.accessibilityLabel {
-        case "displayName":
-            mailToSend.senderDisplayName = text
-        case "content":
+        switch textView {
+
+        case contentTextView:
             mailToSend.content = text
+            
         default:
             break
         }
@@ -246,6 +240,7 @@ extension SendMailViewController {
     func setupHeaderInfo() {
         
         if let receipient = receipient {
+            senderNameLabel.text = "來自：" + (user?.displayName ?? "Me")
             receipientNameLabel.text = "寄給：" +  receipient.data.name
             replyTitleLabel.text = "回覆：" + receipient.data.wondering
         }
@@ -254,6 +249,5 @@ extension SendMailViewController {
     func setupButton() {
         
         sendMailButton.setBackgroundImage(UIImage(systemName: "paperplane.circle.fill"), for: .normal)
-        
     }
 }

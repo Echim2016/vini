@@ -46,6 +46,8 @@ class DiscoverViewController: UIViewController {
     
     var currentSelectedVini: ViniView = ViniView()
     
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,6 +66,8 @@ class DiscoverViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         view.bringSubviewToFront(headerView)
         view.bringSubviewToFront(mediumCloudImageView)
+        
+        setupNotificationCenterObserver()
     }
     
     override func viewDidLayoutSubviews() {
@@ -159,6 +163,7 @@ class DiscoverViewController: UIViewController {
         if let destination = segue.destination as? SendMailViewController {
             
             destination.receipient = currentSelectedVini
+            destination.user = user
             destination.delegate = self
         }
         
@@ -247,6 +252,26 @@ extension DiscoverViewController {
                 self.showCloudAnimation()
             }
         )
+    }
+    
+    func setupNotificationCenterObserver() {
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserInfo(notification:)),
+            name: Notification.Name(rawValue: "updateUserInfo"),
+            object: nil
+        )
+    }
+    
+    @objc func updateUserInfo(notification: Notification) {
+        
+        if let userInfo = notification.userInfo,
+           let user = userInfo["user"] as? User {
+            
+            self.user = user
+        }
+        
     }
 }
 

@@ -33,10 +33,17 @@ class CustomTabBarController: UITabBarController {
         
         Haptic.play(".", delay: 0)
         
-        if item.title == TabBarItem.achievement.title {
+        switch item.title {
+            
+        case TabBarItem.achievement.title, TabBarItem.discover.title:
             
             fetchUserData()
+            
+        default:
+            break
+            
         }
+       
     }
     
     func setupTabBarAppearance() {
@@ -89,7 +96,7 @@ extension CustomTabBarController {
                     
                 case .success(let user):
                     
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserName"), object: nil, userInfo: ["user" : user])
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user" : user])
                     
                 case .failure(let error):
                     

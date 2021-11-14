@@ -184,20 +184,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="DaJ-Lm-jVb">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Qk-LW-3kR">
-                                            <rect key="frame" x="36" y="80" width="342" height="59"/>
+                                            <rect key="frame" x="36" y="80" width="342" height="92.5"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="來自: Sender Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EuE-HN-3rf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="163" height="25.5"/>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="寄給: User Name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAd-x5-yFv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="142.5" height="25.5"/>
+                                                    <rect key="frame" x="0.0" y="33.5" width="142.5" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回覆: Wondering" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-X4-zLA">
-                                                    <rect key="frame" x="0.0" y="33.5" width="139.5" height="25.5"/>
+                                                    <rect key="frame" x="0.0" y="67" width="139.5" height="25.5"/>
                                                     <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
                                                     <color key="textColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.93333339689999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -273,6 +279,7 @@
                         <outlet property="receipientNameLabel" destination="ZAd-x5-yFv" id="iiq-XL-hxf"/>
                         <outlet property="replyTitleLabel" destination="sg9-X4-zLA" id="VMK-76-9HE"/>
                         <outlet property="sendMailButton" destination="voA-kc-dFZ" id="nmK-vx-tAn"/>
+                        <outlet property="senderNameLabel" destination="EuE-HN-3rf" id="MMt-na-rSv"/>
                         <outlet property="tableView" destination="zEv-mD-dAj" id="RgJ-up-afn"/>
                         <segue destination="Ayu-0f-hTk" kind="presentation" identifier="ShowBlockUserAlert" id="AMd-p3-ig0"/>
                         <segue destination="Xut-N5-4qI" kind="presentation" identifier="ShowEmptyInputAlert" id="PT2-Pd-cEG"/>
