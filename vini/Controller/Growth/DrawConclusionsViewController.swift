@@ -30,6 +30,8 @@ class DrawConclusionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupPopGestureRecognizer()
     }
 
     override func viewWillAppear(_ animated: Bool) {

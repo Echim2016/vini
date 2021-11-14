@@ -40,6 +40,7 @@ class BlockListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupPopGestureRecognizer()
         tableView.registerCellWithNib(identifier: BlockUserCell.identifier, bundle: nil)
     }
     

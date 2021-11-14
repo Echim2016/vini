@@ -19,6 +19,7 @@ class PrivacyPolicyViewController: UIViewController {
 
         setupWebView()
         setupNavBarBackButton()
+        setupPopGestureRecognizer()
         setupNavigationController(title: "隱私權政策", titleColor: .white)
     }
     

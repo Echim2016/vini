@@ -42,6 +42,7 @@ class MailDetailViewController: UIViewController {
         tableView.registerCellWithNib(identifier: MailTitleCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailContentCell.identifier, bundle: nil)
+        setupPopGestureRecognizer()
         
     }
     

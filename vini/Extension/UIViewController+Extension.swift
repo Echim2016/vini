@@ -73,3 +73,12 @@ extension UIViewController {
         ])
     }
 }
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    
+    func setupPopGestureRecognizer() {
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+}
