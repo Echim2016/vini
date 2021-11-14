@@ -121,7 +121,6 @@ extension AchievementViewController {
             case .failure(let error):
                 
                 print(error)
-                VProgressHUD.showFailure(text: "讀取已封存卡片時出了一些問題")
             }
         }
     }
@@ -141,7 +140,6 @@ extension AchievementViewController {
                 
             case .failure(let error):
                 
-                VProgressHUD.showFailure(text: "洞察數據讀取出了一些問題")
                 print(error)
             }
         }
@@ -392,7 +390,7 @@ extension AchievementViewController {
         if let userInfo = notification.userInfo,
            let user = userInfo["user"] as? User {
             
-            welcomeTitleLabel.text = user.displayName + ",\n相信你有讓自己變得更好的能力。"
+            welcomeTitleLabel.text = user.displayName + ",\n相信你擁有讓自己變得更好的能力。"
             userViniImageView.image = UIImage(named: user.viniType)
         }
         
