@@ -32,6 +32,11 @@ class CustomTabBarController: UITabBarController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         Haptic.play(".", delay: 0)
+        
+        if item.title == TabBarItem.achievement.title {
+            
+            fetchUserData()
+        }
     }
     
     func setupTabBarAppearance() {
@@ -72,5 +77,29 @@ extension CustomTabBarController {
                 print(error)
             }
         }
+    }
+    
+    func fetchUserData() {
+        
+        if let userID = UserManager.shared.userID {
+            
+            UserManager.shared.fetchUser(userID: userID) { result in
+                
+                switch result {
+                    
+                case .success(let user):
+                    
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserName"), object: nil, userInfo: ["user" : user])
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                    
+                }
+                
+            }
+            
+        }
+        
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 import Haptica
-
+    
 class AchievementViewController: UIViewController {
     
     private enum Segue: String {
@@ -22,7 +22,13 @@ class AchievementViewController: UIViewController {
             tableView.separatorStyle = .none
         }
     }
-        
+    
+    @IBOutlet weak var welcomeCardView: UIView!
+    @IBOutlet weak var welcomeActionButton: MainButton!
+    
+    @IBOutlet weak var welcomeTitleLabel: UILabel!
+    @IBOutlet weak var userViniImageView: UIImageView!
+
     var collectionViewForGrowthCards: UICollectionView?
     
     var collectionViewForInsights: UICollectionView?
@@ -47,7 +53,9 @@ class AchievementViewController: UIViewController {
         
         tableView.registerCellWithNib(identifier: ArchivedCardCell.identifier, bundle: nil)
         
-        setupNavigationController(title: "成就", titleColor: .white)
+        setupNavigationController(title: "我的成就", titleColor: .white)
+        
+        setupNotificationCenterObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,12 +63,27 @@ class AchievementViewController: UIViewController {
 
         fetchGrowthCards()
         fetchInsights()
+        setupWelcomeCardView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showWelcomeContentAnimation()
+        
+        collectionViewForGrowthCards?.reloadData()
     }
     
     @IBAction func tapSettingsButton(_ sender: Any) {
    
         performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
 
+    }
+    
+    @IBAction func tapWelcomeActionButton(_ sender: Any) {
+        
+        Haptic.play(".", delay: 0)
+        self.tabBarController?.selectedIndex = TabBarItem.growth.rawValue
     }
     
     @objc func tapShowCardDetailButton(_ sender: UIButton) {
@@ -267,6 +290,19 @@ extension AchievementViewController: UICollectionViewDelegate {
         return UIMenu(title: "", children: [unarchive])
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        cell.alpha = 0.1
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.1 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+
+    }
+    
 }
 
 extension AchievementViewController: UICollectionViewDataSource {
@@ -325,5 +361,63 @@ extension AchievementViewController: UICollectionViewDataSource {
         }
         
     }
+}
+
+extension AchievementViewController {
     
+    func setupWelcomeCardView() {
+        
+        userViniImageView.alpha = 0
+        welcomeTitleLabel.alpha = 0
+        welcomeActionButton.alpha = 0
+        
+        userViniImageView.transform = .identity
+        welcomeTitleLabel.transform = .identity
+        welcomeActionButton.transform = .identity
+        
+        welcomeCardView.layer.cornerRadius = 25
+        welcomeActionButton.layer.cornerRadius = welcomeActionButton.frame.size.height / 2
+    }
+    
+    func setupNotificationCenterObserver() {
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserNameLabel),
+            name: Notification.Name(rawValue: "updateUserName"),
+            object: nil
+        )
+    }
+    
+    @objc func updateUserNameLabel(notification: Notification) {
+        
+        if let userInfo = notification.userInfo,
+           let user = userInfo["user"] as? User {
+            
+            welcomeTitleLabel.text = user.displayName + ",\n相信你有讓自己變得更好的能力。"
+            userViniImageView.image = UIImage(named: user.viniType)
+        }
+        
+    }
+    
+    func showWelcomeContentAnimation() {
+        
+        let yTransform = CGAffineTransform(translationX: 0, y: -10)
+        
+        UIView.animate(
+            withDuration: 1.0,
+            delay: 0.1,
+            options: .curveEaseInOut,
+            animations: {
+                self.userViniImageView.alpha = 1
+                self.welcomeTitleLabel.alpha = 1
+                self.welcomeActionButton.alpha = 1
+                self.userViniImageView.transform = yTransform
+                self.welcomeTitleLabel.transform = yTransform
+                self.welcomeActionButton.transform = yTransform
+            },
+            completion: nil
+        )
+        
+    }
 }
