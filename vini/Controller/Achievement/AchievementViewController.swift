@@ -70,8 +70,6 @@ class AchievementViewController: UIViewController {
         super.viewDidAppear(animated)
         
         showWelcomeContentAnimation()
-        
-        collectionViewForGrowthCards?.reloadData()
     }
     
     @IBAction func tapSettingsButton(_ sender: Any) {

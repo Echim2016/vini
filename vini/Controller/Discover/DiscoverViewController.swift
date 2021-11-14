@@ -312,13 +312,14 @@ extension DiscoverViewController: MapScrollViewDelegate {
         
         self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
         showIndicatorAnimation(indicator: rightIndicatorArrow)
+        Haptic.play(".o.", delay: 0)
     }
     
     func didReachedLeftEdge() {
         
         self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
         showIndicatorAnimation(indicator: leftIndicatorArrow)
-        
+        Haptic.play(".o.", delay: 0)
     }
 }
 
@@ -398,8 +399,8 @@ extension DiscoverViewController {
         leftIndicatorArrow.transform = .identity
         rightIndicatorArrow.transform = .identity
         
-        leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left"), for: .normal)
-        rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right"), for: .normal)
+        leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "chevron.left.2"), for: .normal)
+        rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "chevron.right.2"), for: .normal)
         
         UIView.animate(
             withDuration: 0.8,
@@ -409,8 +410,8 @@ extension DiscoverViewController {
                 
                 self.leftIndicatorArrow.alpha = 1
                 self.rightIndicatorArrow.alpha = 1
-                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 0.9)
+                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 0.9)
                 
             },
             completion: { _ in
@@ -442,8 +443,8 @@ extension DiscoverViewController {
     func hideIndicatorAnimation(indicator: UIView) {
         
         UIView.animate(
-            withDuration: 0.5,
-            delay: 0.8,
+            withDuration: 0.6,
+            delay: 0.5,
             options: .curveEaseIn,
             animations: {
                 indicator.alpha = 0
