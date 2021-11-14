@@ -41,6 +41,9 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var leftIndicatorArrow: UIButton!
+    @IBOutlet weak var rightIndicatorArrow: UIButton!
+    
     var currentSelectedVini: ViniView = ViniView()
     
     override func viewDidLoad() {
@@ -79,6 +82,7 @@ class DiscoverViewController: UIViewController {
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
         showBackgroundViewScaleUpAnimation()
+        self.showInitialIndicatorAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -178,6 +182,8 @@ extension DiscoverViewController {
     func setupMapScrollView() {
         
         mapView.dataSource = self
+        
+        mapView.delegate = self
                 
         self.view.addSubview(mapView)
                 
@@ -298,7 +304,22 @@ extension DiscoverViewController: MapScrollViewDataSource {
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         return infoOfUsers
     }
+}
 
+extension DiscoverViewController: MapScrollViewDelegate {
+    
+    func didReachedRightEdge() {
+        
+        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
+        showIndicatorAnimation(indicator: rightIndicatorArrow)
+    }
+    
+    func didReachedLeftEdge() {
+        
+        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
+        showIndicatorAnimation(indicator: leftIndicatorArrow)
+        
+    }
 }
 
 extension DiscoverViewController: DiscoverProtocol {
@@ -369,7 +390,66 @@ extension DiscoverViewController {
             },
             completion: { _ in
                 
-              
             })
+    }
+    
+    func showInitialIndicatorAnimation() {
+        
+        leftIndicatorArrow.transform = .identity
+        rightIndicatorArrow.transform = .identity
+        
+        leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left"), for: .normal)
+        rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right"), for: .normal)
+        
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0.0,
+            options: .curveEaseInOut,
+            animations: {
+                
+                self.leftIndicatorArrow.alpha = 1
+                self.rightIndicatorArrow.alpha = 1
+                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                
+            },
+            completion: { _ in
+                
+                self.hideIndicatorAnimation(indicator: self.leftIndicatorArrow)
+                self.hideIndicatorAnimation(indicator: self.rightIndicatorArrow)
+            }
+        )
+        
+    }
+    
+    func showIndicatorAnimation(indicator: UIView) {
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.0,
+            options: .curveEaseIn,
+            animations: {
+                indicator.alpha = 1
+                
+            },
+            completion: { _ in
+                
+                self.hideIndicatorAnimation(indicator: indicator)
+            }
+        )
+    }
+    
+    func hideIndicatorAnimation(indicator: UIView) {
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.8,
+            options: .curveEaseIn,
+            animations: {
+                indicator.alpha = 0
+                
+            },
+            completion: nil
+        )
     }
 }

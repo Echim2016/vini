@@ -20,6 +20,16 @@
                                 <rect key="frame" x="62" y="103" width="290" height="652.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaf-Ob-L2M" userLabel="Right Arrow">
+                                <rect key="frame" x="378" y="493" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Cib-5Q-AyX"/>
+                                    <constraint firstAttribute="height" constant="20" id="aFf-NI-JMM"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="arrow.right" catalog="system"/>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_big_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="CSB-wF-AuN">
                                 <rect key="frame" x="170.5" y="202.5" width="373" height="162"/>
                                 <constraints>
@@ -103,11 +113,23 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="raX-Lh-Emm">
                                 <rect key="frame" x="-80" y="553.5" width="248.5" height="72"/>
                             </imageView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-jo-HEs" userLabel="Left Arrow">
+                                <rect key="frame" x="16" y="493" width="20" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="p1Q-A2-2FU"/>
+                                    <constraint firstAttribute="width" constant="20" id="t2o-Le-DTl"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="arrow.left" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.7" id="B45-Oe-l1e"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xaf-Ob-L2M" secondAttribute="trailing" constant="16" id="BmW-Ga-YGW"/>
+                            <constraint firstItem="xaf-Ob-L2M" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="50" id="HkA-gh-W6I"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="MgU-LC-JAW"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ntj-vW-WA0"/>
                             <constraint firstItem="CSB-wF-AuN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" constant="150" id="P0y-PB-5O7"/>
@@ -119,6 +141,8 @@
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                             <constraint firstItem="CSB-wF-AuN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" multiplier="2.3" id="f9t-bI-wQh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="fZ2-sm-7y4"/>
+                            <constraint firstItem="6U4-jo-HEs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ky8-WX-wkf"/>
+                            <constraint firstItem="6U4-jo-HEs" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="50" id="mGI-Lz-1rd"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.9" id="med-Ff-uyj"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
@@ -132,9 +156,11 @@
                         <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
                         <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
+                        <outlet property="leftIndicatorArrow" destination="6U4-jo-HEs" id="YgG-Lf-QTk"/>
                         <outlet property="mapButton" destination="hMo-Xr-mmH" id="f5p-0Y-Yc2"/>
                         <outlet property="mediumCloudImageView" destination="raX-Lh-Emm" id="pHq-N5-5r9"/>
                         <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
+                        <outlet property="rightIndicatorArrow" destination="xaf-Ob-L2M" id="hnZ-ol-mGQ"/>
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
                         <outlet property="wonderingLabel" destination="ISw-Aw-LEI" id="XXW-Uq-zce"/>
                         <segue destination="mYz-9F-MJZ" kind="presentation" identifier="ShowProfileSetting" id="5QQ-b6-FJo"/>
@@ -144,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1912" y="117"/>
+            <point key="canvasLocation" x="1911.594202898551" y="116.51785714285714"/>
         </scene>
         <!--Send Mail View Controller-->
         <scene sceneID="IJ0-76-XeH">
@@ -460,6 +486,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
