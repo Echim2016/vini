@@ -218,6 +218,7 @@
                         <segue destination="ZeT-yR-ien" kind="show" identifier="DrawConclusions" id="q0G-b0-Oyf"/>
                         <segue destination="0d6-dM-goE" kind="presentation" identifier="ShowCongratsPage" id="Z7q-mW-2w8"/>
                         <segue destination="2ax-mj-DPG" kind="presentation" identifier="ShowDeleteGrowthContentCardAlert" id="EcZ-pS-ud9"/>
+                        <segue destination="rgE-ha-d6J" kind="presentation" identifier="ShowContentCardEmptyAlert" id="nKD-cJ-woQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -436,6 +437,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfD-cE-EN9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="109.82142857142857"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="DOO-0o-7oH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="rgE-ha-d6J" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhv-nM-7xN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2836" y="-49"/>
         </scene>
     </scenes>
     <designables>

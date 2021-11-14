@@ -21,6 +21,7 @@ class GrowthCaptureViewController: UIViewController {
         case showArchiveView = "ShowArchiveView"
         case showCongratsPage = "ShowCongratsPage"
         case showDeleteGrowthContentCardAlert = "ShowDeleteGrowthContentCardAlert"
+        case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
     }
     
     weak var growthPageVC: GrowthPageViewController?
@@ -214,24 +215,35 @@ class GrowthCaptureViewController: UIViewController {
         
         if let alert = segue.destination as? AlertViewController {
             
-            if let indexPath = sender as? IndexPath {
+            switch segue.identifier {
                 
-                alert.alertType = .deleteGrowthContentCardAlert
-                alert.onConfirm = {
+            case Segue.showDeleteGrowthContentCardAlert.rawValue:
+                
+                if let indexPath = sender as? IndexPath {
                     
-                    let id = self.data[indexPath.row - 1].id
-                    let imageExists = !self.data[indexPath.row - 1].image.isEmpty
-                    
-                    self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
+                    alert.alertType = .deleteGrowthContentCardAlert
+                    alert.onConfirm = {
                         
-                        if success {
-                            self.data.remove(at: indexPath.row - 1)
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        let id = self.data[indexPath.row - 1].id
+                        let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                        
+                        self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
+                            
+                            if success {
+                                self.data.remove(at: indexPath.row - 1)
+                                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            }
                         }
                     }
                 }
+                
+            case Segue.showContentCardEmptyAlert.rawValue:
+                
+                alert.alertType = .emptyContentCardAlert
+                
+            default:
+                break
             }
-            
         }
     }
     
@@ -289,7 +301,15 @@ class GrowthCaptureViewController: UIViewController {
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
         Haptic.play(".", delay: 0)
-        showArchiveButton()
+        
+        if data.count > 2 {
+            
+            showArchiveButton()
+        } else {
+            
+            performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
+        }
+        
     }
     
     @objc func longPress(gesture: UILongPressGestureRecognizer) {

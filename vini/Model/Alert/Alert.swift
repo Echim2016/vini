@@ -20,7 +20,8 @@ enum Alert {
     case deleteGrowthContentCardAlert
     
     case emptyInputAlert
-    
+    case emptyContentCardAlert
+
     case sendMailAlert
     
     case updateContentCardAlert
@@ -52,6 +53,9 @@ enum Alert {
             
         case .emptyInputAlert:
             return "無法成功傳送"
+            
+        case .emptyContentCardAlert:
+            return "暫時無法封存"
             
         case .sendMailAlert:
             return "Vini 將為你寄出信件"
@@ -85,6 +89,9 @@ enum Alert {
             
         case .emptyInputAlert:
             return "您的輸入內容似乎不完整，請確認完成所有欄位後再嘗試一次！"
+            
+        case .emptyContentCardAlert:
+            return "請新增微小學習卡片後，再進行封存！"
             
         case .sendMailAlert:
             return "您確定要寄出此信件嗎？"
