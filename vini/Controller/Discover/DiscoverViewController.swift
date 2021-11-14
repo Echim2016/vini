@@ -32,7 +32,14 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wonderingLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var mapButton: UIView!
+    @IBOutlet weak var mapButton: UIButton! {
+        didSet {
+            if #available(iOS 14, *) {
+                
+                mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
+            }
+        }
+    }
     
     var currentSelectedVini: ViniView = ViniView()
     

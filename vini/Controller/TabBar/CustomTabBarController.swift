@@ -24,8 +24,8 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tabBar.frame.size.height = 95
-        tabBar.frame.origin.y = view.frame.height - 95
+        tabBar.frame.size.height *= 1.15
+        tabBar.frame.origin.y = view.frame.height - tabBar.frame.size.height
     }
     
     func setupTabBarAppearance() {

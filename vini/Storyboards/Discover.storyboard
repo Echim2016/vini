@@ -30,14 +30,14 @@
                                 <rect key="frame" x="16" y="98" width="382" height="224"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMo-Xr-mmH" userLabel="MapButton">
-                                        <rect key="frame" x="302" y="-9.5" width="35" height="34"/>
+                                        <rect key="frame" x="302" y="-9.5" width="35" height="33.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="mmW-gC-dzK"/>
                                             <constraint firstAttribute="height" constant="35" id="u2m-pf-aKc"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="map.circle.fill" catalog="system"/>
+                                        <state key="normal" backgroundImage="map.fill" catalog="system"/>
                                         <connections>
                                             <action selector="tapMapButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="yEH-Y7-W75"/>
                                         </connections>
@@ -132,7 +132,7 @@
                         <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
                         <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
-                        <outlet property="mapButton" destination="P50-Gu-XAf" id="eOU-Uk-1X3"/>
+                        <outlet property="mapButton" destination="hMo-Xr-mmH" id="f5p-0Y-Yc2"/>
                         <outlet property="mediumCloudImageView" destination="raX-Lh-Emm" id="pHq-N5-5r9"/>
                         <outlet property="nameLabel" destination="eRo-iy-Kb4" id="foY-5C-6TU"/>
                         <outlet property="sendButton" destination="DRF-mH-FH9" id="PPh-a6-5tP"/>
@@ -463,7 +463,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="map.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
