@@ -18,7 +18,22 @@ class CustomTabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         setupTabBarItemTitle()
+        setupTabBarAppearance()
         fetchMailsForBadgeValue()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.frame.size.height = 95
+        tabBar.frame.origin.y = view.frame.height - 95
+    }
+    
+    func setupTabBarAppearance() {
+        
+        tabBar.layer.masksToBounds = true
+        tabBar.isTranslucent = true
+        tabBar.layer.cornerRadius = 25
+        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func setupTabBarItemTitle() {
@@ -30,6 +45,10 @@ class CustomTabBarController: UITabBarController {
             self.tabBar.items?[index].title = tabBarItems[index].title
         }
     }
+
+}
+
+extension CustomTabBarController {
     
     func fetchMailsForBadgeValue() {
         
@@ -48,5 +67,4 @@ class CustomTabBarController: UITabBarController {
             }
         }
     }
-
 }
