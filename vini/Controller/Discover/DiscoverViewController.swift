@@ -145,11 +145,13 @@ class DiscoverViewController: UIViewController {
     
     @IBAction func tapProfileSettingButton(_ sender: Any) {
 
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.showProfileSetting.rawValue, sender: nil)
     }
     
     @IBAction func tapSendMailButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.showSendMailPage.rawValue, sender: nil)
     }
     
