@@ -437,12 +437,12 @@ extension DiscoverViewController {
                 
                 self.leftIndicatorArrow.alpha = 1
                 self.rightIndicatorArrow.alpha = 1
-                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 0.9)
-                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 0.9)
+                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.0)
+                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.0)
                 
             },
             completion: { _ in
-                
+
                 self.hideIndicatorAnimation(indicator: self.leftIndicatorArrow)
                 self.hideIndicatorAnimation(indicator: self.rightIndicatorArrow)
             }
@@ -470,14 +470,18 @@ extension DiscoverViewController {
     func hideIndicatorAnimation(indicator: UIView) {
         
         UIView.animate(
-            withDuration: 0.6,
+            withDuration: 0.4,
             delay: 0.5,
             options: .curveEaseIn,
             animations: {
                 indicator.alpha = 0
                 
             },
-            completion: nil
+            completion: { _ in
+                
+                self.leftIndicatorArrow.transform = .identity
+                self.rightIndicatorArrow.transform = .identity
+            }
         )
     }
 }
