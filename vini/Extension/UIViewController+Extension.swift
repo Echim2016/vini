@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavBarBackButton() {
+    func setupNavBarBackButton(tintColor: UIColor = .lightGray) {
         
         if #available(iOS 14, *) {
         
@@ -20,6 +20,8 @@ extension UIViewController {
                 action: #selector(tapBackBarButtonItem(_:))
             )
             
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
+
         } else {
             
             navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -28,9 +30,9 @@ extension UIViewController {
                 target: self,
                 action: #selector(tapBackBarButtonItem(_:))
             )
+            
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
         }
-        
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
     }
     
     @objc func tapBackBarButtonItem(_ sender: UIBarButtonItem) {

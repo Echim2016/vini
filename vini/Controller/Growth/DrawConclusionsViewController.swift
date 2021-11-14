@@ -37,7 +37,7 @@ class DrawConclusionsViewController: UIViewController {
         
         setupTextView()
         
-        setupNavBarBackButton()
+        setupNavBarBackButton(tintColor: .B2)
         
         setupNavigationController(title: "我的學習結論", titleColor: .B2)
             
@@ -68,11 +68,11 @@ class DrawConclusionsViewController: UIViewController {
             }
         }
     }
-    
-    @objc func tapBackButton(_ sender: UIBarButtonItem) {
-        
-        self.navigationController?.popViewController(animated: true)
-    }
+//
+//    @objc func tapBackButton(_ sender: UIBarButtonItem) {
+//
+//        self.navigationController?.popViewController(animated: true)
+//    }
 }
 
 extension DrawConclusionsViewController {
@@ -122,19 +122,5 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         default:
             break
         }
-    }
-}
-
-extension DrawConclusionsViewController {
-    
-    func setupNavBarBackButton() {
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
-            target: self,
-            action: #selector(tapBackButton(_:))
-        )
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.B2
     }
 }
