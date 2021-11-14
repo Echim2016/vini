@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class CustomTabBarController: UITabBarController {
 
@@ -26,6 +27,11 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLayoutSubviews()
         tabBar.frame.size.height *= 1.15
         tabBar.frame.origin.y = view.frame.height - tabBar.frame.size.height
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        Haptic.play(".", delay: 0)
     }
     
     func setupTabBarAppearance() {

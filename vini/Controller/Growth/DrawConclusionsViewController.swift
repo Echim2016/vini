@@ -70,11 +70,6 @@ class DrawConclusionsViewController: UIViewController {
             }
         }
     }
-//
-//    @objc func tapBackButton(_ sender: UIBarButtonItem) {
-//
-//        self.navigationController?.popViewController(animated: true)
-//    }
 }
 
 extension DrawConclusionsViewController {

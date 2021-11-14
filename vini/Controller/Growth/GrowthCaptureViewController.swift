@@ -302,12 +302,12 @@ class GrowthCaptureViewController: UIViewController {
         
         Haptic.play(".", delay: 0)
         
-        if data.count > 2 {
-            
-            showArchiveButton()
-        } else {
+        if data.isEmpty {
             
             performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
+        } else {
+            
+            showArchiveButton()
         }
         
     }

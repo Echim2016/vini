@@ -24,8 +24,8 @@ class ArchivedCardCell: UITableViewCell {
     
     func setupLayoutForGrowthCards() {
         
-//        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         collectionView.registerCellWithNib(
             identifier: String(describing: ArchivedCardCollectionViewCell.self),
