@@ -11,7 +11,7 @@ import SwiftUI
 
 class DrawConclusionsViewController: UIViewController {
 
-    @IBOutlet weak var conclusionIntroLabel: UILabel!{
+    @IBOutlet weak var conclusionIntroLabel: UILabel! {
         didSet {
             conclusionIntroLabel.text = "關於「\(introText)」..."
         }
@@ -37,13 +37,17 @@ class DrawConclusionsViewController: UIViewController {
         
         setupTextView()
         
-        setupNavBar()
+        setupNavBarBackButton()
         
         setupNavigationController(title: "我的學習結論", titleColor: .B2)
-        
-        navigationController?.navigationBar.titleTextAttributes
-        
+            
         fetchConclusion()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        conclusionTextView.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +101,7 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         
         conclusionTextView.placeholder = "我有一些結論是..."
         conclusionTextView.tintColor = UIColor.S1
-        conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -123,7 +127,7 @@ extension DrawConclusionsViewController: UITextViewDelegate {
 
 extension DrawConclusionsViewController {
     
-    func setupNavBar() {
+    func setupNavBarBackButton() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "chevron.backward"),
