@@ -32,8 +32,21 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var wonderingLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton! {
+        didSet {
+            if #available(iOS 14, *) {
+                
+                mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
+            }
+        }
+    }
+    
+    @IBOutlet weak var leftIndicatorArrow: UIButton!
+    @IBOutlet weak var rightIndicatorArrow: UIButton!
     
     var currentSelectedVini: ViniView = ViniView()
+    
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +63,11 @@ class DiscoverViewController: UIViewController {
         sendButton.layer.cornerRadius = 20
         self.bigCloudImageView.float(duration: 1.6)
         self.mediumCloudImageView.float(duration: 2.0)
-        
+        self.navigationController?.navigationBar.isHidden = true
         view.bringSubviewToFront(headerView)
         view.bringSubviewToFront(mediumCloudImageView)
+        
+        setupNotificationCenterObserver()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,6 +85,8 @@ class DiscoverViewController: UIViewController {
         
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
+        showBackgroundViewScaleUpAnimation()
+        self.showInitialIndicatorAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,10 +101,16 @@ class DiscoverViewController: UIViewController {
         resetTitle()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        resetBackgroundViewScaleUpAnimation()
+    }
+    
     @objc private func onTap(_ gesture: UIGestureRecognizer) {
-
+        
         let touchPoint = gesture.location(in: self.mapView.mapStackView)
-                
+        
         self.mapView.mapStackView.arrangedSubviews.filter { $0.frame.contains(touchPoint)}.forEach { map  in
             
             let location = gesture.location(in: map)
@@ -122,11 +145,13 @@ class DiscoverViewController: UIViewController {
     
     @IBAction func tapProfileSettingButton(_ sender: Any) {
 
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.showProfileSetting.rawValue, sender: nil)
     }
     
     @IBAction func tapSendMailButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.showSendMailPage.rawValue, sender: nil)
     }
     
@@ -140,6 +165,7 @@ class DiscoverViewController: UIViewController {
         if let destination = segue.destination as? SendMailViewController {
             
             destination.receipient = currentSelectedVini
+            destination.user = user
             destination.delegate = self
         }
         
@@ -164,6 +190,8 @@ extension DiscoverViewController {
         
         mapView.dataSource = self
         
+        mapView.delegate = self
+                
         self.view.addSubview(mapView)
                 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
@@ -227,6 +255,26 @@ extension DiscoverViewController {
             }
         )
     }
+    
+    func setupNotificationCenterObserver() {
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateUserInfo(notification:)),
+            name: Notification.Name(rawValue: "updateUserInfo"),
+            object: nil
+        )
+    }
+    
+    @objc func updateUserInfo(notification: Notification) {
+        
+        if let userInfo = notification.userInfo,
+           let user = userInfo["user"] as? User {
+            
+            self.user = user
+        }
+        
+    }
 }
 
 extension DiscoverViewController {
@@ -283,7 +331,23 @@ extension DiscoverViewController: MapScrollViewDataSource {
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         return infoOfUsers
     }
+}
+
+extension DiscoverViewController: MapScrollViewDelegate {
     
+    func didReachedRightEdge() {
+        
+        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
+        showIndicatorAnimation(indicator: rightIndicatorArrow)
+        Haptic.play(".o.", delay: 0)
+    }
+    
+    func didReachedLeftEdge() {
+        
+        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
+        showIndicatorAnimation(indicator: leftIndicatorArrow)
+        Haptic.play(".o.", delay: 0)
+    }
 }
 
 extension DiscoverViewController: DiscoverProtocol {
@@ -314,6 +378,109 @@ extension DiscoverViewController {
             animations: {
                 self.bigCloudImageView.alpha = 1
                 self.mediumCloudImageView.alpha = 1
+            }
+        )
+    }
+    
+    func resetBackgroundViewScaleUpAnimation() {
+    
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.backgroundRectView.transform = .identity
+                
+            },
+            completion: nil
+        )
+    }
+    
+    func showBackgroundViewScaleUpAnimation() {
+        
+        guard backgroundRectView.frame.width < self.view.frame.size.width else { return }
+        
+        let xScaleFactor = self.view.frame.size.width / backgroundRectView.frame.width
+        let yScaleFactor = self.view.frame.size.height / backgroundRectView.frame.height
+        let scaleTransform = CGAffineTransform(scaleX: xScaleFactor, y: yScaleFactor)
+        
+        UIView.animate(
+            withDuration: 2.0,
+            delay: 0.0,
+            usingSpringWithDamping: 2.0,
+            initialSpringVelocity: 3.0,
+            options: .curveEaseIn,
+            animations: {
+                self.backgroundRectView.transform = scaleTransform
+                self.view.bringSubviewToFront(self.mapButton)
+            },
+            completion: { _ in
+                
+            })
+    }
+    
+    func showInitialIndicatorAnimation() {
+        
+        leftIndicatorArrow.transform = .identity
+        rightIndicatorArrow.transform = .identity
+        
+        leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "chevron.left.2"), for: .normal)
+        rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "chevron.right.2"), for: .normal)
+        
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0.0,
+            options: .curveEaseInOut,
+            animations: {
+                
+                self.leftIndicatorArrow.alpha = 1
+                self.rightIndicatorArrow.alpha = 1
+                self.leftIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.0)
+                self.rightIndicatorArrow.transform = CGAffineTransform(scaleX: 1.5, y: 1.0)
+                
+            },
+            completion: { _ in
+
+                self.hideIndicatorAnimation(indicator: self.leftIndicatorArrow)
+                self.hideIndicatorAnimation(indicator: self.rightIndicatorArrow)
+            }
+        )
+        
+    }
+    
+    func showIndicatorAnimation(indicator: UIView) {
+        
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.0,
+            options: .curveEaseIn,
+            animations: {
+                indicator.alpha = 1
+                
+            },
+            completion: { _ in
+                
+                self.hideIndicatorAnimation(indicator: indicator)
+            }
+        )
+    }
+    
+    func hideIndicatorAnimation(indicator: UIView) {
+        
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0.5,
+            options: .curveEaseIn,
+            animations: {
+                indicator.alpha = 0
+                
+            },
+            completion: { _ in
+                
+                self.leftIndicatorArrow.transform = .identity
+                self.rightIndicatorArrow.transform = .identity
             }
         )
     }

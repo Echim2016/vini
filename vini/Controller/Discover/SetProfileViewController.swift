@@ -42,23 +42,17 @@ class SetProfileViewController: UIViewController {
         }
     }
     
+    var wonderingTextView: UITextView?
+    
+    var displayNameTextView: UITextView?
+    
     @IBOutlet weak var viniSelectorView: UIView!
     
     @IBOutlet weak var isPublishedSwitch: UISwitch!
     
     weak var delegate: DiscoverProtocol?
         
-    var user: User = User() {
-        didSet {
-    
-            self.isPublishedSwitch.isOn = user.isPublished
-            self.selectedIndex = cloudCategorySelection.firstIndex(where: { item in
-                item.category.category == user.cloudCategory
-            }) ?? 0
-            cloudCategorySelection[selectedIndex].isChecked = true
-            self.tableView.reloadData()
-        }
-    }
+    var user: User = User()
     
     var cloudCategorySelection: [CloudCategorySelection] = [
         CloudCategorySelection(category: CloudCategory.career),
@@ -68,6 +62,9 @@ class SetProfileViewController: UIViewController {
     ]
     
     var selectedIndex = 0
+    
+    let wonderingCharactersLimit = 18
+    let displayNameCharactersLimit = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +132,8 @@ class SetProfileViewController: UIViewController {
 extension SetProfileViewController {
     
     func fetchProfile() {
+        
+        VProgressHUD.show()
                     
         DiscoverUserManager.shared.fetchUserProfile() { result in
             switch result {
@@ -144,15 +143,26 @@ extension SetProfileViewController {
                 let types = self.viniAssets.map { $0.name }
                 self.currentViniIndex = types.firstIndex(of: user.viniType) ?? 0
                 self.viniImageView.image = UIImage(named: user.viniType)
+                self.isPublishedSwitch.isOn = user.isPublished
+                self.selectedIndex = self.cloudCategorySelection.firstIndex(where: { item in
+                    item.category.category == user.cloudCategory
+                }) ?? 0
+                self.cloudCategorySelection[self.selectedIndex].isChecked = true
+                self.tableView.reloadData()
+                
+                VProgressHUD.dismiss()
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "出了一些問題，請重新再試")
             }
         }
     }
     
     func saveProfile() {
+        
+        VProgressHUD.show()
         
         DiscoverUserManager.shared.updateUserStatus(
             wondering: user.wondering,
@@ -165,12 +175,14 @@ extension SetProfileViewController {
             switch result {
             case .success:
                 
+                VProgressHUD.showSuccess()
                 self.delegate?.didSelectCloudCategory(self.cloudCategorySelection[self.selectedIndex].category)
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "設定個人狀態時出了一些問題，請重新再試")
             }
         }
     }
@@ -231,11 +243,18 @@ extension SetProfileViewController: UITableViewDataSource {
             ) as? SetProfileCell else {
                 fatalError()
             }
-            cell.setupCell(title: "個人狀態", placeholder: "最近想知道/好奇/煩惱的是...")
+            
             cell.textView.delegate = self
-            cell.textView.accessibilityLabel = "wondering"
             cell.textView.text = user.wondering
+            cell.setupCell(
+                title: "個人狀態",
+                placeholder: "最近想知道/好奇/煩惱的是..."
+            )
+            cell.setupCharactersLimit(charactersLimit: wonderingCharactersLimit)
             cell.isHidden = !isPublishedSwitch.isOn
+            
+            self.wonderingTextView = cell.textView
+            
             return cell
             
         case 1:
@@ -245,11 +264,17 @@ extension SetProfileViewController: UITableViewDataSource {
             ) as? SetProfileCell else {
                 fatalError()
             }
-            cell.setupCell(title: "顯示名稱", placeholder: "呈現在 Vini Cloud 裡面的名稱")
+            
             cell.textView.delegate = self
-            cell.textView.accessibilityLabel = "displayName"
             cell.textView.text = user.displayName
+            cell.setupCell(
+                title: "顯示名稱",
+                placeholder: "呈現在 Vini Cloud 裡面的名稱"
+            )
+            cell.setupCharactersLimit(charactersLimit: displayNameCharactersLimit)
             cell.isHidden = !isPublishedSwitch.isOn
+            
+            self.displayNameTextView = cell.textView
 
             return cell
             
@@ -300,15 +325,14 @@ extension SetProfileViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        guard let text = textView.text,
-              !text.isEmpty else {
+        guard let text = textView.text else {
                   return
               }
 
-        switch textView.accessibilityLabel {
-        case "wondering":
+        switch textView {
+        case wonderingTextView:
             user.wondering = text
-        case "displayName":
+        case displayNameTextView:
             user.displayName = text
         default:
             break
@@ -322,7 +346,34 @@ extension SetProfileViewController: UITextViewDelegate {
         guard let stringRange = Range(range, in: currentText) else { return false }
 
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-
-        return updatedText.count <= 18
+        
+        switch textView {
+            
+        case wonderingTextView:
+            
+            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SetProfileCell {
+                
+                let count = updatedText.count < wonderingCharactersLimit ? updatedText.count : wonderingCharactersLimit
+                
+                cell.charactersLimitLabel.text = "\(count) / \(wonderingCharactersLimit)"
+            }
+            
+            return updatedText.count <= wonderingCharactersLimit
+            
+        case displayNameTextView:
+            
+            if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? SetProfileCell {
+                
+                let count = updatedText.count < displayNameCharactersLimit ? updatedText.count : displayNameCharactersLimit
+                
+                cell.charactersLimitLabel.text = "\(count) / \(displayNameCharactersLimit)"
+            }
+            
+            return updatedText.count <= displayNameCharactersLimit
+            
+        default:
+            
+            return false
+        }
     }
 }

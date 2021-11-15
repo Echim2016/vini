@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <tabBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="0.60332160596026485" colorSpace="custom" customColorSpace="displayP3"/>
                         </tabBarAppearance>
                         <tabBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="0.59938948675496684" colorSpace="custom" customColorSpace="displayP3"/>
                         </tabBarAppearance>
                     </tabBar>
                     <connections>

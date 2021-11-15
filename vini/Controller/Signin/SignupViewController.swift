@@ -21,6 +21,8 @@ class SignupViewController: UIViewController {
     }
     @IBOutlet weak var remindsLabel: UILabel!
     
+    @IBOutlet weak var charactersLimitLabel: UILabel!
+    
     var nextButton = NextButton()
     
     var notificationButton = NextButton()
@@ -28,6 +30,8 @@ class SignupViewController: UIViewController {
     var startButton = NextButton()
     
     var displayNameToUpdate = ""
+    
+    let displayNameCharactersLimit = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +59,21 @@ class SignupViewController: UIViewController {
         
         view.endEditing(true)
         
-        updateDisplayName { sucesss in
-            if sucesss {
-                self.hideContentAnimation()
-            } else {
-                self.nameTextView.text = ""
-                // show error message
+        if !displayNameToUpdate.isEmpty {
+            
+            updateDisplayName { sucesss in
+                if sucesss {
+                    self.hideContentAnimation()
+                } else {
+                    self.nameTextView.text = ""
+                    self.nameTextView.shake(count: 5, for: 0.2, withTranslation: 2)
+                }
             }
+        } else {
+            
+            self.nameTextView.shake(count: 5, for: 0.3, withTranslation: 3)
         }
-        
+       
     }
     
     @objc func tapNotificationButton(_ sender: UIButton) {
@@ -98,7 +108,11 @@ extension SignupViewController: UITextViewDelegate {
 
         let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
 
-        return updatedText.count <= 8
+        let count = updatedText.count < displayNameCharactersLimit ? updatedText.count : displayNameCharactersLimit
+        
+        charactersLimitLabel.text = "\(count) / \(displayNameCharactersLimit)"
+        
+        return updatedText.count <= displayNameCharactersLimit
     }
     
 }
@@ -126,20 +140,7 @@ extension SignupViewController {
         }
         
     }
-    
-//    func sendWelcomeMail() {
-//        
-//        MailManager.shared.sendWelcomeMail { result in
-//            switch result {
-//            case .success(let success):
-//                print(success)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-//    
-//    
+
 }
 
 extension SignupViewController {
@@ -165,11 +166,11 @@ extension SignupViewController {
     
     func setupTextView() {
     
-        nameTextView.textContentType = .name
         nameTextView.layer.cornerRadius = 10
         nameTextView.tintColor = UIColor.white
         nameTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 0, right: 0)
         nameTextView.textContainer.maximumNumberOfLines = 1
+        charactersLimitLabel.text = "\(nameTextView.text.count) / \(displayNameCharactersLimit)"
     }
     
     func setupNextButton() {
@@ -251,10 +252,12 @@ extension SignupViewController {
                 self.nameTextView.frame.origin.y -= 30
                 self.remindsLabel.frame.origin.y -= 30
                 self.nextButton.frame.origin.y -= 30
+                self.charactersLimitLabel.frame.origin.y -= 30
                 self.titleLabel.alpha = 0
                 self.nameTextView.alpha = 0
                 self.remindsLabel.alpha = 0
                 self.nextButton.alpha = 0
+                self.charactersLimitLabel.alpha = 0
             },
             completion: { _ in
                 
@@ -266,7 +269,7 @@ extension SignupViewController {
     func showRemindsContentAnimation() {
         
         titleLabel.text = "\(displayNameToUpdate) 今天過得還好嗎？\n反思是 Vini 很重視的每日儀式。"
-        remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
+//        remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
 //        remindsLabel.textColor = .white
         remindsLabel.text = "每到晚上的指定時間，Vini 會帶你進行一次簡單的反思練習，你也可以在這段時間看見其他使用者寫給你的私信。"
         

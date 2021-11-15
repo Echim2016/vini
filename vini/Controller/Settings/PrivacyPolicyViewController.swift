@@ -19,12 +19,14 @@ class PrivacyPolicyViewController: UIViewController {
 
         setupWebView()
         setupNavBarBackButton()
+        setupPopGestureRecognizer()
         setupNavigationController(title: "隱私權政策", titleColor: .white)
     }
     
     func setupWebView() {
         
         guard let url = URL(string: privacyURL) else {
+            VProgressHUD.showFailure()
             return
         }
         

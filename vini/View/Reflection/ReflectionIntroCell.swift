@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol CollectionViewCellDelegate: AnyObject {
+    
+    func didTapDismissButton(_ cell: UICollectionViewCell)
+}
+
 class ReflectionIntroCell: UICollectionViewCell {
+    
+    weak var delegate: CollectionViewCellDelegate?
 
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var moonImageView: UIImageView!
     @IBOutlet weak var introTitleLabel: UILabel!
     @IBOutlet weak var introContentLabel: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +28,8 @@ class ReflectionIntroCell: UICollectionViewCell {
         introTitleLabel.alpha = 0
         introContentLabel.alpha = 0
         moonImageView.alpha = 0
+        
+        dismissButton.addTarget(self, action: #selector(tapDismissButton(_:)), for: .touchUpInside)
         
     }
     
@@ -51,7 +61,11 @@ class ReflectionIntroCell: UICollectionViewCell {
             },
             completion: nil
         )
+    }
+    
+    @objc func tapDismissButton(_ sender: UIButton) {
         
+        delegate?.didTapDismissButton(self)
     }
 
 }

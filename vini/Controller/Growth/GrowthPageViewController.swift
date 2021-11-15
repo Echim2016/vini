@@ -49,13 +49,13 @@ class GrowthPageViewController: UIViewController {
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
-        getReflectionTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchGrowthCards()
+        getReflectionTime()
     }
     
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
@@ -94,12 +94,19 @@ class GrowthPageViewController: UIViewController {
                     
                     alertController.onConfirm = {
                         
+                        VProgressHUD.show()
+                        
                         let id = self.data[indexPath.row].id
                         
                         self.deleteGrowthCard(id: id) { success in
                             if success {
+                                
+                                VProgressHUD.showSuccess()
                                 self.data.remove(at: indexPath.row)
                                 self.tableView.deleteRows(at: [indexPath], with: .left)
+                            } else {
+                                
+                                VProgressHUD.showFailure()
                             }
                         }
                     }
@@ -154,33 +161,41 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
+        VProgressHUD.show()
+        
         GrowthCardProvider.shared.fetchData(isArchived: false) { result in
             
             switch result {
             case .success(let cards):
                 
+                VProgressHUD.dismiss()
                 self.data = cards
                 self.tableView.reloadData()
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "讀取成長卡片時出了一點問題")
             }
         }
     }
     
     private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
         
+        VProgressHUD.show()
+        
         GrowthCardProvider.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
             case .success(_):
                 
+                VProgressHUD.dismiss()
                 completion(true)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "刪除成長卡片時出了一點問題")
                 completion(false)
             }
         }
@@ -242,6 +257,18 @@ extension GrowthPageViewController: UITableViewDataSource {
 }
 
 extension GrowthPageViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0.2
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

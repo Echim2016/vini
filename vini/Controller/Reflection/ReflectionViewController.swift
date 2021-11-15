@@ -55,6 +55,7 @@ class ReflectionViewController: UIViewController {
     
     @objc func tapContinueButton(_ sender: UIButton) {
         
+        Haptic.play("o", delay: 0)
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -112,6 +113,8 @@ extension ReflectionViewController: UICollectionViewDataSource {
                 fatalError()
             }
             
+            cell.delegate = self
+            
             return cell
             
         case 1:
@@ -162,6 +165,14 @@ extension ReflectionViewController {
         collectionView.collectionViewLayout = flowLayout
     }
 
+}
+
+extension ReflectionViewController: CollectionViewCellDelegate {
+    
+    func didTapDismissButton(_ cell: UICollectionViewCell) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension ReflectionViewController {

@@ -32,8 +32,8 @@
                                 <rect key="frame" x="183" y="204" width="331" height="149"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-nX-Zkf">
-                                <rect key="frame" x="50" y="180" width="210" height="84"/>
-                                <string key="text">給自己三分鐘，
+                                <rect key="frame" x="50" y="180" width="240" height="84"/>
+                                <string key="text">留給自己三分鐘，
 想一想...</string>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

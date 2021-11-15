@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class CustomTabBarController: UITabBarController {
 
@@ -18,7 +19,39 @@ class CustomTabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         setupTabBarItemTitle()
+        setupTabBarAppearance()
         fetchMailsForBadgeValue()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.frame.size.height *= 1.15
+        tabBar.frame.origin.y = view.frame.height - tabBar.frame.size.height
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        Haptic.play(".", delay: 0)
+        
+        switch item.title {
+            
+        case TabBarItem.achievement.title, TabBarItem.discover.title:
+            
+            fetchUserData()
+            
+        default:
+            break
+            
+        }
+       
+    }
+    
+    func setupTabBarAppearance() {
+        
+        tabBar.layer.masksToBounds = true
+        tabBar.isTranslucent = true
+        tabBar.layer.cornerRadius = 25
+        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func setupTabBarItemTitle() {
@@ -30,6 +63,10 @@ class CustomTabBarController: UITabBarController {
             self.tabBar.items?[index].title = tabBarItems[index].title
         }
     }
+
+}
+
+extension CustomTabBarController {
     
     func fetchMailsForBadgeValue() {
         
@@ -48,5 +85,28 @@ class CustomTabBarController: UITabBarController {
             }
         }
     }
-
+    
+    func fetchUserData() {
+        
+        if let userID = UserManager.shared.userID {
+            
+            UserManager.shared.fetchUser(userID: userID) { result in
+                
+                switch result {
+                    
+                case .success(let user):
+                    
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user" : user])
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
 }

@@ -17,9 +17,11 @@ enum Alert {
     
     case deleteMailAlert
     case deleteGrowthCardAlert
+    case deleteGrowthContentCardAlert
     
     case emptyInputAlert
-    
+    case emptyContentCardAlert
+
     case sendMailAlert
     
     case updateContentCardAlert
@@ -46,8 +48,14 @@ enum Alert {
         case .deleteGrowthCardAlert:
             return "刪除"
             
+        case .deleteGrowthContentCardAlert:
+            return "刪除"
+            
         case .emptyInputAlert:
             return "無法成功傳送"
+            
+        case .emptyContentCardAlert:
+            return "暫時無法封存"
             
         case .sendMailAlert:
             return "Vini 將為你寄出信件"
@@ -67,7 +75,7 @@ enum Alert {
         case .logOutAlert:
             return "您確定要登出嗎？"
         case .blockUserAlert:
-            return "您將不會在 Vini Cloud 及收信匣看到此使用者的內容，您可以隨時在設定頁解除封鎖。"
+            return "您將不會在 Vini Cloud 及信箱看到此使用者的內容，您可以隨時在設定頁解除封鎖。"
         case .unblockUserAlert:
             return "您確定要解除封鎖此使用者嗎？"
         case .deleteMailAlert:
@@ -76,8 +84,14 @@ enum Alert {
         case .deleteGrowthCardAlert:
             return "您確定要刪除此成長卡片嗎？所有微小學習內容將會一併刪除。"
             
+        case .deleteGrowthContentCardAlert:
+            return "您確定要刪除此微小學習卡片嗎？"
+            
         case .emptyInputAlert:
             return "您的輸入內容似乎不完整，請確認完成所有欄位後再嘗試一次！"
+            
+        case .emptyContentCardAlert:
+            return "請新增微小學習卡片後，再進行封存！"
             
         case .sendMailAlert:
             return "您確定要寄出此信件嗎？"

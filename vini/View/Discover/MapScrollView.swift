@@ -12,6 +12,12 @@ protocol MapScrollViewDataSource: AnyObject {
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView]
 }
 
+protocol MapScrollViewDelegate: AnyObject {
+    
+    func didReachedRightEdge()
+    func didReachedLeftEdge()
+}
+
 class MapScrollView: UIView {
     
     private var numberOfMapsInStack = 6
@@ -21,6 +27,8 @@ class MapScrollView: UIView {
     let colors: [UIColor] = [.blue, .cyan, .brown, .darkGray, .S1, .purple]
     
     weak var dataSource: MapScrollViewDataSource?
+    
+    weak var delegate: MapScrollViewDelegate?
     
     private var infosOfUsers: [ViniView] = []
     
@@ -146,6 +154,13 @@ extension MapScrollView: UIScrollViewDelegate {
 
         // user swipe to left
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+            
+            let isReachingLeftEdge = scrollView.contentOffset.x == 0
+            
+            if isReachingLeftEdge {
+                
+                delegate?.didReachedLeftEdge()
+            }
                         
             if currentPage == 1 && currentDataLocation > 0 {
                                 
@@ -189,6 +204,14 @@ extension MapScrollView: UIScrollViewDelegate {
             }
             
         } else {
+            
+            let isReachingRightEdge = scrollView.contentOffset.x >= 0
+                 && scrollView.contentOffset.x >= (scrollView.contentSize.width - scrollView.frame.size.width)
+            
+            if isReachingRightEdge {
+                
+                delegate?.didReachedRightEdge()
+            }
             
             if currentPage == numberOfMapsInStack - 3 && (currentDataLocation + 1) * numberOfViniPerMap < infosOfUsers.count {
                                 
@@ -260,7 +283,7 @@ extension UIView {
                 randomY = Int.random(in: 224...Int(height))
                 
                 for position in positions {
-                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 60 {
+                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 62 {
                         exist = true
                     } else {
                         exist = false

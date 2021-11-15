@@ -217,11 +217,21 @@
                         <segue destination="F69-GU-DzG" kind="presentation" identifier="EditGrowthContentCard" id="ayE-PI-VOL"/>
                         <segue destination="ZeT-yR-ien" kind="show" identifier="DrawConclusions" id="q0G-b0-Oyf"/>
                         <segue destination="0d6-dM-goE" kind="presentation" identifier="ShowCongratsPage" id="Z7q-mW-2w8"/>
+                        <segue destination="2ax-mj-DPG" kind="presentation" identifier="ShowDeleteGrowthContentCardAlert" id="EcZ-pS-ud9"/>
+                        <segue destination="rgE-ha-d6J" kind="presentation" identifier="ShowContentCardEmptyAlert" id="nKD-cJ-woQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952.1739130434785" y="109.82142857142857"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="urM-7w-Ifg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="2ax-mj-DPG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kVx-Ps-DMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2762" y="15"/>
         </scene>
         <!--Conclusion-->
         <scene sceneID="CpK-jg-J3L">
@@ -278,7 +288,7 @@
                                             <constraint firstAttribute="height" constant="140" id="JGD-dl-ME1"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content Intro Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUn-bP-oav" userLabel="Title Intro Label">
@@ -294,7 +304,7 @@
                                             <constraint firstAttribute="height" constant="45" id="PsH-7v-7DE"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaG-WD-tpl">
@@ -336,7 +346,7 @@
                                         </constraints>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="photo.circle.fill" catalog="system"/>
+                                        <state key="normal" backgroundImage="photo.fill.on.rectangle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="tapAlbumButton:" destination="F69-GU-DzG" eventType="touchUpInside" id="7kY-Za-mfJ"/>
                                         </connections>
@@ -375,14 +385,24 @@
                         <outlet property="contentTextView" destination="Mo6-vz-tCL" id="umG-aR-Cdv"/>
                         <outlet property="imageLabel" destination="MaG-WD-tpl" id="E1F-RM-G2g"/>
                         <outlet property="introLabel" destination="mAQ-2f-Rih" id="O6L-6B-Kpq"/>
+                        <outlet property="photoLibraryButton" destination="37j-Hm-j3C" id="vVR-N7-cWc"/>
                         <outlet property="titleIntroLabel" destination="dUn-bP-oav" id="MTc-1N-heA"/>
                         <outlet property="titleTextView" destination="Zq7-UH-jTE" id="kEG-9w-Qpe"/>
                         <segue destination="THK-eX-Hoh" kind="presentation" identifier="ShowUpdateContentCardAlert" id="JKY-YI-v7f"/>
+                        <segue destination="I8p-aA-edR" kind="presentation" identifier="ShowEmptyInputAlert" id="p4K-Ph-zMv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXI-Eu-pXG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1952" y="860"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="EAh-Tg-J45">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="I8p-aA-edR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNp-gq-B1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1951" y="1231"/>
         </scene>
         <!--Alert-->
         <scene sceneID="EZP-na-wcZ">
@@ -418,10 +438,18 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="109.82142857142857"/>
         </scene>
+        <!--Alert-->
+        <scene sceneID="DOO-0o-7oH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="rgE-ha-d6J" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhv-nM-7xN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2836" y="-49"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="Zq7-UH-jTE">
-            <size key="intrinsicContentSize" width="10" height="44"/>
+            <size key="intrinsicContentSize" width="10" height="41.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
@@ -431,7 +459,7 @@
         <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="photo.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>

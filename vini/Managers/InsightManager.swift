@@ -77,7 +77,6 @@ class InsightManager {
             group.notify(queue: DispatchQueue.main) {
                 
                 completion(.success(insightDict))
-                print(insightDict)
             }
         }
         

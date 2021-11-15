@@ -20,6 +20,8 @@ class GrowthCaptureViewController: UIViewController {
         case drawConclusions = "DrawConclusions"
         case showArchiveView = "ShowArchiveView"
         case showCongratsPage = "ShowCongratsPage"
+        case showDeleteGrowthContentCardAlert = "ShowDeleteGrowthContentCardAlert"
+        case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
     }
     
     weak var growthPageVC: GrowthPageViewController?
@@ -210,6 +212,39 @@ class GrowthCaptureViewController: UIViewController {
             
             destinationVC.growthPageVC = growthPageVC
         }
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            switch segue.identifier {
+                
+            case Segue.showDeleteGrowthContentCardAlert.rawValue:
+                
+                if let indexPath = sender as? IndexPath {
+                    
+                    alert.alertType = .deleteGrowthContentCardAlert
+                    alert.onConfirm = {
+                        
+                        let id = self.data[indexPath.row - 1].id
+                        let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                        
+                        self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
+                            
+                            if success {
+                                self.data.remove(at: indexPath.row - 1)
+                                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                            }
+                        }
+                    }
+                }
+                
+            case Segue.showContentCardEmptyAlert.rawValue:
+                
+                alert.alertType = .emptyContentCardAlert
+                
+            default:
+                break
+            }
+        }
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
@@ -266,7 +301,15 @@ class GrowthCaptureViewController: UIViewController {
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
         Haptic.play(".", delay: 0)
-        showArchiveButton()
+        
+        if data.isEmpty {
+            
+            performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
+        } else {
+            
+            showArchiveButton()
+        }
+        
     }
     
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
@@ -517,22 +560,26 @@ extension GrowthCaptureViewController: UITableViewDelegate {
                 image: UIImage(systemName: "trash.fill"),
                 attributes: [.destructive]) { _ in
                     
-                    let id = self.data[indexPath.row - 1].id
-                    let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+                    self.performSegue(withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue, sender: indexPath)
                     
-                    self.deleteGrowthContentCard(id: id, imageExists: imageExists) { success in
-                        
-                        if success {
-                            self.data.remove(at: indexPath.row - 1)
-                            self.tableView.deleteRows(at: [indexPath], with: .fade)
-                        }
-                    }
                 }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
                 UIMenu(title: "", children: [edit, delete])
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0.2
+
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
     }
     
 }
@@ -570,9 +617,12 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             guard let stringRange = Range(range, in: currentText) else { return false }
             
             let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-            characterLimitLabel.text = "\(updatedText.count) / \(titleCharactersLimit)"
             
-            return updatedText.count < titleCharactersLimit
+            let count = updatedText.count < titleCharactersLimit ? updatedText.count : titleCharactersLimit
+            
+            characterLimitLabel.text = "\(count) / \(titleCharactersLimit)"
+                        
+            return updatedText.count <= titleCharactersLimit
             
         default:
             return true

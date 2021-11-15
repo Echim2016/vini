@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="嗨，你的名字是？" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3H-Hu-u2b">
-                                <rect key="frame" x="20" y="174" width="192" height="34"/>
+                                <rect key="frame" x="20" y="174" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,21 +38,31 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6 / 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vue-I3-7pd">
+                                <rect key="frame" x="312" y="253" width="34" height="17"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="A2J-qM-GDD" firstAttribute="top" secondItem="ZMn-eO-La1" secondAttribute="bottom" constant="10" id="8vH-1e-hOC"/>
                             <constraint firstItem="ZMn-eO-La1" firstAttribute="top" secondItem="f3H-Hu-u2b" secondAttribute="bottom" constant="20" id="Azf-Pg-XLz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f3H-Hu-u2b" secondAttribute="trailing" constant="20" id="LDs-gC-xRT"/>
                             <constraint firstItem="f3H-Hu-u2b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="130" id="S77-r9-a22"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZMn-eO-La1" secondAttribute="trailing" constant="60" id="UMV-hQ-Iwq"/>
                             <constraint firstItem="f3H-Hu-u2b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="ZkE-c5-M5K"/>
+                            <constraint firstItem="Vue-I3-7pd" firstAttribute="bottom" secondItem="ZMn-eO-La1" secondAttribute="bottom" constant="-8" id="atB-UD-SD9"/>
                             <constraint firstItem="A2J-qM-GDD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="h64-ph-7s8"/>
                             <constraint firstItem="ZMn-eO-La1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="jYh-ru-5cY"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="A2J-qM-GDD" secondAttribute="trailing" constant="60" id="kcw-Uc-Dov"/>
+                            <constraint firstItem="Vue-I3-7pd" firstAttribute="trailing" secondItem="ZMn-eO-La1" secondAttribute="trailing" constant="-8" id="leq-pr-5pt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="charactersLimitLabel" destination="Vue-I3-7pd" id="ykn-DX-gdh"/>
                         <outlet property="nameTextView" destination="ZMn-eO-La1" id="jcX-my-D1q"/>
                         <outlet property="remindsLabel" destination="A2J-qM-GDD" id="ZPR-Hp-bq7"/>
                         <outlet property="titleLabel" destination="f3H-Hu-u2b" id="DLd-c1-ORs"/>

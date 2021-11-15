@@ -18,5 +18,7 @@ target 'vini' do
   pod 'loady'
   pod "Haptica"
   pod 'lottie-ios'
+  pod 'JGProgressHUD'
+
 
 end

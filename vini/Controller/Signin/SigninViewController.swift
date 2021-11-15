@@ -202,7 +202,6 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                             }
                         }
                         
-                        
                     } else {
                         
                         // if user is not new user, redirect to home page

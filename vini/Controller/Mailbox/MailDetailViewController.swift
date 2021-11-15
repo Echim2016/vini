@@ -24,7 +24,17 @@ class MailDetailViewController: UIViewController {
         }
     }
     
-    var mail: Mail = Mail()
+    @IBOutlet weak var blockUserButton: UIBarButtonItem!
+    
+    var mail: Mail = Mail() {
+        didSet {
+            
+            if mail.senderID == MailManager.shared.welcomeMailSenderID {
+                
+                blockUserButton.isEnabled = false
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +42,7 @@ class MailDetailViewController: UIViewController {
         tableView.registerCellWithNib(identifier: MailTitleCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailContentCell.identifier, bundle: nil)
+        setupPopGestureRecognizer()
         
     }
     
@@ -115,15 +126,19 @@ extension MailDetailViewController {
     
     func deleteMail() {
         
+        VProgressHUD.show()
+        
         MailManager.shared.deleteMail(mailID: mail.id) { result in
             switch result {
             case .success:
                 
+                VProgressHUD.showSuccess()
                 self.navigationController?.popViewController(animated: true)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "信件刪除時出了一些問題，請重新再試")
             }
         }
     }
@@ -140,16 +155,20 @@ extension MailDetailViewController {
     
     func blockUser() {
         
+        VProgressHUD.show()
+        
         UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
             
             switch result {
             case .success:
                 
+                VProgressHUD.dismiss()
                 self.navigationController?.popViewController(animated: true)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "封鎖使用者時出了一些問題，請重新再試")
             }
         }
     }

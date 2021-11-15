@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="目前收信匣沒有信件哦！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8p-aj-kOa">
-                                <rect key="frame" x="130" y="440.5" width="154" height="20"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vini 沒有在信箱裡發現新的信件呢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8p-aj-kOa">
+                                <rect key="frame" x="101.5" y="440.5" width="211" height="20"/>
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,39 +38,21 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9o-9R-iaA" secondAttribute="trailing" id="kEA-St-pbg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HCc-nC-172">
-                        <barButtonItem key="rightBarButtonItem" title="設定" image="gearshape.fill" catalog="system" id="bVF-Lq-LHH">
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="tapSetting:" destination="Y6W-OH-hqX" id="tbH-sx-vXy"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="HCc-nC-172"/>
                     <connections>
                         <outlet property="remindsLabel" destination="R8p-aj-kOa" id="3Az-a9-ngD"/>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
                         <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
-                        <segue destination="TIW-zz-Rn2" kind="presentation" identifier="ShowSettings" id="zSs-aJ-d4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="ndm-Uj-ww7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="TIW-zz-Rn2" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8Qi-eH-k6e"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hO7-PP-eyX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1043" y="556"/>
-        </scene>
         <!--Mail Detail View Controller-->
         <scene sceneID="rSq-4B-RAA">
             <objects>
-                <viewController id="z4r-4Y-byP" customClass="MailDetailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MailDetail" id="z4r-4Y-byP" customClass="MailDetailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUq-dx-NKA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,6 +88,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="blockUserButton" destination="f6K-F2-73d" id="h2z-Qz-3ak"/>
                         <outlet property="tableView" destination="IHv-1K-m8k" id="vy0-dc-9He"/>
                         <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowBlockAlert" id="ZbI-Z2-8wC"/>
                         <segue destination="I2d-Ta-vGL" kind="presentation" identifier="ShowDeleteAlert" id="WCU-8b-YyV"/>
@@ -158,7 +141,6 @@
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
         <image name="exclamationmark.bubble.fill" catalog="system" width="128" height="110"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

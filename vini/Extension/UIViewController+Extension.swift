@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavBarBackButton() {
+    func setupNavBarBackButton(tintColor: UIColor = .lightGray) {
         
         if #available(iOS 14, *) {
         
@@ -20,6 +20,8 @@ extension UIViewController {
                 action: #selector(tapBackBarButtonItem(_:))
             )
             
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
+
         } else {
             
             navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -28,9 +30,9 @@ extension UIViewController {
                 target: self,
                 action: #selector(tapBackBarButtonItem(_:))
             )
+            
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
         }
-        
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
     }
     
     @objc func tapBackBarButtonItem(_ sender: UIBarButtonItem) {
@@ -52,5 +54,31 @@ extension UIViewController {
         self.navigationItem.titleView = titleLabel
 
         self.navigationController?.navigationBar.layoutIfNeeded()
+    }
+    
+    func setupBlurBackground(layer: Int) {
+        
+        view.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(blurView, at: layer)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+    }
+}
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    
+    func setupPopGestureRecognizer() {
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 }

@@ -11,7 +11,7 @@
         <!--Time Picker View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="TimePicker" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="TimePickerViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimePicker" modalTransitionStyle="crossDissolve" id="Y6W-OH-hqX" customClass="TimePickerViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                                             <constraint firstAttribute="height" constant="35" id="A2N-c1-mpN"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到了每日反思時段，你將能體驗 Vini 的每日反思練習，以及能在收信匣解鎖來自其他使用者的最新私信回覆。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QO5-bY-kgn">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到了每日反思時段，你將能體驗 Vini 的每日反思練習，以及能在信箱中解鎖來自其他使用者的最新私信回覆。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QO5-bY-kgn">
                                         <rect key="frame" x="49.5" y="51" width="232" height="90"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <color key="textColor" red="0.82745098039999998" green="0.86274509799999999" blue="0.90196078430000004" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
