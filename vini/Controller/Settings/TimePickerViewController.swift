@@ -30,8 +30,6 @@ class TimePickerViewController: UIViewController {
     
     var isUpdated = false
     
-//    let userDefault = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,46 +76,49 @@ extension TimePickerViewController {
     
     func getReflectionTime() {
         
-//        if let userID = UserManager.shared.userID {
-            
-            MailManager.shared.getReflectionTime() { result in
-                    switch result {
-                        
-                    case .success(let hour):
-                        
-                        let pickerSelectedIndex = self.timeOptions.map { $0.hour }.firstIndex(of: hour) ?? 0
-                        self.pickerView.selectRow(pickerSelectedIndex, inComponent: 0, animated: true)
-                        
-                    case . failure(let error):
-                        
-                        print(error)
-                    }
-                }
-//        }
+        VProgressHUD.show()
+        
+        MailManager.shared.getReflectionTime { result in
+            switch result {
+                
+            case .success(let hour):
+                
+                let pickerSelectedIndex = self.timeOptions.map { $0.hour }.firstIndex(of: hour) ?? 0
+                self.pickerView.selectRow(pickerSelectedIndex, inComponent: 0, animated: true)
+                VProgressHUD.dismiss()
+                
+            case . failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "請重新再試")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func updateReflectionTime() {
         
-//        if let userID = UserManager.shared.userID {
-
-            MailManager.shared.updateReflectionTime(
-                time: hourToUpdate
-            ) { result in
+        VProgressHUD.show()
+        
+        MailManager.shared.updateReflectionTime(
+            time: hourToUpdate
+        ) { result in
+            
+            switch result {
                 
-                switch result {
-                    
-                case .success(let success):
-                    
-                    print(success)
-                    self.isUpdated = true
-                    self.dismiss(animated: true, completion: nil)
-                    
-                case . failure(let error):
-                    
-                    print(error)
-                }
+            case .success(let success):
+                
+                print(success)
+                self.isUpdated = true
+                VProgressHUD.showSuccess()
+                self.dismiss(animated: true, completion: nil)
+                
+            case . failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "更新反思時間出現一些問題，請重新再試")
             }
-//        }
+        }
     }
     
 }

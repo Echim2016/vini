@@ -17,7 +17,7 @@ class MailCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
     }
     
     func setupCell(senderName: String, title: String, image: String) {

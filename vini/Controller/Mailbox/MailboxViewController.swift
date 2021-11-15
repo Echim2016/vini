@@ -12,7 +12,6 @@ class MailboxViewController: UIViewController {
     private enum Segue: String {
         
         case showDetailMail = "ShowDetailMail"
-        case showSettings = "ShowSettings"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -23,22 +22,32 @@ class MailboxViewController: UIViewController {
         }
     }
     
-    var mails: [Mail] = []
+    var mails: [Mail] = [] {
+        didSet {
+            remindsLabel.isHidden = !mails.isEmpty
+        }
+    }
         
     var preferredReflectionTime: Int = 23
+    
+    var userBlockList: [String] = []
+    
+    @IBOutlet weak var remindsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mails = []
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchMails()
+        fetchMailsWithoutBlockList()
         getReflectionTime()
-        setupNavigationController(title: "收信匣", titleColor: .white)
+        updateBadgeValue()
+        setupNavigationController(title: "信箱", titleColor: .white)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,29 +60,57 @@ class MailboxViewController: UIViewController {
             }
         }
     }
-
-    @IBAction func tapSetting(_ sender: Any) {
-        
-        performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
-    }
     
 }
 
 extension MailboxViewController {
     
-    func fetchMails() {
+    func fetchMailsWithoutBlockList() {
         
-        MailManager.shared.fetchData() { result in
+        VProgressHUD.show()
+        
+        DiscoverUserManager.shared.fetchUserProfile { result in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.userBlockList = user.blockList
+                self.fetchMails(blockList: self.userBlockList)
+                
+            case.failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "信件讀取出了一些問題")
+                
+            }
+        }
+    }
+    
+    func fetchMails(blockList: [String]) {
+        
+        MailManager.shared.fetchData(blockList: blockList) { result in
             switch result {
             case .success(let mails):
                 
+                VProgressHUD.dismiss()
                 self.mails = mails
                 self.tableView.reloadData()
                 
             case .failure(let error):
                 
+                self.mails = []
                 print(error)
+                VProgressHUD.showFailure(text: "信件讀取出了一些問題")
             }
+        }
+    }
+    
+    func updateBadgeValue() {
+        
+        if let tabBar = self.tabBarController as? CustomTabBarController {
+            
+            tabBar.fetchMailsForBadgeValue()
         }
     }
     

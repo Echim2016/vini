@@ -11,7 +11,7 @@ import SwiftUI
 
 class DrawConclusionsViewController: UIViewController {
 
-    @IBOutlet weak var conclusionIntroLabel: UILabel!{
+    @IBOutlet weak var conclusionIntroLabel: UILabel! {
         didSet {
             conclusionIntroLabel.text = "關於「\(introText)」..."
         }
@@ -30,6 +30,8 @@ class DrawConclusionsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupPopGestureRecognizer()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,13 +39,17 @@ class DrawConclusionsViewController: UIViewController {
         
         setupTextView()
         
-        setupNavBar()
+        setupNavBarBackButton(tintColor: .B2)
         
         setupNavigationController(title: "我的學習結論", titleColor: .B2)
-        
-        navigationController?.navigationBar.titleTextAttributes
-        
+            
         fetchConclusion()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        conclusionTextView.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,11 +69,6 @@ class DrawConclusionsViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    @objc func tapBackButton(_ sender: UIBarButtonItem) {
-        
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -97,7 +98,7 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         
         conclusionTextView.placeholder = "我有一些結論是..."
         conclusionTextView.tintColor = UIColor.S1
-        conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
+        conclusionTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -118,19 +119,5 @@ extension DrawConclusionsViewController: UITextViewDelegate {
         default:
             break
         }
-    }
-}
-
-extension DrawConclusionsViewController {
-    
-    func setupNavBar() {
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
-            target: self,
-            action: #selector(tapBackButton(_:))
-        )
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.B2
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class CongratsViewController: UIViewController {
 
@@ -26,9 +27,7 @@ class CongratsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        headerView.setBottomCurve()
-        
+                
         backButton.layer.cornerRadius = backButton.frame.height / 2
     }
     
@@ -36,11 +35,11 @@ class CongratsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         showVini()
-        
     }
     
     @IBAction func tapBackButton(_ sender: Any) {
      
+        Haptic.play("o", delay: 0)
         growthPageVC?.fetchGrowthCards()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -52,7 +51,7 @@ extension CongratsViewController {
     func showVini() {
         
         UIView.animate(
-            withDuration: 1.3,
+            withDuration: 1.0,
             delay: 0,
             options: [.curveEaseInOut],
             animations: {
@@ -100,7 +99,7 @@ extension CongratsViewController {
     func floatVini() {
         
         UIView.animate(
-            withDuration: 0.5,
+            withDuration: 0.6,
             delay: 0,
             options: [.autoreverse, .repeat],
             animations: {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 class GrowthPageViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class GrowthPageViewController: UIViewController {
         case createNewGrowthCard = "CreateNewGrowthCard"
         case showReflectionAlert = "ShowReflectionAlert"
         case showReflectionPage = "ShowReflectionPage"
+        case showDeletionAlert = "ShowDeletionAlert"
 
     }
 
@@ -26,12 +28,18 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    var data: [GrowthCard] = []
+    @IBOutlet weak var remindsLabel: UILabel!
+    
+    var data: [GrowthCard] = [] {
+        
+        didSet {
+            
+            remindsLabel.isHidden = !data.isEmpty
+        }
+    }
     
     var reflectionHour = 23
-    
-//    let userDefault = UserDefaults.standard
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,21 +49,18 @@ class GrowthPageViewController: UIViewController {
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
         
-//        userDefault.set("rZglCcOTdKRJxD99ZvUg", forKey: "id")
-        
-//        fetchGrowthCards()
-        
-        getReflectionTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchGrowthCards()
+        getReflectionTime()
     }
     
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
+        Haptic.play(".", delay: 0)
         performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
     }
     
@@ -66,6 +71,7 @@ class GrowthPageViewController: UIViewController {
         if currentHour != reflectionHour {
             
             performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
+            
         } else {
             
             performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)
@@ -76,7 +82,40 @@ class GrowthPageViewController: UIViewController {
         
         if let alertController = segue.destination as? AlertViewController {
             
-            alertController.alertType = .reflectionTimeAlert
+            switch segue.identifier {
+                
+            case Segue.showReflectionAlert.rawValue:
+                alertController.alertType = .reflectionTimeAlert
+                
+            case Segue.showDeletionAlert.rawValue:
+                alertController.alertType = .deleteGrowthCardAlert
+                
+                if let indexPath = sender as? IndexPath {
+                    
+                    alertController.onConfirm = {
+                        
+                        VProgressHUD.show()
+                        
+                        let id = self.data[indexPath.row].id
+                        
+                        self.deleteGrowthCard(id: id) { success in
+                            if success {
+                                
+                                VProgressHUD.showSuccess()
+                                self.data.remove(at: indexPath.row)
+                                self.tableView.deleteRows(at: [indexPath], with: .left)
+                            } else {
+                                
+                                VProgressHUD.showFailure()
+                            }
+                        }
+                    }
+                }
+                
+            default:
+                break
+
+            }
         }
         
         if let navigationController = segue.destination as? UINavigationController,
@@ -122,36 +161,45 @@ extension GrowthPageViewController {
     
     func fetchGrowthCards() {
         
+        VProgressHUD.show()
+        
         GrowthCardProvider.shared.fetchData(isArchived: false) { result in
             
             switch result {
             case .success(let cards):
                 
+                VProgressHUD.dismiss()
                 self.data = cards
                 self.tableView.reloadData()
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "讀取成長卡片時出了一點問題")
             }
         }
     }
     
     private func deleteGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
         
-        GrowthCardProvider.shared.deleteGrowthCard(id: id) { result in
+        VProgressHUD.show()
+        
+        GrowthCardProvider.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
             case .success(_):
                 
+                VProgressHUD.dismiss()
                 completion(true)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "刪除成長卡片時出了一點問題")
                 completion(false)
             }
         }
+        
     }
     
     private func getReflectionTime() {
@@ -198,7 +246,7 @@ extension GrowthPageViewController: UITableViewDataSource {
             return MyGrowthCardsHeader()
         }
         
-        header.titleLabel.text = "我的成長項目"
+        header.titleLabel.text = data.isEmpty ?  "" : "我的成長項目"
         
         return header
     }
@@ -210,9 +258,22 @@ extension GrowthPageViewController: UITableViewDataSource {
 
 extension GrowthPageViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0.2
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.05 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "ShowGrowthCapture", sender: indexPath.row)
+        Haptic.play(".", delay: 0.1)
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
@@ -222,14 +283,7 @@ extension GrowthPageViewController: UITableViewDelegate {
             image: UIImage(systemName: "trash.fill"),
             attributes: [.destructive]) { _ in
                 
-                let id = self.data[indexPath.row].id
-                
-                self.deleteGrowthCard(id: id) { success in
-                    if success {
-                        self.data.remove(at: indexPath.row)
-                        self.tableView.deleteRows(at: [indexPath], with: .left)
-                    }
-                }
+                self.performSegue(withIdentifier: Segue.showDeletionAlert.rawValue, sender: indexPath)
             }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in

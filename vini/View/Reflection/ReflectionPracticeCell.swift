@@ -60,7 +60,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 3,
+            delay: 2,
             animations: {
                 self.question2Label.alpha = 1
             },
@@ -74,7 +74,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 3,
+            delay: 2,
             animations: {
                 self.question3Label.alpha = 1
             },

@@ -8,6 +8,7 @@
 import UIKit
 import PhotosUI
 import RSKPlaceholderTextView
+import Haptica
 
 class SetGrowthContentCardViewController: UIViewController {
     
@@ -16,7 +17,22 @@ class SetGrowthContentCardViewController: UIViewController {
         case edit
     }
     
+    private enum Segue: String {
+        
+        case showUpdateContentCardAlert = "ShowUpdateContentCardAlert"
+        case showEmptyInputAlert = "ShowEmptyInputAlert"
+    }
+    
     weak var growthCaptureVC: GrowthCaptureViewController?
+    
+    @IBOutlet weak var photoLibraryButton: UIButton! {
+        didSet {
+            
+            if #available(iOS 14, *) {
+                photoLibraryButton.setBackgroundImage(UIImage(systemName: "photo.circle.fill"), for: .normal)
+            }
+        }
+    }
     
     @IBOutlet weak var introLabel: UILabel! {
         didSet {
@@ -112,14 +128,52 @@ class SetGrowthContentCardViewController: UIViewController {
         textViewDidEndEditing(contentTextView)
         textViewDidEndEditing(titleTextView)
         
-        switch currentStatus {
+        if titleToAdd.isEmpty || contentToAdd.isEmpty {
             
-        case .create:
-            addGrowthContentCard()
-        case .edit:
-            updateGrowthContentCard()
+            performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
             
+        } else {
+            
+            switch currentStatus {
+                
+            case .create:
+                
+                Haptic.play(".", delay: 0)
+                addGrowthContentCard()
+                
+            case .edit:
+                
+                Haptic.play(".", delay: 0)
+                performSegue(withIdentifier: Segue.showUpdateContentCardAlert.rawValue, sender: nil)
+            }
         }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            switch segue.identifier {
+ 
+            case Segue.showUpdateContentCardAlert.rawValue:
+                
+                alert.alertType = .updateContentCardAlert
+                alert.onConfirm = {
+                    
+                    self.updateGrowthContentCard()
+                }
+                
+            case Segue.showEmptyInputAlert.rawValue:
+                
+                alert.alertType = .emptyInputAlert
+            
+            default:
+                break
+            
+            }
+        }
+        
     }
 }
 
@@ -129,6 +183,8 @@ extension SetGrowthContentCardViewController {
     private func addGrowthContentCard() {
                 
         if let userID = UserManager.shared.userID {
+            
+            VProgressHUD.show()
             
             GrowthContentProvider.shared.addGrowthContents(
                 id: growthCardID,
@@ -140,18 +196,26 @@ extension SetGrowthContentCardViewController {
                     switch result {
                     case .success(let message):
                         print(message)
+                        
                         self.growthCaptureVC?.fetchGrowthContents()
+                        
+                        VProgressHUD.showSuccess()
+                        
                         self.dismiss(animated: true, completion: nil)
                         
                     case .failure(let error):
                         print(error)
+                        
+                        VProgressHUD.showFailure()
                     }
                 }
         }
                 
     }
     
-    private func updateGrowthContentCard() {
+    func updateGrowthContentCard() {
+        
+        VProgressHUD.show()
         
         GrowthContentProvider.shared.updateGrowthContents(
             contentID: contentCardID,
@@ -163,10 +227,12 @@ extension SetGrowthContentCardViewController {
             case .success(let message):
                 print(message)
                 self.growthCaptureVC?.fetchGrowthContents()
+                VProgressHUD.showSuccess()
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
                 print(error)
+                VProgressHUD.showFailure()
             }
         }
     }
@@ -180,11 +246,11 @@ extension SetGrowthContentCardViewController {
         
         contentTextView.placeholder = "我的新發現/學習是..."
         contentTextView.tintColor = UIColor.S1
-        contentTextView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        contentTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
         
         titleTextView.placeholder = "為這個學習下一個標題..."
         titleTextView.tintColor = UIColor.S1
-        titleTextView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        titleTextView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
     }
 }
 

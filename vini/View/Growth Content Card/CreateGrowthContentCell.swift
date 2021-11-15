@@ -26,11 +26,15 @@ class CreateGrowthContentCell: UITableViewCell {
         
         cellBackgroundView.layer.cornerRadius = 25
         
-        createGrowthContentCardButton.layer.cornerRadius = 25
+        setupButton()
         
         setCurrentDate()
     }
-
+    
+    func setupButton() {
+        
+        createGrowthContentCardButton.layer.cornerRadius = 25
+    }
     
     func setCurrentDate() {
         

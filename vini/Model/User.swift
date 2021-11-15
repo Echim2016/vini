@@ -15,6 +15,8 @@ struct User: Codable {
     var displayName: String
     var wondering: String
     var isPublished: Bool
+    var cloudCategory: String?
+    var blockList: [String]
     var preferredReflectionTime: Int?
     var createdTime: Timestamp?
     
@@ -25,6 +27,8 @@ struct User: Codable {
         case displayName = "display_name"
         case wondering
         case isPublished = "is_published"
+        case cloudCategory = "cloud_category"
+        case blockList = "block_list"
         case preferredReflectionTime = "preferred_reflection_hour"
         case createdTime = "created_time"
     }
@@ -35,6 +39,8 @@ struct User: Codable {
         self.displayName = "Vini"
         self.wondering = ""
         self.isPublished = true
+        self.cloudCategory = CloudCategory.lifestyle.category
+        self.blockList = []
         self.preferredReflectionTime = 23
         self.createdTime = Timestamp(date: Date())
     }

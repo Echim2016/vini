@@ -43,7 +43,7 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzF-X3-z8x">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzF-X3-z8x" customClass="MainButton" customModule="vini" customModuleProvider="target">
                                 <rect key="frame" x="258" y="369" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.84313725490000002" green="0.75294117650000003" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>

@@ -13,6 +13,7 @@ class SetProfileCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: RSKPlaceholderTextView!
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var charactersLimitLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +30,14 @@ class SetProfileCell: UITableViewCell {
         titleLabel.text = title
         textView.placeholder = NSString(utf8String: placeholder)
         textView.tintColor = UIColor.S1
-        textView.contentInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+        textView.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
+        charactersLimitLabel.isHidden = true
+    }
+    
+    func setupCharactersLimit(charactersLimit: Int) {
+        
+        charactersLimitLabel.isHidden = false
+        charactersLimitLabel.text = "\(textView.text.count) / \(charactersLimit)"
     }
     
     func setTextViewHeight(height: CGFloat) {
@@ -37,5 +45,4 @@ class SetProfileCell: UITableViewCell {
         textViewHeight.constant = height
         self.layoutIfNeeded()
     }
-    
 }

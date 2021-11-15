@@ -15,7 +15,9 @@ class MailManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(completion: @escaping (Result<[Mail], Error>) -> Void) {
+    let welcomeMailSenderID = "WelcomeMail"
+    
+    func fetchData(blockList: [String], completion: @escaping (Result<[Mail], Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
@@ -32,7 +34,12 @@ class MailManager {
                         
                         do {
                             if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                                mails.append(mail)
+                                
+                                
+                                if !blockList.contains(mail.senderID) {
+                                    
+                                    mails.append(mail)
+                                }
                             }
                             
                         } catch {
@@ -68,6 +75,39 @@ class MailManager {
             
             print(error)
             completion(.failure(error))
+        }
+    }
+    
+    func sendWelcomeMail(completion: @escaping (Result<String, Error>) -> Void) {
+        
+        if let id = UserManager.shared.userID {
+            
+            var welcomeMail = Mail()
+            welcomeMail.setupWelcomeMail()
+            
+            let document = db.collection("Mailboxes").document(id).collection("Mails").document()
+            welcomeMail.id = document.documentID
+            welcomeMail.receipientID = id
+            welcomeMail.sentTime = Timestamp(date: Date())
+            
+            do {
+                
+                try document.setData(from: welcomeMail) { error in
+                    
+                    if let error = error {
+                        
+                        completion(.failure(error))
+                    } else {
+                        
+                        completion(.success("Success"))
+                    }
+                }
+                
+            } catch let error {
+                
+                print(error)
+                completion(.failure(error))
+            }
         }
     }
     
@@ -155,6 +195,36 @@ class MailManager {
                 } else {
                     
                     completion(.success("Success"))
+                }
+            }
+        }
+    }
+    
+    func fetchNumberOfUnreadMails(completion: @escaping (Result<Int, Error>) -> Void) {
+        
+        if let userID = UserManager.shared.userID {
+            
+            var count = 0
+            
+            db.collection("Mailboxes").document(userID).collection("Mails").getDocuments { (querySnapshot, err) in
+                
+                if let err = err {
+                    print("Error getting number of mails: \(err)")
+                    completion(.failure(err))
+                    
+                } else {
+                    
+                    guard let querySnapshot = querySnapshot else { return }
+                    
+                    for document in querySnapshot.documents {
+                        
+                        if document.get("read_timestamp") == nil {
+                            count += 1
+                        }
+                    }
+                        
+                    completion(.success(count))
+                    
                 }
             }
         }

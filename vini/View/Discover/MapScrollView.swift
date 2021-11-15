@@ -12,6 +12,12 @@ protocol MapScrollViewDataSource: AnyObject {
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView]
 }
 
+protocol MapScrollViewDelegate: AnyObject {
+    
+    func didReachedRightEdge()
+    func didReachedLeftEdge()
+}
+
 class MapScrollView: UIView {
     
     private var numberOfMapsInStack = 6
@@ -21,6 +27,8 @@ class MapScrollView: UIView {
     let colors: [UIColor] = [.blue, .cyan, .brown, .darkGray, .S1, .purple]
     
     weak var dataSource: MapScrollViewDataSource?
+    
+    weak var delegate: MapScrollViewDelegate?
     
     private var infosOfUsers: [ViniView] = []
     
@@ -60,9 +68,22 @@ class MapScrollView: UIView {
     
     func configureMapScrollView() {
         
+        mapStackView.arrangedSubviews.forEach { view in
+            view.subviews.forEach { subview in
+                if let vini = subview as? ViniView {
+                    vini.removeFromSuperview()
+                }
+            }
+        }
+        
         if let infos = dataSource?.infoOfUsers(self) {
             self.infosOfUsers = infos
-            self.currentDataLocation = infosOfUsers.count / 3 / 2 - 1
+            
+            if infosOfUsers.count >= numberOfMapsInStack {
+                self.currentDataLocation = infosOfUsers.count / numberOfViniPerMap / 2 - 1
+            } else {
+                self.currentDataLocation = 0
+            }
         }
     }
     
@@ -106,12 +127,7 @@ class MapScrollView: UIView {
         }
         
     }
-    
-    func spawnDefaultVinis() {
-        
-//        mapStackView.arrangedSubviews[numberOfItems / 2].spawnViniRandomly()
-    }
-    
+   
     func setContentOffsetToMiddle() {
         
         scrollView.contentOffset.x = scrollView.frame.size.width * CGFloat(numberOfMapsInStack) / 2
@@ -136,7 +152,15 @@ extension MapScrollView: UIScrollViewDelegate {
                 
         let currentPage: Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
 
+        // user swipe to left
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).x > 0 {
+            
+            let isReachingLeftEdge = scrollView.contentOffset.x == 0
+            
+            if isReachingLeftEdge {
+                
+                delegate?.didReachedLeftEdge()
+            }
                         
             if currentPage == 1 && currentDataLocation > 0 {
                                 
@@ -168,8 +192,6 @@ extension MapScrollView: UIScrollViewDelegate {
                     mapStackView.arrangedSubviews[1].spawnViniRandomly(vinis: vinis)
                 }
                                 
-//                mapStackView.arrangedSubviews[1].spawnViniRandomly()
-
                 let viewToRemove = mapStackView.arrangedSubviews[numberOfMapsInStack - 2]
                 
                 mapStackView.removeArrangedSubview(viewToRemove)
@@ -183,7 +205,15 @@ extension MapScrollView: UIScrollViewDelegate {
             
         } else {
             
-            if currentPage == numberOfMapsInStack - 3 && (currentDataLocation+2) * numberOfViniPerMap < infosOfUsers.count {
+            let isReachingRightEdge = scrollView.contentOffset.x >= 0
+                 && scrollView.contentOffset.x >= (scrollView.contentSize.width - scrollView.frame.size.width)
+            
+            if isReachingRightEdge {
+                
+                delegate?.didReachedRightEdge()
+            }
+            
+            if currentPage == numberOfMapsInStack - 3 && (currentDataLocation + 1) * numberOfViniPerMap < infosOfUsers.count {
                                 
                 let newMapView = UIView()
                 
@@ -253,7 +283,7 @@ extension UIView {
                 randomY = Int.random(in: 224...Int(height))
                 
                 for position in positions {
-                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 60 {
+                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 62 {
                         exist = true
                     } else {
                         exist = false
@@ -272,7 +302,6 @@ extension UIView {
             viniView.data.name = vinis[index].data.name
             viniView.data.wondering = vinis[index].data.wondering
             viniView.viniImageView.image = UIImage(named: vinis[index].data.viniType)
-//            viniView.float(duration: 0.5)
             
             self.addSubview(viniView)
         }

@@ -17,12 +17,18 @@ class SigninViewController: UIViewController {
         case signup
         case home
     }
+    
+    private enum Segue: String {
+        
+        case showPrivacyPage = "ShowPrivacyPage"
+    }
 
     fileprivate var currentNonce: String?
 
     @IBOutlet weak var welcomeMessageLabel: UILabel!
     @IBOutlet weak var welcomeBackgroundView: UIView!
     @IBOutlet weak var cloudImageView: UIImageView!
+    @IBOutlet weak var privacyInfoStackView: UIStackView!
     
     var signInButton: ASAuthorizationAppleIDButton?
     
@@ -30,17 +36,24 @@ class SigninViewController: UIViewController {
         super.viewDidLoad()
 
         setupSignInButton()
+        cloudImageView.float(duration: 1.8)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        self.navigationController?.navigationBar.isHidden = true
         setupBackgroundView()
     }
  
     @objc func handleSignInWithAppleTapped() {
         
         performSignIn()
+    }
+    
+    @IBAction func tapPrivacyPolicyButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showPrivacyPage.rawValue, sender: nil)
     }
     
     func performSignIn() {
@@ -58,7 +71,7 @@ class SigninViewController: UIViewController {
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         
         let nonce =  randomNonceString()
         request.nonce = sha256(nonce)
@@ -119,7 +132,7 @@ class SigninViewController: UIViewController {
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+        request.requestedScopes = [.email]
         request.nonce = sha256(nonce)
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
@@ -188,6 +201,7 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                                 print(error)
                             }
                         }
+                        
                     } else {
                         
                         // if user is not new user, redirect to home page
@@ -221,8 +235,10 @@ extension SigninViewController {
             button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
             button.heightAnchor.constraint(equalToConstant: 40),
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.topAnchor.constraint(equalTo: welcomeBackgroundView.bottomAnchor, constant: 100)
+            button.topAnchor.constraint(equalTo: welcomeBackgroundView.bottomAnchor, constant: 70)
         ])
+        
+        button.alpha = 0.9
         
         self.signInButton = button
         
@@ -242,10 +258,8 @@ extension SigninViewController {
         layer.endPoint = CGPoint(x: 200, y: 1)
         self.welcomeBackgroundView.layer.insertSublayer(layer, at: 0)
         
-        cloudImageView.float(duration: 1.8)
     }
 }
-
 
 // MARK: - Animation -
 extension SigninViewController {
@@ -263,6 +277,8 @@ extension SigninViewController {
                 self.welcomeMessageLabel.alpha = 0
                 self.signInButton?.frame.origin.y += 50
                 self.signInButton?.alpha = 0
+                self.privacyInfoStackView.frame.origin.y += 50
+                self.privacyInfoStackView.alpha = 0
             },
             completion: { _ in
                 

@@ -10,6 +10,12 @@ import RSKPlaceholderTextView
 
 class MailDetailViewController: UIViewController {
     
+    private enum Segue: String {
+        
+        case showBlockAlert = "ShowBlockAlert"
+        case showDeleteAlert = "ShowDeleteAlert"
+    }
+    
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -18,9 +24,17 @@ class MailDetailViewController: UIViewController {
         }
     }
     
-    var mail: Mail = Mail()
+    @IBOutlet weak var blockUserButton: UIBarButtonItem!
     
-    let userDefault = UserDefaults.standard
+    var mail: Mail = Mail() {
+        didSet {
+            
+            if mail.senderID == MailManager.shared.welcomeMailSenderID {
+                
+                blockUserButton.isEnabled = false
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +42,7 @@ class MailDetailViewController: UIViewController {
         tableView.registerCellWithNib(identifier: MailTitleCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailContentCell.identifier, bundle: nil)
+        setupPopGestureRecognizer()
         
     }
     
@@ -35,19 +50,56 @@ class MailDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupNavBarBackButton()
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         updateReadStatus()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @IBAction func tapDeleteButton(_ sender: Any) {
         
-        deleteMail()
+        showDeleteMailAlert()
     }
     
+    @IBAction func tapBlockUser(_ sender: Any) {
+        
+        showBlockUserAlert()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            switch segue.identifier {
+                
+            case Segue.showBlockAlert.rawValue:
+                
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
+                }
+                
+            case Segue.showDeleteAlert.rawValue:
+                
+                alert.alertType = .deleteMailAlert
+                alert.onConfirm = {
+                    
+                    self.deleteMail()
+                }
+                
+            default:
+                break
+                
+            }
+            
+        }
+
+    }
 }
 
 extension MailDetailViewController {
@@ -74,18 +126,51 @@ extension MailDetailViewController {
     
     func deleteMail() {
         
+        VProgressHUD.show()
+        
         MailManager.shared.deleteMail(mailID: mail.id) { result in
             switch result {
             case .success:
                 
+                VProgressHUD.showSuccess()
                 self.navigationController?.popViewController(animated: true)
                 
             case .failure(let error):
                 
                 print(error)
+                VProgressHUD.showFailure(text: "信件刪除時出了一些問題，請重新再試")
             }
         }
+    }
+    
+    func showDeleteMailAlert() {
         
+        performSegue(withIdentifier: Segue.showDeleteAlert.rawValue, sender: nil)
+    }
+    
+    func showBlockUserAlert() {
+        
+        performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: nil)
+    }
+    
+    func blockUser() {
+        
+        VProgressHUD.show()
+        
+        UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
+            
+            switch result {
+            case .success:
+                
+                VProgressHUD.dismiss()
+                self.navigationController?.popViewController(animated: true)
+                
+            case .failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "封鎖使用者時出了一些問題，請重新再試")
+            }
+        }
     }
 }
 

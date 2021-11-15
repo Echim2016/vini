@@ -24,7 +24,7 @@ extension UICollectionViewCell {
         return String(describing: self)
     }
     
-    func toggleIsHighlighted() {
+    func itemIsHighlighted() {
         
         UIView.animate(
             withDuration: 0.1,

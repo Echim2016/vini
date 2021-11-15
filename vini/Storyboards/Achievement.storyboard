@@ -19,6 +19,66 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-sJ-uxN">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="wQ3-cK-XmI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIZ-1J-UVC">
+                                            <rect key="frame" x="16" y="16" width="382" height="194"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kux-78-c2U">
+                                                    <rect key="frame" x="161" y="30" width="201" height="84"/>
+                                                    <string key="text">Hi, 
+相信你擁有讓自己變得更好的能力。</string>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vini_alert" translatesAutoresizingMaskIntoConstraints="NO" id="MTM-CO-9O9">
+                                                    <rect key="frame" x="-50" y="39.5" width="191" height="209.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="MTM-CO-9O9" secondAttribute="height" multiplier="318:349" id="67g-tv-WWR"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vas-L8-ydv" customClass="MainButton" customModule="vini" customModuleProvider="target">
+                                                    <rect key="frame" x="161" y="144" width="201" height="40"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.63921568630000003" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Snj-dq-0Zb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="18"/>
+                                                    <color key="tintColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="紀錄今天的學習">
+                                                        <color key="titleColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="tapWelcomeActionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U00-Kr-sMw"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.047058823530000002" green="0.16078431369999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="MTM-CO-9O9" secondAttribute="bottom" constant="-55" id="07Z-i5-I1p"/>
+                                                <constraint firstItem="Kux-78-c2U" firstAttribute="top" secondItem="ZIZ-1J-UVC" secondAttribute="top" constant="30" id="0Y2-cb-FP8"/>
+                                                <constraint firstAttribute="trailing" secondItem="vas-L8-ydv" secondAttribute="trailing" constant="20" id="7rd-LW-iet"/>
+                                                <constraint firstItem="MTM-CO-9O9" firstAttribute="leading" secondItem="ZIZ-1J-UVC" secondAttribute="leading" constant="-50" id="Bai-wF-BaI"/>
+                                                <constraint firstAttribute="bottom" secondItem="vas-L8-ydv" secondAttribute="bottom" constant="10" id="Dut-JO-7cu"/>
+                                                <constraint firstItem="MTM-CO-9O9" firstAttribute="width" secondItem="ZIZ-1J-UVC" secondAttribute="width" multiplier="0.5" id="IKc-Ms-Tbb"/>
+                                                <constraint firstItem="Kux-78-c2U" firstAttribute="leading" secondItem="MTM-CO-9O9" secondAttribute="trailing" constant="20" id="ctm-oa-WRW"/>
+                                                <constraint firstItem="vas-L8-ydv" firstAttribute="leading" secondItem="Kux-78-c2U" secondAttribute="leading" id="pBF-Lm-jiL"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kux-78-c2U" secondAttribute="trailing" constant="20" id="vIz-Tf-zrV"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="ZIZ-1J-UVC" firstAttribute="leading" secondItem="wQ3-cK-XmI" secondAttribute="leading" constant="16" id="VxX-cu-KJu"/>
+                                        <constraint firstAttribute="bottom" secondItem="ZIZ-1J-UVC" secondAttribute="bottom" id="XbO-XZ-1ye"/>
+                                        <constraint firstItem="ZIZ-1J-UVC" firstAttribute="top" secondItem="wQ3-cK-XmI" secondAttribute="top" constant="16" id="cpm-k3-zW3"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZIZ-1J-UVC" secondAttribute="trailing" constant="16" id="o7t-xh-0JW"/>
+                                    </constraints>
+                                </view>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -30,14 +90,34 @@
                             <constraint firstItem="UBc-sJ-uxN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dX5-ti-axc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rXU-Sw-e23"/>
+                    <navigationItem key="navigationItem" id="rXU-Sw-e23">
+                        <barButtonItem key="rightBarButtonItem" title="設定" image="gearshape.fill" catalog="system" id="6Z9-xi-88n">
+                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="tapSettingsButton:" destination="Y6W-OH-hqX" id="krR-1p-itm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="UBc-sJ-uxN" id="IIA-GJ-4Yj"/>
+                        <outlet property="userViniImageView" destination="MTM-CO-9O9" id="YGk-nq-1kK"/>
+                        <outlet property="welcomeActionButton" destination="vas-L8-ydv" id="fil-zy-S3g"/>
+                        <outlet property="welcomeCardView" destination="ZIZ-1J-UVC" id="tt6-q8-BEQ"/>
+                        <outlet property="welcomeTitleLabel" destination="Kux-78-c2U" id="dMT-Zg-1w0"/>
+                        <segue destination="jHM-2f-mmQ" kind="presentation" identifier="ShowSettings" id="v2Q-4D-PVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="unO-na-1jg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="jHM-2f-mmQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymy-mh-8ad" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1647" y="100"/>
         </scene>
         <!--成就-->
         <scene sceneID="Nia-Hy-mhs">
@@ -70,5 +150,7 @@
     </scenes>
     <resources>
         <image name="flag.fill" catalog="system" width="128" height="121"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="vini_alert" width="318" height="349"/>
     </resources>
 </document>

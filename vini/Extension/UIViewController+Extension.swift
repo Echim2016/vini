@@ -9,15 +9,30 @@ import UIKit
 
 extension UIViewController {
     
-    func setupNavBarBackButton() {
+    func setupNavBarBackButton(tintColor: UIColor = .lightGray) {
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
-            target: self,
-            action: #selector(tapBackBarButtonItem(_:))
-        )
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
+        if #available(iOS 14, *) {
+        
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                image: UIImage(systemName: "chevron.backward"),
+                style: .done,
+                target: self,
+                action: #selector(tapBackBarButtonItem(_:))
+            )
+            
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
+
+        } else {
+            
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: "←",
+                style: .done,
+                target: self,
+                action: #selector(tapBackBarButtonItem(_:))
+            )
+            
+            navigationItem.leftBarButtonItem?.tintColor = tintColor
+        }
     }
     
     @objc func tapBackBarButtonItem(_ sender: UIBarButtonItem) {
@@ -39,5 +54,31 @@ extension UIViewController {
         self.navigationItem.titleView = titleLabel
 
         self.navigationController?.navigationBar.layoutIfNeeded()
+    }
+    
+    func setupBlurBackground(layer: Int) {
+        
+        view.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(blurView, at: layer)
+        
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: view.topAnchor),
+            blurView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blurView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
+        ])
+    }
+}
+
+extension UIViewController: UIGestureRecognizerDelegate {
+    
+    func setupPopGestureRecognizer() {
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 }
