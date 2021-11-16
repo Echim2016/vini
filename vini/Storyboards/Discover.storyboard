@@ -40,7 +40,7 @@
                                 <rect key="frame" x="16" y="98" width="382" height="224"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMo-Xr-mmH" userLabel="MapButton">
-                                        <rect key="frame" x="302" y="-9.5" width="35" height="33.5"/>
+                                        <rect key="frame" x="304" y="-9.5" width="35" height="33.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="mmW-gC-dzK"/>
                                             <constraint firstAttribute="height" constant="35" id="u2m-pf-aKc"/>
@@ -97,7 +97,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hMo-Xr-mmH" secondAttribute="trailing" constant="45" id="1S2-SX-Add"/>
                                     <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
                                     <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="CIA-zA-jnB"/>
                                     <constraint firstAttribute="bottom" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="40" id="Ivz-y3-X0d"/>
@@ -105,6 +104,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="40" id="L8m-lm-wdv"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
                                     <constraint firstItem="hMo-Xr-mmH" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="eH2-nP-VHq"/>
+                                    <constraint firstItem="w5e-E5-Aft" firstAttribute="leading" secondItem="hMo-Xr-mmH" secondAttribute="trailing" constant="8" id="eSh-lB-HRi"/>
                                     <constraint firstItem="w5e-E5-Aft" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="l7N-r9-PL9"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
                                     <constraint firstAttribute="trailing" secondItem="w5e-E5-Aft" secondAttribute="trailing" id="oyj-P9-jmc"/>
