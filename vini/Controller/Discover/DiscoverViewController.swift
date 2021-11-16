@@ -335,14 +335,14 @@ extension DiscoverViewController: MapScrollViewDelegate {
     
     func didReachedRightEdge() {
         
-        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
+        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line"), for: .normal)
         showIndicatorAnimation(indicator: rightIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }
     
     func didReachedLeftEdge() {
         
-        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
+        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line"), for: .normal)
         showIndicatorAnimation(indicator: leftIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }
