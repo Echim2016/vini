@@ -10,6 +10,11 @@ import RSKPlaceholderTextView
 import SwiftUI
 
 class DrawConclusionsViewController: UIViewController {
+    
+    private enum Segue: String {
+        
+        case showReturnToPreviousPageAlert = "ShowReturnToPreviousPageAlert"
+    }
 
     @IBOutlet weak var conclusionIntroLabel: UILabel! {
         didSet {
@@ -41,6 +46,8 @@ class DrawConclusionsViewController: UIViewController {
         
         setupNavBarBackButton(tintColor: .B2)
         
+        setupSaveButton()
+        
         setupNavigationController(title: "我的學習結論", titleColor: .B2)
             
         fetchConclusion()
@@ -52,21 +59,15 @@ class DrawConclusionsViewController: UIViewController {
         conclusionTextView.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if conclusionHasEdited {
+        if let alert = segue.destination as? AlertViewController {
             
-            textViewDidEndEditing(conclusionTextView)
+            alert.alertType = .returnToPreviousPageAlert
             
-            GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+            alert.onConfirm = {
                 
-                switch result {
-                case .success(let success):
-                    print(success)
-                case .failure(let error):
-                    print(error)
-                }
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -120,4 +121,58 @@ extension DrawConclusionsViewController: UITextViewDelegate {
             break
         }
     }
+}
+
+extension DrawConclusionsViewController {
+    
+    override func tapBackBarButtonItem(_ sender: UIBarButtonItem) {
+        
+        if conclusionHasEdited {
+
+            performSegue(withIdentifier: Segue.showReturnToPreviousPageAlert.rawValue, sender: nil)
+            
+        } else {
+            
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func setupSaveButton() {
+      
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "checkmark"),
+            style: .done,
+            target: self,
+            action: #selector(tapSaveButton(_:))
+        )
+        
+        navigationItem.rightBarButtonItem?.tintColor = .B2
+    }
+    
+    @objc func tapSaveButton(_ sender: Any) {
+        
+        if conclusionHasEdited {
+            
+            textViewDidEndEditing(conclusionTextView)
+            
+            VProgressHUD.show()
+            
+            GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+                
+                switch result {
+                case .success(let success):
+                    print(success)
+                    VProgressHUD.showSuccess(text: "成功儲存")
+                    self.conclusionHasEdited = false
+                case .failure(let error):
+                    print(error)
+                    VProgressHUD.showFailure(text: "儲存時出了一些問題，請重新再試")
+                }
+            }
+        } else {
+            
+            VProgressHUD.showSuccess()
+        }
+    }
+    
 }
