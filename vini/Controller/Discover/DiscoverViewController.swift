@@ -329,6 +329,9 @@ extension DiscoverViewController {
 extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
+        
+//        print("start")
+//        infoOfUsers.forEach { print($0.data.name) }
         return infoOfUsers
     }
 }
