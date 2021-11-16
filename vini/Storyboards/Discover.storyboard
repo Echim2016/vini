@@ -112,6 +112,9 @@
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="raX-Lh-Emm">
                                 <rect key="frame" x="-80" y="553.5" width="248.5" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="raX-Lh-Emm" secondAttribute="height" multiplier="31:9" id="bv1-O5-4V8"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-jo-HEs" userLabel="Left Arrow">
                                 <rect key="frame" x="16" y="493.5" width="20" height="14.5"/>
@@ -144,7 +147,6 @@
                             <constraint firstItem="6U4-jo-HEs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ky8-WX-wkf"/>
                             <constraint firstItem="6U4-jo-HEs" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="50" id="mGI-Lz-1rd"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.9" id="med-Ff-uyj"/>
-                            <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
                         </constraints>
                     </view>
