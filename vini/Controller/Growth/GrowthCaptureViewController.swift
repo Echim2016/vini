@@ -273,8 +273,6 @@ class GrowthCaptureViewController: UIViewController {
         if isInCreateCardMode && isInEditMode {
             
             createGrowthCard()
-            hideEditPage()
-            isInCreateCardMode = false
             
         } else if isInEditMode {
             
@@ -437,7 +435,13 @@ extension GrowthCaptureViewController {
     
     private func createGrowthCard() {
         
-        if let userID = UserManager.shared.userID {
+        if headerEmojiToUpdate.isEmpty || headerTitleToUpdate.isEmpty {
+            
+            VProgressHUD.showFailure(text: "似乎有空白的欄位，\n別忘了在圓圈處填入Emoji！🙆‍♂️")
+            
+        } else if let userID = UserManager.shared.userID {
+            
+            VProgressHUD.show()
             
             var growthCard: GrowthCard = GrowthCard(
                 id: "",
@@ -459,10 +463,18 @@ extension GrowthCaptureViewController {
                     print(message)
                     self.growthCardID = growthCard.id
                     self.headerTitle = growthCard.title
+                    self.isInCreateCardMode = false
+                    self.dismiss(animated: true, completion: nil)
+                    VProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
+                    VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新再試")
                 }
             }
+            
+        } else {
+            
+            VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新登入再試")
         }
         
     }
