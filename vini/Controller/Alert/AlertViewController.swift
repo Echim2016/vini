@@ -23,6 +23,8 @@ class AlertViewController: UIViewController {
     
     var viniType = UIImage.AssetIdentifier.alert
     
+    var alertStyle: AlertStyle = .normal
+    
     var onCancel: (() -> Void)?
     
     var onConfirm: (() -> Void)?
@@ -86,5 +88,21 @@ extension AlertViewController {
         confirmButton.layer.cornerRadius = 18
         
         viniImageView.image = UIImage(assetIdentifier: viniType)
+        
+        switch alertStyle {
+            
+        case .danger:
+            setupDangerAlertAppearance()
+            
+        default:
+            break
+            
+        }
+    }
+    
+    func setupDangerAlertAppearance() {
+        
+        viniImageView.isHidden = true
+        confirmButton.backgroundColor = UIColor(red: 210/255, green: 13/255, blue: 13/255, alpha: 0.9)
     }
 }
