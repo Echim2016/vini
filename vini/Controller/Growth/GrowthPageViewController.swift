@@ -48,7 +48,6 @@ class GrowthPageViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -65,11 +65,20 @@
                     <connections>
                         <outlet property="conclusionIntroLabel" destination="Cg1-LU-9ZX" id="sqc-9B-vZ3"/>
                         <outlet property="conclusionTextView" destination="Ffu-JI-0nU" id="i2h-4H-UfB"/>
+                        <segue destination="aJ4-6Z-wqM" kind="presentation" identifier="ShowReturnToPreviousPageAlert" id="QDW-Mr-n6x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="106.47321428571428"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="qeX-dg-pN0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="aJ4-6Z-wqM" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qND-8r-dxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="106"/>
         </scene>
     </scenes>
     <designables>

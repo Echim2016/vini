@@ -59,7 +59,7 @@ class VProgressHUD {
         shared.hud.dismiss(afterDelay: 1.0)
     }
 
-    static func showFailure(text: String = "出現了一點錯誤") {
+    static func showFailure(text: String = "哎呀！出現了一點錯誤") {
 
         if !Thread.isMainThread {
 
@@ -78,7 +78,7 @@ class VProgressHUD {
 
         shared.hud.show(in: sceneDelegate?.window ?? UIView())
 
-        shared.hud.dismiss(afterDelay: 1.0)
+        shared.hud.dismiss(afterDelay: 1.5)
     }
 
     static func show() {

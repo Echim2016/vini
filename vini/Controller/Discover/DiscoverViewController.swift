@@ -34,7 +34,7 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var mapButton: UIButton! {
         didSet {
-            if #available(iOS 14, *) {
+            if #available(iOS 15, *) {
                 
                 mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
             }
@@ -70,18 +70,13 @@ class DiscoverViewController: UIViewController {
         setupNotificationCenterObserver()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if (backgroundRectView.layer.sublayers?.first as? CAGradientLayer) == nil {
-            
-            setupBackgroundRectView()
-        }
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if (backgroundRectView.layer.sublayers?.first as? CAGradientLayer) == nil {
+
+            setupBackgroundRectView()
+        }
         
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
@@ -329,6 +324,9 @@ extension DiscoverViewController {
 extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
+        
+//        print("start")
+//        infoOfUsers.forEach { print($0.data.name) }
         return infoOfUsers
     }
 }
@@ -337,14 +335,14 @@ extension DiscoverViewController: MapScrollViewDelegate {
     
     func didReachedRightEdge() {
         
-        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
+        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line"), for: .normal)
         showIndicatorAnimation(indicator: rightIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }
     
     func didReachedLeftEdge() {
         
-        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
+        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line"), for: .normal)
         showIndicatorAnimation(indicator: leftIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }

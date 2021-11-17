@@ -80,10 +80,13 @@ class MapScrollView: UIView {
             self.infosOfUsers = infos
             
             if infosOfUsers.count >= numberOfMapsInStack {
-                self.currentDataLocation = infosOfUsers.count / numberOfViniPerMap / 2 - 1
+                
+                self.currentDataLocation = infosOfUsers.count / 2 - 1
             } else {
                 self.currentDataLocation = 0
             }
+            
+//            print("current data location = \(currentDataLocation)")
         }
     }
     
@@ -175,22 +178,22 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
                 var vinis: [ViniView] = []
+                                
+                var offset = numberOfViniPerMap
                 
-                let location = currentDataLocation * numberOfViniPerMap
-                
-                for index in location ..< location + numberOfViniPerMap {
+                if currentDataLocation < numberOfViniPerMap {
                     
-                    if infosOfUsers.count > index {
-                        let data = infosOfUsers[index]
-                        vinis.append(data)
-                    } else {
-                        // fetch new data
-                    }
+                    offset = currentDataLocation
                 }
                 
-                if vinis.count == numberOfViniPerMap {
-                    mapStackView.arrangedSubviews[1].spawnViniRandomly(vinis: vinis)
+                for index in currentDataLocation - offset ..< currentDataLocation {
+                    
+                    let data = infosOfUsers[index]
+                    vinis.append(data)
+                    currentDataLocation -= 1
                 }
+                
+                mapStackView.arrangedSubviews[1].spawnViniRandomly(vinis: vinis)
                                 
                 let viewToRemove = mapStackView.arrangedSubviews[numberOfMapsInStack - 2]
                 
@@ -199,8 +202,6 @@ extension MapScrollView: UIScrollViewDelegate {
                 viewToRemove.removeFromSuperview()
                 
                 scrollView.contentOffset.x += viewToRemove.frame.width
-                
-                currentDataLocation -= 1
             }
             
         } else {
@@ -213,7 +214,7 @@ extension MapScrollView: UIScrollViewDelegate {
                 delegate?.didReachedRightEdge()
             }
             
-            if currentPage == numberOfMapsInStack - 3 && (currentDataLocation + 1) * numberOfViniPerMap < infosOfUsers.count {
+            if currentPage == numberOfMapsInStack - 3 && currentDataLocation < infosOfUsers.count {
                                 
                 let newMapView = UIView()
                 
@@ -227,26 +228,27 @@ extension MapScrollView: UIScrollViewDelegate {
                 newMapView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor).isActive = true
                 
                 var vinis: [ViniView] = []
+                                
+                var offset = numberOfViniPerMap
                 
-                let location = currentDataLocation * numberOfViniPerMap
-                
-                for index in location ..< location + numberOfViniPerMap {
+                if infosOfUsers.count - currentDataLocation < numberOfViniPerMap {
                     
-                    if infosOfUsers.count > index {
-                        let data = infosOfUsers[index]
-                        vinis.append(data)
-                    }
+                    offset = (infosOfUsers.count - currentDataLocation) % numberOfViniPerMap
                 }
-                if vinis.count == numberOfViniPerMap {
-                    mapStackView.arrangedSubviews[numberOfMapsInStack - 2].spawnViniRandomly(vinis: vinis)
+                
+                for index in currentDataLocation ..< currentDataLocation + offset {
+                    
+                    let data = infosOfUsers[index]
+                    vinis.append(data)
+                    currentDataLocation += 1
                 }
-            
+                
+                mapStackView.arrangedSubviews[numberOfMapsInStack - 2].spawnViniRandomly(vinis: vinis)
+                
                 let viewToRemove = mapStackView.arrangedSubviews[1]
                 mapStackView.removeArrangedSubview(viewToRemove)
                 viewToRemove.removeFromSuperview()
                 scrollView.contentOffset.x -= viewToRemove.frame.width
-                
-                currentDataLocation += 1
             }
         }
     }
@@ -257,7 +259,7 @@ extension UIView {
     
     func spawnViniRandomly(vinis: [ViniView]) {
         
-        let numberOfVinis = vinis.count - 1
+        let numberOfVinis = vinis.count
         
         self.clipsToBounds = true
 
@@ -267,35 +269,42 @@ extension UIView {
         
         var positions: [(Int, Int)] = [
            (Int.random(in: 0...Int(width)),
-            Int.random(in: 224...Int(height)))
+            Int.random(in: 200...Int(height)))
         ]
         
         var randomX = 0
         var randomY = 0
         
-        for _ in 0...numberOfVinis - 1 {
+        for _ in 0..<numberOfVinis {
             
             var exist = false
             
-            while !exist {
+            var count = 0
+            
+            while !exist || count > 100000 {
+                
+                let widthSpacing = count > 50000 ? 10 : 50
+                let heightSpacing = count > 50000 ? 10 : 50
                 
                 randomX = Int.random(in: 0...Int(width))
-                randomY = Int.random(in: 224...Int(height))
+                randomY = Int.random(in: 200...Int(height))
                 
                 for position in positions {
-                    if abs(randomX - position.0) > 40 && abs(randomY - position.1) > 62 {
+                    if abs(randomX - position.0) > widthSpacing && abs(randomY - position.1) > heightSpacing {
                         exist = true
                     } else {
                         exist = false
                         break
                     }
                 }
+                
+                count += 1
             }
             
             positions.append((randomX, randomY))
         }
         
-        for index in 0...numberOfVinis {
+        for index in 0..<numberOfVinis {
             
             let viniView = ViniView(frame: CGRect(x: positions[index].0, y: positions[index].1, width: 80, height: 100))
             viniView.data.id = vinis[index].data.id

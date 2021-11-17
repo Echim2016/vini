@@ -26,6 +26,8 @@ enum Alert {
     
     case updateContentCardAlert
     
+    case returnToPreviousPageAlert
+    
     var title: String {
         
         switch self {
@@ -63,6 +65,9 @@ enum Alert {
         case .updateContentCardAlert:
             return "更新卡片"
             
+        case .returnToPreviousPageAlert:
+            return "回到上一頁"
+            
         }
     }
     
@@ -98,6 +103,9 @@ enum Alert {
             
         case .updateContentCardAlert:
             return "您確定要更新這張卡片嗎？"
+            
+        case .returnToPreviousPageAlert:
+            return "您確定要回到上一頁嗎？未儲存的變更將會遺失。"
         }
     }
     

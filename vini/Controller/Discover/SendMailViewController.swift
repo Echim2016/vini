@@ -189,6 +189,14 @@ extension SendMailViewController: UITableViewDataSource {
         1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        400
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
@@ -199,9 +207,9 @@ extension SendMailViewController: UITableViewDataSource {
         }
         
         cell.setupCell(title: "回覆內容", placeholder: "關於這個狀態，我想分享...")
-        cell.setTextViewHeight(height: self.view.frame.height - 300)
         cell.textView.delegate = self
         contentTextView = cell.textView
+        cell.setTextViewHeight(height: self.view.frame.height - 300)
         
         return cell
     }
