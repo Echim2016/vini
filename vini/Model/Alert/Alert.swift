@@ -39,7 +39,7 @@ enum Alert {
             return "登出"
             
         case .blockUserAlert:
-            return "封鎖此使用者"
+            return "檢舉並封鎖此使用者"
             
         case .unblockUserAlert:
             return "解除封鎖"
@@ -80,7 +80,7 @@ enum Alert {
         case .logOutAlert:
             return "您確定要登出嗎？"
         case .blockUserAlert:
-            return "封鎖後，您將不會在 Vini Cloud 及信箱中看到此使用者的相關內容。"
+            return "您將不會在 Vini Cloud 及信箱中看到此使用者的相關內容。"
         case .unblockUserAlert:
             return "您確定要解除封鎖此使用者嗎？"
         case .deleteMailAlert:

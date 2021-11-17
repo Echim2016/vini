@@ -269,7 +269,7 @@ extension UIView {
         
         var positions: [(Int, Int)] = [
            (Int.random(in: 0...Int(width)),
-            Int.random(in: 200...Int(height)))
+            Int.random(in: 210...Int(height)))
         ]
         
         var randomX = 0
@@ -287,7 +287,7 @@ extension UIView {
                 let heightSpacing = count > 50000 ? 10 : 50
                 
                 randomX = Int.random(in: 0...Int(width))
-                randomY = Int.random(in: 200...Int(height))
+                randomY = Int.random(in: 210...Int(height))
                 
                 for position in positions {
                     if abs(randomX - position.0) > widthSpacing && abs(randomY - position.1) > heightSpacing {
