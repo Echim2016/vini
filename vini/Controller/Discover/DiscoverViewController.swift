@@ -15,6 +15,7 @@ class DiscoverViewController: UIViewController {
         case showProfileSetting = "ShowProfileSetting"
         case showSendMailPage = "ShowSendMailPage"
         case showMap = "ShowMap"
+        case showBlockUserAlert = "ShowBlockUserAlert"
     }
     
     @IBOutlet weak var backgroundRectView: UIView!
@@ -37,6 +38,14 @@ class DiscoverViewController: UIViewController {
             if #available(iOS 15, *) {
                 
                 mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
+            }
+        }
+    }
+    @IBOutlet weak var blockButton: UIButton! {
+        didSet {
+            if #available(iOS 15, *) {
+                
+//                blockButton.setBackgroundImage(UIImage(systemName: "exclamationmark.bubble.circle.fill"), for: .normal)
             }
         }
     }
@@ -131,6 +140,7 @@ class DiscoverViewController: UIViewController {
                         self.currentSelectedVini.layer.removeAllAnimations()
                         self.currentSelectedVini.isUserInteractionEnabled = true
                         self.currentSelectedVini = vini
+                        self.blockButton.alpha = 1
                         Haptic.play(".", delay: 0.1)
                     }
                 }
@@ -155,13 +165,17 @@ class DiscoverViewController: UIViewController {
         performSegue(withIdentifier: Segue.showMap.rawValue, sender: nil)
     }
     
+    @IBAction func tapBlockUserButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destination = segue.destination as? SendMailViewController {
             
             destination.receipient = currentSelectedVini
             destination.user = user
-            destination.delegate = self
         }
         
         if let destination = segue.destination as? DiscoverMapViewController {
@@ -173,6 +187,17 @@ class DiscoverViewController: UIViewController {
         if let destination = segue.destination as? SetProfileViewController {
             
             destination.delegate = self
+        }
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertStyle = .danger
+            alert.alertType = .blockUserAlert
+            alert.viniType = UIImage.AssetIdentifier.xmark
+            alert.onConfirm = {
+                
+                self.blockUser()
+            }
         }
 
     }
@@ -232,6 +257,7 @@ extension DiscoverViewController {
         wonderingLabel.text = "這裡是\(cloudCategory.title)層\n繼續探索吧！"
         nameLabel.text = "最近在想些什麼？"
         sendButton.alpha = 0
+        blockButton.alpha = 0
     }
     
     func displayMapView() {
@@ -315,6 +341,26 @@ extension DiscoverViewController {
             case .failure(let error):
                 
                 print(error)
+            }
+        }
+    }
+    
+    func blockUser() {
+        
+        VProgressHUD.show()
+        
+        UserManager.shared.blockUser(blockUserID: currentSelectedVini.data.id) { result in
+            
+            switch result {
+            case .success:
+                
+                VProgressHUD.dismiss()
+                self.willDisplayDiscoverPage()
+                
+            case .failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "封鎖時出了一些問題，請重新再試")
             }
         }
     }
