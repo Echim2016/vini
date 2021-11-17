@@ -78,6 +78,7 @@ class MailDetailViewController: UIViewController {
                 
             case Segue.showBlockAlert.rawValue:
                 
+                alert.alertStyle = .danger
                 alert.alertType = .blockUserAlert
                 alert.onConfirm = {
                     

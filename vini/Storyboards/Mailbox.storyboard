@@ -43,11 +43,20 @@
                         <outlet property="remindsLabel" destination="R8p-aj-kOa" id="3Az-a9-ngD"/>
                         <outlet property="tableView" destination="w9o-9R-iaA" id="ocW-dO-4wI"/>
                         <segue destination="z4r-4Y-byP" kind="show" identifier="ShowDetailMail" id="pge-8f-zcs"/>
+                        <segue destination="zEy-jU-LK5" kind="presentation" identifier="ShowBlockAlert" id="K5W-Ut-JaH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="100.44642857142857"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="KBc-n3-Jiy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="zEy-jU-LK5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3um-aT-qtm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1557" y="21"/>
         </scene>
         <!--Mail Detail View Controller-->
         <scene sceneID="rSq-4B-RAA">
