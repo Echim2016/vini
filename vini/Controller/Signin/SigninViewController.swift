@@ -276,7 +276,7 @@ extension SigninViewController {
         
         UIView.animate(
             withDuration: 0.8,
-            delay: 0.05,
+            delay: 0,
             usingSpringWithDamping: 2.0,
             initialSpringVelocity: 1.0,
             options: .curveEaseIn,
@@ -345,18 +345,21 @@ extension SigninViewController {
             
             player = try? AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1
-            player?.volume = 0.4
+            player?.volume = 0.5
             player?.play()
         }
     }
     
     func playWhooshSound() {
         
-        if let url = Bundle.main.url(forResource: "sign-in-whoosh", withExtension: "wav") {
+        if let url = Bundle.main.url(forResource: "sign-in-whoosh-1", withExtension: "mp3") {
+            
+            var whooshPlayer: AVAudioPlayer?
             
             player = try? AVAudioPlayer(contentsOf: url)
             player?.volume = 0.5
             player?.play()
+
         }
     }
 }

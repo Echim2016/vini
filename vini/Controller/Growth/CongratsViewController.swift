@@ -54,12 +54,11 @@ extension CongratsViewController {
     func showVini() {
         
         UIView.animate(
-            withDuration: 1.0,
+            withDuration: 0.9,
             delay: 0,
             options: [.curveEaseInOut],
             animations: {
                 
-//                self.playCongratsSound()
                 self.vini.alpha = 1.0
             },
             completion: { _ in
@@ -81,6 +80,8 @@ extension CongratsViewController {
                 self.headerView.setBottomCurve()
             },
             completion: { _ in
+                
+                self.playCongratsSound()
                 self.fadeInMessages()
                 self.floatVini()
             })
@@ -94,7 +95,7 @@ extension CongratsViewController {
             delay: 0,
             options: [.curveEaseInOut],
             animations: {
-                
+
                 self.congratsMessages.alpha = 1.0
                 self.backButton.alpha = 1.0
             })
@@ -120,7 +121,7 @@ extension CongratsViewController {
     
     func playCongratsSound() {
         
-        if let url = Bundle.main.url(forResource: "congrats", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "congrats", withExtension: "wav") {
             
             player = try? AVAudioPlayer(contentsOf: url)
             player?.volume = 0.4

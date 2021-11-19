@@ -347,7 +347,7 @@ class GrowthCaptureViewController: UIViewController {
                 }
                 
                 if let workItem = workItem {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 * Double(index), execute: workItem)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9 * Double(index), execute: workItem)
                 }
 
             }
