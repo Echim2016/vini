@@ -353,13 +353,10 @@ extension SigninViewController {
     func playWhooshSound() {
         
         if let url = Bundle.main.url(forResource: "sign-in-whoosh-1", withExtension: "mp3") {
-            
-            var whooshPlayer: AVAudioPlayer?
-            
+                        
             player = try? AVAudioPlayer(contentsOf: url)
             player?.volume = 0.5
             player?.play()
-
         }
     }
 }
