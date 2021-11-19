@@ -13,6 +13,7 @@ class SendMailViewController: UIViewController {
         
         case showEmptyInputAlert = "ShowEmptyInputAlert"
         case showSendMailAlert = "ShowSendMailAlert"
+        case showBlockUserAlert = "ShowBlockUserAlert"
     }
     
     @IBOutlet weak var senderNameLabel: UILabel!
@@ -20,6 +21,8 @@ class SendMailViewController: UIViewController {
     @IBOutlet weak var replyTitleLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var sendMailButton: UIButton!
+    
+    weak var delegate: DiscoverProtocol?
     
     var contentTextView: UITextView?
     
@@ -62,6 +65,11 @@ class SendMailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func tapBlockUserButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
+    }
+    
     @IBAction func tapSendButton(_ sender: Any) {
         
         if mailToSend.content.isEmpty {
@@ -90,6 +98,15 @@ class SendMailViewController: UIViewController {
                 alert.onConfirm = {
                     
                     self.sendMail()
+                }
+                
+            case Segue.showBlockUserAlert.rawValue:
+                
+                alert.alertStyle = .danger
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
                 }
                 
             default:
@@ -131,6 +148,34 @@ extension SendMailViewController {
             
             VProgressHUD.showFailure(text: "信件讀取出了一些問題")
         }
+    }
+    
+    func blockUser() {
+        
+        VProgressHUD.show()
+        
+        if let blockUserID = receipient?.data.id {
+            
+            UserManager.shared.blockUser(blockUserID: blockUserID) { result in
+                
+                switch result {
+                case .success:
+                    
+                    VProgressHUD.dismiss()
+                    self.delegate?.willDisplayDiscoverPage()
+                    self.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                    VProgressHUD.showFailure(text: "封鎖時出了一些問題，請重新再試")
+                }
+            }
+        } else {
+            
+            VProgressHUD.showFailure(text: "封鎖時出了一些問題")
+        }
+        
     }
     
 }

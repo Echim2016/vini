@@ -41,14 +41,7 @@ class DiscoverViewController: UIViewController {
             }
         }
     }
-    @IBOutlet weak var blockButton: UIButton! {
-        didSet {
-            if #available(iOS 15, *) {
-                
-//                blockButton.setBackgroundImage(UIImage(systemName: "exclamationmark.bubble.circle.fill"), for: .normal)
-            }
-        }
-    }
+    @IBOutlet weak var blockButton: UIButton!
     
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
@@ -176,6 +169,7 @@ class DiscoverViewController: UIViewController {
             
             destination.receipient = currentSelectedVini
             destination.user = user
+            destination.delegate = self
         }
         
         if let destination = segue.destination as? DiscoverMapViewController {

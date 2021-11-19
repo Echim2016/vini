@@ -195,7 +195,6 @@
         <!--Send Mail View Controller-->
         <scene sceneID="IJ0-76-XeH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="uU4-Kf-FoS" customClass="SendMailViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gkI-Jo-DGW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -253,6 +252,19 @@
                                     <action selector="tapDismissButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="Vsq-gr-nba"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3u6-rZ-c7I" userLabel="Block Button">
+                                <rect key="frame" x="310" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4JV-ke-nQT"/>
+                                    <constraint firstAttribute="height" constant="40" id="MKO-X7-vdI"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="exclamationmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBlockUserButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="r6g-hl-AO3"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voA-kc-dFZ" userLabel="Send Button">
                                 <rect key="frame" x="358" y="16.5" width="40" height="39"/>
                                 <constraints>
@@ -273,7 +285,9 @@
                             <constraint firstItem="voA-kc-dFZ" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="2uu-Av-taD"/>
                             <constraint firstItem="YRC-AW-vdy" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" constant="16" id="EU6-Tp-7Ar"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="voA-kc-dFZ" secondAttribute="trailing" constant="16" id="EWw-Ju-7Ie"/>
+                            <constraint firstItem="voA-kc-dFZ" firstAttribute="leading" secondItem="3u6-rZ-c7I" secondAttribute="trailing" constant="8" id="GiP-SI-S3x"/>
                             <constraint firstItem="zEv-mD-dAj" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" id="J2k-11-D4d"/>
+                            <constraint firstItem="3u6-rZ-c7I" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="KKB-WJ-ZKZ"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="bottom" secondItem="zEv-mD-dAj" secondAttribute="bottom" id="R9l-3U-wDF"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="zEv-mD-dAj" secondAttribute="trailing" id="f0Q-mI-uoB"/>
                             <constraint firstItem="YRC-AW-vdy" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="l0l-7R-R7c"/>
@@ -292,6 +306,7 @@
                         <segue destination="NxM-dn-U2q" kind="presentation" identifier="ShowSendMailAlert" id="TQx-km-KaK"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMO-oS-e70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1911.594202898551" y="888.61607142857144"/>
         </scene>
@@ -511,6 +526,7 @@
         <image name="chevron.right.2" catalog="system" width="128" height="105"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
         <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>
         <image name="map_medium_cloud" width="188" height="57"/>
