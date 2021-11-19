@@ -316,8 +316,8 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-EY-p2z" userLabel="Button Stack View">
-                                <rect key="frame" x="258" y="16" width="140" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qvN-EY-p2z" userLabel="Button Stack View">
+                                <rect key="frame" x="262" y="16" width="136" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3TK-dr-LgN" userLabel="Photo Button">
                                         <rect key="frame" x="0.0" y="0.5" width="40" height="39"/>
@@ -333,7 +333,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37j-Hm-j3C" userLabel="Album Button">
-                                        <rect key="frame" x="50" y="0.5" width="40" height="39"/>
+                                        <rect key="frame" x="48" y="0.5" width="40" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="GZk-fC-Btk"/>
                                             <constraint firstAttribute="height" constant="40" id="Gqu-FL-igw"/>
@@ -346,7 +346,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh2-VS-gNm" userLabel="Save Button">
-                                        <rect key="frame" x="100" y="0.5" width="40" height="39"/>
+                                        <rect key="frame" x="96" y="0.5" width="40" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Sj0-Cm-OWG"/>
                                             <constraint firstAttribute="width" constant="40" id="xDD-ue-s7d"/>
