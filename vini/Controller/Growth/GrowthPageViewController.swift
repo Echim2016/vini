@@ -38,7 +38,25 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    var reflectionHour = 23
+    var isRelectionTime: Bool = false {
+        
+        didSet {
+            
+            if !isRelectionTime,
+               let tabbarController = self.tabBarController as? CustomTabBarController {
+                
+                tabbarController.stopSound()
+            }
+        }
+    }
+    
+    var reflectionHour = 23 {
+        didSet {
+            
+            let currentHour = Calendar.current.component(.hour, from: Date())
+            isRelectionTime = reflectionHour == currentHour
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,15 +83,13 @@ class GrowthPageViewController: UIViewController {
     
     @IBAction func tapReflectionButton(_ sender: Any) {
     
-        let currentHour = Calendar.current.component(.hour, from: Date())
-
-        if currentHour != reflectionHour {
-            
-            performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
-            
-        } else {
+        if isRelectionTime {
             
             performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)
+
+        } else {
+            
+            performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
         }
         
     }

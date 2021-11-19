@@ -7,8 +7,11 @@
 
 import UIKit
 import Haptica
+import AVFoundation
 
 class CustomTabBarController: UITabBarController {
+    
+    var player: AVAudioPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +65,23 @@ class CustomTabBarController: UITabBarController {
             
             self.tabBar.items?[index].title = tabBarItems[index].title
         }
+    }
+    
+    func setupSoundPlayer() {
+        
+        if let url = Bundle.main.url(forResource: "reflection", withExtension: "mp3") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.numberOfLoops = -1
+            player?.volume = 0
+            player?.play()
+            player?.setVolume(0.2, fadeDuration: 3)
+        }
+    }
+    
+    func stopSound() {
+        
+        player?.setVolume(0, fadeDuration: 5)
     }
 
 }

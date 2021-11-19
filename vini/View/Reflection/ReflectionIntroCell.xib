@@ -57,14 +57,37 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="xmark.circle.fill" catalog="system"/>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwd-gW-rcj">
+                                <rect key="frame" x="104" y="758" width="166" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsf-B9-bsL">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4G3-Jf-gP3"/>
+                                            <constraint firstAttribute="width" constant="40" id="LWh-3u-mpf"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="headphones" catalog="system"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請戴上耳機開始反思" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nt-As-Wlf">
+                                        <rect key="frame" x="40" y="0.0" width="126" height="40"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Uty-KU-zq4" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="80" id="6x3-he-U6v"/>
                             <constraint firstItem="HEz-xs-vH8" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="JP6-aO-e44"/>
+                            <constraint firstAttribute="bottom" secondItem="Rwd-gW-rcj" secondAttribute="bottom" constant="20" id="NdT-hT-Rb5"/>
                             <constraint firstAttribute="trailing" secondItem="Uty-KU-zq4" secondAttribute="trailing" constant="20" id="OUX-tG-Iwd"/>
                             <constraint firstItem="bBA-DY-HX5" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="20" id="QgL-06-Vbb"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="leading" secondItem="LO9-YK-UoE" secondAttribute="leading" constant="50" id="VFv-jd-eEM"/>
+                            <constraint firstItem="5Nt-As-Wlf" firstAttribute="centerX" secondItem="LO9-YK-UoE" secondAttribute="centerX" id="X1g-2O-3Zt"/>
                             <constraint firstAttribute="trailing" secondItem="2d2-3I-dfN" secondAttribute="trailing" constant="60" id="Yde-cM-yX6"/>
                             <constraint firstAttribute="bottom" secondItem="2d2-3I-dfN" secondAttribute="bottom" constant="250" id="aet-aV-RAT"/>
                             <constraint firstItem="AWC-nq-tEG" firstAttribute="top" secondItem="LO9-YK-UoE" secondAttribute="top" constant="128" id="ciR-bJ-aue"/>
@@ -88,14 +111,16 @@
             <connections>
                 <outlet property="cellBackgroundView" destination="LO9-YK-UoE" id="QMJ-2x-MHX"/>
                 <outlet property="dismissButton" destination="bBA-DY-HX5" id="kQV-2r-uZm"/>
+                <outlet property="headphoneIntroStackView" destination="Rwd-gW-rcj" id="vfb-XE-nKH"/>
                 <outlet property="introContentLabel" destination="2d2-3I-dfN" id="cdq-vz-LuD"/>
                 <outlet property="introTitleLabel" destination="AWC-nq-tEG" id="uS2-YI-zHE"/>
                 <outlet property="moonImageView" destination="Uty-KU-zq4" id="YVP-w0-Mj9"/>
             </connections>
-            <point key="canvasLocation" x="328.98550724637681" y="376.33928571428572"/>
+            <point key="canvasLocation" x="327.536231884058" y="376.33928571428572"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="headphones" catalog="system" width="128" height="121"/>
         <image name="map_moon" width="51" height="51"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
     </resources>

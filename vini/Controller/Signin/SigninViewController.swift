@@ -10,6 +10,8 @@ import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
 import grpc
+import AVFoundation
+import Haptica
 
 class SigninViewController: UIViewController {
     
@@ -32,10 +34,13 @@ class SigninViewController: UIViewController {
     
     var signInButton: ASAuthorizationAppleIDButton?
     
+    var player: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupSignInButton()
+        setupSoundPlayer()
         cloudImageView.float(duration: 1.8)
     }
     
@@ -48,6 +53,7 @@ class SigninViewController: UIViewController {
  
     @objc func handleSignInWithAppleTapped() {
         
+        Haptic.play(".", delay: 0)
         performSignIn()
     }
     
@@ -195,6 +201,7 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                             switch result {
                             case .success(let success):
                                 print(success)
+                                self.playWhooshSound()
                                 self.redirectToNextPage(next: .signup)
 
                             case .failure(let error):
@@ -205,6 +212,7 @@ extension SigninViewController: ASAuthorizationControllerDelegate {
                     } else {
                         
                         // if user is not new user, redirect to home page
+                        Haptic.play("..o-o..o-o..", delay: 0.2)
                         self.redirectToNextPage(next: .home)
 //                        self.redirectToNextPage(next: .signup)
 
@@ -268,11 +276,13 @@ extension SigninViewController {
         
         UIView.animate(
             withDuration: 0.8,
-            delay: 0.0,
+            delay: 0.05,
             usingSpringWithDamping: 2.0,
             initialSpringVelocity: 1.0,
             options: .curveEaseIn,
             animations: {
+                
+                self.playWhooshSound()
                 self.welcomeMessageLabel.frame.origin.y -= 50
                 self.welcomeMessageLabel.alpha = 0
                 self.signInButton?.frame.origin.y += 50
@@ -324,5 +334,29 @@ extension SigninViewController {
                     }
                 }
             })
+    }
+}
+
+extension SigninViewController {
+    
+    func setupSoundPlayer() {
+        
+        if let url = Bundle.main.url(forResource: "sign-in-harmony", withExtension: "wav") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.numberOfLoops = -1
+            player?.volume = 0.4
+            player?.play()
+        }
+    }
+    
+    func playWhooshSound() {
+        
+        if let url = Bundle.main.url(forResource: "sign-in-whoosh", withExtension: "wav") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.volume = 0.5
+            player?.play()
+        }
     }
 }
