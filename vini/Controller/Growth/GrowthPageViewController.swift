@@ -28,12 +28,17 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var remindsLabel: UILabel!
+    @IBOutlet weak var remindsLabel: UILabel! {
+        didSet {
+            remindsLabel.text = Tips.randomText()
+        }
+    }
     
     var data: [GrowthCard] = [] {
         
         didSet {
             
+            remindsLabel.text = Tips.randomText()
             remindsLabel.isHidden = !data.isEmpty
         }
     }

@@ -40,6 +40,7 @@
 		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C208077273BB51B00F6614F /* Array+Extension.swift */; };
+		9C2EE79C2747AE5900854527 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EE79B2747AE5900854527 /* Tips.swift */; };
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
@@ -169,6 +170,7 @@
 		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C208077273BB51B00F6614F /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9C2EE79B2747AE5900854527 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 			children = (
 				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
 				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+				9C2EE79B2747AE5900854527 /* Tips.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
 				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
+				9C2EE79C2747AE5900854527 /* Tips.swift in Sources */,
 				9C697F2B27391C8A00EDBBCB /* DiscoverMapViewController.swift in Sources */,
 				9C51A3CF2732783B00F85CE4 /* ReflectionOutroCell.swift in Sources */,
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
