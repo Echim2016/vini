@@ -168,7 +168,8 @@ extension MailboxViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if mails[indexPath.row].readTimestamp == nil {
+        if mails[indexPath.row].readTimestamp == nil,
+           mails[indexPath.row].senderID != MailManager.shared.welcomeMailSenderID {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
             if currentHour == preferredReflectionTime {
@@ -234,7 +235,7 @@ extension MailboxViewController: UITableViewDataSource {
             
             cell.setupReadAppearance()
             
-        } else {
+        } else if mail.senderID != MailManager.shared.welcomeMailSenderID {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
             if currentHour != preferredReflectionTime {

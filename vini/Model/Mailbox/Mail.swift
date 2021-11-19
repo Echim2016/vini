@@ -52,7 +52,7 @@ struct Mail: Codable {
         self.senderDisplayName = "某個也在努力成長的Vini"
         self.senderID = MailManager.shared.welcomeMailSenderID
         self.senderViniType = UIImage.AssetIdentifier.amaze.name
-        self.readTimestamp = Timestamp(date: Date())
+        self.readTimestamp = nil
         
         if let mail = Bundle.main.object(forInfoDictionaryKey: "WelcomeMail") as? String {
             self.content = mail
