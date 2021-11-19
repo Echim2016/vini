@@ -7,6 +7,7 @@
 
 import UIKit
 import Haptica
+import AVFoundation
 
 class CongratsViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class CongratsViewController: UIViewController {
     
     @IBOutlet weak var congratsMessages: UIStackView!
     @IBOutlet weak var backButton: UIButton!
+    
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,7 @@ extension CongratsViewController {
             options: [.curveEaseInOut],
             animations: {
                 
+//                self.playCongratsSound()
                 self.vini.alpha = 1.0
             },
             completion: { _ in
@@ -114,4 +118,13 @@ extension CongratsViewController {
         
     }
     
+    func playCongratsSound() {
+        
+        if let url = Bundle.main.url(forResource: "congrats", withExtension: "mp3") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.volume = 0.4
+            player?.play()
+        }
+    }
 }

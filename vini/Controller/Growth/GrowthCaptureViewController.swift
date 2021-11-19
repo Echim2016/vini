@@ -10,6 +10,7 @@ import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
 import Haptica
+import AVFoundation
 
 class GrowthCaptureViewController: UIViewController {
     
@@ -138,6 +139,8 @@ class GrowthCaptureViewController: UIViewController {
             editButton.isHidden = isInArchivedMode
         }
     }
+    
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -335,6 +338,7 @@ class GrowthCaptureViewController: UIViewController {
                         let indexPath = IndexPath(row: dataLength - index, section: 0)
                         self.data.remove(at: dataLength - 1 - index)
                         self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.playArchivedSound()
                         Haptic.play("..oO-Oo..", delay: 0.2)
 
                     } else {
@@ -343,7 +347,7 @@ class GrowthCaptureViewController: UIViewController {
                 }
                 
                 if let workItem = workItem {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8 * Double(index), execute: workItem)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0 * Double(index), execute: workItem)
                 }
 
             }
@@ -795,5 +799,15 @@ extension GrowthCaptureViewController {
         
         archiveButton.layer.cornerRadius = archiveButton.frame.height / 2
         archiveButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+    }
+    
+    func playArchivedSound() {
+        
+        if let url = Bundle.main.url(forResource: "tap-archive-button", withExtension: "wav") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.volume = 0.2
+            player?.play()
+        }
     }
 }
