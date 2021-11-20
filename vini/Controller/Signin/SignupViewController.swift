@@ -370,6 +370,7 @@ extension SignupViewController {
         let storyboard = UIStoryboard.main
         if let homeVC = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.main.rawValue) as? UITabBarController {
             
+            homeVC.selectedIndex = TabBarItem.mailbox.rawValue
             homeVC.modalPresentationStyle = .custom
             homeVC.modalTransitionStyle = .crossDissolve
             

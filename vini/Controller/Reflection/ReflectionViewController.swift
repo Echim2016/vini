@@ -7,6 +7,7 @@
 
 import UIKit
 import Haptica
+import AVFoundation
 
 class ReflectionViewController: UIViewController {
 
@@ -47,6 +48,7 @@ class ReflectionViewController: UIViewController {
         super.viewDidAppear(animated)
         
         setupWelcomeAnimation()
+        playReflectionSound()
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -163,6 +165,14 @@ extension ReflectionViewController {
         flowLayout.minimumLineSpacing = 0.0
         flowLayout.scrollDirection = .vertical
         collectionView.collectionViewLayout = flowLayout
+    }
+    
+    func playReflectionSound() {
+        
+        if let tabbarController = self.presentingViewController as? CustomTabBarController {
+            
+            tabbarController.setupSoundPlayer()
+        }
     }
 
 }

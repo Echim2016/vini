@@ -21,6 +21,7 @@ class ReflectionIntroCell: UICollectionViewCell {
     @IBOutlet weak var introTitleLabel: UILabel!
     @IBOutlet weak var introContentLabel: UILabel!
     @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var headphoneIntroStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,7 @@ class ReflectionIntroCell: UICollectionViewCell {
         introTitleLabel.alpha = 0
         introContentLabel.alpha = 0
         moonImageView.alpha = 0
+        headphoneIntroStackView.alpha = 0
         
         dismissButton.addTarget(self, action: #selector(tapDismissButton(_:)), for: .touchUpInside)
         
@@ -58,8 +60,12 @@ class ReflectionIntroCell: UICollectionViewCell {
             animations: {
                 
                 self.introContentLabel.alpha = 1
+                self.headphoneIntroStackView.alpha = 1
             },
-            completion: nil
+            completion: { _ in
+                
+                self.headphoneIntroStackView.float(duration: 1.8)
+            }
         )
     }
     
