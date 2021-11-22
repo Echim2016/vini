@@ -26,6 +26,8 @@ enum Alert {
     
     case updateContentCardAlert
     
+    case returnToPreviousPageAlert
+    
     var title: String {
         
         switch self {
@@ -37,7 +39,7 @@ enum Alert {
             return "登出"
             
         case .blockUserAlert:
-            return "封鎖此使用者"
+            return "檢舉並封鎖此使用者"
             
         case .unblockUserAlert:
             return "解除封鎖"
@@ -63,6 +65,9 @@ enum Alert {
         case .updateContentCardAlert:
             return "更新卡片"
             
+        case .returnToPreviousPageAlert:
+            return "回到上一頁"
+            
         }
     }
     
@@ -75,7 +80,7 @@ enum Alert {
         case .logOutAlert:
             return "您確定要登出嗎？"
         case .blockUserAlert:
-            return "您將不會在 Vini Cloud 及信箱看到此使用者的內容，您可以隨時在設定頁解除封鎖。"
+            return "您將不會在 Vini Cloud 及信箱中看到此使用者的相關內容。"
         case .unblockUserAlert:
             return "您確定要解除封鎖此使用者嗎？"
         case .deleteMailAlert:
@@ -98,7 +103,16 @@ enum Alert {
             
         case .updateContentCardAlert:
             return "您確定要更新這張卡片嗎？"
+            
+        case .returnToPreviousPageAlert:
+            return "您確定要回到上一頁嗎？未儲存的變更將會遺失。"
         }
     }
     
+}
+
+enum AlertStyle {
+    
+    case normal
+    case danger
 }

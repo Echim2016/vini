@@ -69,14 +69,7 @@ class SetGrowthContentCardViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var imageLabel: UILabel! {
-        didSet {
-            imageLabel.text = imageIntroText
-        }
-    }
-    
     var contentIntroText: String = "..."
-    var imageIntroText: String = ""
     var growthCardID: String = ""
     var contentCardID: String = ""
     

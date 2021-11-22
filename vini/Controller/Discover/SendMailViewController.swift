@@ -11,9 +11,9 @@ class SendMailViewController: UIViewController {
     
     private enum Segue: String {
         
-        case showBlockUserAlert = "ShowBlockUserAlert"
         case showEmptyInputAlert = "ShowEmptyInputAlert"
         case showSendMailAlert = "ShowSendMailAlert"
+        case showBlockUserAlert = "ShowBlockUserAlert"
     }
     
     @IBOutlet weak var senderNameLabel: UILabel!
@@ -22,13 +22,13 @@ class SendMailViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var sendMailButton: UIButton!
     
+    weak var delegate: DiscoverProtocol?
+    
     var contentTextView: UITextView?
     
     var receipient: ViniView?
     var mailToSend = Mail()
     var user: User?
-    
-    weak var delegate: DiscoverProtocol?
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -65,6 +65,11 @@ class SendMailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func tapBlockUserButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
+    }
+    
     @IBAction func tapSendButton(_ sender: Any) {
         
         if mailToSend.content.isEmpty {
@@ -77,24 +82,11 @@ class SendMailViewController: UIViewController {
         
     }
     
-    @IBAction func tapBlockButton(_ sender: Any) {
-        
-        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let alert = segue.destination as? AlertViewController {
             
             switch segue.identifier {
-                
-            case Segue.showBlockUserAlert.rawValue:
-                
-                alert.alertType = .blockUserAlert
-                alert.onConfirm = {
-                    
-                    self.blockUser()
-                }
                 
             case Segue.showEmptyInputAlert.rawValue:
                 
@@ -106,6 +98,15 @@ class SendMailViewController: UIViewController {
                 alert.onConfirm = {
                     
                     self.sendMail()
+                }
+                
+            case Segue.showBlockUserAlert.rawValue:
+                
+                alert.alertStyle = .danger
+                alert.alertType = .blockUserAlert
+                alert.onConfirm = {
+                    
+                    self.blockUser()
                 }
                 
             default:
@@ -151,11 +152,11 @@ extension SendMailViewController {
     
     func blockUser() {
         
-        if let receipientID = receipient?.data.id {
+        VProgressHUD.show()
+        
+        if let blockUserID = receipient?.data.id {
             
-            VProgressHUD.show()
-            
-            UserManager.shared.blockUser(blockUserID: receipientID) { result in
+            UserManager.shared.blockUser(blockUserID: blockUserID) { result in
                 
                 switch result {
                 case .success:
@@ -189,6 +190,14 @@ extension SendMailViewController: UITableViewDataSource {
         1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        400
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
@@ -199,9 +208,9 @@ extension SendMailViewController: UITableViewDataSource {
         }
         
         cell.setupCell(title: "回覆內容", placeholder: "關於這個狀態，我想分享...")
-        cell.setTextViewHeight(height: self.view.frame.height - 300)
         cell.textView.delegate = self
         contentTextView = cell.textView
+        cell.setTextViewHeight(height: self.view.frame.height - 300)
         
         return cell
     }

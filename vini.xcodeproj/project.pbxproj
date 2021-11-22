@@ -40,6 +40,8 @@
 		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C208077273BB51B00F6614F /* Array+Extension.swift */; };
+		9C2EE79C2747AE5900854527 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EE79B2747AE5900854527 /* Tips.swift */; };
+		9C2EE79E2747B45400854527 /* sign-in-whoosh-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */; };
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
@@ -101,6 +103,10 @@
 		9CA45FCC27228BF100AA9CF0 /* DrawConclusionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */; };
 		9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA12723059E00E85F28 /* String+Extension.swift */; };
 		9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA66FA3272308B200E85F28 /* EmojiTextField.swift */; };
+		9CA98B9E2747545300A027ED /* sign-in-harmony.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98B9D2747545300A027ED /* sign-in-harmony.wav */; };
+		9CA98BA427475C3700A027ED /* congrats.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BA327475C3700A027ED /* congrats.wav */; };
+		9CA98BAF2747856F00A027ED /* reflection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BAE2747856F00A027ED /* reflection.mp3 */; };
+		9CA98BB52747925000A027ED /* tap-archive-button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BB42747925000A027ED /* tap-archive-button.wav */; };
 		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
@@ -165,6 +171,8 @@
 		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C208077273BB51B00F6614F /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9C2EE79B2747AE5900854527 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sign-in-whoosh-1.mp3"; sourceTree = "<group>"; };
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +235,10 @@
 		9CA45FCB27228BF100AA9CF0 /* DrawConclusionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsViewController.swift; sourceTree = "<group>"; };
 		9CA66FA12723059E00E85F28 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9CA66FA3272308B200E85F28 /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		9CA98B9D2747545300A027ED /* sign-in-harmony.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "sign-in-harmony.wav"; sourceTree = "<group>"; };
+		9CA98BA327475C3700A027ED /* congrats.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = congrats.wav; sourceTree = "<group>"; };
+		9CA98BAE2747856F00A027ED /* reflection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reflection.mp3; sourceTree = "<group>"; };
+		9CA98BB42747925000A027ED /* tap-archive-button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "tap-archive-button.wav"; sourceTree = "<group>"; };
 		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -592,6 +604,11 @@
 		9CC1E4D8271BE5A300F17190 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */,
+				9CA98BB42747925000A027ED /* tap-archive-button.wav */,
+				9CA98BAE2747856F00A027ED /* reflection.mp3 */,
+				9CA98BA327475C3700A027ED /* congrats.wav */,
+				9CA98B9D2747545300A027ED /* sign-in-harmony.wav */,
 				9CC1E4C9271BE53600F17190 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -627,6 +644,7 @@
 			children = (
 				9C5FC92B271D50EA00DE4E42 /* GrowthCard.swift */,
 				9C5FC92D271D553400DE4E42 /* GrowthContent.swift */,
+				9C2EE79B2747AE5900854527 /* Tips.swift */,
 			);
 			path = Growth;
 			sourceTree = "<group>";
@@ -769,6 +787,7 @@
 				9C021D44272D4189009A7581 /* MailContentCell.xib in Resources */,
 				9CC1E4CD271BE53600F17190 /* LaunchScreen.storyboard in Resources */,
 				9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */,
+				9CA98BA427475C3700A027ED /* congrats.wav in Resources */,
 				9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */,
 				9C51A3C827326C5800F85CE4 /* ReflectionIntroCell.xib in Resources */,
 				9CEE9D9F27295084006CCA06 /* SetProfileCell.xib in Resources */,
@@ -785,6 +804,7 @@
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C697F3127391F3200EDBBCB /* CloudCategoryCell.xib in Resources */,
 				9C51A3CC273277B200F85CE4 /* ReflectionPracticeCell.xib in Resources */,
+				9CA98BB52747925000A027ED /* tap-archive-button.wav in Resources */,
 				9C1A6135271E9B780013D63A /* GrowthContentCell.xib in Resources */,
 				9C021D52272E40FB009A7581 /* SettingsItemCell.xib in Resources */,
 				9CC1E4CA271BE53600F17190 /* Assets.xcassets in Resources */,
@@ -795,13 +815,16 @@
 				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
+				9C2EE79E2747B45400854527 /* sign-in-whoosh-1.mp3 in Resources */,
 				9C8A36AE273E349000D57873 /* PrivacyPolicy.storyboard in Resources */,
 				9C6C3D9D27340BCC00F45247 /* SignUp.storyboard in Resources */,
 				9CC1E4C8271BE53500F17190 /* Main.storyboard in Resources */,
 				9C021D4A272D96BD009A7581 /* Settings.storyboard in Resources */,
 				9C51A3D02732783B00F85CE4 /* ReflectionOutroCell.xib in Resources */,
 				9C697F212737D25800EDBBCB /* Alert.storyboard in Resources */,
+				9CA98BAF2747856F00A027ED /* reflection.mp3 in Resources */,
 				9C178062273AA2D600097E3C /* BlockList.storyboard in Resources */,
+				9CA98B9E2747545300A027ED /* sign-in-harmony.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +839,8 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputFileListPaths = (
 			);
@@ -823,7 +848,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		AAC60A91DD001B3F870DDDEB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -902,6 +927,7 @@
 				9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */,
 				9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */,
 				9C1A6131271E8EDF0013D63A /* UIView+Extension.swift in Sources */,
+				9C2EE79C2747AE5900854527 /* Tips.swift in Sources */,
 				9C697F2B27391C8A00EDBBCB /* DiscoverMapViewController.swift in Sources */,
 				9C51A3CF2732783B00F85CE4 /* ReflectionOutroCell.swift in Sources */,
 				9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */,
@@ -1102,7 +1128,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = vini/vini.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
@@ -1119,7 +1146,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.echim.vini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1136,7 +1163,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = vini/vini.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = VCPLDP9723;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vini/Info.plist;
@@ -1153,7 +1180,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.echim.vini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

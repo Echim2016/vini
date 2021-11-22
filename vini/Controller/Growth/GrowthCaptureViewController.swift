@@ -10,6 +10,7 @@ import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
 import Haptica
+import AVFoundation
 
 class GrowthCaptureViewController: UIViewController {
     
@@ -138,6 +139,8 @@ class GrowthCaptureViewController: UIViewController {
             editButton.isHidden = isInArchivedMode
         }
     }
+    
+    var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -273,8 +276,6 @@ class GrowthCaptureViewController: UIViewController {
         if isInCreateCardMode && isInEditMode {
             
             createGrowthCard()
-            hideEditPage()
-            isInCreateCardMode = false
             
         } else if isInEditMode {
             
@@ -337,6 +338,7 @@ class GrowthCaptureViewController: UIViewController {
                         let indexPath = IndexPath(row: dataLength - index, section: 0)
                         self.data.remove(at: dataLength - 1 - index)
                         self.tableView.deleteRows(at: [indexPath], with: .fade)
+                        self.playArchivedSound()
                         Haptic.play("..oO-Oo..", delay: 0.2)
 
                     } else {
@@ -345,7 +347,7 @@ class GrowthCaptureViewController: UIViewController {
                 }
                 
                 if let workItem = workItem {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.8 * Double(index), execute: workItem)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9 * Double(index), execute: workItem)
                 }
 
             }
@@ -437,7 +439,13 @@ extension GrowthCaptureViewController {
     
     private func createGrowthCard() {
         
-        if let userID = UserManager.shared.userID {
+        if headerEmojiToUpdate.isEmpty || headerTitleToUpdate.isEmpty {
+            
+            VProgressHUD.showFailure(text: "似乎有空白的欄位，\n別忘了在圓圈處填入Emoji！🙆‍♂️")
+            
+        } else if let userID = UserManager.shared.userID {
+            
+            VProgressHUD.show()
             
             var growthCard: GrowthCard = GrowthCard(
                 id: "",
@@ -459,10 +467,18 @@ extension GrowthCaptureViewController {
                     print(message)
                     self.growthCardID = growthCard.id
                     self.headerTitle = growthCard.title
+                    self.isInCreateCardMode = false
+                    self.dismiss(animated: true, completion: nil)
+                    VProgressHUD.dismiss()
                 case .failure(let error):
                     print(error)
+                    VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新再試")
                 }
             }
+            
+        } else {
+            
+            VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新登入再試")
         }
         
     }
@@ -783,5 +799,15 @@ extension GrowthCaptureViewController {
         
         archiveButton.layer.cornerRadius = archiveButton.frame.height / 2
         archiveButton.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+    }
+    
+    func playArchivedSound() {
+        
+        if let url = Bundle.main.url(forResource: "tap-archive-button", withExtension: "wav") {
+            
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.volume = 0.2
+            player?.play()
+        }
     }
 }

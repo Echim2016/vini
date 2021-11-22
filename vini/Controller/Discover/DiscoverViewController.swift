@@ -15,6 +15,7 @@ class DiscoverViewController: UIViewController {
         case showProfileSetting = "ShowProfileSetting"
         case showSendMailPage = "ShowSendMailPage"
         case showMap = "ShowMap"
+        case showBlockUserAlert = "ShowBlockUserAlert"
     }
     
     @IBOutlet weak var backgroundRectView: UIView!
@@ -34,12 +35,13 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var mapButton: UIButton! {
         didSet {
-            if #available(iOS 14, *) {
+            if #available(iOS 15, *) {
                 
                 mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
             }
         }
     }
+    @IBOutlet weak var blockButton: UIButton!
     
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
@@ -70,18 +72,13 @@ class DiscoverViewController: UIViewController {
         setupNotificationCenterObserver()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if (backgroundRectView.layer.sublayers?.first as? CAGradientLayer) == nil {
-            
-            setupBackgroundRectView()
-        }
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if (backgroundRectView.layer.sublayers?.first as? CAGradientLayer) == nil {
+
+            setupBackgroundRectView()
+        }
         
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
@@ -136,6 +133,7 @@ class DiscoverViewController: UIViewController {
                         self.currentSelectedVini.layer.removeAllAnimations()
                         self.currentSelectedVini.isUserInteractionEnabled = true
                         self.currentSelectedVini = vini
+                        self.blockButton.alpha = 1
                         Haptic.play(".", delay: 0.1)
                     }
                 }
@@ -160,6 +158,11 @@ class DiscoverViewController: UIViewController {
         performSegue(withIdentifier: Segue.showMap.rawValue, sender: nil)
     }
     
+    @IBAction func tapBlockUserButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: Segue.showBlockUserAlert.rawValue, sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destination = segue.destination as? SendMailViewController {
@@ -178,6 +181,17 @@ class DiscoverViewController: UIViewController {
         if let destination = segue.destination as? SetProfileViewController {
             
             destination.delegate = self
+        }
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertStyle = .danger
+            alert.alertType = .blockUserAlert
+            alert.viniType = UIImage.AssetIdentifier.xmark
+            alert.onConfirm = {
+                
+                self.blockUser()
+            }
         }
 
     }
@@ -237,6 +251,7 @@ extension DiscoverViewController {
         wonderingLabel.text = "這裡是\(cloudCategory.title)層\n繼續探索吧！"
         nameLabel.text = "最近在想些什麼？"
         sendButton.alpha = 0
+        blockButton.alpha = 0
     }
     
     func displayMapView() {
@@ -324,11 +339,34 @@ extension DiscoverViewController {
         }
     }
     
+    func blockUser() {
+        
+        VProgressHUD.show()
+        
+        UserManager.shared.blockUser(blockUserID: currentSelectedVini.data.id) { result in
+            
+            switch result {
+            case .success:
+                
+                VProgressHUD.dismiss()
+                self.willDisplayDiscoverPage()
+                
+            case .failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "封鎖時出了一些問題，請重新再試")
+            }
+        }
+    }
+    
 }
 
 extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
+        
+//        print("start")
+//        infoOfUsers.forEach { print($0.data.name) }
         return infoOfUsers
     }
 }
@@ -337,14 +375,14 @@ extension DiscoverViewController: MapScrollViewDelegate {
     
     func didReachedRightEdge() {
         
-        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line.compact"), for: .normal)
+        self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line"), for: .normal)
         showIndicatorAnimation(indicator: rightIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }
     
     func didReachedLeftEdge() {
         
-        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line.compact"), for: .normal)
+        self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line"), for: .normal)
         showIndicatorAnimation(indicator: leftIndicatorArrow)
         Haptic.play(".o.", delay: 0)
     }

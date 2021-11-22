@@ -37,10 +37,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P50-Gu-XAf">
-                                <rect key="frame" x="16" y="98" width="382" height="224"/>
+                                <rect key="frame" x="16" y="108" width="382" height="224"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMo-Xr-mmH" userLabel="MapButton">
-                                        <rect key="frame" x="302" y="-9.5" width="35" height="33.5"/>
+                                        <rect key="frame" x="304" y="-19.5" width="35" height="33.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="mmW-gC-dzK"/>
                                             <constraint firstAttribute="height" constant="35" id="u2m-pf-aKc"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-E5-Aft" userLabel="ProfileButton">
-                                        <rect key="frame" x="347" y="-9.5" width="35" height="34"/>
+                                        <rect key="frame" x="347" y="-19.5" width="35" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="clT-vc-Vk4"/>
                                             <constraint firstAttribute="width" constant="35" id="hcs-YX-2kz"/>
@@ -66,7 +66,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎來到 Vini Cloud" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISw-Aw-LEI">
-                                        <rect key="frame" x="16" y="32" width="350" height="34"/>
+                                        <rect key="frame" x="16" y="32" width="321" height="34"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,7 +80,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRF-mH-FH9">
-                                        <rect key="frame" x="250" y="144" width="100" height="40"/>
+                                        <rect key="frame" x="272" y="144" width="100" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="0.30085885759999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="IxJ-PM-5IB"/>
@@ -94,24 +94,43 @@
                                             <action selector="tapSendMailButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hkV-Sh-z5D"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKv-NN-KWh" userLabel="BlockButton">
+                                        <rect key="frame" x="337" y="32.5" width="35" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Ho1-Lk-LYU"/>
+                                            <constraint firstAttribute="width" constant="35" id="gwl-JF-eV5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="ellipsis.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="tapBlockUserButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zD4-iC-dlh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="hMo-Xr-mmH" secondAttribute="trailing" constant="45" id="1S2-SX-Add"/>
-                                    <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="32" id="9dx-7u-m17"/>
+                                    <constraint firstAttribute="trailing" secondItem="eKv-NN-KWh" secondAttribute="trailing" constant="10" id="6ve-LP-DuI"/>
+                                    <constraint firstAttribute="trailing" secondItem="DRF-mH-FH9" secondAttribute="trailing" constant="10" id="9dx-7u-m17"/>
                                     <constraint firstItem="eRo-iy-Kb4" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="CIA-zA-jnB"/>
+                                    <constraint firstItem="eKv-NN-KWh" firstAttribute="leading" secondItem="ISw-Aw-LEI" secondAttribute="trailing" id="E5Q-pu-4H9"/>
                                     <constraint firstAttribute="bottom" secondItem="eRo-iy-Kb4" secondAttribute="bottom" constant="40" id="Ivz-y3-X0d"/>
-                                    <constraint firstAttribute="trailing" secondItem="ISw-Aw-LEI" secondAttribute="trailing" constant="16" id="L42-4K-2gC"/>
                                     <constraint firstAttribute="bottom" secondItem="DRF-mH-FH9" secondAttribute="bottom" constant="40" id="L8m-lm-wdv"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="32" id="ZBL-Me-qr8"/>
-                                    <constraint firstItem="hMo-Xr-mmH" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="eH2-nP-VHq"/>
-                                    <constraint firstItem="w5e-E5-Aft" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="l7N-r9-PL9"/>
+                                    <constraint firstItem="hMo-Xr-mmH" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-20" id="eH2-nP-VHq"/>
+                                    <constraint firstItem="eKv-NN-KWh" firstAttribute="top" secondItem="ISw-Aw-LEI" secondAttribute="top" id="eLr-Zp-lQK"/>
+                                    <constraint firstItem="w5e-E5-Aft" firstAttribute="leading" secondItem="hMo-Xr-mmH" secondAttribute="trailing" constant="8" id="eSh-lB-HRi"/>
+                                    <constraint firstItem="w5e-E5-Aft" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-20" id="l7N-r9-PL9"/>
                                     <constraint firstItem="ISw-Aw-LEI" firstAttribute="leading" secondItem="P50-Gu-XAf" secondAttribute="leading" constant="16" id="omh-TU-lOQ"/>
                                     <constraint firstAttribute="trailing" secondItem="w5e-E5-Aft" secondAttribute="trailing" id="oyj-P9-jmc"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_medium_cloud" translatesAutoresizingMaskIntoConstraints="NO" id="raX-Lh-Emm">
                                 <rect key="frame" x="-80" y="553.5" width="248.5" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="raX-Lh-Emm" secondAttribute="height" multiplier="31:9" id="bv1-O5-4V8"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6U4-jo-HEs" userLabel="Left Arrow">
                                 <rect key="frame" x="16" y="493.5" width="20" height="14.5"/>
@@ -140,11 +159,10 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="raX-Lh-Emm" secondAttribute="leading" constant="80" id="b0N-ZG-nV1"/>
                             <constraint firstItem="P50-Gu-XAf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eAA-1Y-F6w"/>
                             <constraint firstItem="CSB-wF-AuN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" multiplier="2.3" id="f9t-bI-wQh"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-10" id="fZ2-sm-7y4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="P50-Gu-XAf" secondAttribute="top" constant="-20" id="fZ2-sm-7y4"/>
                             <constraint firstItem="6U4-jo-HEs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ky8-WX-wkf"/>
                             <constraint firstItem="6U4-jo-HEs" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="50" id="mGI-Lz-1rd"/>
                             <constraint firstItem="uK1-yi-9no" firstAttribute="height" secondItem="vDu-zF-Fre" secondAttribute="height" multiplier="0.9" id="med-Ff-uyj"/>
-                            <constraint firstItem="raX-Lh-Emm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.08" id="rzq-Km-Kav"/>
                             <constraint firstItem="raX-Lh-Emm" firstAttribute="width" secondItem="vDu-zF-Fre" secondAttribute="width" multiplier="0.6" id="uh5-aj-orY"/>
                         </constraints>
                     </view>
@@ -155,6 +173,7 @@
                         <outlet property="backgroundRectView" destination="uK1-yi-9no" id="6hR-UO-5Pb"/>
                         <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
                         <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
+                        <outlet property="blockButton" destination="eKv-NN-KWh" id="2JN-YU-A8S"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>
                         <outlet property="leftIndicatorArrow" destination="6U4-jo-HEs" id="YgG-Lf-QTk"/>
                         <outlet property="mapButton" destination="hMo-Xr-mmH" id="f5p-0Y-Yc2"/>
@@ -166,6 +185,7 @@
                         <segue destination="mYz-9F-MJZ" kind="presentation" identifier="ShowProfileSetting" id="5QQ-b6-FJo"/>
                         <segue destination="uU4-Kf-FoS" kind="presentation" identifier="ShowSendMailPage" id="3sJ-e1-wwm"/>
                         <segue destination="wmy-Y4-1zY" kind="presentation" identifier="ShowMap" id="xWZ-re-9Fa"/>
+                        <segue destination="Vmh-Hh-jes" kind="presentation" identifier="ShowBlockUserAlert" id="ejb-Se-KCK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,6 +252,19 @@
                                     <action selector="tapDismissButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="Vsq-gr-nba"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3u6-rZ-c7I" userLabel="Block Button">
+                                <rect key="frame" x="310" y="16.5" width="40" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4JV-ke-nQT"/>
+                                    <constraint firstAttribute="height" constant="40" id="MKO-X7-vdI"/>
+                                </constraints>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="exclamationmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="tapBlockUserButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="r6g-hl-AO3"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voA-kc-dFZ" userLabel="Send Button">
                                 <rect key="frame" x="358" y="16.5" width="40" height="39"/>
                                 <constraints>
@@ -245,19 +278,6 @@
                                     <action selector="tapSendButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="vZ9-7s-rR7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wb-Vm-BUy" userLabel="Block Button">
-                                <rect key="frame" x="308" y="16.5" width="40" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PGl-iQ-WIo"/>
-                                    <constraint firstAttribute="width" constant="40" id="vnA-1D-v9V"/>
-                                </constraints>
-                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" backgroundImage="exclamationmark.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="tapBlockButton:" destination="uU4-Kf-FoS" eventType="touchUpInside" id="d8m-UX-mY9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xQS-pD-DTc"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -265,12 +285,12 @@
                             <constraint firstItem="voA-kc-dFZ" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="2uu-Av-taD"/>
                             <constraint firstItem="YRC-AW-vdy" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" constant="16" id="EU6-Tp-7Ar"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="voA-kc-dFZ" secondAttribute="trailing" constant="16" id="EWw-Ju-7Ie"/>
+                            <constraint firstItem="voA-kc-dFZ" firstAttribute="leading" secondItem="3u6-rZ-c7I" secondAttribute="trailing" constant="8" id="GiP-SI-S3x"/>
                             <constraint firstItem="zEv-mD-dAj" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" id="J2k-11-D4d"/>
+                            <constraint firstItem="3u6-rZ-c7I" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="KKB-WJ-ZKZ"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="bottom" secondItem="zEv-mD-dAj" secondAttribute="bottom" id="R9l-3U-wDF"/>
-                            <constraint firstItem="3wb-Vm-BUy" firstAttribute="centerY" secondItem="voA-kc-dFZ" secondAttribute="centerY" id="dfw-HL-vNl"/>
                             <constraint firstItem="xQS-pD-DTc" firstAttribute="trailing" secondItem="zEv-mD-dAj" secondAttribute="trailing" id="f0Q-mI-uoB"/>
                             <constraint firstItem="YRC-AW-vdy" firstAttribute="top" secondItem="xQS-pD-DTc" secondAttribute="top" constant="16" id="l0l-7R-R7c"/>
-                            <constraint firstItem="voA-kc-dFZ" firstAttribute="leading" secondItem="3wb-Vm-BUy" secondAttribute="trailing" constant="10" id="nbp-te-X4h"/>
                             <constraint firstItem="zEv-mD-dAj" firstAttribute="leading" secondItem="xQS-pD-DTc" secondAttribute="leading" id="w5V-1c-ZHM"/>
                         </constraints>
                     </view>
@@ -313,6 +333,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FXC-VZ-GxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912" y="1310"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="CJX-UZ-ozc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="Vmh-Hh-jes" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OWd-jW-GOT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2423" y="-410"/>
         </scene>
         <!--DiscoverMap-->
         <scene sceneID="Qxw-MA-Hjt">
@@ -497,6 +525,7 @@
         <image name="chevron.left.2" catalog="system" width="128" height="105"/>
         <image name="chevron.right.2" catalog="system" width="128" height="105"/>
         <image name="cloud.fill" catalog="system" width="128" height="88"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
         <image name="exclamationmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="110"/>
         <image name="map_big_cloud" width="342" height="149"/>

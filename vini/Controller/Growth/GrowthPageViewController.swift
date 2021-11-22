@@ -28,17 +28,40 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var remindsLabel: UILabel!
+    @IBOutlet weak var remindsLabel: UILabel! {
+        didSet {
+            remindsLabel.text = Tips.randomText()
+        }
+    }
     
     var data: [GrowthCard] = [] {
         
         didSet {
             
+            remindsLabel.text = Tips.randomText()
             remindsLabel.isHidden = !data.isEmpty
         }
     }
     
-    var reflectionHour = 23
+    var isRelectionTime: Bool = false {
+        
+        didSet {
+            
+            if !isRelectionTime,
+               let tabbarController = self.tabBarController as? CustomTabBarController {
+                
+                tabbarController.stopSound()
+            }
+        }
+    }
+    
+    var reflectionHour = 23 {
+        didSet {
+            
+            let currentHour = Calendar.current.component(.hour, from: Date())
+            isRelectionTime = reflectionHour == currentHour
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +71,6 @@ class GrowthPageViewController: UIViewController {
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
         
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,15 +88,13 @@ class GrowthPageViewController: UIViewController {
     
     @IBAction func tapReflectionButton(_ sender: Any) {
     
-        let currentHour = Calendar.current.component(.hour, from: Date())
-
-        if currentHour != reflectionHour {
-            
-            performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
-            
-        } else {
+        if isRelectionTime {
             
             performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)
+
+        } else {
+            
+            performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
         }
         
     }

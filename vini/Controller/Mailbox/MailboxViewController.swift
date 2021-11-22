@@ -12,6 +12,7 @@ class MailboxViewController: UIViewController {
     private enum Segue: String {
         
         case showDetailMail = "ShowDetailMail"
+        case showBlockAlert = "ShowBlockAlert"
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -57,6 +58,18 @@ class MailboxViewController: UIViewController {
             if let index = sender as? Int {
                 
                 destination.mail = mails[index]
+            }
+        }
+        
+        if let alert = segue.destination as? AlertViewController {
+            
+            alert.alertStyle = .danger
+            alert.alertType = .blockUserAlert
+            
+            if let indexPath = sender as? IndexPath {
+                alert.onConfirm = {
+                    self.blockUser(blockUserID: self.mails[indexPath.row].senderID)
+                }
             }
         }
     }
@@ -128,13 +141,35 @@ extension MailboxViewController {
             }
         }
     }
+    
+    func blockUser(blockUserID: String) {
+        
+        VProgressHUD.show()
+        
+        UserManager.shared.blockUser(blockUserID: blockUserID) { result in
+            
+            switch result {
+            case .success:
+                
+                VProgressHUD.dismiss()
+                self.fetchMailsWithoutBlockList()
+                
+            case .failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "封鎖使用者時出了一些問題，請重新再試")
+            }
+        }
+    }
+
 }
 
 extension MailboxViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if mails[indexPath.row].readTimestamp == nil {
+        if mails[indexPath.row].readTimestamp == nil,
+           mails[indexPath.row].senderID != MailManager.shared.welcomeMailSenderID {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
             if currentHour == preferredReflectionTime {
@@ -145,6 +180,21 @@ extension MailboxViewController: UITableViewDelegate {
         } else {
             
             performSegue(withIdentifier: Segue.showDetailMail.rawValue, sender: indexPath.row)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let block = UIAction(
+            title: "封鎖",
+            image: UIImage(systemName: "exclamationmark.bubble.fill"),
+            attributes: [.destructive]) { _ in
+                
+                self.performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: indexPath)
+            }
+        
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            UIMenu(title: "", children: [block])
         }
     }
     
@@ -185,7 +235,7 @@ extension MailboxViewController: UITableViewDataSource {
             
             cell.setupReadAppearance()
             
-        } else {
+        } else if mail.senderID != MailManager.shared.welcomeMailSenderID {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
             if currentHour != preferredReflectionTime {

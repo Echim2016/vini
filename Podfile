@@ -12,6 +12,7 @@ target 'vini' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
+  pod 'Firebase/Crashlytics'
   pod 'Kingfisher'
   pod 'RSKPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
