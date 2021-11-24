@@ -94,7 +94,8 @@ class AchievementViewController: UIViewController {
             controller.headerEmoji = growthCards[sender.tag].emoji
             controller.headerTitle = growthCards[sender.tag].title
             controller.growthCardID = growthCards[sender.tag].id
-            controller.isInArchivedMode = true
+//            controller.isInReviewMode = true
+            controller.state = .review
             
             Haptic.play(".", delay: 0)
             present(navigationController, animated: true, completion: nil)
@@ -221,10 +222,13 @@ extension AchievementViewController: UITableViewDataSource {
             
         case 0:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ArchivedCardCell.identifier, for: indexPath) as? ArchivedCardCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ArchivedCardCell.identifier,
+                for: indexPath) as? ArchivedCardCell
+            else {
                 fatalError()
             }
-        
+            
             cell.setupLayoutForGrowthCards()
             cell.collectionView.delegate = self
             cell.collectionView.dataSource = self

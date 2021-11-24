@@ -156,7 +156,8 @@ class GrowthPageViewController: UIViewController {
                 
             case Segue.createNewGrowthCard.rawValue:
                 
-                growthCaptureVC.isInCreateCardMode = true
+//                growthCaptureVC.isInCreateCardMode = true
+                growthCaptureVC.state = .create
                 
             default:
                 break

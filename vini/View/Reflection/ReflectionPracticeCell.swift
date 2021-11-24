@@ -24,7 +24,6 @@ class ReflectionPracticeCell: UICollectionViewCell {
         question2Label.alpha = 0
         question3Label.alpha = 0
         bottomStraightLine.alpha = 0
-        
     }
     
     func setupCell(quotes: [String]) {
@@ -48,7 +47,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
             delay: 1.5,
             animations: {
                 self.question1Label.alpha = 1
-//                self.delegate?.collectionView.isScrollEnabled = false
+                self.delegate?.collectionView.isScrollEnabled = false
             },
             completion: { _ in
                 self.setupLabel2Animation()

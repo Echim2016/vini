@@ -62,7 +62,7 @@ class ReflectionViewController: UIViewController {
     }
 }
 
-extension ReflectionViewController  {
+extension ReflectionViewController {
     
     func fetchReflectionData() {
         

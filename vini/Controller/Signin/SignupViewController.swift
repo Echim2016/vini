@@ -45,7 +45,7 @@ class SignupViewController: UIViewController {
         setupBackgroundView()
         setupTextView()
         setupNextButton()
-        setupNotifacationButton()
+        setupNotificationButton()
         setupStartButton()
     }
     
@@ -188,7 +188,7 @@ extension SignupViewController {
         ])
     }
     
-    func setupNotifacationButton() {
+    func setupNotificationButton() {
         
         notificationButton.addTarget(self, action: #selector(tapNotificationButton(_:)), for: .touchUpInside)
         

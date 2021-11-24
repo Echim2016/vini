@@ -35,10 +35,42 @@ class GrowthCaptureViewController: UIViewController {
         case create
         case edit
         case browse
-        case archive
+        case toArchive
+        case archiving
+        case archived
+        case review
     }
 
     weak var delegate: GrowthDelegate?
+    
+    var state: State = .browse {
+        
+        didSet {
+            
+            switch state {
+                
+            case .browse:
+                setupFooterAppearance()
+                setupEditAppearance(disable: true)
+                
+            case .toArchive:
+                setupFooterAppearance(archive: true)
+                
+            case .archived:
+                navigateToCongratsPage()
+                
+            case .review:
+                setupEditButton(disable: true)
+                setupEditAppearance(disable: true)
+                
+            case .edit:
+                setupEditAppearance()
+                
+            default:
+                break
+            }
+        }
+    }
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var expandView: UIView!
@@ -93,7 +125,7 @@ class GrowthCaptureViewController: UIViewController {
     var sparkVini: UIImageView = {
        
         let viniImageView = UIImageView()
-        viniImageView.image = UIImage(named: "vini_spark")
+        viniImageView.image = UIImage(assetIdentifier: .spark)
         viniImageView.contentMode = .scaleAspectFit
         
         return viniImageView
@@ -104,7 +136,7 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var editButton: UIButton!
     
-    // MARK: - to be rafactor
+    // MARK: - to be refactor
     
     lazy var headerEmoji: String = ""
     lazy var headerTitle: String = ""
@@ -116,48 +148,13 @@ class GrowthCaptureViewController: UIViewController {
     
     var data: [GrowthContent] = [] {
         didSet {
-            if data.isEmpty && hasArchived {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-
-                    self.navigateToCongratsPage()
-                }
+            if data.isEmpty && state == .archiving {
+                
+                state = .archived
             }
         }
     }
-    
-    // MARK: - to be rafactor
-    var hasArchived: Bool = false {
-        didSet {
-            
-            buttonStackView.alpha = hasArchived ? 0 : 1
-            archiveButton.alpha = hasArchived ? 1 : 0
-            sparkVini.alpha = hasArchived ? 1 : 0
-            archiveIntroLabel.text = hasArchived ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
-        }
-    }
-    
-    var isInCreateCardMode: Bool = false
-    
-    var isInEditMode: Bool = false {
-        didSet {
-            emojiTextField.isEnabled = isInEditMode
-            headerTitleTextView.isEditable = isInEditMode
-            characterLimitLabel.isHidden = !isInEditMode
-            tableView.isScrollEnabled = !isInEditMode
-            
-            let imageName = isInEditMode ? "checkmark.circle.fill" : "pencil.circle.fill"
-            
-            editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
-        }
-    }
-    
-    var isInArchivedMode: Bool = false {
-        didSet {
-            editButton.isEnabled = !isInArchivedMode
-            editButton.isHidden = isInArchivedMode
-        }
-    }
-    //----------------------------------------
+
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -165,7 +162,6 @@ class GrowthCaptureViewController: UIViewController {
         
         tableView.registerCellWithNib(identifier: GrowthContentCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: CreateGrowthContentCell.identifier, bundle: nil)
-        isInEditMode = isInCreateCardMode
         setupFooterview()
     }
     
@@ -174,7 +170,7 @@ class GrowthCaptureViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = true
         
-        if !isInCreateCardMode {
+        if state != .create {
             fetchGrowthContents()
         }
         
@@ -185,12 +181,13 @@ class GrowthCaptureViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if isInCreateCardMode {
+        if state == .create {
             showEditPage()
+            setupEditAppearance()
         }
     }
     
-    // MARK: - to be rafactor
+    // MARK: - to be refactor
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
@@ -270,25 +267,21 @@ class GrowthCaptureViewController: UIViewController {
     }
     // -------------------------------
     
-    
-    
-    
-    // MARK: - to be rafactor
+    // MARK: - to be refactor
     @IBAction func tapBackButton(_ sender: Any) {
         
-        if isInEditMode {
+        switch state {
             
-            if isInCreateCardMode {
-                
-                self.dismiss(animated: true, completion: nil)
-                
-            } else {
-                
-                hideEditPage()
-                headerTitleTextView.text = headerTitle
-            }
+        case .create:
             
-        } else {
+            self.dismiss(animated: true, completion: nil)
+            
+        case .edit:
+            
+            hideEditPage()
+            headerTitleTextView.text = headerTitle
+            
+        default:
             
             self.delegate?.fetchData()
             self.dismiss(animated: true, completion: nil)
@@ -297,17 +290,24 @@ class GrowthCaptureViewController: UIViewController {
     
     @IBAction func tapEditButton(_ sender: Any) {
         
-        if isInCreateCardMode && isInEditMode {
+        switch state {
+            
+        case .create:
             
             createGrowthCard()
             
-        } else if isInEditMode {
+        case .edit:
             
             updateGrowthCard()
-
-        } else {
+            
+        case .browse:
             
             showEditPage()
+            state = .edit
+            
+        default:
+            
+            break
         }
     }
     
@@ -332,6 +332,7 @@ class GrowthCaptureViewController: UIViewController {
         if data.isEmpty {
             
             performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
+            
         } else {
             
             showArchiveButton()
@@ -343,22 +344,17 @@ class GrowthCaptureViewController: UIViewController {
         var workItem: DispatchWorkItem?
                 
         if gesture.state == UIGestureRecognizer.State.began {
-                        
-            hasArchived = true
+                                    
+            state = .archiving
             
-            archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
-            
-            archiveIntroLabel.isHidden = false
-            
-            self.sparkVini.shake()
+            setupArchivingAppearance()
             
             let dataLength = data.count
-            
             for index in 0..<dataLength {
                 
                 workItem = DispatchWorkItem {
                     
-                    if self.hasArchived {
+                    if self.state == .archiving {
                        
                         let indexPath = IndexPath(row: dataLength - index, section: 0)
                         self.data.remove(at: dataLength - 1 - index)
@@ -373,6 +369,7 @@ class GrowthCaptureViewController: UIViewController {
                 }
                 
                 if let workItem = workItem {
+                    
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.9 * Double(index), execute: workItem)
                 }
 
@@ -383,12 +380,49 @@ class GrowthCaptureViewController: UIViewController {
             if data.isEmpty {
                 
                 navigateToCongratsPage()
+                
             } else {
                 
-                hasArchived = false
-                workItem?.cancel()
+                state = .browse
             }
         }
+    }
+}
+
+// MARK: - VC appearance in different state
+extension GrowthCaptureViewController {
+    
+    private func setupEditButton(disable: Bool = false) {
+        
+        editButton.isEnabled = !disable
+        editButton.isHidden = disable
+    }
+    
+    private func setupFooterAppearance(archive: Bool = false) {
+ 
+        buttonStackView.alpha = archive ? 0 : 1
+        archiveButton.alpha = archive ? 1 : 0
+        sparkVini.alpha = archive ? 1 : 0
+        archiveIntroLabel.text = archive ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
+    }
+    
+    private func setupArchivingAppearance() {
+        
+        archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
+        archiveIntroLabel.isHidden = false
+        self.sparkVini.shake()
+    }
+    
+    private func setupEditAppearance(disable: Bool = false) {
+        
+        emojiTextField.isEnabled = !disable
+        headerTitleTextView.isEditable = !disable
+        characterLimitLabel.isHidden = disable
+        tableView.isScrollEnabled = disable
+        
+        let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
+        
+        editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
 }
 
@@ -474,8 +508,7 @@ extension GrowthCaptureViewController {
             
             VProgressHUD.show()
             
-            
-            // MARK: - to be rafactor
+            // MARK: - to be refactor
             var growthCard: GrowthCard = GrowthCard(
                 id: "",
                 userID: userID,
@@ -490,7 +523,7 @@ extension GrowthCaptureViewController {
             )
             // ------------------------------------
             
-            // MARK: - to be rafactor
+            // MARK: - to be refactor
             GrowthCardProvider.shared.addData(growthCard: &growthCard) { result in
                 
                 switch result {
@@ -498,7 +531,6 @@ extension GrowthCaptureViewController {
                     print(message)
                     self.growthCardID = growthCard.id
                     self.headerTitle = growthCard.title
-                    self.isInCreateCardMode = false
                     self.dismiss(animated: true, completion: nil)
                     VProgressHUD.dismiss()
                 case .failure(let error):
@@ -506,7 +538,7 @@ extension GrowthCaptureViewController {
                     VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新再試")
                 }
             }
-            //------------------------------------
+            // ------------------------------------
             
         } else {
             
@@ -562,9 +594,9 @@ extension GrowthCaptureViewController: UITableViewDataSource {
                 for: .touchUpInside
             )
             
-            cell.isHidden = hasArchived
+            cell.isHidden = state == .archiving
             
-            if isInArchivedMode {
+            if state == .review {
                 
                 cell.setupCellForArchivedMode()
             }
@@ -584,7 +616,6 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             
             return cell
         }
-        
     }
 }
 
@@ -592,13 +623,13 @@ extension GrowthCaptureViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        editButton.isHidden = scrollView.contentOffset.y != 0 || isInArchivedMode
+        editButton.isHidden = scrollView.contentOffset.y != 0 || state == .review
     }
 
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         // Disable welcome cell's context menu
-        if indexPath.row == 0 || isInArchivedMode {
+        if indexPath.row == 0 || state == .review {
             
             return nil
             
@@ -711,9 +742,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
 extension GrowthCaptureViewController {
     
     func showEditPage() {
-        
-        isInEditMode = true
-        
+                
         UIView.animate(
             withDuration: 0.6,
             delay: 0,
@@ -727,7 +756,7 @@ extension GrowthCaptureViewController {
     
     func hideEditPage() {
         
-        isInEditMode = false
+        state = .browse
         
         UIView.animate(
             withDuration: 0.6,
@@ -746,7 +775,8 @@ extension GrowthCaptureViewController {
             delay: 0,
             options: [.curveEaseInOut],
             animations: {
-                self.hasArchived = true
+                
+                self.state = .toArchive
             })
     }
     
@@ -755,9 +785,11 @@ extension GrowthCaptureViewController {
         archiveGrowthCard { success in
             
             if success {
-                self.hasArchived = true
-                self.archiveIntroLabel.alpha = 0
-                self.performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+
+                    self.performSegue(withIdentifier: Segue.showCongratsPage.rawValue, sender: nil)
+                }
             }
         }
     }
@@ -767,7 +799,7 @@ extension GrowthCaptureViewController {
         headerTitleTextView.placeholder = "輸入成長項目標題..."
         headerTitleTextView.tintColor = UIColor.B2
         headerTitleTextView.contentInset = UIEdgeInsets(top: 0, left: -4, bottom: 0, right: 0)
-        
+    
         characterLimitLabel.text = "\(headerTitleTextView.text.count) / \(titleCharactersLimit)"
     }
     
@@ -816,8 +848,8 @@ extension GrowthCaptureViewController {
         
         archiveButton.addTarget(self, action: #selector(tapShowArchiveViewButton(_:)), for: .touchUpInside)
         
-        archiveButton.alpha = isInArchivedMode ? 0 : 1
-        archiveButton.isEnabled = !isInArchivedMode
+        archiveButton.alpha = state == .review ? 0 : 1
+        archiveButton.isEnabled = state != .review
         
         sparkVini.alpha = 0
         
