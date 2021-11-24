@@ -12,6 +12,11 @@ import RSKPlaceholderTextView
 import Haptica
 import AVFoundation
 
+protocol GrowthDelegate: AnyObject {
+    
+    func fetchData()
+}
+
 class GrowthCaptureViewController: UIViewController {
     
     private enum Segue: String {
@@ -25,7 +30,15 @@ class GrowthCaptureViewController: UIViewController {
         case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
     }
     
-    weak var growthPageVC: GrowthPageViewController?
+    enum State {
+
+        case create
+        case edit
+        case browse
+        case archive
+    }
+
+    weak var delegate: GrowthDelegate?
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var expandView: UIView!
@@ -91,11 +104,15 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var editButton: UIButton!
     
+    // MARK: - to be rafactor
+    
     lazy var headerEmoji: String = ""
     lazy var headerTitle: String = ""
     lazy var headerEmojiToUpdate: String = ""
     lazy var headerTitleToUpdate: String = ""
     var growthCardID: String = ""
+    
+    // -------------------------------
     
     var data: [GrowthContent] = [] {
         didSet {
@@ -108,6 +125,7 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    // MARK: - to be rafactor
     var hasArchived: Bool = false {
         didSet {
             
@@ -139,7 +157,7 @@ class GrowthCaptureViewController: UIViewController {
             editButton.isHidden = isInArchivedMode
         }
     }
-    
+    //----------------------------------------
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -172,6 +190,7 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
+    // MARK: - to be rafactor
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
@@ -213,7 +232,7 @@ class GrowthCaptureViewController: UIViewController {
         
         if let destinationVC = segue.destination as? CongratsViewController {
             
-            destinationVC.growthPageVC = growthPageVC
+            destinationVC.delegate = delegate
         }
         
         if let alert = segue.destination as? AlertViewController {
@@ -249,7 +268,12 @@ class GrowthCaptureViewController: UIViewController {
             }
         }
     }
+    // -------------------------------
     
+    
+    
+    
+    // MARK: - to be rafactor
     @IBAction func tapBackButton(_ sender: Any) {
         
         if isInEditMode {
@@ -266,7 +290,7 @@ class GrowthCaptureViewController: UIViewController {
             
         } else {
             
-            self.growthPageVC?.fetchGrowthCards()
+            self.delegate?.fetchData()
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -286,6 +310,8 @@ class GrowthCaptureViewController: UIViewController {
             showEditPage()
         }
     }
+    
+    // -----------------------------------------------------------
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
@@ -310,7 +336,6 @@ class GrowthCaptureViewController: UIViewController {
             
             showArchiveButton()
         }
-        
     }
     
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
@@ -342,6 +367,7 @@ class GrowthCaptureViewController: UIViewController {
                         Haptic.play("..oO-Oo..", delay: 0.2)
 
                     } else {
+                        
                         self.fetchGrowthContents()
                     }
                 }
@@ -355,12 +381,13 @@ class GrowthCaptureViewController: UIViewController {
         } else if gesture.state == UIGestureRecognizer.State.ended {
             
             if data.isEmpty {
+                
                 navigateToCongratsPage()
             } else {
+                
                 hasArchived = false
                 workItem?.cancel()
             }
-            
         }
     }
 }
@@ -447,6 +474,8 @@ extension GrowthCaptureViewController {
             
             VProgressHUD.show()
             
+            
+            // MARK: - to be rafactor
             var growthCard: GrowthCard = GrowthCard(
                 id: "",
                 userID: userID,
@@ -459,7 +488,9 @@ extension GrowthCaptureViewController {
                 conclusion: nil,
                 createdTime: nil
             )
+            // ------------------------------------
             
+            // MARK: - to be rafactor
             GrowthCardProvider.shared.addData(growthCard: &growthCard) { result in
                 
                 switch result {
@@ -475,6 +506,7 @@ extension GrowthCaptureViewController {
                     VProgressHUD.showFailure(text: "創建成長項目時出了一些問題，請重新再試")
                 }
             }
+            //------------------------------------
             
         } else {
             
@@ -517,11 +549,18 @@ extension GrowthCaptureViewController: UITableViewDataSource {
         
         if indexPath.row == 0 {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateGrowthContentCell.identifier, for: indexPath) as? CreateGrowthContentCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CreateGrowthContentCell.identifier,
+                for: indexPath) as? CreateGrowthContentCell
+            else {
                 fatalError()
             }
             
-            cell.createGrowthContentCardButton.addTarget(self, action: #selector(tapCreateGrowthContentCardButton(_:)), for: .touchUpInside)
+            cell.createGrowthContentCardButton.addTarget(
+                self,
+                action: #selector(tapCreateGrowthContentCardButton(_:)),
+                for: .touchUpInside
+            )
             
             cell.isHidden = hasArchived
             
@@ -534,7 +573,10 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             
         } else {
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: GrowthContentCell.identifier, for: indexPath) as? GrowthContentCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: GrowthContentCell.identifier,
+                for: indexPath) as? GrowthContentCell
+            else {
                 fatalError()
             }
             
@@ -576,8 +618,10 @@ extension GrowthCaptureViewController: UITableViewDelegate {
                 image: UIImage(systemName: "trash.fill"),
                 attributes: [.destructive]) { _ in
                     
-                    self.performSegue(withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue, sender: indexPath)
-                    
+                    self.performSegue(
+                        withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue,
+                        sender: indexPath
+                    )
                 }
             
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
@@ -620,7 +664,6 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
         default:
             break
         }
-        
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

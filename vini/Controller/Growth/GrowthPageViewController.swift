@@ -141,7 +141,7 @@ class GrowthPageViewController: UIViewController {
         if let navigationController = segue.destination as? UINavigationController,
            let growthCaptureVC = navigationController.topViewController as? GrowthCaptureViewController {
             
-            growthCaptureVC.growthPageVC = self
+            growthCaptureVC.delegate = self
             
             switch segue.identifier {
                 
@@ -175,6 +175,13 @@ extension GrowthPageViewController {
         self.navigationItem.titleView = imageView
     }
     
+}
+
+extension GrowthPageViewController: GrowthDelegate {
+    
+    func fetchData() {
+        fetchGrowthCards()
+    }
 }
 
 extension GrowthPageViewController {
@@ -292,7 +299,7 @@ extension GrowthPageViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "ShowGrowthCapture", sender: indexPath.row)
+        performSegue(withIdentifier: Segue.showGrowthCapture.rawValue, sender: indexPath.row)
         Haptic.play(".", delay: 0.1)
     }
     

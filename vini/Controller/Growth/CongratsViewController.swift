@@ -11,7 +11,7 @@ import AVFoundation
 
 class CongratsViewController: UIViewController {
 
-    weak var growthPageVC: GrowthPageViewController?
+    weak var delegate: GrowthDelegate?
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewHeight: NSLayoutConstraint!
@@ -43,7 +43,7 @@ class CongratsViewController: UIViewController {
     @IBAction func tapBackButton(_ sender: Any) {
      
         Haptic.play("o", delay: 0)
-        growthPageVC?.fetchGrowthCards()
+        delegate?.fetchData()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
