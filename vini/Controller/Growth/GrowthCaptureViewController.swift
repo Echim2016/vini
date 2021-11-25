@@ -122,7 +122,7 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var footerView: UIView!
     @IBOutlet weak var editButton: UIButton!
     
-    var growthCard: GrowthCard = GrowthCard()
+    var growthCard = GrowthCard()
     var headerEmojiToUpdate: String = ""
     var headerTitleToUpdate: String = ""
     
@@ -175,14 +175,11 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
     
-    // MARK: - to be refactor
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
 
-//            destinationVC.growthCaptureVC = self
             destinationVC.delegate = self
-//            destinationVC.contentIntroText = growthCard.title
             destinationVC.growthCard = growthCard
 
             switch segue.identifier {
@@ -190,18 +187,13 @@ class GrowthCaptureViewController: UIViewController {
             case Segue.createContentCard.rawValue:
                 
                 destinationVC.currentStatus = .create
-//                destinationVC.growthCardID = growthCard.id
                 
             case Segue.editContentCard.rawValue:
                 
                 if let index = sender as? Int {
                     
                     destinationVC.currentStatus = .edit
-//                    destinationVC.titleToAdd = data[index].title
-//                    destinationVC.contentToAdd = data[index].content
-//                    destinationVC.imageURL = data[index].image
                     destinationVC.contentCard = data[index]
-//                    destinationVC.contentCardID = data[index].id
                 }
 
             default:
@@ -244,7 +236,6 @@ class GrowthCaptureViewController: UIViewController {
             }
         }
     }
-    // -------------------------------
     
     @IBAction func tapBackButton(_ sender: Any) {
         
@@ -369,9 +360,7 @@ extension GrowthCaptureViewController {
         headerTitleTextView.isEditable = !disable
         characterLimitLabel.isHidden = disable
         tableView.isScrollEnabled = disable
-        
         let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
-        
         editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
 }
@@ -383,7 +372,6 @@ extension GrowthCaptureViewController: GrowthDelegate {
         
         fetchGrowthContents()
     }
-    
     
     func fetchGrowthContents() {
         
@@ -847,4 +835,3 @@ extension GrowthCaptureViewController {
         }
     }
 }
-

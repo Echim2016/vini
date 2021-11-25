@@ -16,12 +16,18 @@ extension UIView {
         let bounds: CGRect = targetView!.bounds
         
         // Top side curve
-        let rectBounds: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y+bounds.size.height / 2, width: bounds.size.width, height: bounds.size.height / 2)
+        let rectBounds: CGRect = CGRect(x: bounds.origin.x,
+                                        y: bounds.origin.y+bounds.size.height / 2,
+                                        width: bounds.size.width,
+                                        height: bounds.size.height / 2)
         
         let rectPath: UIBezierPath = UIBezierPath(rect: rectBounds)
         
         // Top side curve
-        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y, width: bounds.size.width + offset, height: bounds.size.height)
+        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2,
+                                        y: bounds.origin.y,
+                                        width: bounds.size.width + offset,
+                                        height: bounds.size.height)
         
         let ovalPath: UIBezierPath = UIBezierPath(ovalIn: ovalBounds)
         rectPath.append(ovalPath)
@@ -38,11 +44,17 @@ extension UIView {
     func setTopCurve() {
         let offset = CGFloat(self.frame.size.height / 2)
         let bounds = self.bounds
-        let rectBounds = CGRect(x: bounds.origin.x, y: bounds.origin.y + bounds.size.height / 2, width: bounds.size.width * 1.1, height: bounds.size.height / 2)
+        let rectBounds = CGRect(x: bounds.origin.x,
+                                y: bounds.origin.y + bounds.size.height / 2,
+                                width: bounds.size.width * 1.1,
+                                height: bounds.size.height / 2)
         
         let rectPath = UIBezierPath(rect: rectBounds)
         
-        let ovalBounds = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y + offset * 0.2, width: bounds.size.width + offset, height: bounds.size.height * 0.6)
+        let ovalBounds = CGRect(x: bounds.origin.x - offset / 2,
+                                y: bounds.origin.y + offset * 0.2,
+                                width: bounds.size.width + offset,
+                                height: bounds.size.height * 0.6)
         let ovalPath = UIBezierPath(ovalIn: ovalBounds)
         rectPath.append(ovalPath)
         
@@ -58,12 +70,18 @@ extension UIView {
         let bounds: CGRect = targetView!.bounds
         
         // Bottom side curve
-        let rectBounds: CGRect = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.size.width, height: bounds.size.height / 2)
+        let rectBounds: CGRect = CGRect(x: bounds.origin.x,
+                                        y: bounds.origin.y,
+                                        width: bounds.size.width,
+                                        height: bounds.size.height / 2)
         
         let rectPath: UIBezierPath = UIBezierPath(rect: rectBounds)
         
         // Bottom side curve
-        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y, width: bounds.size.width + offset, height: bounds.size.height)
+        let ovalBounds: CGRect = CGRect(x: bounds.origin.x - offset / 2,
+                                        y: bounds.origin.y,
+                                        width: bounds.size.width + offset,
+                                        height: bounds.size.height)
         
         let ovalPath: UIBezierPath = UIBezierPath(ovalIn: ovalBounds)
         rectPath.append(ovalPath)
@@ -82,9 +100,15 @@ extension UIView {
         let offset = CGFloat(self.frame.size.height / 3)
         let bounds = self.bounds
         
-        let rectBounds = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.size.width * 1.1, height: bounds.size.height / 2)
+        let rectBounds = CGRect(x: bounds.origin.x,
+                                y: bounds.origin.y,
+                                width: bounds.size.width * 1.1,
+                                height: bounds.size.height / 2)
         let rectPath = UIBezierPath(rect: rectBounds)
-        let ovalBounds = CGRect(x: bounds.origin.x - offset / 2, y: bounds.origin.y, width: bounds.size.width + offset, height: bounds.size.height)
+        let ovalBounds = CGRect(x: bounds.origin.x - offset / 2,
+                                y: bounds.origin.y,
+                                width: bounds.size.width + offset,
+                                height: bounds.size.height)
         
         let ovalPath = UIBezierPath(ovalIn: ovalBounds)
         rectPath.append(ovalPath)
@@ -159,5 +183,4 @@ extension UIView {
         self.layer.cornerRadius = self.frame.height / 2
         self.layoutIfNeeded()
     }
-    
 }

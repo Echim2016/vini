@@ -17,7 +17,6 @@ class GrowthPageViewController: UIViewController {
         case showReflectionAlert = "ShowReflectionAlert"
         case showReflectionPage = "ShowReflectionPage"
         case showDeletionAlert = "ShowDeletionAlert"
-
     }
 
     @IBOutlet weak var tableView: UITableView! {
@@ -212,8 +211,8 @@ extension GrowthPageViewController {
         GrowthCardProvider.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
-            case .success(_):
-                
+            case .success(let success):
+                print(success)
                 VProgressHUD.dismiss()
                 completion(true)
                 
@@ -301,7 +300,9 @@ extension GrowthPageViewController: UITableViewDelegate {
         Haptic.play(".", delay: 0.1)
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
         let delete = UIAction(
             title: "刪除",

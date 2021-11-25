@@ -17,7 +17,7 @@ class DiscoverUserManager {
     
     func fetchData(category: String, blockList: [String], completion: @escaping (Result<[ViniView], Error>) -> Void) {
         
-        db.collection("Users").whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments() { (querySnapshot, error) in
+        db.collection("Users").whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 

@@ -128,7 +128,6 @@
 		9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */; };
 		9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */; };
 		9CEE9DB0272B9EEA006CCA06 /* MailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */; };
-		9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */; };
 		9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */; };
 		9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DBA272BD5F1006CCA06 /* Mail.swift */; };
 		9CEE9DBD272BED67006CCA06 /* SendMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DBC272BED67006CCA06 /* SendMailViewController.swift */; };
@@ -263,7 +262,6 @@
 		9CEE9DAA272B9B2B006CCA06 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		9CEE9DAD272B9EEA006CCA06 /* MailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
 		9CEE9DAE272B9EEA006CCA06 /* MailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MailCell.xib; sourceTree = "<group>"; };
-		9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "82892-wave.json"; sourceTree = "<group>"; };
 		9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailManager.swift; sourceTree = "<group>"; };
 		9CEE9DBA272BD5F1006CCA06 /* Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
 		9CEE9DBC272BED67006CCA06 /* SendMailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMailViewController.swift; sourceTree = "<group>"; };
@@ -685,7 +683,6 @@
 		9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */ = {
 			isa = PBXGroup;
 			children = (
-				9CEE9DB2272BC3E1006CCA06 /* 82892-wave.json */,
 			);
 			path = "Lottie Animation";
 			sourceTree = "<group>";
@@ -815,7 +812,6 @@
 				9C9E93B22730D36500FA3773 /* ArchivedCardCollectionViewCell.xib in Resources */,
 				9C697F2D27391D0800EDBBCB /* DiscoverMap.storyboard in Resources */,
 				9C178068273AA38000097E3C /* BlockUserCell.xib in Resources */,
-				9CEE9DB3272BC3E1006CCA06 /* 82892-wave.json in Resources */,
 				9C021D40272D3F1B009A7581 /* MailTitleCell.xib in Resources */,
 				9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */,
 				9C2EE79E2747B45400854527 /* sign-in-whoosh-1.mp3 in Resources */,

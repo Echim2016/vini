@@ -42,7 +42,6 @@ class DiscoverViewController: UIViewController {
         }
     }
     @IBOutlet weak var blockButton: UIButton!
-    
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
     
@@ -288,7 +287,6 @@ extension DiscoverViewController {
             
             self.user = user
         }
-        
     }
 }
 
@@ -317,7 +315,6 @@ extension DiscoverViewController {
                 }
             }
         }
-        
     }
     
     func fetchUserInfo(blockList: [String]) {
@@ -365,8 +362,6 @@ extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         
-//        print("start")
-//        infoOfUsers.forEach { print($0.data.name) }
         return infoOfUsers
     }
 }
@@ -454,9 +449,7 @@ extension DiscoverViewController {
                 self.backgroundRectView.transform = scaleTransform
                 self.view.bringSubviewToFront(self.mapButton)
             },
-            completion: { _ in
-                
-            })
+            completion: nil)
     }
     
     func showInitialIndicatorAnimation() {

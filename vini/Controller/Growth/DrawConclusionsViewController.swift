@@ -43,13 +43,9 @@ class DrawConclusionsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupTextView()
-        
         setupNavBarBackButton(tintColor: .B2)
-        
         setupSaveButton()
-        
         setupNavigationController(title: "我的學習結論", titleColor: .B2)
-            
         fetchConclusion()
     }
     

@@ -25,6 +25,4 @@ class MailContentCell: UITableViewCell {
         
         contentTextView.text = content
     }
- 
-    
 }

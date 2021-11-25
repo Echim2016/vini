@@ -169,7 +169,8 @@ extension BlockListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BlockUserCell.identifier, for: indexPath) as? BlockUserCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BlockUserCell.identifier,
+                                                       for: indexPath) as? BlockUserCell else {
             fatalError()
         }
         

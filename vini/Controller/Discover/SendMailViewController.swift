@@ -127,7 +127,7 @@ extension SendMailViewController {
             
             mailToSend.displayWondering = receipient.data.wondering
             mailToSend.senderViniType = receipient.data.viniType
-            mailToSend.receipientID = receipient.data.id
+            mailToSend.recipientID = receipient.data.id
             mailToSend.senderID = senderID
             mailToSend.senderDisplayName = user?.displayName ?? "Vini"
             

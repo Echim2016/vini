@@ -15,12 +15,12 @@ class InsightManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchInsights(completion: @escaping (Result<[InsightTitle : String], Error>) -> Void) {
+    func fetchInsights(completion: @escaping (Result<[InsightTitle: String], Error>) -> Void) {
         
         if let userID = UserManager.shared.userID {
             
             let group = DispatchGroup()
-            var insightDict: [InsightTitle : String] = [:]
+            var insightDict: [InsightTitle: String] = [:]
             
             group.enter()
             fetchNumberOfGrowthContentCards(userID: userID) { result in
@@ -79,7 +79,6 @@ class InsightManager {
                 completion(.success(insightDict))
             }
         }
-        
         
     }
     

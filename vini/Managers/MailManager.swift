@@ -54,7 +54,7 @@ class MailManager {
     
     func sendMails(mail: inout Mail, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Mailboxes").document(mail.receipientID).collection("Mails").document()
+        let document = db.collection("Mailboxes").document(mail.recipientID).collection("Mails").document()
         mail.id = document.documentID
         mail.sentTime = Timestamp(date: Date())
         
@@ -87,7 +87,7 @@ class MailManager {
             
             let document = db.collection("Mailboxes").document(id).collection("Mails").document()
             welcomeMail.id = document.documentID
-            welcomeMail.receipientID = id
+            welcomeMail.recipientID = id
             welcomeMail.sentTime = Timestamp(date: Date())
             
             do {

@@ -129,7 +129,7 @@ extension MailboxViewController {
     
     func getReflectionTime() {
         
-        MailManager.shared.getReflectionTime() { result in
+        MailManager.shared.getReflectionTime { result in
             switch result {
             case .success(let startTime):
                 
@@ -183,7 +183,9 @@ extension MailboxViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
         let block = UIAction(
             title: "封鎖",

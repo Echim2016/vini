@@ -96,7 +96,7 @@ class GrowthCardProvider {
         
         let document = db.collection("Growth_Cards").document(id)
         
-        document.getDocument{ (document, error) in
+        document.getDocument { (document, error) in
             
             if let document = document, document.exists {
                 
@@ -193,7 +193,7 @@ class GrowthCardProvider {
         let updateDict = [
             "is_archived": true,
             "archived_time": Timestamp(date: Date())
-        ] as [String : Any]
+        ] as [String: Any]
         
         document.updateData(updateDict) { error in
             
@@ -213,7 +213,7 @@ class GrowthCardProvider {
         
         let updateDict = [
             "is_archived": false
-        ] as [String : Any]
+        ] as [String: Any]
         
         document.updateData(updateDict) { error in
             
