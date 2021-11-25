@@ -91,10 +91,7 @@ class AchievementViewController: UIViewController {
         if let navigationController = storyboard.instantiateViewController(withIdentifier: StoryboardCategory.growthCapture.rawValue) as? UINavigationController,
            let controller = navigationController.topViewController as? GrowthCaptureViewController {
             
-            controller.headerEmoji = growthCards[sender.tag].emoji
-            controller.headerTitle = growthCards[sender.tag].title
-            controller.growthCardID = growthCards[sender.tag].id
-//            controller.isInReviewMode = true
+            controller.growthCard = growthCards[sender.tag]
             controller.state = .review
             
             Haptic.play(".", delay: 0)

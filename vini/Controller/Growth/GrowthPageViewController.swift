@@ -43,11 +43,11 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    var isRelectionTime: Bool = false {
+    var isReflectionTime: Bool = false {
         
         didSet {
             
-            if !isRelectionTime,
+            if !isReflectionTime,
                let tabbarController = self.tabBarController as? CustomTabBarController {
                 
                 tabbarController.stopSound()
@@ -59,7 +59,7 @@ class GrowthPageViewController: UIViewController {
         didSet {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
-            isRelectionTime = reflectionHour == currentHour
+            isReflectionTime = reflectionHour == currentHour
         }
     }
         
@@ -88,7 +88,7 @@ class GrowthPageViewController: UIViewController {
     
     @IBAction func tapReflectionButton(_ sender: Any) {
     
-        if isRelectionTime {
+        if isReflectionTime {
             
             performSegue(withIdentifier: Segue.showReflectionPage.rawValue, sender: nil)
 
@@ -149,14 +149,11 @@ class GrowthPageViewController: UIViewController {
                 
                 if let index = sender as? Int {
                     
-                    growthCaptureVC.headerEmoji = data[index].emoji
-                    growthCaptureVC.headerTitle = data[index].title
-                    growthCaptureVC.growthCardID = data[index].id
+                    growthCaptureVC.growthCard = data[index]
                 }
                 
             case Segue.createNewGrowthCard.rawValue:
                 
-//                growthCaptureVC.isInCreateCardMode = true
                 growthCaptureVC.state = .create
                 
             default:
@@ -166,7 +163,7 @@ class GrowthPageViewController: UIViewController {
     }
 }
 
-// MARK: - View-releated Setup -
+// MARK: - View-related Setup -
 extension GrowthPageViewController {
     
     func setupNavigationController() {
