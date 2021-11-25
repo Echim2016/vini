@@ -70,7 +70,6 @@
 		9C697F3027391F3200EDBBCB /* CloudCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F2E27391F3200EDBBCB /* CloudCategoryCell.swift */; };
 		9C697F3127391F3200EDBBCB /* CloudCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F2F27391F3200EDBBCB /* CloudCategoryCell.xib */; };
 		9C697F33273938D100EDBBCB /* CloudCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F32273938D100EDBBCB /* CloudCategory.swift */; };
-		9C697F35273A22BA00EDBBCB /* CaseIterable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */; };
 		9C697F38273A643900EDBBCB /* SetCloudCategoryTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F36273A643900EDBBCB /* SetCloudCategoryTitleCell.swift */; };
 		9C697F39273A643900EDBBCB /* SetCloudCategoryTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C697F37273A643900EDBBCB /* SetCloudCategoryTitleCell.xib */; };
 		9C697F3C273A67DB00EDBBCB /* SetCloudCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C697F3A273A67DB00EDBBCB /* SetCloudCategoryCell.swift */; };
@@ -108,6 +107,8 @@
 		9CA98BA427475C3700A027ED /* congrats.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BA327475C3700A027ED /* congrats.wav */; };
 		9CA98BAF2747856F00A027ED /* reflection.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BAE2747856F00A027ED /* reflection.mp3 */; };
 		9CA98BB52747925000A027ED /* tap-archive-button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BB42747925000A027ED /* tap-archive-button.wav */; };
+		9CAB44FD274F6FB900B9E926 /* ReflectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB44FC274F6FB900B9E926 /* ReflectionPage.swift */; };
+		9CAB44FF274F75BD00B9E926 /* FirestoreIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB44FE274F75BD00B9E926 /* FirestoreIdentifier.swift */; };
 		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
@@ -201,7 +202,6 @@
 		9C697F2E27391F3200EDBBCB /* CloudCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudCategoryCell.swift; sourceTree = "<group>"; };
 		9C697F2F27391F3200EDBBCB /* CloudCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CloudCategoryCell.xib; sourceTree = "<group>"; };
 		9C697F32273938D100EDBBCB /* CloudCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CloudCategory.swift; path = vini/View/Discover/CloudCategory.swift; sourceTree = SOURCE_ROOT; };
-		9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaseIterable+Extension.swift"; sourceTree = "<group>"; };
 		9C697F36273A643900EDBBCB /* SetCloudCategoryTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCloudCategoryTitleCell.swift; sourceTree = "<group>"; };
 		9C697F37273A643900EDBBCB /* SetCloudCategoryTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetCloudCategoryTitleCell.xib; sourceTree = "<group>"; };
 		9C697F3A273A67DB00EDBBCB /* SetCloudCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCloudCategoryCell.swift; sourceTree = "<group>"; };
@@ -240,6 +240,8 @@
 		9CA98BA327475C3700A027ED /* congrats.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = congrats.wav; sourceTree = "<group>"; };
 		9CA98BAE2747856F00A027ED /* reflection.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reflection.mp3; sourceTree = "<group>"; };
 		9CA98BB42747925000A027ED /* tap-archive-button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "tap-archive-button.wav"; sourceTree = "<group>"; };
+		9CAB44FC274F6FB900B9E926 /* ReflectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionPage.swift; sourceTree = "<group>"; };
+		9CAB44FE274F75BD00B9E926 /* FirestoreIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifier.swift; sourceTree = "<group>"; };
 		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -495,6 +497,14 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
+		9CAB44FB274F6FA500B9E926 /* Reflection */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB44FC274F6FB900B9E926 /* ReflectionPage.swift */,
+			);
+			path = Reflection;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +579,7 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9CAB44FB274F6FA500B9E926 /* Reflection */,
 				9C697F252737DB0000EDBBCB /* Alert */,
 				9C9E93B52730D9CD00FA3773 /* Achievement */,
 				9C021D55272E4579009A7581 /* Settings */,
@@ -577,6 +588,7 @@
 				9CEAC5162728FCB100C98B96 /* Growth */,
 				9CEE9DA0272A8F9E006CCA06 /* User.swift */,
 				9C957869273BDE770056F757 /* TabBarItem.swift */,
+				9CAB44FE274F75BD00B9E926 /* FirestoreIdentifier.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -595,7 +607,6 @@
 				9C840CB727323B4200AF3F73 /* Date+Extension.swift */,
 				9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */,
 				9C021D47272D469A009A7581 /* Timestamp+Extension.swift */,
-				9C697F34273A22BA00EDBBCB /* CaseIterable+Extension.swift */,
 				9C208077273BB51B00F6614F /* Array+Extension.swift */,
 			);
 			path = Extension;
@@ -902,6 +913,7 @@
 				9C95786A273BDE770056F757 /* TabBarItem.swift in Sources */,
 				9C5FC92A271D4FFE00DE4E42 /* GrowthCardProvider.swift in Sources */,
 				9C021D3F272D3F1B009A7581 /* MailTitleCell.swift in Sources */,
+				9CAB44FF274F75BD00B9E926 /* FirestoreIdentifier.swift in Sources */,
 				9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */,
 				9C697F242737D4C200EDBBCB /* AlertViewController.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
@@ -936,7 +948,6 @@
 				9C840CAD2730E9C900AF3F73 /* InsightCollectionViewCell.swift in Sources */,
 				9C6C3D952733A85A00F45247 /* SigninViewController.swift in Sources */,
 				9C1A6134271E9B780013D63A /* GrowthContentCell.swift in Sources */,
-				9C697F35273A22BA00EDBBCB /* CaseIterable+Extension.swift in Sources */,
 				9C021D43272D4189009A7581 /* MailContentCell.swift in Sources */,
 				9CEE9DB9272BD5A2006CCA06 /* MailManager.swift in Sources */,
 				9C021D4C272D96DA009A7581 /* SettingsViewController.swift in Sources */,
@@ -959,6 +970,7 @@
 				9C5FC92E271D553400DE4E42 /* GrowthContent.swift in Sources */,
 				9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */,
 				9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */,
+				9CAB44FD274F6FB900B9E926 /* ReflectionPage.swift in Sources */,
 				9C9E93B42730D49400FA3773 /* UICollectionView+Extension.swift in Sources */,
 				9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,

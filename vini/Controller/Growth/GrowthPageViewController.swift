@@ -171,7 +171,6 @@ extension GrowthPageViewController {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
-    
 }
 
 extension GrowthPageViewController: GrowthDelegate {

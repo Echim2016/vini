@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 enum AchievementSection: Int, CaseIterable {
     
     case archivedCards = 0
@@ -25,5 +24,4 @@ enum AchievementSection: Int, CaseIterable {
             return "洞察數據"
         }
     }
-    
 }

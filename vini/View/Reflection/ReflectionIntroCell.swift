@@ -73,5 +73,4 @@ class ReflectionIntroCell: UICollectionViewCell {
         
         delegate?.didTapDismissButton(self)
     }
-
 }

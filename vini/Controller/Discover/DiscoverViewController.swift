@@ -82,7 +82,7 @@ class DiscoverViewController: UIViewController {
         fetchUserInfoWithoutBlockList()
         Haptic.play("...o-o...", delay: 0.3)
         showBackgroundViewScaleUpAnimation()
-        self.showInitialIndicatorAnimation()
+        showInitialIndicatorAnimation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -192,9 +192,7 @@ class DiscoverViewController: UIViewController {
                 self.blockUser()
             }
         }
-
     }
-    
 }
 
 extension DiscoverViewController {
@@ -202,13 +200,11 @@ extension DiscoverViewController {
     func setupMapScrollView() {
         
         mapView.dataSource = self
-        
         mapView.delegate = self
                 
         self.view.addSubview(mapView)
                 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
-
         self.mapView.addGestureRecognizer(tapGesture)
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -311,7 +307,6 @@ extension DiscoverViewController {
                 case.failure(let error):
                     
                     print(error)
-                    
                 }
             }
         }
@@ -427,8 +422,7 @@ extension DiscoverViewController {
                 self.backgroundRectView.transform = .identity
                 
             },
-            completion: nil
-        )
+            completion: nil)
     }
     
     func showBackgroundViewScaleUpAnimation() {
@@ -478,7 +472,6 @@ extension DiscoverViewController {
                 self.hideIndicatorAnimation(indicator: self.rightIndicatorArrow)
             }
         )
-        
     }
     
     func showIndicatorAnimation(indicator: UIView) {
@@ -505,8 +498,8 @@ extension DiscoverViewController {
             delay: 0.5,
             options: .curveEaseIn,
             animations: {
-                indicator.alpha = 0
                 
+                indicator.alpha = 0
             },
             completion: { _ in
                 

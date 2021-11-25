@@ -37,7 +37,7 @@ class AchievementViewController: UIViewController {
     
     var insightTitles = InsightTitle.allCases
     
-    var insightDict: [InsightTitle : String] = [:]
+    var insightDict: [InsightTitle: String] = [:]
     
     var growthCards: [GrowthCard] = [] {
         didSet {
@@ -151,6 +151,7 @@ extension AchievementViewController {
             switch result {
             case .success(let success):
                 
+                print(success)
                 self.fetchGrowthCards()
                 VProgressHUD.showSuccess()
                 
@@ -256,7 +257,9 @@ extension AchievementViewController: UITableViewDataSource {
 // MARK: - Collection View -
 extension AchievementViewController: UICollectionViewDelegate {
    
-    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func collectionView(_ collectionView: UICollectionView,
+                        contextMenuConfigurationForItemAt indexPath: IndexPath,
+                        point: CGPoint) -> UIContextMenuConfiguration? {
         
         switch collectionView {
             

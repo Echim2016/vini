@@ -13,7 +13,7 @@ class UserManager {
     
     static let shared = UserManager()
     
-    lazy var db = Firestore.firestore()
+    var db = Firestore.firestore()
     
     let userID = Auth.auth().currentUser?.uid
     
@@ -21,7 +21,7 @@ class UserManager {
     
     func createNewUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Users").document(user.id)
+        let document = db.collection(FSCollection.users.rawValue).document(user.id)
         user.createdTime = Timestamp(date: Date())
         
         do {
@@ -59,7 +59,7 @@ class UserManager {
         
         if let userID = self.userID {
             
-            let document = db.collection("Mailboxes").document(userID)
+            let document = db.collection(FSCollection.mailboxes.rawValue).document(userID)
   
             document.setData(["created_time": Timestamp(date: Date())]) { error in
                 
@@ -88,7 +88,7 @@ class UserManager {
     
     func updateReflectionTime(userID: String, name: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        let document = db.collection("Users").document(userID)
+        let document = db.collection(FSCollection.users.rawValue).document(userID)
         
         let updateDict = [
             "display_name": name
@@ -108,7 +108,7 @@ class UserManager {
     
     func fetchUser(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
         
-        db.collection("Users").document(userID).getDocument { (document, error) in
+        db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, error) in
             
             if let error = error {
                 
@@ -143,7 +143,7 @@ class UserManager {
         
         if let userID = self.userID {
             
-            let document = db.collection("Users").document(userID)
+            let document = db.collection(FSCollection.users.rawValue).document(userID)
             
             let updateDict = [
                 "block_list": FieldValue.arrayUnion([blockUserID])
@@ -167,7 +167,7 @@ class UserManager {
         
         if let userID = userID {
             
-            let document = db.collection("Users").document(userID)
+            let document = db.collection(FSCollection.users.rawValue).document(userID)
             
             let updateDict = [
                 "block_list": FieldValue.arrayRemove([blockUserID])
@@ -184,8 +184,6 @@ class UserManager {
                     completion(.success(true))
                 }
             }
-        }
-        
+        }   
     }
-    
 }

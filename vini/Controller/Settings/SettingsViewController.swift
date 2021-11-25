@@ -13,11 +13,8 @@ class SettingsViewController: UIViewController {
     private enum Segue: String {
         
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
-        
         case showLogOutAlert = "ShowLogOutAlert"
-        
         case showBlockList = "ShowBlockList"
-        
         case showPrivacyPage = "ShowPrivacyPage"
     }
 
@@ -57,11 +54,11 @@ class SettingsViewController: UIViewController {
             
         case Segue.showLogOutAlert.rawValue:
             
-            if let vc = segue.destination as? AlertViewController {
+            if let alert = segue.destination as? AlertViewController {
                 
-                vc.alertType = .logOutAlert
+                alert.alertType = .logOutAlert
                 
-                vc.onConfirm = {
+                alert.onConfirm = {
                     
                     let firebaseAuth = Auth.auth()
             
@@ -167,7 +164,10 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsItemCell.identifier, for: indexPath) as? SettingsItemCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsItemCell.identifier,
+            for: indexPath) as? SettingsItemCell
+        else {
             fatalError()
         }
         

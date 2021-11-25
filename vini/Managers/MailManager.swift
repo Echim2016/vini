@@ -34,8 +34,7 @@ class MailManager {
                         
                         do {
                             if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                                
-                                
+                               
                                 if !blockList.contains(mail.senderID) {
                                     
                                     mails.append(mail)

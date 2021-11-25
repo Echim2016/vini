@@ -30,13 +30,11 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         var displayQuotes = quotes
         displayQuotes.shuffle()
-        
+
         question1Label.text = displayQuotes[0]
         question2Label.text = displayQuotes[1]
         question3Label.text = displayQuotes[2]
-        
         cloudImageView.float(duration: 1.7)
-        
         setupLabel1Animation()
     }
     
@@ -47,7 +45,6 @@ class ReflectionPracticeCell: UICollectionViewCell {
             delay: 1.5,
             animations: {
                 self.question1Label.alpha = 1
-                self.delegate?.collectionView.isScrollEnabled = false
             },
             completion: { _ in
                 self.setupLabel2Animation()
@@ -99,5 +96,4 @@ class ReflectionPracticeCell: UICollectionViewCell {
             }
         )
     }
-
 }
