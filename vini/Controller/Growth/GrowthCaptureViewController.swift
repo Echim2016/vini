@@ -33,7 +33,7 @@ class GrowthCaptureViewController: UIViewController {
     weak var delegate: GrowthDelegate?
     
     var growthCardManager: GrowthCardProvider = .shared
-    var contentCardManager: GrowthContentProvider = .shared
+    var contentCardManager: GrowthContentManager = .shared
     
     var state: GrowthCaptureState = .browse {
         
@@ -180,28 +180,28 @@ class GrowthCaptureViewController: UIViewController {
     
         if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
 
-            destinationVC.growthCaptureVC = self
-            destinationVC.contentIntroText = growthCard.title
+//            destinationVC.growthCaptureVC = self
+            destinationVC.delegate = self
+//            destinationVC.contentIntroText = growthCard.title
+            destinationVC.growthCard = growthCard
 
             switch segue.identifier {
-
+                
             case Segue.createContentCard.rawValue:
                 
-                if let growthCardID = sender as? String {
-                    
-                    destinationVC.currentStatus = .create
-                    destinationVC.growthCardID = growthCardID
-                }
-
+                destinationVC.currentStatus = .create
+//                destinationVC.growthCardID = growthCard.id
+                
             case Segue.editContentCard.rawValue:
                 
                 if let index = sender as? Int {
                     
                     destinationVC.currentStatus = .edit
-                    destinationVC.titleToAdd = data[index].title
-                    destinationVC.contentToAdd = data[index].content
-                    destinationVC.imageURL = data[index].image
-                    destinationVC.contentCardID = data[index].id
+//                    destinationVC.titleToAdd = data[index].title
+//                    destinationVC.contentToAdd = data[index].content
+//                    destinationVC.imageURL = data[index].image
+                    destinationVC.contentCard = data[index]
+//                    destinationVC.contentCardID = data[index].id
                 }
 
             default:
@@ -292,7 +292,7 @@ class GrowthCaptureViewController: UIViewController {
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
         Haptic.play(".", delay: 0)
-        performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: growthCard.id)
+        performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: nil)
     }
     
     @objc func tapDrawConclusionsButton(_ sender: UIButton) {
@@ -377,7 +377,13 @@ extension GrowthCaptureViewController {
 }
 
 // MARK: - Firebase -
-extension GrowthCaptureViewController {
+extension GrowthCaptureViewController: GrowthDelegate {
+    
+    func fetchData() {
+        
+        fetchGrowthContents()
+    }
+    
     
     func fetchGrowthContents() {
         
@@ -841,3 +847,4 @@ extension GrowthCaptureViewController {
         }
     }
 }
+

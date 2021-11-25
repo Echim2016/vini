@@ -10,9 +10,9 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
-class GrowthContentProvider {
+class GrowthContentManager {
     
-    static let shared = GrowthContentProvider()
+    static let shared = GrowthContentManager()
     
     lazy var db = Firestore.firestore()
     
@@ -77,21 +77,21 @@ class GrowthContentProvider {
         }
     }
     
-    func addGrowthContents(id: String, userID: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+    func addGrowthContents(id: String, contentCard: GrowthContent, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        guard let userID = UserManager.shared.userID else { return }
         
         let document = self.db.collection("Growth_Contents").document()
         
         uploadImage(imageView: imageView, id: document.documentID) { url in
             
-            let growthContent = GrowthContent(
-                id: document.documentID,
-                userID: userID,
-                growthCardId: self.db.collection("Growth_Cards").document(id),
-                title: title,
-                content: content,
-                image: url,
-                createdTime: Timestamp(date: Date())
-            )
+            var growthContent = GrowthContent()
+            growthContent.id = document.documentID
+            growthContent.userID = userID
+            growthContent.growthCardId = self.db.collection("Growth_Cards").document(id)
+            growthContent.title = contentCard.title
+            growthContent.content = contentCard.content
+            growthContent.image = url
             
             do {
                 
@@ -111,18 +111,16 @@ class GrowthContentProvider {
                 print(error)
                 completion(.failure(error))
             }
-            
         }
-        
     }
     
-    func updateGrowthContents(contentID: String, title: String, content: String, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = self.db.collection("Growth_Contents").document(contentID)
+        let document = self.db.collection("Growth_Contents").document(contentCard.id)
         
         var updateDict = [
-            "title": title,
-            "content": content
+            "title": contentCard.title,
+            "content": contentCard.content
         ]
         
         if let imageView = imageView {

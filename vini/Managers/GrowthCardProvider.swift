@@ -140,7 +140,7 @@ class GrowthCardProvider {
         let growthCardRef = db.collection("Growth_Cards").document(id)
         batch.deleteDocument(growthCardRef)
         
-        GrowthContentProvider.shared.fetchGrowthContents(id: id) { result in
+        GrowthContentManager.shared.fetchGrowthContents(id: id) { result in
             
             switch result {
                 
@@ -153,7 +153,7 @@ class GrowthCardProvider {
                     
                     if !card.image.isEmpty {
                         
-                        GrowthContentProvider.shared.deleteGrowthContentCardImage(id: card.id) { result in
+                        GrowthContentManager.shared.deleteGrowthContentCardImage(id: card.id) { result in
                             switch result {
                             case .success(let success):
                                 print("Content image deleted! \(success)")

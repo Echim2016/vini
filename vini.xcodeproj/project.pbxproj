@@ -24,7 +24,7 @@
 		9C05B226271EB3AC00C78620 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */; };
 		9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */; };
 		9C05B22B271EB58200C78620 /* CreateGrowthContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */; };
-		9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */; };
+		9C05B22D271EE47600C78620 /* GrowthContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22C271EE47600C78620 /* GrowthContentManager.swift */; };
 		9C05B22F271EEE8200C78620 /* SetGrowthContentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */; };
 		9C0631C227352A9300AF9F48 /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0631C127352A9300AF9F48 /* NextButton.swift */; };
 		9C178062273AA2D600097E3C /* BlockList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C178061273AA2D600097E3C /* BlockList.storyboard */; };
@@ -156,7 +156,7 @@
 		9C05B225271EB3AC00C78620 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
 		9C05B228271EB58200C78620 /* CreateGrowthContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGrowthContentCell.swift; sourceTree = "<group>"; };
 		9C05B229271EB58200C78620 /* CreateGrowthContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateGrowthContentCell.xib; sourceTree = "<group>"; };
-		9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentProvider.swift; sourceTree = "<group>"; };
+		9C05B22C271EE47600C78620 /* GrowthContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthContentManager.swift; sourceTree = "<group>"; };
 		9C05B22E271EEE8200C78620 /* SetGrowthContentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGrowthContentCardViewController.swift; sourceTree = "<group>"; };
 		9C0631C127352A9300AF9F48 /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		9C178061273AA2D600097E3C /* BlockList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BlockList.storyboard; sourceTree = "<group>"; };
@@ -343,7 +343,7 @@
 				9C35AACF27338C3B007795D8 /* NotificationManager.swift */,
 				9C6C3D982733D4DC00F45247 /* UserManager.swift */,
 				9C5FC929271D4FFE00DE4E42 /* GrowthCardProvider.swift */,
-				9C05B22C271EE47600C78620 /* GrowthContentProvider.swift */,
+				9C05B22C271EE47600C78620 /* GrowthContentManager.swift */,
 				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
 				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
 				9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */,
@@ -924,7 +924,7 @@
 				9C5E7523273F90160052021D /* JGProgressHUDWrapper.swift in Sources */,
 				9C51A3CB273277B200F85CE4 /* ReflectionPracticeCell.swift in Sources */,
 				9C021D48272D469A009A7581 /* Timestamp+Extension.swift in Sources */,
-				9C05B22D271EE47600C78620 /* GrowthContentProvider.swift in Sources */,
+				9C05B22D271EE47600C78620 /* GrowthContentManager.swift in Sources */,
 				9C9E93AD2730D26A00FA3773 /* ArchivedCardCell.swift in Sources */,
 				9C178067273AA38000097E3C /* BlockUserCell.swift in Sources */,
 				9C840CB627313D9A00AF3F73 /* InsightManager.swift in Sources */,
