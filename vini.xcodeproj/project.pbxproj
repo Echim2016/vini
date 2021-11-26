@@ -44,6 +44,7 @@
 		9C2EE79E2747B45400854527 /* sign-in-whoosh-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */; };
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C3A59A8274E2F660014F9A8 /* GrowthCaptureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A59A7274E2F660014F9A8 /* GrowthCaptureState.swift */; };
+		9C42440A2750CEF000CBAE32 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4244092750CEF000CBAE32 /* TitleHeaderView.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
 		9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */; };
@@ -191,6 +192,7 @@
 		9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sign-in-whoosh-1.mp3"; sourceTree = "<group>"; };
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C3A59A7274E2F660014F9A8 /* GrowthCaptureState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureState.swift; sourceTree = "<group>"; };
+		9C4244092750CEF000CBAE32 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
 		9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionIntroCell.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				9CA42C8227279660007F9589 /* Discover */,
 				9CA66FA3272308B200E85F28 /* EmojiTextField.swift */,
 				9C0631C127352A9300AF9F48 /* NextButton.swift */,
+				9C4244092750CEF000CBAE32 /* TitleHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				9C697F242737D4C200EDBBCB /* AlertViewController.swift in Sources */,
 				9C05B22A271EB58200C78620 /* CreateGrowthContentCell.swift in Sources */,
 				9C9E93B92730DA1400FA3773 /* AchievementSection.swift in Sources */,
+				9C42440A2750CEF000CBAE32 /* TitleHeaderView.swift in Sources */,
 				9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */,
 				9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */,
 				9C021D46272D4334009A7581 /* UIViewController+Extension.swift in Sources */,

@@ -130,22 +130,14 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = UIView()
+        let header = TitleHeaderView()
         
-        header.backgroundColor = .clear
-        
-        let title = UILabel()
-        title.text = sections[section].title
-        title.textColor = .lightGray
-        title.font = UIFont(name: "PingFangTC-Regular", size: 14)
-        
-        header.addSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            title.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16)
-        ])
+        header.setupHeaderView(
+            backgroundColor: .clear,
+            textColor: .lightGray,
+            fontSize: 14,
+            text: sections[section].title
+        )
         
         return header
     }

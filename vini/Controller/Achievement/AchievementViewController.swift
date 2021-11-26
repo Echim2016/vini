@@ -162,7 +162,6 @@ extension AchievementViewController {
             }
         }
     }
-    
 }
 
 // MARK: - Table View -
@@ -190,22 +189,13 @@ extension AchievementViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = UIView()
-        
-        header.backgroundColor = .B1
-        
-        let title = UILabel()
-        title.text = sectionTitles[section].title
-        title.textColor = .white
-        title.font = UIFont(name: "PingFangTC-Semibold", size: 18)
-        
-        header.addSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            title.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16)
-        ])
+        let header = TitleHeaderView()
+        header.setupHeaderView(
+            backgroundColor: .B1,
+            textColor: .white,
+            fontSize: 18,
+            text: sectionTitles[section].title
+        )
         
         return header
     }
@@ -236,7 +226,10 @@ extension AchievementViewController: UITableViewDataSource {
             
         case 1:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ArchivedCardCell.identifier, for: indexPath) as? ArchivedCardCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ArchivedCardCell.identifier,
+                for: indexPath) as? ArchivedCardCell
+            else {
                 fatalError()
             }
             
@@ -272,9 +265,7 @@ extension AchievementViewController: UICollectionViewDelegate {
         default:
             
             return nil
-            
         }
-        
     }
     
     func makeContextMenu(index: Int) -> UIMenu {
@@ -290,7 +281,9 @@ extension AchievementViewController: UICollectionViewDelegate {
         return UIMenu(title: "", children: [unarchive])
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         
         cell.alpha = 0.1
 
@@ -300,9 +293,7 @@ extension AchievementViewController: UICollectionViewDelegate {
             animations: {
                 cell.alpha = 1
         })
-
     }
-    
 }
 
 extension AchievementViewController: UICollectionViewDataSource {
@@ -320,7 +311,8 @@ extension AchievementViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch collectionView {
             
@@ -336,7 +328,11 @@ extension AchievementViewController: UICollectionViewDataSource {
             }
             
             cardCell.setupCell(growthCard: growthCards[indexPath.row], index: indexPath.row)
-            cardCell.rightArrowButton.addTarget(self, action: #selector(tapShowCardDetailButton(_:)), for: .touchUpInside)
+            cardCell.rightArrowButton.addTarget(
+                self,
+                action: #selector(tapShowCardDetailButton(_:)),
+                for: .touchUpInside
+            )
 
             return cardCell
             
@@ -397,7 +393,6 @@ extension AchievementViewController {
             welcomeTitleLabel.text = user.displayName + ",\n相信你擁有讓自己變得更好的能力。"
             userViniImageView.image = UIImage(named: user.viniType)
         }
-        
     }
     
     func showWelcomeContentAnimation() {
@@ -418,6 +413,5 @@ extension AchievementViewController {
             },
             completion: nil
         )
-        
     }
 }
