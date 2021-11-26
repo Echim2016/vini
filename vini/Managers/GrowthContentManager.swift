@@ -18,9 +18,9 @@ class GrowthContentManager {
     
     func fetchGrowthContents(id: String, completion: @escaping (Result<[GrowthContent], Error>) -> Void) {
         
-        let ref = db.collection("Growth_Cards").document(id)
+        let ref = db.collection(FSCollection.growthCard.rawValue).document(id)
         
-        db.collection("Growth_Contents").whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
+        db.collection(FSCollection.growthContents.rawValue).whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -81,14 +81,14 @@ class GrowthContentManager {
         
         guard let userID = UserManager.shared.userID else { return }
         
-        let document = self.db.collection("Growth_Contents").document()
+        let document = self.db.collection(FSCollection.growthContents.rawValue).document()
         
         uploadImage(imageView: imageView, id: document.documentID) { url in
             
             var growthContent = GrowthContent()
             growthContent.id = document.documentID
             growthContent.userID = userID
-            growthContent.growthCardId = self.db.collection("Growth_Cards").document(id)
+            growthContent.growthCardId = self.db.collection(FSCollection.growthCard.rawValue).document(id)
             growthContent.title = contentCard.title
             growthContent.content = contentCard.content
             growthContent.image = url
@@ -116,7 +116,7 @@ class GrowthContentManager {
     
     func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = self.db.collection("Growth_Contents").document(contentCard.id)
+        let document = self.db.collection(FSCollection.growthContents.rawValue).document(contentCard.id)
         
         var updateDict = [
             "title": contentCard.title,
@@ -157,7 +157,7 @@ class GrowthContentManager {
     
     func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping (Result<String, Error>) -> Void) {
         
-        db.collection("Growth_Contents").document(id).delete() { err in
+        db.collection(FSCollection.growthContents.rawValue).document(id).delete() { err in
             
             if let err = err {
                 print("Error removing growth content card: \(err)")

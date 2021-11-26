@@ -17,7 +17,7 @@ class ReflectionManager {
     
     func fetchQuestions(completion: @escaping (Result<[String], Error>) -> Void) {
         
-        db.collection("Reflection").document("Questions").getDocument { (document, err) in
+        db.collection(FSCollection.reflection.rawValue).document("Questions").getDocument { (document, err) in
             
             if let err = err {
                 print("Error getting quotes: \(err)")
@@ -38,7 +38,7 @@ class ReflectionManager {
     
     func fetchUserReflectionTime(userID: String, completion: @escaping (Result<Int, Error>) -> Void) {
         
-        db.collection("User").document(userID).getDocument { (document, err) in
+        db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, err) in
             
             if let err = err {
                 print("Error getting quotes: \(err)")

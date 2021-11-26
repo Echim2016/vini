@@ -17,7 +17,7 @@ class DiscoverUserManager {
     
     func fetchData(category: String, blockList: [String], completion: @escaping (Result<[ViniView], Error>) -> Void) {
         
-        db.collection("Users").whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
+        db.collection(FSCollection.users.rawValue).whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -59,7 +59,7 @@ class DiscoverUserManager {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection("Users").document(userID)
+            let document = db.collection(FSCollection.users.rawValue).document(userID)
             
             let updateDict = [
                 "display_name": name,
@@ -87,7 +87,7 @@ class DiscoverUserManager {
         
         if let userID = UserManager.shared.userID {
             
-            db.collection("Users").document(userID).getDocument { (document, error) in
+            db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, error) in
                 
                 if let error = error {
                     

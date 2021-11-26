@@ -12,6 +12,7 @@ enum FSCollection: String {
     case growthCard = "Growth_Cards"
     case growthContents = "Growth_Contents"
     case mailboxes = "Mailboxes"
+    case mails = "Mails"
     case reflection = "Reflection"
     case users = "Users"
 }

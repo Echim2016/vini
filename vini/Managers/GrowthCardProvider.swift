@@ -20,7 +20,7 @@ class GrowthCardProvider {
         if let userID = UserManager.shared.userID {
             
             // swiftlint:disable line_length
-            db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+            db.collection(FSCollection.growthCard.rawValue).whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
                 // swiftlint:able line_length
                 if let error = error {
                     
@@ -52,7 +52,7 @@ class GrowthCardProvider {
     
     func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document()
+        let document = db.collection(FSCollection.growthCard.rawValue).document()
         growthCard.id = document.documentID
         growthCard.createdTime = Timestamp(date: Date())
         
@@ -78,7 +78,7 @@ class GrowthCardProvider {
     
     func updateConclusion(id: String, conclusion: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = db.collection(FSCollection.growthCard.rawValue).document(id)
         
         document.updateData(["conclusion": conclusion]) { error in
             
@@ -94,7 +94,7 @@ class GrowthCardProvider {
     
     func fetchConclusion(id: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = db.collection(FSCollection.growthCard.rawValue).document(id)
         
         document.getDocument { (document, error) in
             
@@ -114,7 +114,7 @@ class GrowthCardProvider {
     
     func updateGrowthCard(id: String, emoji: String, title: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = db.collection(FSCollection.growthCard.rawValue).document(id)
         
         let updateDict = [
             "emoji": emoji,
@@ -137,7 +137,7 @@ class GrowthCardProvider {
                     
         let batch = db.batch()
         
-        let growthCardRef = db.collection("Growth_Cards").document(id)
+        let growthCardRef = db.collection(FSCollection.growthCard.rawValue).document(id)
         batch.deleteDocument(growthCardRef)
         
         GrowthContentManager.shared.fetchGrowthContents(id: id) { result in
@@ -148,7 +148,7 @@ class GrowthCardProvider {
                 
                 cards.forEach { card in
                     
-                    let growthContentCardsRef = self.db.collection("Growth_Contents").document(card.id)
+                    let growthContentCardsRef = self.db.collection(FSCollection.growthContents.rawValue).document(card.id)
                     batch.deleteDocument(growthContentCardsRef)
                     
                     if !card.image.isEmpty {
@@ -188,7 +188,7 @@ class GrowthCardProvider {
     
     func archiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = db.collection(FSCollection.growthCard.rawValue).document(id)
         
         let updateDict = [
             "is_archived": true,
@@ -209,7 +209,7 @@ class GrowthCardProvider {
     
     func unarchiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = db.collection(FSCollection.growthCard.rawValue).document(id)
         
         let updateDict = [
             "is_archived": false
