@@ -109,6 +109,7 @@
 		9CA98BB52747925000A027ED /* tap-archive-button.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9CA98BB42747925000A027ED /* tap-archive-button.wav */; };
 		9CAB44FD274F6FB900B9E926 /* ReflectionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB44FC274F6FB900B9E926 /* ReflectionPage.swift */; };
 		9CAB44FF274F75BD00B9E926 /* FirestoreIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB44FE274F75BD00B9E926 /* FirestoreIdentifier.swift */; };
+		9CAB454E274FD82300B9E926 /* ViniUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB454D274FD82300B9E926 /* ViniUnitTests.swift */; };
 		9CB96A7027218D70006AFD1A /* DrawConclusionsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */; };
 		9CC1E4C1271BE53500F17190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C0271BE53500F17190 /* AppDelegate.swift */; };
 		9CC1E4C3271BE53500F17190 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC1E4C2271BE53500F17190 /* SceneDelegate.swift */; };
@@ -135,10 +136,24 @@
 		9CEE9DC1272D2F49006CCA06 /* MailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9DC0272D2F49006CCA06 /* MailDetailViewController.swift */; };
 		9CF72A3E27242C1F00747089 /* Congrats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF72A3D27242C1F00747089 /* Congrats.storyboard */; };
 		9CF72A4027242C3000747089 /* CongratsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF72A3F27242C3000747089 /* CongratsViewController.swift */; };
+		9D3F4EBCEBC0A353837726AF /* Pods_ViniUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921E3F41960A76B967B57990 /* Pods_ViniUnitTests.framework */; };
 		F937504A3840E4AFE4BE4324 /* Pods_vini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9CAB454F274FD82300B9E926 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CC1E4B5271BE53500F17190 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CC1E4BC271BE53500F17190;
+			remoteInfo = vini;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		4C0653D561D9FC8EFE815D7A /* Pods-ViniUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViniUnitTests.debug.xcconfig"; path = "Target Support Files/Pods-ViniUnitTests/Pods-ViniUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		734F259F26C914CCC65A5CB6 /* Pods-ViniUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViniUnitTests.release.xcconfig"; path = "Target Support Files/Pods-ViniUnitTests/Pods-ViniUnitTests.release.xcconfig"; sourceTree = "<group>"; };
+		921E3F41960A76B967B57990 /* Pods_ViniUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViniUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C021D3D272D3F1B009A7581 /* MailTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailTitleCell.swift; sourceTree = "<group>"; };
 		9C021D3E272D3F1B009A7581 /* MailTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MailTitleCell.xib; sourceTree = "<group>"; };
 		9C021D41272D4189009A7581 /* MailContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailContentCell.swift; sourceTree = "<group>"; };
@@ -242,6 +257,8 @@
 		9CA98BB42747925000A027ED /* tap-archive-button.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "tap-archive-button.wav"; sourceTree = "<group>"; };
 		9CAB44FC274F6FB900B9E926 /* ReflectionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionPage.swift; sourceTree = "<group>"; };
 		9CAB44FE274F75BD00B9E926 /* FirestoreIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreIdentifier.swift; sourceTree = "<group>"; };
+		9CAB454B274FD82300B9E926 /* ViniUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViniUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CAB454D274FD82300B9E926 /* ViniUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViniUnitTests.swift; sourceTree = "<group>"; };
 		9CB96A6F27218D70006AFD1A /* DrawConclusionsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConclusionsFooterView.swift; sourceTree = "<group>"; };
 		9CC1E4BD271BE53500F17190 /* vini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC1E4C0271BE53500F17190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -276,6 +293,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9CAB4548274FD82300B9E926 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D3F4EBCEBC0A353837726AF /* Pods_ViniUnitTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CC1E4BA271BE53500F17190 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,10 +530,19 @@
 			path = Reflection;
 			sourceTree = "<group>";
 		};
+		9CAB454C274FD82300B9E926 /* ViniUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				9CAB454D274FD82300B9E926 /* ViniUnitTests.swift */,
+			);
+			path = ViniUnitTests;
+			sourceTree = "<group>";
+		};
 		9CC1E4B4271BE53500F17190 = {
 			isa = PBXGroup;
 			children = (
 				9CC1E4BF271BE53500F17190 /* vini */,
+				9CAB454C274FD82300B9E926 /* ViniUnitTests */,
 				9CC1E4BE271BE53500F17190 /* Products */,
 				D38D95195B139FE977D261F2 /* Pods */,
 				EA4F9CC69010A3DC19338A6B /* Frameworks */,
@@ -519,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				9CC1E4BD271BE53500F17190 /* vini.app */,
+				9CAB454B274FD82300B9E926 /* ViniUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -719,6 +754,8 @@
 			children = (
 				A89E66CA32C45F7DCF983574 /* Pods-vini.debug.xcconfig */,
 				F3D6F33DCA94E0340B12B2F6 /* Pods-vini.release.xcconfig */,
+				4C0653D561D9FC8EFE815D7A /* Pods-ViniUnitTests.debug.xcconfig */,
+				734F259F26C914CCC65A5CB6 /* Pods-ViniUnitTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -727,6 +764,7 @@
 			isa = PBXGroup;
 			children = (
 				FE5B650DFAB37C4DBB4E7E1C /* Pods_vini.framework */,
+				921E3F41960A76B967B57990 /* Pods_ViniUnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -734,6 +772,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9CAB454A274FD82300B9E926 /* ViniUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CAB4553274FD82300B9E926 /* Build configuration list for PBXNativeTarget "ViniUnitTests" */;
+			buildPhases = (
+				1C41401756737E34914D23A2 /* [CP] Check Pods Manifest.lock */,
+				9CAB4547274FD82300B9E926 /* Sources */,
+				9CAB4548274FD82300B9E926 /* Frameworks */,
+				9CAB4549274FD82300B9E926 /* Resources */,
+				281BF6DA41CD767510F1108C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9CAB4550274FD82300B9E926 /* PBXTargetDependency */,
+			);
+			name = ViniUnitTests;
+			productName = ViniUnitTests;
+			productReference = 9CAB454B274FD82300B9E926 /* ViniUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9CC1E4BC271BE53500F17190 /* vini */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CC1E4D1271BE53600F17190 /* Build configuration list for PBXNativeTarget "vini" */;
@@ -764,6 +822,10 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					9CAB454A274FD82300B9E926 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 9CC1E4BC271BE53500F17190;
+					};
 					9CC1E4BC271BE53500F17190 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -783,11 +845,19 @@
 			projectRoot = "";
 			targets = (
 				9CC1E4BC271BE53500F17190 /* vini */,
+				9CAB454A274FD82300B9E926 /* ViniUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9CAB4549274FD82300B9E926 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CC1E4BB271BE53500F17190 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -841,6 +911,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1C41401756737E34914D23A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ViniUnitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		281BF6DA41CD767510F1108C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViniUnitTests/Pods-ViniUnitTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViniUnitTests/Pods-ViniUnitTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViniUnitTests/Pods-ViniUnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9C1EADF2271C168D00C2F73C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -902,6 +1011,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9CAB4547274FD82300B9E926 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CAB454E274FD82300B9E926 /* ViniUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CC1E4B9271BE53500F17190 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -996,6 +1113,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		9CAB4550274FD82300B9E926 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CC1E4BC271BE53500F17190 /* vini */;
+			targetProxy = 9CAB454F274FD82300B9E926 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9CC1E4C6271BE53500F17190 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -1016,6 +1141,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9CAB4551274FD82300B9E926 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C0653D561D9FC8EFE815D7A /* Pods-ViniUnitTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VCPLDP9723;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echim.ViniUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vini.app/vini";
+			};
+			name = Debug;
+		};
+		9CAB4552274FD82300B9E926 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 734F259F26C914CCC65A5CB6 /* Pods-ViniUnitTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VCPLDP9723;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.echim.ViniUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vini.app/vini";
+			};
+			name = Release;
+		};
 		9CC1E4CF271BE53600F17190 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1053,6 +1228,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1204,6 +1380,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9CAB4553274FD82300B9E926 /* Build configuration list for PBXNativeTarget "ViniUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CAB4551274FD82300B9E926 /* Debug */,
+				9CAB4552274FD82300B9E926 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9CC1E4B8271BE53500F17190 /* Build configuration list for PBXProject "vini" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
