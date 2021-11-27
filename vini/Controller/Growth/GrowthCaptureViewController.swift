@@ -516,7 +516,8 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: CreateGrowthContentCell.identifier,
-                for: indexPath) as? CreateGrowthContentCell else {
+                for: indexPath) as? CreateGrowthContentCell
+            else {
                 fatalError()
             }
             
@@ -569,26 +570,19 @@ extension GrowthCaptureViewController: UITableViewDelegate {
             
         } else {
             
-            let edit = UIAction(
-                title: "編輯",
-                image: UIImage(systemName: "square.and.pencil")
-            ) { _ in
+            let edit = UIAction.setupAction(of: .edit) { _ in
                 
-                // Navigate to edit page
                 self.performSegue(withIdentifier: Segue.editContentCard.rawValue, sender: indexPath.row - 1)
             }
             
-            let delete = UIAction(
-                title: "刪除",
-                image: UIImage(systemName: "trash.fill"),
-                attributes: [.destructive]) { _ in
-                    
-                    self.performSegue(
-                        withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue,
-                        sender: indexPath
-                    )
-                }
-            
+            let delete = UIAction.setupAction(of: .delete) { _ in
+                
+                self.performSegue(
+                    withIdentifier: Segue.showDeleteGrowthContentCardAlert.rawValue,
+                    sender: indexPath
+                )
+            }
+
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
                 UIMenu(title: "", children: [edit, delete])
             }

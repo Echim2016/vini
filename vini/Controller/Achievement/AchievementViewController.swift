@@ -162,6 +162,7 @@ extension AchievementViewController {
             }
         }
     }
+    
 }
 
 // MARK: - Table View -
@@ -190,6 +191,7 @@ extension AchievementViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = TitleHeaderView()
+        
         header.setupHeaderView(
             backgroundColor: .B1,
             textColor: .white,
@@ -245,6 +247,7 @@ extension AchievementViewController: UITableViewDataSource {
             return UITableViewCell.init()
         }
     }
+    
 }
 
 // MARK: - Collection View -
@@ -258,27 +261,19 @@ extension AchievementViewController: UICollectionViewDelegate {
             
         case collectionViewForGrowthCards:
             
+            let unarchive = UIAction.setupAction(of: .unarchive) { _ in
+                
+                self.unarchiveGrowthCard(id: self.growthCards[indexPath.row].id)
+            }
+            
             return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
-                return self.makeContextMenu(index: indexPath.row)
+                UIMenu(title: "", children: [unarchive])
             })
             
         default:
             
             return nil
         }
-    }
-    
-    func makeContextMenu(index: Int) -> UIMenu {
-        
-        let unarchive = UIAction(
-            title: "解除封存",
-            image: UIImage(systemName: "arrow.uturn.forward")
-        ) { _ in
-            
-            self.unarchiveGrowthCard(id: self.growthCards[index].id)
-        }
-        
-        return UIMenu(title: "", children: [unarchive])
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -294,6 +289,7 @@ extension AchievementViewController: UICollectionViewDelegate {
                 cell.alpha = 1
         })
     }
+    
 }
 
 extension AchievementViewController: UICollectionViewDataSource {
@@ -337,6 +333,7 @@ extension AchievementViewController: UICollectionViewDataSource {
             return cardCell
             
         case collectionViewForInsights:
+            
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: String(describing: InsightCollectionViewCell.self),
                 for: indexPath
@@ -355,8 +352,8 @@ extension AchievementViewController: UICollectionViewDataSource {
         default:
             return UICollectionViewCell.init()
         }
-        
     }
+    
 }
 
 extension AchievementViewController {
@@ -414,4 +411,5 @@ extension AchievementViewController {
             completion: nil
         )
     }
+    
 }

@@ -45,6 +45,7 @@
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
 		9C3A59A8274E2F660014F9A8 /* GrowthCaptureState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3A59A7274E2F660014F9A8 /* GrowthCaptureState.swift */; };
 		9C42440A2750CEF000CBAE32 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4244092750CEF000CBAE32 /* TitleHeaderView.swift */; };
+		9C42440C2752656900CBAE32 /* UIAction+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C42440B2752656900CBAE32 /* UIAction+Extension.swift */; };
 		9C51A3C027326B0000F85CE4 /* Reflection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */; };
 		9C51A3C327326B2E00F85CE4 /* ReflectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */; };
 		9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */; };
@@ -193,6 +194,7 @@
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		9C3A59A7274E2F660014F9A8 /* GrowthCaptureState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthCaptureState.swift; sourceTree = "<group>"; };
 		9C4244092750CEF000CBAE32 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		9C42440B2752656900CBAE32 /* UIAction+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAction+Extension.swift"; sourceTree = "<group>"; };
 		9C51A3BF27326B0000F85CE4 /* Reflection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reflection.storyboard; sourceTree = "<group>"; };
 		9C51A3C227326B2E00F85CE4 /* ReflectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionViewController.swift; sourceTree = "<group>"; };
 		9C51A3C527326C5800F85CE4 /* ReflectionIntroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionIntroCell.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				9C5FC926271D4E1900DE4E42 /* UITableView+Extension.swift */,
 				9C1A6130271E8EDF0013D63A /* UIView+Extension.swift */,
 				9C021D45272D4334009A7581 /* UIViewController+Extension.swift */,
+				9C42440B2752656900CBAE32 /* UIAction+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1095,6 +1098,7 @@
 				9C9E93B42730D49400FA3773 /* UICollectionView+Extension.swift in Sources */,
 				9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,
+				9C42440C2752656900CBAE32 /* UIAction+Extension.swift in Sources */,
 				9C95786C273BDFBA0056F757 /* CustomTabBarController.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,

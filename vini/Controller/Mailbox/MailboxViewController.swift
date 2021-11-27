@@ -193,13 +193,10 @@ extension MailboxViewController: UITableViewDelegate {
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let block = UIAction(
-            title: "封鎖",
-            image: UIImage(systemName: "exclamationmark.bubble.fill"),
-            attributes: [.destructive]) { _ in
-                
-                self.performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: indexPath)
-            }
+        let block = UIAction.setupAction(of: .block) { _ in
+            
+            self.performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: indexPath)
+        }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             UIMenu(title: "", children: [block])

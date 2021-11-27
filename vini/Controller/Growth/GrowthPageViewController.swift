@@ -22,13 +22,16 @@ class GrowthPageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
         }
     }
     
     @IBOutlet weak var remindsLabel: UILabel! {
+        
         didSet {
+            
             remindsLabel.text = Tips.randomText()
         }
     }
@@ -55,6 +58,7 @@ class GrowthPageViewController: UIViewController {
     }
     
     var reflectionHour = 23 {
+        
         didSet {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
@@ -95,8 +99,8 @@ class GrowthPageViewController: UIViewController {
             
             performSegue(withIdentifier: Segue.showReflectionAlert.rawValue, sender: nil)
         }
-        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let alertController = segue.destination as? AlertViewController {
@@ -160,6 +164,7 @@ class GrowthPageViewController: UIViewController {
             }
         }
     }
+    
 }
 
 // MARK: - View-related Setup -
@@ -171,13 +176,16 @@ extension GrowthPageViewController {
         imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
     }
+    
 }
 
 extension GrowthPageViewController: GrowthDelegate {
     
     func fetchData() {
+        
         fetchGrowthCards()
     }
+    
 }
 
 extension GrowthPageViewController {
@@ -254,7 +262,10 @@ extension GrowthPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: GrowthCardCell.identifier, for: indexPath) as? GrowthCardCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: GrowthCardCell.identifier,
+            for: indexPath) as? GrowthCardCell
+        else {
             fatalError()
         }
         
@@ -265,7 +276,9 @@ extension GrowthPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyGrowthCardsHeader.identifier) as? MyGrowthCardsHeader else {
+        guard let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: MyGrowthCardsHeader.identifier) as? MyGrowthCardsHeader
+        else {
             return MyGrowthCardsHeader()
         }
         
@@ -277,6 +290,7 @@ extension GrowthPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         60
     }
+    
 }
 
 extension GrowthPageViewController: UITableViewDelegate {
@@ -303,13 +317,10 @@ extension GrowthPageViewController: UITableViewDelegate {
                    contextMenuConfigurationForRowAt indexPath: IndexPath,
                    point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let delete = UIAction(
-            title: "刪除",
-            image: UIImage(systemName: "trash.fill"),
-            attributes: [.destructive]) { _ in
-                
-                self.performSegue(withIdentifier: Segue.showDeletionAlert.rawValue, sender: indexPath)
-            }
+        let delete = UIAction.setupAction(of: .delete) { _ in
+            
+            self.performSegue(withIdentifier: Segue.showDeletionAlert.rawValue, sender: indexPath)
+        }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             UIMenu(title: "", children: [delete])
