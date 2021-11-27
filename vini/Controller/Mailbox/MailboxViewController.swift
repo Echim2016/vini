@@ -25,6 +25,7 @@ class MailboxViewController: UIViewController {
     
     var mails: [Mail] = [] {
         didSet {
+            
             remindsLabel.isHidden = !mails.isEmpty
         }
     }
@@ -103,7 +104,9 @@ extension MailboxViewController {
     func fetchMails(blockList: [String]) {
         
         MailManager.shared.fetchData(blockList: blockList) { result in
+            
             switch result {
+                
             case .success(let mails):
                 
                 VProgressHUD.dismiss()
@@ -130,7 +133,9 @@ extension MailboxViewController {
     func getReflectionTime() {
         
         MailManager.shared.getReflectionTime { result in
+            
             switch result {
+                
             case .success(let startTime):
                 
                 self.preferredReflectionTime = startTime
@@ -147,6 +152,7 @@ extension MailboxViewController {
         VProgressHUD.show()
         
         UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
+            
             switch result {
                 
             case .success:

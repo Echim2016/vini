@@ -171,7 +171,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundRectView" destination="uK1-yi-9no" id="6hR-UO-5Pb"/>
-                        <outlet property="backgroundRectWidth" destination="B45-Oe-l1e" id="BjV-BS-oxo"/>
                         <outlet property="bigCloudImageView" destination="CSB-wF-AuN" id="Uu1-T6-x4R"/>
                         <outlet property="blockButton" destination="eKv-NN-KWh" id="2JN-YU-A8S"/>
                         <outlet property="headerView" destination="P50-Gu-XAf" id="quQ-AH-yTB"/>

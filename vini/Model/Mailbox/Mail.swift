@@ -58,5 +58,12 @@ struct Mail: Codable {
             self.content = mail
         }
     }
-       
+    
+}
+
+enum MailDetailRows: Int, CaseIterable {
+    
+    case title = 0
+    case header
+    case content
 }
