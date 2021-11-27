@@ -146,9 +146,9 @@ extension MailboxViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: blockUserID) { result in
-            
+        UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
             switch result {
+                
             case .success:
                 
                 VProgressHUD.dismiss()

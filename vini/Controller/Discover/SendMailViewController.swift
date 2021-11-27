@@ -26,7 +26,7 @@ class SendMailViewController: UIViewController {
     
     var contentTextView: UITextView?
     
-    var receipient: ViniView?
+    var recipient: ViniView?
     var mailToSend = Mail()
     var user: User?
     
@@ -120,7 +120,7 @@ extension SendMailViewController {
     
     func sendMail() {
         
-        if let receipient = receipient,
+        if let receipient = recipient,
            let senderID = UserManager.shared.userID {
             
             VProgressHUD.show()
@@ -154,9 +154,9 @@ extension SendMailViewController {
         
         VProgressHUD.show()
         
-        if let blockUserID = receipient?.data.id {
+        if let blockUserID = recipient?.data.id {
             
-            UserManager.shared.blockUser(blockUserID: blockUserID) { result in
+            UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
                 
                 switch result {
                 case .success:
@@ -171,6 +171,7 @@ extension SendMailViewController {
                     VProgressHUD.showFailure(text: "封鎖時出了一些問題，請重新再試")
                 }
             }
+            
         } else {
             
             VProgressHUD.showFailure(text: "封鎖時出了一些問題")
@@ -248,7 +249,7 @@ extension SendMailViewController {
     
     func setupHeaderInfo() {
         
-        if let receipient = receipient {
+        if let receipient = recipient {
             senderNameLabel.text = "來自：" + (user?.displayName ?? "Me")
             receipientNameLabel.text = "寄給：" +  receipient.data.name
             replyTitleLabel.text = "回覆：" + receipient.data.wondering

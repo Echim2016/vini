@@ -158,9 +158,9 @@ extension MailDetailViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
-            
+        UserManager.shared.updateBlockUserList(blockUserID: mail.senderID, action: .block) { result in
             switch result {
+                
             case .success:
                 
                 VProgressHUD.dismiss()

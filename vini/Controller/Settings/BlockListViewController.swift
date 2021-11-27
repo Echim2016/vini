@@ -118,7 +118,8 @@ extension BlockListViewController {
     
     func unblockUser(id: String, indexPath: IndexPath) {
         
-        UserManager.shared.unblockUser(blockUserID: id) { result in
+        UserManager.shared.updateBlockUserList(blockUserID: id, action: .unblock) { result in
+            
             switch result {
                 
             case .success(let success):

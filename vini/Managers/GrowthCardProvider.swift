@@ -20,7 +20,7 @@ class GrowthCardProvider {
         if let userID = UserManager.shared.userID {
             
             // swiftlint:disable line_length
-            db.collection(FSCollection.growthCard.rawValue).whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+            db.collection(FSCollection.growthCard.rawValue).whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments { (querySnapshot, error) in
                 // swiftlint:able line_length
                 if let error = error {
                     

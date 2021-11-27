@@ -166,7 +166,7 @@ class DiscoverViewController: UIViewController {
         
         if let destination = segue.destination as? SendMailViewController {
             
-            destination.receipient = currentSelectedVini
+            destination.recipient = currentSelectedVini
             destination.user = user
             destination.delegate = self
         }
@@ -335,7 +335,7 @@ extension DiscoverViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: currentSelectedVini.data.id) { result in
+        UserManager.shared.updateBlockUserList(blockUserID: currentSelectedVini.data.id, action: .block) { result in
             
             switch result {
             case .success:
