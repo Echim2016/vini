@@ -86,7 +86,9 @@ class MailDetailViewController: UIViewController {
                 
                 alert.alertStyle = .danger
                 alert.alertType = .blockUserAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.blockUser()
                 }
@@ -94,7 +96,9 @@ class MailDetailViewController: UIViewController {
             case Segue.showDeleteAlert.rawValue:
                 
                 alert.alertType = .deleteMailAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.deleteMail()
                 }

@@ -63,7 +63,9 @@ class BlockListViewController: UIViewController {
             let blockUserID = blockUsers[indexPath.row].id
             
             alert.alertType = .unblockUserAlert
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.unblockUser(id: blockUserID, indexPath: indexPath)
             }

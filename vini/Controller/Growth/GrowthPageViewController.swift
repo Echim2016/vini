@@ -86,7 +86,7 @@ class GrowthPageViewController: UIViewController {
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
         Haptic.play(".", delay: 0)
-        performSegue(withIdentifier: "CreateNewGrowthCard", sender: nil)
+        performSegue(withIdentifier: Segue.createNewGrowthCard.rawValue, sender: nil)
     }
     
     @IBAction func tapReflectionButton(_ sender: Any) {
@@ -115,9 +115,11 @@ class GrowthPageViewController: UIViewController {
                 
                 if let indexPath = sender as? IndexPath {
                     
-                    alertController.onConfirm = {
+                    alertController.onConfirm = { [weak self] in
                         
                         VProgressHUD.show()
+                        
+                        guard let self = self else { return }
                         
                         let id = self.data[indexPath.row].id
                         
@@ -197,6 +199,7 @@ extension GrowthPageViewController {
         GrowthCardManager.shared.fetchData(isArchived: false) { result in
             
             switch result {
+                
             case .success(let cards):
                 
                 VProgressHUD.dismiss()
@@ -237,6 +240,7 @@ extension GrowthPageViewController {
         
         MailManager.shared.getReflectionTime { result in
             switch result {
+                
             case .success(let hour):
                 
                 self.reflectionHour = hour

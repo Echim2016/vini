@@ -68,7 +68,10 @@ class MailboxViewController: UIViewController {
             alert.alertType = .blockUserAlert
             
             if let indexPath = sender as? IndexPath {
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
+                    
                     self.blockUser(blockUserID: self.mails[indexPath.row].senderID)
                 }
             }

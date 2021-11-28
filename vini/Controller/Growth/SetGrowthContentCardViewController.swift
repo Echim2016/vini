@@ -145,8 +145,10 @@ class SetGrowthContentCardViewController: UIViewController {
             case Segue.showUpdateContentCardAlert.rawValue:
                 
                 alert.alertType = .updateContentCardAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
                     
+                    guard let self = self else { return }
+
                     self.updateGrowthContentCard()
                 }
                 

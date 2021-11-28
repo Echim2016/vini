@@ -221,8 +221,9 @@ class GrowthCaptureViewController: UIViewController {
                 if let indexPath = sender as? IndexPath {
 
                     alert.alertType = .deleteGrowthContentCardAlert
-                    alert.onConfirm = {
+                    alert.onConfirm = { [weak self] in
                         
+                        guard let self = self else { return }
                         self.deleteGrowthContentCard(indexPath: indexPath)
                     }
                 }
@@ -408,6 +409,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
         contentCardManager.deleteGrowthContentCard(id: id, imageExists: imageExists) { result in
             
             switch result {
+                
             case .success(let message):
                 
                 print(message)
@@ -430,6 +432,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
                                            title: headerTitleToUpdate) { result in
             
             switch result {
+                
             case .success(let message):
                 
                 print(message)

@@ -95,7 +95,9 @@ class SendMailViewController: UIViewController {
             case Segue.showSendMailAlert.rawValue:
                 
                 alert.alertType = .sendMailAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.sendMail()
                 }
@@ -104,7 +106,9 @@ class SendMailViewController: UIViewController {
                 
                 alert.alertStyle = .danger
                 alert.alertType = .blockUserAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.blockUser()
                 }

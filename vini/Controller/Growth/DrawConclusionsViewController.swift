@@ -61,7 +61,9 @@ class DrawConclusionsViewController: UIViewController {
             
             alert.alertType = .returnToPreviousPageAlert
             
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.navigationController?.popViewController(animated: true)
             }

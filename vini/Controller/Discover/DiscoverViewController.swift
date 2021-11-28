@@ -181,7 +181,9 @@ class DiscoverViewController: UIViewController {
             alert.alertStyle = .danger
             alert.alertType = .blockUserAlert
             alert.viniType = UIImage.AssetIdentifier.xmark
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.blockUser()
             }
