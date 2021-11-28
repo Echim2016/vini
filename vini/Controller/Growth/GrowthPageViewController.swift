@@ -194,7 +194,7 @@ extension GrowthPageViewController {
         
         VProgressHUD.show()
         
-        GrowthCardProvider.shared.fetchData(isArchived: false) { result in
+        GrowthCardManager.shared.fetchData(isArchived: false) { result in
             
             switch result {
             case .success(let cards):
@@ -215,7 +215,7 @@ extension GrowthPageViewController {
         
         VProgressHUD.show()
         
-        GrowthCardProvider.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
+        GrowthCardManager.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
             case .success(let success):

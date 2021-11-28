@@ -30,7 +30,7 @@ class AchievementViewController: UIViewController {
     @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var userViniImageView: UIImageView!
     
-    var cardManager = GrowthCardProvider.shared
+    var cardManager = GrowthCardManager.shared
     var insightManager = InsightManager.shared
 
     var collectionViewForGrowthCards: UICollectionView?

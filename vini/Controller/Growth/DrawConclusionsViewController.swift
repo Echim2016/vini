@@ -73,7 +73,7 @@ extension DrawConclusionsViewController {
     
     private func fetchConclusion() {
         
-        GrowthCardProvider.shared.fetchConclusion(id: growthCardID) { result in
+        GrowthCardManager.shared.fetchConclusion(id: growthCardID) { result in
             
             switch result {
             case .success(let conclusion):
@@ -153,7 +153,7 @@ extension DrawConclusionsViewController {
             
             VProgressHUD.show()
             
-            GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+            GrowthCardManager.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
                 
                 switch result {
                 case .success(let success):

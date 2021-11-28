@@ -72,6 +72,7 @@ extension UIViewController {
             blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+    
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
@@ -81,4 +82,5 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
 }

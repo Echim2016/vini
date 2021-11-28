@@ -32,7 +32,7 @@ class GrowthCaptureViewController: UIViewController {
 
     weak var delegate: GrowthDelegate?
     
-    var growthCardManager: GrowthCardProvider = .shared
+    var growthCardManager: GrowthCardManager = .shared
     var contentCardManager: GrowthContentManager = .shared
     
     var state: GrowthCaptureState = .browse {
