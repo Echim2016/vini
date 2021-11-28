@@ -43,16 +43,24 @@ class DrawConclusionsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupTextView()
-        setupNavBarBackButton(tintColor: .B2)
+        setupNavBarBackButton(tintColor: .white)
         setupSaveButton()
-        setupNavigationController(title: "我的學習結論", titleColor: .B2)
+        setupNavigationController(title: "我的學習結論", titleColor: .white)
         fetchConclusion()
+        setupNavigationBarStandardAppearance(backgroundColor: .B1)
+        setupNavigationBarScrollEdgeAppearance(backgroundColor: .B1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         conclusionTextView.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        setupNavigationBarScrollEdgeAppearance(backgroundColor: .S2)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,7 +152,7 @@ extension DrawConclusionsViewController {
             action: #selector(tapSaveButton(_:))
         )
         
-        navigationItem.rightBarButtonItem?.tintColor = .B2
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     @objc func tapSaveButton(_ sender: Any) {
