@@ -16,7 +16,7 @@ class GrowthContentManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchGrowthContents(id: String, completion: @escaping (Result<[GrowthContent], Error>) -> Void) {
+    func fetchGrowthContents(id: String, completion: @escaping Handler<[GrowthContent]>) {
         
         let ref = db.collection(FSCollection.growthCard.rawValue).document(id)
         
@@ -77,7 +77,7 @@ class GrowthContentManager {
         }
     }
     
-    func addGrowthContents(id: String, contentCard: GrowthContent, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+    func addGrowthContents(id: String, contentCard: GrowthContent, imageView: UIImageView, completion: @escaping Handler<String>) {
         
         guard let userID = UserManager.shared.userID else { return }
         
@@ -114,7 +114,7 @@ class GrowthContentManager {
         }
     }
     
-    func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping Handler<String>) {
         
         let document = self.db.collection(FSCollection.growthContents.rawValue).document(contentCard.id)
         
@@ -155,7 +155,7 @@ class GrowthContentManager {
         }
     }
     
-    func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping Handler<String>) {
         
         db.collection(FSCollection.growthContents.rawValue).document(id).delete() { err in
             
@@ -185,7 +185,7 @@ class GrowthContentManager {
         }
     }
     
-    func deleteGrowthContentCardImage(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthContentCardImage(id: String, completion: @escaping Handler<String>) {
         
         let ref = Storage.storage().reference().child("\(id).jpg")
 

@@ -15,7 +15,7 @@ class ReflectionManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchQuestions(completion: @escaping (Result<[String], Error>) -> Void) {
+    func fetchQuestions(completion: @escaping Handler<[String]>) {
         
         db.collection(FSCollection.reflection.rawValue).document("Questions").getDocument { (document, err) in
             
@@ -36,7 +36,7 @@ class ReflectionManager {
         }
     }
     
-    func fetchUserReflectionTime(userID: String, completion: @escaping (Result<Int, Error>) -> Void) {
+    func fetchUserReflectionTime(userID: String, completion: @escaping Handler<Int>) {
         
         db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, err) in
             

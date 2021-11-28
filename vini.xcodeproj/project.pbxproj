@@ -374,9 +374,9 @@
 				9C5FC929271D4FFE00DE4E42 /* GrowthCardManager.swift */,
 				9C05B22C271EE47600C78620 /* GrowthContentManager.swift */,
 				9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */,
-				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
 				9CEE9DB8272BD5A2006CCA06 /* MailManager.swift */,
 				9C840CB527313D9A00AF3F73 /* InsightManager.swift */,
+				9C51A3D2273290ED00F85CE4 /* ReflectionManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

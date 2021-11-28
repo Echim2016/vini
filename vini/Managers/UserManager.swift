@@ -9,6 +9,8 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+typealias Handler<T> = (Result<T, Error>) -> Void
+
 class UserManager {
     
     static let shared = UserManager()
@@ -27,7 +29,7 @@ class UserManager {
         case unblock
     }
     
-    func createNewUser(user: inout User, completion: @escaping (Result<String, Error>) -> Void) {
+    func createNewUser(user: inout User, completion: @escaping Handler<String>) {
         
         let document = userDatabase.document(user.id)
         user.createdTime = Timestamp(date: Date())
@@ -63,7 +65,7 @@ class UserManager {
         }
     }
     
-    func createNewMailBox(completion: @escaping (Result<String, Error>) -> Void) {
+    func createNewMailBox(completion: @escaping Handler<String>) {
         
         if let userID = self.userID {
             
@@ -94,7 +96,7 @@ class UserManager {
         
     }
     
-    func updateReflectionTime(userID: String, name: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func updateReflectionTime(userID: String, name: String, completion: @escaping Handler<Bool>) {
         
         let document = userDatabase.document(userID)
         
@@ -114,7 +116,7 @@ class UserManager {
         }
     }
     
-    func fetchUser(userID: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func fetchUser(userID: String, completion: @escaping Handler<User>) {
         
        userDatabase.document(userID).getDocument { (document, error) in
             
@@ -148,7 +150,7 @@ class UserManager {
         
     }
     
-    func updateBlockUserList(blockUserID: String, action: BlockAction, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func updateBlockUserList(blockUserID: String, action: BlockAction, completion: @escaping Handler<Bool>) {
         
         if let userID = self.userID {
             

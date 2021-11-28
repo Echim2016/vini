@@ -15,7 +15,7 @@ class DiscoverUserManager {
     
     lazy var db = Firestore.firestore()
     
-    func fetchData(category: String, blockList: [String], completion: @escaping (Result<[ViniView], Error>) -> Void) {
+    func fetchData(category: String, blockList: [String], completion: @escaping Handler<[ViniView]>) {
         
         db.collection(FSCollection.users.rawValue).whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
             
@@ -55,7 +55,7 @@ class DiscoverUserManager {
         }
     }
     
-    func updateUserStatus(wondering: String, name: String, viniType: String, isOn: Bool, category: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateUserStatus(wondering: String, name: String, viniType: String, isOn: Bool, category: String, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -83,7 +83,7 @@ class DiscoverUserManager {
         
     }
     
-    func fetchUserProfile(completion: @escaping (Result<User, Error>) -> Void) {
+    func fetchUserProfile(completion: @escaping Handler<User>) {
         
         if let userID = UserManager.shared.userID {
             

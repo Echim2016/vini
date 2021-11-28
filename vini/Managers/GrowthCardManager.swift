@@ -16,7 +16,7 @@ class GrowthCardManager {
     let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
     let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
-    func fetchData(isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
+    func fetchData(isArchived: Bool, completion: @escaping Handler<[GrowthCard]>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -51,7 +51,7 @@ class GrowthCardManager {
         
     }
     
-    func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {
+    func addData(growthCard: inout GrowthCard, completion: @escaping Handler<String>) {
         
         let document = cardDatabase.document()
         growthCard.id = document.documentID
@@ -77,7 +77,7 @@ class GrowthCardManager {
         }
     }
     
-    func updateConclusion(id: String, conclusion: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateConclusion(id: String, conclusion: String, completion: @escaping Handler<String>) {
         
         let document = cardDatabase.document(id)
         
@@ -113,7 +113,7 @@ class GrowthCardManager {
         }
     }
     
-    func updateGrowthCard(id: String, emoji: String, title: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthCard(id: String, emoji: String, title: String, completion: @escaping Handler<String>) {
         
         let document = cardDatabase.document(id)
         
@@ -134,7 +134,7 @@ class GrowthCardManager {
         }
     }
     
-    func deleteGrowthCardAndRelatedCards(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthCardAndRelatedCards(id: String, completion: @escaping Handler<String>) {
                     
         let batch = Firestore.firestore().batch()
         
@@ -192,7 +192,7 @@ class GrowthCardManager {
         
     }
     
-    func archiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func archiveGrowthCard(id: String, completion: @escaping Handler<String>) {
         
         let document = cardDatabase.document(id)
         
@@ -213,7 +213,7 @@ class GrowthCardManager {
         }
     }
     
-    func unarchiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func unarchiveGrowthCard(id: String, completion: @escaping Handler<String>) {
         
         let document = cardDatabase.document(id)
         

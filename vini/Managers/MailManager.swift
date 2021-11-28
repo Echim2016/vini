@@ -17,7 +17,7 @@ class MailManager {
     
     let welcomeMailSenderID = "WelcomeMail"
     
-    func fetchData(blockList: [String], completion: @escaping (Result<[Mail], Error>) -> Void) {
+    func fetchData(blockList: [String], completion: @escaping Handler<[Mail]>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -51,7 +51,7 @@ class MailManager {
         }
     }
     
-    func sendMails(mail: inout Mail, completion: @escaping (Result<String, Error>) -> Void) {
+    func sendMails(mail: inout Mail, completion: @escaping Handler<String>) {
         
         let document = db.collection(FSCollection.mailboxes.rawValue).document(mail.recipientID).collection(FSCollection.mails.rawValue).document()
         mail.id = document.documentID
@@ -66,7 +66,7 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: send a mail"))
                 }
             }
             
@@ -77,7 +77,7 @@ class MailManager {
         }
     }
     
-    func sendWelcomeMail(completion: @escaping (Result<String, Error>) -> Void) {
+    func sendWelcomeMail(completion: @escaping Handler<String>) {
         
         if let id = UserManager.shared.userID {
             
@@ -98,7 +98,7 @@ class MailManager {
                         completion(.failure(error))
                     } else {
                         
-                        completion(.success("Success"))
+                        completion(.success("Success: send welcome mail"))
                     }
                 }
                 
@@ -110,7 +110,7 @@ class MailManager {
         }
     }
     
-    func deleteMail(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteMail(mailID: String, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
         
@@ -122,13 +122,13 @@ class MailManager {
                 } else {
                     print("Mail successfully removed!")
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: delete a mail"))
                 }
             }
         }
     }
     
-    func updateReadTime(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateReadTime(mailID: String, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -145,14 +145,14 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: update read time"))
                 }
             }
         }
         
     }
     
-    func getReflectionTime(completion: @escaping (Result<Int, Error>) -> Void) {
+    func getReflectionTime(completion: @escaping Handler<Int>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -176,7 +176,7 @@ class MailManager {
         }
     }
     
-    func updateReflectionTime(time: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateReflectionTime(time: Int, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
             
@@ -193,13 +193,13 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: update reflection time"))
                 }
             }
         }
     }
     
-    func fetchNumberOfUnreadMails(completion: @escaping (Result<Int, Error>) -> Void) {
+    func fetchNumberOfUnreadMails(completion: @escaping Handler<Int>) {
         
         if let userID = UserManager.shared.userID {
             
