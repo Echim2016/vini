@@ -13,8 +13,9 @@ class SettingsViewController: UIViewController {
     private enum Segue: String {
         
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
-        case showLogOutAlert = "ShowLogOutAlert"
         case showBlockList = "ShowBlockList"
+        case showLogOutAlert = "ShowLogOutAlert"
+        case showDeleteAccountAlert = "ShowDeleteAccountAlert"
         case showPrivacyPage = "ShowPrivacyPage"
     }
 
@@ -80,10 +81,16 @@ class SettingsViewController: UIViewController {
                 }
             }
             
+        case Segue.showDeleteAccountAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
+                
+                alert.alertType = .deleteAccountAlert
+            }
+            
         default:
             break
         }
-        
     }
     
 }
@@ -106,13 +113,16 @@ extension SettingsViewController: UITableViewDelegate {
             
             performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
             
+        case (1, 2):
+            
+            performSegue(withIdentifier: Segue.showDeleteAccountAlert.rawValue, sender: nil)
+            
         case (SettingsSection.about.rawValue, 0):
             
             performSegue(withIdentifier: Segue.showPrivacyPage.rawValue, sender: nil)
             
         default:
             break
-            
         }
     }
     

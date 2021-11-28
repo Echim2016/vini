@@ -18,6 +18,7 @@ enum Alert {
     case deleteMailAlert
     case deleteGrowthCardAlert
     case deleteGrowthContentCardAlert
+    case deleteAccountAlert
     
     case emptyInputAlert
     case emptyContentCardAlert
@@ -52,6 +53,9 @@ enum Alert {
             
         case .deleteGrowthContentCardAlert:
             return "刪除"
+            
+        case .deleteAccountAlert:
+            return "刪除帳號"
             
         case .emptyInputAlert:
             return "無法成功傳送"
@@ -91,6 +95,9 @@ enum Alert {
             
         case .deleteGrowthContentCardAlert:
             return "您確定要刪除此微小學習卡片嗎？"
+            
+        case .deleteAccountAlert:
+            return "若您確定要刪除此帳號，請來信：vini.inspiring@gmail.com"
             
         case .emptyInputAlert:
             return "您的輸入內容似乎不完整，請確認完成所有欄位後再嘗試一次！"

@@ -36,7 +36,7 @@ enum SettingsSection: Int, CaseIterable {
             return ["每日反思時間"]
             
         case .account:
-            return ["已封鎖的使用者" ,"登出"]
+            return ["已封鎖的使用者", "登出", "刪除帳號"]
             
         case .about:
             return ["隱私權政策"]
