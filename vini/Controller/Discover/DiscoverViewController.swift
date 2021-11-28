@@ -38,6 +38,7 @@ class DiscoverViewController: UIViewController {
             }
         }
     }
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var blockButton: UIButton!
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
@@ -62,6 +63,8 @@ class DiscoverViewController: UIViewController {
         bigCloudImageView.float(duration: 1.6)
         mediumCloudImageView.float(duration: 2.0)
         view.bringSubviewToFront(headerView)
+        view.bringSubviewToFront(mapButton)
+        view.bringSubviewToFront(profileButton)
         view.bringSubviewToFront(mediumCloudImageView)
         
         setupNotificationCenterObserver()
