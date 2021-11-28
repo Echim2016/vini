@@ -96,7 +96,7 @@ class UserManager {
         
     }
     
-    func updateReflectionTime(userID: String, name: String, completion: @escaping Handler<Bool>) {
+    func updateDisplayName(userID: String, name: String, completion: @escaping Handler<Bool>) {
         
         let document = userDatabase.document(userID)
         
