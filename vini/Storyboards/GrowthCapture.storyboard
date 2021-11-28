@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgB-qP-Y6X" userLabel="Emoji Background View">
-                                            <rect key="frame" x="167" y="0.0" width="80" height="80"/>
+                                            <rect key="frame" x="167" y="5" width="80" height="80"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⛰️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLn-Wn-iTT">
                                                     <rect key="frame" x="10.5" y="7" width="59" height="66"/>
@@ -55,13 +55,13 @@
                                             </constraints>
                                         </view>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「想學習更多iOS技術」" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqf-OF-VcM">
-                                            <rect key="frame" x="32" y="80" width="350" height="42"/>
+                                            <rect key="frame" x="32" y="85" width="350" height="42"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Semibold" family="PingFang TC" pointSize="30"/>
                                             <color key="textColor" red="0.078431372550000003" green="0.15686274510000001" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Dd-LG-Oqs" customClass="RSKPlaceholderTextView" customModule="RSKPlaceholderTextView">
-                                            <rect key="frame" x="32" y="85" width="350" height="100"/>
+                                            <rect key="frame" x="32" y="90" width="350" height="100"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="w5d-4V-EDz"/>
@@ -81,7 +81,7 @@
                                         <constraint firstItem="9Dd-LG-Oqs" firstAttribute="top" secondItem="pgB-qP-Y6X" secondAttribute="bottom" constant="5" id="bmc-mp-1mS"/>
                                         <constraint firstAttribute="height" constant="250" id="dYZ-or-0cI"/>
                                         <constraint firstItem="vqf-OF-VcM" firstAttribute="leading" secondItem="JnJ-UK-3Bl" secondAttribute="leading" constant="32" id="n2e-NG-tWp"/>
-                                        <constraint firstItem="pgB-qP-Y6X" firstAttribute="top" secondItem="JnJ-UK-3Bl" secondAttribute="top" id="o7x-k5-5PW"/>
+                                        <constraint firstItem="pgB-qP-Y6X" firstAttribute="top" secondItem="JnJ-UK-3Bl" secondAttribute="top" constant="5" id="o7x-k5-5PW"/>
                                         <constraint firstItem="vqf-OF-VcM" firstAttribute="top" secondItem="pgB-qP-Y6X" secondAttribute="bottom" id="sCQ-VR-FQ7"/>
                                     </constraints>
                                 </view>
@@ -231,7 +231,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="2ax-mj-DPG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kVx-Ps-DMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2762" y="15"/>
+            <point key="canvasLocation" x="2835" y="42"/>
         </scene>
         <!--Conclusion-->
         <scene sceneID="CpK-jg-J3L">
@@ -241,7 +241,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIP-fp-qtg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="110"/>
+            <point key="canvasLocation" x="2862" y="110"/>
         </scene>
         <!--Congrats-->
         <scene sceneID="2a2-TL-4fn">
@@ -249,7 +249,7 @@
                 <viewControllerPlaceholder storyboardName="Congrats" id="0d6-dM-goE" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXe-5C-icP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="280"/>
+            <point key="canvasLocation" x="2854" y="212"/>
         </scene>
         <!--Set Growth Content Card View Controller-->
         <scene sceneID="CAR-gr-LfO">
@@ -395,7 +395,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="I8p-aA-edR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNp-gq-B1k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="1231"/>
+            <point key="canvasLocation" x="1951" y="1280"/>
         </scene>
         <!--Alert-->
         <scene sceneID="EZP-na-wcZ">
@@ -403,7 +403,7 @@
                 <viewControllerPlaceholder storyboardName="Alert" id="THK-eX-Hoh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6r-UE-t5e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2465" y="781"/>
+            <point key="canvasLocation" x="2507" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="feq-eu-Ywv">

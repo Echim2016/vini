@@ -36,25 +36,4 @@ class ReflectionManager {
         }
     }
     
-    func fetchUserReflectionTime(userID: String, completion: @escaping Handler<Int>) {
-        
-        database.document(userID).getDocument { (document, err) in
-            
-            if let err = err {
-                print("Error getting quotes: \(err)")
-                completion(.failure(err))
-            } else {
-                
-                if let document = document, document.exists {
-                    
-                    guard let time = document.get("preferred_reflection_hour") as? Int else {
-                        return
-                    }
-                
-                    completion(.success(time))
-                }
-            }
-        }
-    }
-    
 }

@@ -45,6 +45,7 @@
                         <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
                         <segue destination="6bQ-9j-hGV" kind="show" identifier="ShowBlockList" id="zK9-6h-YYD"/>
                         <segue destination="Z0K-wj-Aj3" kind="show" identifier="ShowPrivacyPage" id="CCl-lP-hai"/>
+                        <segue destination="maY-8e-5TJ" kind="presentation" identifier="ShowDeleteAccountAlert" id="gpr-Rv-qgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -78,6 +79,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVR-sE-J37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1699" y="282"/>
+        </scene>
+        <!--Alert-->
+        <scene sceneID="lmf-gQ-yD2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Alert" id="maY-8e-5TJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4e-8x-egm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1661" y="347"/>
         </scene>
         <!--TimePicker-->
         <scene sceneID="elx-sb-8AH">

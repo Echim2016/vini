@@ -284,7 +284,7 @@ extension UIView {
             while !exist || count > 100000 {
                 
                 let widthSpacing = count > 50000 ? 10 : 50
-                let heightSpacing = count > 50000 ? 10 : 50
+                let heightSpacing = count > 50000 ? 10 : 60
                 
                 randomX = Int.random(in: 0...Int(width))
                 randomY = Int.random(in: 210...Int(height))

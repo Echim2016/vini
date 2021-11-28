@@ -56,6 +56,25 @@ extension UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
+    func setupNavigationBarStandardAppearance(backgroundColor: UIColor) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = backgroundColor
+        appearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+    }
+    
+    func setupNavigationBarScrollEdgeAppearance(backgroundColor: UIColor) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = backgroundColor
+        appearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = nil
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     func setupBlurBackground(layer: Int) {
         
         view.backgroundColor = .clear
