@@ -112,12 +112,16 @@ class DiscoverViewController: UIViewController {
             
             map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
                 if let vini = vini as? ViniView {
+                    
                     sendButton.alpha = 1
+                    blockButton.alpha = 1
+                    
                     vini.isUserInteractionEnabled = false
                     
                     if vini.data.id == UserManager.shared.userID {
                         
                         sendButton.alpha = 0
+                        blockButton.alpha = 0
                     }
                     
                     nameLabel.text = vini.data.name
@@ -129,7 +133,6 @@ class DiscoverViewController: UIViewController {
                         self.currentSelectedVini.layer.removeAllAnimations()
                         self.currentSelectedVini.isUserInteractionEnabled = true
                         self.currentSelectedVini = vini
-                        self.blockButton.alpha = 1
                         Haptic.play(".", delay: 0.1)
                     }
                 }
