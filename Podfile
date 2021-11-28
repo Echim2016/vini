@@ -16,9 +16,7 @@ target 'vini' do
   pod 'Kingfisher'
   pod 'RSKPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
-  pod 'loady'
   pod "Haptica"
-  pod 'lottie-ios'
   pod 'JGProgressHUD'
 
   target 'ViniUnitTests' do
@@ -32,9 +30,7 @@ target 'vini' do
         pod 'Kingfisher'
         pod 'RSKPlaceholderTextView'
         pod 'IQKeyboardManagerSwift'
-        pod 'loady'
         pod 'Haptica'
-        pod 'lottie-ios'
         pod 'JGProgressHUD'
     end
 

@@ -567,7 +567,6 @@
 			children = (
 				9C6C3D962733A90300F45247 /* vini.entitlements */,
 				9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */,
-				9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */,
 				9C05B224271EB38900C78620 /* Third Party Wrapper */,
 				9CC1E4D7271BE59300F17190 /* Extension */,
 				9C35AACE273378CF007795D8 /* Managers */,
@@ -730,13 +729,6 @@
 				9C021D42272D4189009A7581 /* MailContentCell.xib */,
 			);
 			path = Mailbox;
-			sourceTree = "<group>";
-		};
-		9CEE9DB1272BC3CE006CCA06 /* Lottie Animation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Lottie Animation";
 			sourceTree = "<group>";
 		};
 		9CEE9DB6272BD571006CCA06 /* Discover */ = {
