@@ -24,6 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             // the user is logged in, then redirect to home page
             if let tabBarController = UIStoryboard.main.instantiateViewController(withIdentifier: StoryboardCategory.main.rawValue) as? UITabBarController {
+                
+                // Update reflection notification
+                NotificationManager.shared.setupReflectionNotification()
+                
                 self.window?.rootViewController = tabBarController
                 self.window?.makeKeyAndVisible()
             }
