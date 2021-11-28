@@ -13,14 +13,16 @@ import FirebaseStorage
 class GrowthContentManager {
     
     static let shared = GrowthContentManager()
-    
-    lazy var db = Firestore.firestore()
+        
+    let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
+
+    let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
     func fetchGrowthContents(id: String, completion: @escaping Handler<[GrowthContent]>) {
         
-        let ref = db.collection(FSCollection.growthCard.rawValue).document(id)
+        let ref = cardDatabase.document(id)
         
-        db.collection(FSCollection.growthContents.rawValue).whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
+        contentDatabase.whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -56,7 +58,7 @@ class GrowthContentManager {
             
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 
-                guard let metadata = metadata else {
+                guard metadata != nil else {
                     completion("")
                     return
                 }
@@ -64,7 +66,8 @@ class GrowthContentManager {
                 storageRef.downloadURL(completion: { (url, error) in
                     
                     guard let downloadURL = url else {
-                        completion("")
+                        
+                        completion(error.debugDescription)
                         return
                     }
                     
@@ -73,6 +76,7 @@ class GrowthContentManager {
                 
             }
         } else {
+            
             completion("")
         }
     }
@@ -81,14 +85,14 @@ class GrowthContentManager {
         
         guard let userID = UserManager.shared.userID else { return }
         
-        let document = self.db.collection(FSCollection.growthContents.rawValue).document()
+        let document = contentDatabase.document()
         
         uploadImage(imageView: imageView, id: document.documentID) { url in
             
             var growthContent = GrowthContent()
             growthContent.id = document.documentID
             growthContent.userID = userID
-            growthContent.growthCardId = self.db.collection(FSCollection.growthCard.rawValue).document(id)
+            growthContent.growthCardId = self.cardDatabase.document(id)
             growthContent.title = contentCard.title
             growthContent.content = contentCard.content
             growthContent.image = url
@@ -116,7 +120,7 @@ class GrowthContentManager {
     
     func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping Handler<String>) {
         
-        let document = self.db.collection(FSCollection.growthContents.rawValue).document(contentCard.id)
+        let document = contentDatabase.document(contentCard.id)
         
         var updateDict = [
             "title": contentCard.title,
@@ -157,7 +161,7 @@ class GrowthContentManager {
     
     func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping Handler<String>) {
         
-        db.collection(FSCollection.growthContents.rawValue).document(id).delete() { err in
+        contentDatabase.document(id).delete() { err in
             
             if let err = err {
                 print("Error removing growth content card: \(err)")

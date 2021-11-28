@@ -13,7 +13,9 @@ class MailManager {
     
     static let shared = MailManager()
     
-    lazy var db = Firestore.firestore()
+    let mailboxDatabase = Firestore.firestore().collection(FSCollection.mailboxes.rawValue)
+    
+    let userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
     
     let welcomeMailSenderID = "WelcomeMail"
     
@@ -21,7 +23,7 @@ class MailManager {
         
         if let userID = UserManager.shared.userID {
             
-            let ref = db.collection(FSCollection.mailboxes.rawValue).document(userID)
+            let ref = mailboxDatabase.document(userID)
             ref.collection(FSCollection.mails.rawValue).order(by: "sent_time", descending: true).getDocuments() { (querySnapshot, error) in
         
                 if let error = error {
@@ -53,7 +55,7 @@ class MailManager {
     
     func sendMails(mail: inout Mail, completion: @escaping Handler<String>) {
         
-        let document = db.collection(FSCollection.mailboxes.rawValue).document(mail.recipientID).collection(FSCollection.mails.rawValue).document()
+        let document = mailboxDatabase.document(mail.recipientID).collection(FSCollection.mails.rawValue).document()
         mail.id = document.documentID
         mail.sentTime = Timestamp(date: Date())
         
@@ -84,7 +86,7 @@ class MailManager {
             var welcomeMail = Mail()
             welcomeMail.setupWelcomeMail()
             
-            let document = db.collection(FSCollection.mailboxes.rawValue).document(id).collection(FSCollection.mails.rawValue).document()
+            let document = mailboxDatabase.document(id).collection(FSCollection.mails.rawValue).document()
             welcomeMail.id = document.documentID
             welcomeMail.recipientID = id
             welcomeMail.sentTime = Timestamp(date: Date())
@@ -114,7 +116,7 @@ class MailManager {
         
         if let userID = UserManager.shared.userID {
         
-            db.collection(FSCollection.mailboxes.rawValue).document(userID).collection(FSCollection.mails.rawValue).document(mailID).delete() { err in
+            mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).document(mailID).delete() { err in
                 
                 if let err = err {
                     print("Error removing mail: \(err)")
@@ -132,7 +134,7 @@ class MailManager {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection(FSCollection.mailboxes.rawValue).document(userID).collection(FSCollection.mails.rawValue).document(mailID)
+            let document = mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).document(mailID)
             
             let updateDict = [
                 "read_timestamp": Timestamp(date: Date())
@@ -156,7 +158,7 @@ class MailManager {
         
         if let userID = UserManager.shared.userID {
             
-            db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, error) in
+            userDatabase.document(userID).getDocument { (document, error) in
                 
                 if let error = error {
                     
@@ -180,7 +182,7 @@ class MailManager {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection(FSCollection.users.rawValue).document(userID)
+            let document = userDatabase.document(userID)
             
             let updateDict = [
                 "preferred_reflection_hour": time
@@ -205,7 +207,7 @@ class MailManager {
             
             var count = 0
             
-            db.collection(FSCollection.mailboxes.rawValue).document(userID).collection(FSCollection.mails.rawValue).getDocuments { (querySnapshot, err) in
+            mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).getDocuments { (querySnapshot, err) in
                 
                 if let err = err {
                     print("Error getting number of mails: \(err)")
@@ -228,4 +230,5 @@ class MailManager {
             }
         }
     }
+    
 }

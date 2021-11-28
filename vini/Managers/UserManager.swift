@@ -15,9 +15,9 @@ class UserManager {
     
     static let shared = UserManager()
     
-    var userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
+    let userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
     
-    var mailboxesDatabase = Firestore.firestore().collection(FSCollection.mailboxes.rawValue)
+    let mailboxDatabase = Firestore.firestore().collection(FSCollection.mailboxes.rawValue)
     
     let userID = Auth.auth().currentUser?.uid
     
@@ -69,7 +69,7 @@ class UserManager {
         
         if let userID = self.userID {
             
-            let document = mailboxesDatabase.document(userID)
+            let document = mailboxDatabase.document(userID)
   
             document.setData(["created_time": Timestamp(date: Date())]) { error in
                 

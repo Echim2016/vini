@@ -13,7 +13,9 @@ class InsightManager {
     
     static let shared = InsightManager()
     
-    lazy var db = Firestore.firestore()
+    let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
+    
+    let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
     func fetchInsights(completion: @escaping Handler<[InsightTitle: String]>) {
         
@@ -83,7 +85,7 @@ class InsightManager {
     
     func fetchNumberOfGrowthContentCards(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection(FSCollection.growthContents.rawValue).whereField("user_id", isEqualTo: userID).getDocuments { (querySnapshot, err) in
+        contentDatabase.whereField("user_id", isEqualTo: userID).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth content cards: \(err)")
@@ -99,7 +101,7 @@ class InsightManager {
     
     func fetchNumberOfArchivedGrowthCards(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection(FSCollection.growthCard.rawValue).whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: true).getDocuments { (querySnapshot, err) in
+        cardDatabase.whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: true).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")
@@ -115,7 +117,7 @@ class InsightManager {
     
     func fetchNumberOfAllGrowthCards(completion: @escaping Handler<String>) {
         
-        db.collection(FSCollection.growthCard.rawValue).getDocuments { (querySnapshot, err) in
+        cardDatabase.getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")
@@ -131,7 +133,7 @@ class InsightManager {
     
     func fetchCurrentStreak(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection(FSCollection.growthContents.rawValue).whereField("user_id", isEqualTo: userID).order(by: "created_time", descending: true).getDocuments { (querySnapshot, err) in
+        contentDatabase.whereField("user_id", isEqualTo: userID).order(by: "created_time", descending: true).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")

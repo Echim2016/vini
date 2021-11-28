@@ -13,11 +13,11 @@ class DiscoverUserManager {
     
     static let shared = DiscoverUserManager()
     
-    lazy var db = Firestore.firestore()
+    let userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
     
     func fetchData(category: String, blockList: [String], completion: @escaping Handler<[ViniView]>) {
         
-        db.collection(FSCollection.users.rawValue).whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
+        userDatabase.whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -59,7 +59,7 @@ class DiscoverUserManager {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection(FSCollection.users.rawValue).document(userID)
+            let document = userDatabase.document(userID)
             
             let updateDict = [
                 "display_name": name,
@@ -87,7 +87,7 @@ class DiscoverUserManager {
         
         if let userID = UserManager.shared.userID {
             
-            db.collection(FSCollection.users.rawValue).document(userID).getDocument { (document, error) in
+            userDatabase.document(userID).getDocument { (document, error) in
                 
                 if let error = error {
                     
