@@ -41,4 +41,3 @@ class BlockUserCell: UITableViewCell {
         delegate?.didTapUnblockButton(self)
     }
 }
-

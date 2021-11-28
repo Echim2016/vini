@@ -82,12 +82,6 @@ enum CloudCategory: Int, CaseIterable {
             ]
             
         case .lifestyle:
-//            return [
-//                UIColor(red: 128/255, green: 155/255, blue: 206/255, alpha: 1.0).cgColor,
-//                UIColor(red: 184/255, green: 224/255, blue: 210/255, alpha: 1.0).cgColor,
-//                UIColor(red: 234/255, green: 196/255, blue: 213/255, alpha: 1.0).cgColor
-//            ]
-            
             return [
                 UIColor(red: 248/255, green: 129/255, blue: 117/255, alpha: 1.0).cgColor,
                 UIColor(red: 85/255, green: 80/255, blue: 126/255, alpha: 1.0).cgColor,

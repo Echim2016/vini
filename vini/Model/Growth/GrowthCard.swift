@@ -35,4 +35,18 @@ struct GrowthCard: Codable {
         case createdTime = "created_time"
     }
     
+    init() {
+        
+        self.id = ""
+        self.userID = ""
+        self.title = ""
+        self.emoji = ""
+        self.isStarred = false
+        self.isArchived = false
+        self.archivedTime = nil
+        self.contents = nil
+        self.conclusion = nil
+        self.createdTime = nil
+    }
+    
 }

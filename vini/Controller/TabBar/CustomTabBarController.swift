@@ -116,7 +116,7 @@ extension CustomTabBarController {
                     
                 case .success(let user):
                     
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user" : user])
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user": user])
                     
                 case .failure(let error):
                     

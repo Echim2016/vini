@@ -13,8 +13,8 @@ class MyGrowthCardsHeader: UITableViewHeaderFooterView {
     
     override init(reuseIdentifier: String?) {
         
-            super.init(reuseIdentifier: reuseIdentifier)
-            configureContents()
+        super.init(reuseIdentifier: reuseIdentifier)
+        configureContents()
     }
     
     required init?(coder: NSCoder) {

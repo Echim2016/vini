@@ -32,6 +32,7 @@ extension String {
     var emojiScalars: [UnicodeScalar] {
         return filter { $0.isEmoji }.flatMap { $0.unicodeScalars }
     }
+    
 }
 
 extension Character {
@@ -48,4 +49,5 @@ extension Character {
     var isEmoji: Bool {
         return isSimpleEmoji || isCombinedIntoEmoji
     }
+    
 }

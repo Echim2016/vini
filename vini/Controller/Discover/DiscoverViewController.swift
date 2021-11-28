@@ -21,12 +21,9 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var backgroundRectView: UIView!
     @IBOutlet weak var bigCloudImageView: UIImageView!
     @IBOutlet weak var mediumCloudImageView: UIImageView!
-    @IBOutlet weak var backgroundRectWidth: NSLayoutConstraint!
     
-    let mapView = MapScrollView()
-    
-    var cloudCategory: CloudCategory = .selfGrowth
-    
+    private let mapView = MapScrollView()
+    private var cloudCategory: CloudCategory = .selfGrowth
     private var infoOfUsers: [ViniView] = []
         
     @IBOutlet weak var headerView: UIView!
@@ -42,13 +39,11 @@ class DiscoverViewController: UIViewController {
         }
     }
     @IBOutlet weak var blockButton: UIButton!
-    
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
     
-    var currentSelectedVini: ViniView = ViniView()
-    
-    var user: User?
+    private var currentSelectedVini: ViniView = ViniView()
+    private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +56,11 @@ class DiscoverViewController: UIViewController {
         
         setupMapScrollView()
         setupNavigationController(title: "探索", titleColor: .white)
+        navigationController?.navigationBar.isHidden = true
         headerView.layer.cornerRadius = 25
         sendButton.layer.cornerRadius = 20
-        self.bigCloudImageView.float(duration: 1.6)
-        self.mediumCloudImageView.float(duration: 2.0)
-        self.navigationController?.navigationBar.isHidden = true
+        bigCloudImageView.float(duration: 1.6)
+        mediumCloudImageView.float(duration: 2.0)
         view.bringSubviewToFront(headerView)
         view.bringSubviewToFront(mediumCloudImageView)
         
@@ -81,9 +76,9 @@ class DiscoverViewController: UIViewController {
         }
         
         fetchUserInfoWithoutBlockList()
-        Haptic.play("...o-o...", delay: 0.3)
         showBackgroundViewScaleUpAnimation()
-        self.showInitialIndicatorAnimation()
+        showInitialIndicatorAnimation()
+        Haptic.play("...o-o...", delay: 0.3)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,11 +112,9 @@ class DiscoverViewController: UIViewController {
                     sendButton.alpha = 1
                     vini.isUserInteractionEnabled = false
                     
-                    if let userID = UserManager.shared.userID {
+                    if vini.data.id == UserManager.shared.userID {
                         
-                        if vini.data.id == userID {
-                            sendButton.alpha = 0
-                        }
+                        sendButton.alpha = 0
                     }
                     
                     nameLabel.text = vini.data.name
@@ -167,7 +160,7 @@ class DiscoverViewController: UIViewController {
         
         if let destination = segue.destination as? SendMailViewController {
             
-            destination.receipient = currentSelectedVini
+            destination.recipient = currentSelectedVini
             destination.user = user
             destination.delegate = self
         }
@@ -188,14 +181,14 @@ class DiscoverViewController: UIViewController {
             alert.alertStyle = .danger
             alert.alertType = .blockUserAlert
             alert.viniType = UIImage.AssetIdentifier.xmark
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.blockUser()
             }
         }
-
     }
-    
 }
 
 extension DiscoverViewController {
@@ -203,17 +196,13 @@ extension DiscoverViewController {
     func setupMapScrollView() {
         
         mapView.dataSource = self
-        
         mapView.delegate = self
-                
         self.view.addSubview(mapView)
                 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
-
         self.mapView.addGestureRecognizer(tapGesture)
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -254,23 +243,6 @@ extension DiscoverViewController {
         blockButton.alpha = 0
     }
     
-    func displayMapView() {
-        
-        UIView.animate(
-            withDuration: 0.7,
-            animations: {
-                
-                self.mapView.setContentOffsetToMiddle()
-                self.wonderingLabel.alpha = 1
-                self.nameLabel.alpha = 1
-                self.backgroundRectView.alpha = 1
-            },
-            completion: { _ in
-                self.showCloudAnimation()
-            }
-        )
-    }
-    
     func setupNotificationCenterObserver() {
         
         NotificationCenter.default.addObserver(
@@ -288,7 +260,6 @@ extension DiscoverViewController {
             
             self.user = user
         }
-        
     }
 }
 
@@ -313,11 +284,9 @@ extension DiscoverViewController {
                 case.failure(let error):
                     
                     print(error)
-                    
                 }
             }
         }
-        
     }
     
     func fetchUserInfo(blockList: [String]) {
@@ -343,9 +312,10 @@ extension DiscoverViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: currentSelectedVini.data.id) { result in
+        UserManager.shared.updateBlockUserList(blockUserID: currentSelectedVini.data.id, action: .block) { result in
             
             switch result {
+                
             case .success:
                 
                 VProgressHUD.dismiss()
@@ -365,8 +335,6 @@ extension DiscoverViewController: MapScrollViewDataSource {
     
     func infoOfUsers(_ mapScrollView: MapScrollView) -> [ViniView] {
         
-//        print("start")
-//        infoOfUsers.forEach { print($0.data.name) }
         return infoOfUsers
     }
 }
@@ -409,6 +377,23 @@ extension DiscoverViewController: DiscoverProtocol {
 
 extension DiscoverViewController {
     
+    func displayMapView() {
+        
+        UIView.animate(
+            withDuration: 0.7,
+            animations: {
+                
+                self.mapView.setContentOffsetToMiddle()
+                self.wonderingLabel.alpha = 1
+                self.nameLabel.alpha = 1
+                self.backgroundRectView.alpha = 1
+            },
+            completion: { _ in
+                self.showCloudAnimation()
+            }
+        )
+    }
+    
     func showCloudAnimation() {
         
         UIView.animate(
@@ -432,8 +417,7 @@ extension DiscoverViewController {
                 self.backgroundRectView.transform = .identity
                 
             },
-            completion: nil
-        )
+            completion: nil)
     }
     
     func showBackgroundViewScaleUpAnimation() {
@@ -454,9 +438,7 @@ extension DiscoverViewController {
                 self.backgroundRectView.transform = scaleTransform
                 self.view.bringSubviewToFront(self.mapButton)
             },
-            completion: { _ in
-                
-            })
+            completion: nil)
     }
     
     func showInitialIndicatorAnimation() {
@@ -485,7 +467,6 @@ extension DiscoverViewController {
                 self.hideIndicatorAnimation(indicator: self.rightIndicatorArrow)
             }
         )
-        
     }
     
     func showIndicatorAnimation(indicator: UIView) {
@@ -512,8 +493,8 @@ extension DiscoverViewController {
             delay: 0.5,
             options: .curveEaseIn,
             animations: {
-                indicator.alpha = 0
                 
+                indicator.alpha = 0
             },
             completion: { _ in
                 

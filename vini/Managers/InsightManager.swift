@@ -13,19 +13,21 @@ class InsightManager {
     
     static let shared = InsightManager()
     
-    lazy var db = Firestore.firestore()
+    let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
     
-    func fetchInsights(completion: @escaping (Result<[InsightTitle : String], Error>) -> Void) {
+    let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
+    
+    func fetchInsights(completion: @escaping Handler<[InsightTitle: String]>) {
         
         if let userID = UserManager.shared.userID {
             
             let group = DispatchGroup()
-            var insightDict: [InsightTitle : String] = [:]
+            var insightDict: [InsightTitle: String] = [:]
             
             group.enter()
             fetchNumberOfGrowthContentCards(userID: userID) { result in
+                
                 switch result {
-                    
                 case .success(let number):
                     insightDict[.totalGrowthContentCards] = number
                     group.leave()
@@ -37,8 +39,8 @@ class InsightManager {
             
             group.enter()
             fetchNumberOfArchivedGrowthCards(userID: userID) { result in
+                
                 switch result {
-                    
                 case .success(let number):
                     insightDict[.totalArchivedCards] = number
                     group.leave()
@@ -50,8 +52,8 @@ class InsightManager {
             
             group.enter()
             fetchNumberOfAllGrowthCards { result in
+                
                 switch result {
-                    
                 case .success(let number):
                     insightDict[.totalCardsInApp] = number + "+"
                     group.leave()
@@ -63,8 +65,8 @@ class InsightManager {
             
             group.enter()
             fetchCurrentStreak(userID: userID) { result in
+                
                 switch result {
-                    
                 case .success(let streak):
                     insightDict[.currentStreak] = streak
                     group.leave()
@@ -79,13 +81,11 @@ class InsightManager {
                 completion(.success(insightDict))
             }
         }
-        
-        
     }
     
-    func fetchNumberOfGrowthContentCards(userID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchNumberOfGrowthContentCards(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection("Growth_Contents").whereField("user_id", isEqualTo: userID).getDocuments { (querySnapshot, err) in
+        contentDatabase.whereField("user_id", isEqualTo: userID).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth content cards: \(err)")
@@ -99,9 +99,9 @@ class InsightManager {
         }
     }
     
-    func fetchNumberOfArchivedGrowthCards(userID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchNumberOfArchivedGrowthCards(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: true).getDocuments { (querySnapshot, err) in
+        cardDatabase.whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: true).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")
@@ -115,9 +115,9 @@ class InsightManager {
         }
     }
     
-    func fetchNumberOfAllGrowthCards(completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchNumberOfAllGrowthCards(completion: @escaping Handler<String>) {
         
-        db.collection("Growth_Cards").getDocuments { (querySnapshot, err) in
+        cardDatabase.getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")
@@ -131,9 +131,9 @@ class InsightManager {
         }
     }
     
-    func fetchCurrentStreak(userID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchCurrentStreak(userID: String, completion: @escaping Handler<String>) {
         
-        db.collection("Growth_Contents").whereField("user_id", isEqualTo: userID).order(by: "created_time", descending: true).getDocuments { (querySnapshot, err) in
+        contentDatabase.whereField("user_id", isEqualTo: userID).order(by: "created_time", descending: true).getDocuments { (querySnapshot, err) in
 
             if let err = err {
                 print("Error getting growth cards: \(err)")

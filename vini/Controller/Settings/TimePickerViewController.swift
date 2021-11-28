@@ -140,7 +140,9 @@ extension TimePickerViewController: UIPickerViewDataSource {
         timeOptions.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    func pickerView(_ pickerView: UIPickerView,
+                    attributedTitleForRow row: Int,
+                    forComponent component: Int) -> NSAttributedString? {
         
         let attributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),

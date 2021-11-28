@@ -23,7 +23,8 @@ class SetGrowthContentCardViewController: UIViewController {
         case showEmptyInputAlert = "ShowEmptyInputAlert"
     }
     
-    weak var growthCaptureVC: GrowthCaptureViewController?
+    weak var delegate: GrowthDelegate?
+    var manager: GrowthContentManager = GrowthContentManager.shared
     
     @IBOutlet weak var photoLibraryButton: UIButton! {
         didSet {
@@ -36,7 +37,7 @@ class SetGrowthContentCardViewController: UIViewController {
     
     @IBOutlet weak var introLabel: UILabel! {
         didSet {
-            introLabel.text = "關於「\(contentIntroText)」..."
+            introLabel.text = "關於「\(growthCard?.title ?? "")」..."
         }
     }
     
@@ -49,35 +50,29 @@ class SetGrowthContentCardViewController: UIViewController {
     @IBOutlet weak var contentTextView: RSKPlaceholderTextView! {
         didSet {
             contentTextView.delegate = self
-            contentTextView.accessibilityLabel = "content"
-            contentTextView.text = contentToAdd
+            contentTextView.text = contentCard.content
         }
     }
     
     @IBOutlet weak var titleTextView: RSKPlaceholderTextView! {
         didSet {
             titleTextView.delegate = self
-            titleTextView.accessibilityLabel = "title"
-            titleTextView.text = titleToAdd
+            titleTextView.text = contentCard.title
         }
     }
     
     @IBOutlet weak var contentImageView: UIImageView! {
         didSet {
             contentImageView.layer.cornerRadius = 18
-            contentImageView.loadImage(imageURL, placeHolder: nil)
+            contentImageView.loadImage(contentCard.image, placeHolder: nil)
+
         }
     }
     
-    var contentIntroText: String = "..."
-    var growthCardID: String = ""
-    var contentCardID: String = ""
-    
-    var titleToAdd: String = ""
-    var contentToAdd: String = ""
-    var imageURL: String?
+    var growthCard: GrowthCard?
+    var contentCard = GrowthContent()
     var newImageIsSet: Bool = false
-    var currentStatus = Status.create
+    var currentStatus: Status = .create
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +84,6 @@ class SetGrowthContentCardViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupTextView()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,10 +112,9 @@ class SetGrowthContentCardViewController: UIViewController {
     
     @IBAction func tapSaveButton(_ sender: Any) {
         
-        textViewDidEndEditing(contentTextView)
-        textViewDidEndEditing(titleTextView)
+        view.endEditing(true)
         
-        if titleToAdd.isEmpty || contentToAdd.isEmpty {
+        if contentCard.title.isEmpty || contentCard.content.isEmpty {
             
             performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
             
@@ -152,8 +145,10 @@ class SetGrowthContentCardViewController: UIViewController {
             case Segue.showUpdateContentCardAlert.rawValue:
                 
                 alert.alertType = .updateContentCardAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
                     
+                    guard let self = self else { return }
+
                     self.updateGrowthContentCard()
                 }
                 
@@ -166,7 +161,6 @@ class SetGrowthContentCardViewController: UIViewController {
             
             }
         }
-        
     }
 }
 
@@ -174,52 +168,41 @@ class SetGrowthContentCardViewController: UIViewController {
 extension SetGrowthContentCardViewController {
     
     private func addGrowthContentCard() {
+        
+        VProgressHUD.show()
+        
+        manager.addGrowthContents(
+            id: growthCard?.id ?? "",
+            contentCard: contentCard,
+            imageView: contentImageView) { result in
                 
-        if let userID = UserManager.shared.userID {
-            
-            VProgressHUD.show()
-            
-            GrowthContentProvider.shared.addGrowthContents(
-                id: growthCardID,
-                userID: userID,
-                title: titleToAdd,
-                content: contentToAdd,
-                imageView: contentImageView) { result in
+                switch result {
+                case .success(let message):
                     
-                    switch result {
-                    case .success(let message):
-                        print(message)
-                        
-                        self.growthCaptureVC?.fetchGrowthContents()
-                        
-                        VProgressHUD.showSuccess()
-                        
-                        self.dismiss(animated: true, completion: nil)
-                        
-                    case .failure(let error):
-                        print(error)
-                        
-                        VProgressHUD.showFailure()
-                    }
+                    print(message)
+                    self.delegate?.fetchData()
+                    VProgressHUD.showSuccess()
+                    self.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let error):
+                    print(error)
+                    VProgressHUD.showFailure()
                 }
-        }
-                
+            }
     }
     
     func updateGrowthContentCard() {
         
         VProgressHUD.show()
         
-        GrowthContentProvider.shared.updateGrowthContents(
-            contentID: contentCardID,
-            title: titleToAdd,
-            content: contentToAdd,
+        manager.updateGrowthContents(
+            contentCard: contentCard,
             imageView: newImageIsSet ? contentImageView : nil) { result in
             
             switch result {
             case .success(let message):
                 print(message)
-                self.growthCaptureVC?.fetchGrowthContents()
+                self.delegate?.fetchData()
                 VProgressHUD.showSuccess()
                 self.dismiss(animated: true, completion: nil)
                 
@@ -263,11 +246,11 @@ extension SetGrowthContentCardViewController: UITextViewDelegate {
                   return
               }
         
-        switch textView.accessibilityLabel {
-        case "content":
-            contentToAdd = text
-        case "title":
-            titleToAdd = text
+        switch textView {
+        case contentTextView:
+            contentCard.content = text
+        case titleTextView:
+            contentCard.title = text
         default:
             break
         }
@@ -275,7 +258,8 @@ extension SetGrowthContentCardViewController: UITextViewDelegate {
 }
 
 // MARK: - Image Picker -
-extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate,
+                                                UINavigationControllerDelegate, PHPickerViewControllerDelegate {
 
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
 
@@ -286,7 +270,8 @@ extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate, U
             present(imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             contentImageView.image = editedImage
@@ -312,7 +297,7 @@ extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate, U
             
             let previousImage = contentImageView.image
             
-            itemProvider.loadObject(ofClass: UIImage.self) {[weak self] (image, error) in
+            itemProvider.loadObject(ofClass: UIImage.self) {[weak self] (image, _) in
                 DispatchQueue.main.async {
                     guard let self = self,
                           let image = image as? UIImage,
@@ -321,7 +306,6 @@ extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate, U
                               
                           }
                     self.contentImageView.image = image
-                    
                 }
             }
         }

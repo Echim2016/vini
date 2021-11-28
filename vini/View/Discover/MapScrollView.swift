@@ -34,7 +34,7 @@ class MapScrollView: UIView {
     
     var currentDataLocation: Int = 0
     
-    private let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
         scrollView.bounces = false

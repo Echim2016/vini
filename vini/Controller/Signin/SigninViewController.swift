@@ -318,9 +318,9 @@ extension SigninViewController {
                 switch next {
                 case .signup:
                     
-                    if let vc = UIStoryboard.signUp.instantiateViewController(withIdentifier: StoryboardCategory.signUp.rawValue) as? SignupViewController {
+                    if let signupVC = UIStoryboard.signUp.instantiateViewController(withIdentifier: StoryboardCategory.signUp.rawValue) as? SignupViewController {
 
-                        self.navigationController?.pushViewController(vc, animated: false)
+                        self.navigationController?.pushViewController(signupVC, animated: false)
                     }
                     
                 case .home:

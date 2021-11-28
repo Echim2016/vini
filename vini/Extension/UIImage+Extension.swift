@@ -11,6 +11,7 @@ import Foundation
 extension UIImage {
         
     enum AssetIdentifier: Int, CaseIterable {
+        
         case amaze = 0
         case congrats
         case spark

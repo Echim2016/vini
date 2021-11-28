@@ -63,7 +63,9 @@ class BlockListViewController: UIViewController {
             let blockUserID = blockUsers[indexPath.row].id
             
             alert.alertType = .unblockUserAlert
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.unblockUser(id: blockUserID, indexPath: indexPath)
             }
@@ -118,7 +120,8 @@ extension BlockListViewController {
     
     func unblockUser(id: String, indexPath: IndexPath) {
         
-        UserManager.shared.unblockUser(blockUserID: id) { result in
+        UserManager.shared.updateBlockUserList(blockUserID: id, action: .unblock) { result in
+            
             switch result {
                 
             case .success(let success):
@@ -169,7 +172,8 @@ extension BlockListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BlockUserCell.identifier, for: indexPath) as? BlockUserCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BlockUserCell.identifier,
+                                                       for: indexPath) as? BlockUserCell else {
             fatalError()
         }
         

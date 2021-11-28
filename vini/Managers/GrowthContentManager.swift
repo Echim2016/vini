@@ -1,5 +1,5 @@
 //
-//  GrowthContentProvider.swift
+//  GrowthContentManagerr.swift
 //  vini
 //
 //  Created by Yi-Chin Hsu on 2021/10/19.
@@ -10,17 +10,19 @@ import Firebase
 import FirebaseFirestoreSwift
 import FirebaseStorage
 
-class GrowthContentProvider {
+class GrowthContentManager {
     
-    static let shared = GrowthContentProvider()
-    
-    lazy var db = Firestore.firestore()
-    
-    func fetchGrowthContents(id: String, completion: @escaping (Result<[GrowthContent], Error>) -> Void) {
+    static let shared = GrowthContentManager()
         
-        let ref = db.collection("Growth_Cards").document(id)
+    let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
+
+    let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
+    
+    func fetchGrowthContents(id: String, completion: @escaping Handler<[GrowthContent]>) {
         
-        db.collection("Growth_Contents").whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
+        let ref = cardDatabase.document(id)
+        
+        contentDatabase.whereField("growth_card_id", isEqualTo: ref).order(by: "created_time").getDocuments() { (querySnapshot, error) in
             
             if let error = error {
                 
@@ -56,7 +58,7 @@ class GrowthContentProvider {
             
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 
-                guard let metadata = metadata else {
+                guard metadata != nil else {
                     completion("")
                     return
                 }
@@ -64,7 +66,8 @@ class GrowthContentProvider {
                 storageRef.downloadURL(completion: { (url, error) in
                     
                     guard let downloadURL = url else {
-                        completion("")
+                        
+                        completion(error.debugDescription)
                         return
                     }
                     
@@ -73,25 +76,26 @@ class GrowthContentProvider {
                 
             }
         } else {
+            
             completion("")
         }
     }
     
-    func addGrowthContents(id: String, userID: String, title: String, content: String, imageView: UIImageView, completion: @escaping (Result<String, Error>) -> Void) {
+    func addGrowthContents(id: String, contentCard: GrowthContent, imageView: UIImageView, completion: @escaping Handler<String>) {
         
-        let document = self.db.collection("Growth_Contents").document()
+        guard let userID = UserManager.shared.userID else { return }
+        
+        let document = contentDatabase.document()
         
         uploadImage(imageView: imageView, id: document.documentID) { url in
             
-            let growthContent = GrowthContent(
-                id: document.documentID,
-                userID: userID,
-                growthCardId: self.db.collection("Growth_Cards").document(id),
-                title: title,
-                content: content,
-                image: url,
-                createdTime: Timestamp(date: Date())
-            )
+            var growthContent = GrowthContent()
+            growthContent.id = document.documentID
+            growthContent.userID = userID
+            growthContent.growthCardId = self.cardDatabase.document(id)
+            growthContent.title = contentCard.title
+            growthContent.content = contentCard.content
+            growthContent.image = url
             
             do {
                 
@@ -111,18 +115,16 @@ class GrowthContentProvider {
                 print(error)
                 completion(.failure(error))
             }
-            
         }
-        
     }
     
-    func updateGrowthContents(contentID: String, title: String, content: String, imageView: UIImageView? = nil, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthContents(contentCard: GrowthContent, imageView: UIImageView? = nil, completion: @escaping Handler<String>) {
         
-        let document = self.db.collection("Growth_Contents").document(contentID)
+        let document = contentDatabase.document(contentCard.id)
         
         var updateDict = [
-            "title": title,
-            "content": content
+            "title": contentCard.title,
+            "content": contentCard.content
         ]
         
         if let imageView = imageView {
@@ -157,9 +159,9 @@ class GrowthContentProvider {
         }
     }
     
-    func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthContentCard(id: String, imageExists: Bool, completion: @escaping Handler<String>) {
         
-        db.collection("Growth_Contents").document(id).delete() { err in
+        contentDatabase.document(id).delete() { err in
             
             if let err = err {
                 print("Error removing growth content card: \(err)")
@@ -187,7 +189,7 @@ class GrowthContentProvider {
         }
     }
     
-    func deleteGrowthContentCardImage(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthContentCardImage(id: String, completion: @escaping Handler<String>) {
         
         let ref = Storage.storage().reference().child("\(id).jpg")
 
