@@ -24,7 +24,6 @@ class GrowthCaptureViewController: UIViewController {
         case createContentCard = "CreateGrowthContentCard"
         case editContentCard = "EditGrowthContentCard"
         case drawConclusions = "DrawConclusions"
-        case showArchiveView = "ShowArchiveView"
         case showCongratsPage = "ShowCongratsPage"
         case showDeleteGrowthContentCardAlert = "ShowDeleteGrowthContentCardAlert"
         case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
@@ -174,65 +173,72 @@ class GrowthCaptureViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
+        
+        switch segue.identifier {
+            
+        case Segue.createContentCard.rawValue:
+            
+            if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
 
-            destinationVC.delegate = self
-            destinationVC.growthCard = growthCard
-
-            switch segue.identifier {
-                
-            case Segue.createContentCard.rawValue:
-                
+                destinationVC.delegate = self
+                destinationVC.growthCard = growthCard
                 destinationVC.currentStatus = .create
-                
-            case Segue.editContentCard.rawValue:
+            }
+            
+        case Segue.editContentCard.rawValue:
+            
+            if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
+
+                destinationVC.delegate = self
+                destinationVC.growthCard = growthCard
                 
                 if let index = sender as? Int {
                     
                     destinationVC.currentStatus = .edit
                     destinationVC.contentCard = growthContents[index]
                 }
-
-            default:
-                break
             }
-        }
+            
+        case Segue.drawConclusions.rawValue:
+            
+            if let destinationVC = segue.destination as? DrawConclusionsViewController {
 
-        if let destinationVC = segue.destination as? DrawConclusionsViewController {
+                destinationVC.introText = growthCard.title
+                destinationVC.growthCardID = growthCard.id
+            }
 
-            destinationVC.introText = growthCard.title
-            destinationVC.growthCardID = growthCard.id
-        }
+        case Segue.showCongratsPage.rawValue:
+            
+            if let destinationVC = segue.destination as? CongratsViewController {
 
-        if let destinationVC = segue.destination as? CongratsViewController {
-
-            destinationVC.delegate = delegate
-        }
-
-        if let alert = segue.destination as? AlertViewController {
-
-            switch segue.identifier {
-
-            case Segue.showDeleteGrowthContentCardAlert.rawValue:
+                destinationVC.delegate = delegate
+            }
+            
+        case Segue.showDeleteGrowthContentCardAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
 
                 if let indexPath = sender as? IndexPath {
 
-                    alert.alertType = .deleteGrowthContentCardAlert
-                    alert.onConfirm = { [weak self] in
-                        
-                        guard let self = self else { return }
-                        self.deleteGrowthContentCard(indexPath: indexPath)
+                        alert.alertType = .deleteGrowthContentCardAlert
+                        alert.onConfirm = { [weak self] in
+                            
+                            guard let self = self else { return }
+                            self.deleteGrowthContentCard(indexPath: indexPath)
+                        }
                     }
-                }
-
-            case Segue.showContentCardEmptyAlert.rawValue:
-
-                alert.alertType = .emptyContentCardAlert
-
-            default:
-                break
             }
+            
+        case Segue.showContentCardEmptyAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
+
+                    alert.alertType = .emptyContentCardAlert
+            }
+            
+        default:
+            
+            break
         }
     }
     
@@ -399,8 +405,6 @@ extension GrowthCaptureViewController: GrowthDelegate {
             case .success(let message):
                 
                 print(message)
-//                self.growthCard.emoji = self.headerEmojiToUpdate
-//                self.growthCard.title = self.headerTitleToUpdate
                 self.hideEditPage()
                 
             case .failure(let error):
@@ -408,8 +412,6 @@ extension GrowthCaptureViewController: GrowthDelegate {
                 print(error)
                 VProgressHUD.showFailure(text: "更新成長卡片時出了一點問題，請再試一次")
                 self.dismiss(animated: true, completion: nil)
-//                self.headerEmojiLabel.text = self.growthCard.emoji
-//                self.headerTitleLabel.text = self.growthCard.title
             }
         }
     }
