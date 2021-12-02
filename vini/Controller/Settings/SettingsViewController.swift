@@ -13,11 +13,9 @@ class SettingsViewController: UIViewController {
     private enum Segue: String {
         
         case showReflectionTimeSetting = "ShowReflectionTimeSetting"
-        
-        case showLogOutAlert = "ShowLogOutAlert"
-        
         case showBlockList = "ShowBlockList"
-        
+        case showLogOutAlert = "ShowLogOutAlert"
+        case showDeleteAccountAlert = "ShowDeleteAccountAlert"
         case showPrivacyPage = "ShowPrivacyPage"
     }
 
@@ -57,11 +55,11 @@ class SettingsViewController: UIViewController {
             
         case Segue.showLogOutAlert.rawValue:
             
-            if let vc = segue.destination as? AlertViewController {
+            if let alert = segue.destination as? AlertViewController {
                 
-                vc.alertType = .logOutAlert
+                alert.alertType = .logOutAlert
                 
-                vc.onConfirm = {
+                alert.onConfirm = {
                     
                     let firebaseAuth = Auth.auth()
             
@@ -83,10 +81,16 @@ class SettingsViewController: UIViewController {
                 }
             }
             
+        case Segue.showDeleteAccountAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
+                
+                alert.alertType = .deleteAccountAlert
+            }
+            
         default:
             break
         }
-        
     }
     
 }
@@ -109,13 +113,16 @@ extension SettingsViewController: UITableViewDelegate {
             
             performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
             
+        case (1, 2):
+            
+            performSegue(withIdentifier: Segue.showDeleteAccountAlert.rawValue, sender: nil)
+            
         case (SettingsSection.about.rawValue, 0):
             
             performSegue(withIdentifier: Segue.showPrivacyPage.rawValue, sender: nil)
             
         default:
             break
-            
         }
     }
     
@@ -133,22 +140,14 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let header = UIView()
+        let header = TitleHeaderView()
         
-        header.backgroundColor = .clear
-        
-        let title = UILabel()
-        title.text = sections[section].title
-        title.textColor = .lightGray
-        title.font = UIFont(name: "PingFangTC-Regular", size: 14)
-        
-        header.addSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            title.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            title.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16)
-        ])
+        header.setupHeaderView(
+            backgroundColor: .clear,
+            textColor: .lightGray,
+            fontSize: 14,
+            text: sections[section].title
+        )
         
         return header
     }
@@ -167,7 +166,10 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsItemCell.identifier, for: indexPath) as? SettingsItemCell else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsItemCell.identifier,
+            for: indexPath) as? SettingsItemCell
+        else {
             fatalError()
         }
         

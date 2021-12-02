@@ -10,6 +10,7 @@ import UIKit
 protocol CollectionViewCellDelegate: AnyObject {
     
     func didTapDismissButton(_ cell: UICollectionViewCell)
+    func didEndAnimation()
 }
 
 class ReflectionIntroCell: UICollectionViewCell {
@@ -56,7 +57,7 @@ class ReflectionIntroCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 1,
-            delay: 1,
+            delay: 0.5,
             animations: {
                 
                 self.introContentLabel.alpha = 1
@@ -73,5 +74,4 @@ class ReflectionIntroCell: UICollectionViewCell {
         
         delegate?.didTapDismissButton(self)
     }
-
 }

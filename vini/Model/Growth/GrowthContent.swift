@@ -12,7 +12,7 @@ struct GrowthContent: Codable {
     
     var id: String
     var userID: String
-    var growthCardId: DocumentReference
+    var growthCardId: DocumentReference?
     var title: String
     var content: String
     var image: String
@@ -27,6 +27,17 @@ struct GrowthContent: Codable {
         case content
         case image
         case createdTime = "created_time"
+    }
+    
+    init() {
+        
+        self.id = ""
+        self.userID = ""
+        self.growthCardId = nil
+        self.title = ""
+        self.content = ""
+        self.image = ""
+        self.createdTime = Timestamp()
     }
     
 }

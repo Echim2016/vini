@@ -13,16 +13,18 @@ class MailManager {
     
     static let shared = MailManager()
     
-    lazy var db = Firestore.firestore()
+    let mailboxDatabase = Firestore.firestore().collection(FSCollection.mailboxes.rawValue)
+    
+    let userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
     
     let welcomeMailSenderID = "WelcomeMail"
     
-    func fetchData(blockList: [String], completion: @escaping (Result<[Mail], Error>) -> Void) {
+    func fetchData(blockList: [String], completion: @escaping Handler<[Mail]>) {
         
         if let userID = UserManager.shared.userID {
             
-            let ref = db.collection("Mailboxes").document(userID)
-            ref.collection("Mails").order(by: "sent_time", descending: true).getDocuments() { (querySnapshot, error) in
+            let ref = mailboxDatabase.document(userID)
+            ref.collection(FSCollection.mails.rawValue).order(by: "sent_time", descending: true).getDocuments() { (querySnapshot, error) in
         
                 if let error = error {
                     
@@ -34,8 +36,7 @@ class MailManager {
                         
                         do {
                             if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                                
-                                
+                               
                                 if !blockList.contains(mail.senderID) {
                                     
                                     mails.append(mail)
@@ -52,9 +53,9 @@ class MailManager {
         }
     }
     
-    func sendMails(mail: inout Mail, completion: @escaping (Result<String, Error>) -> Void) {
+    func sendMails(mail: inout Mail, completion: @escaping Handler<String>) {
         
-        let document = db.collection("Mailboxes").document(mail.receipientID).collection("Mails").document()
+        let document = mailboxDatabase.document(mail.recipientID).collection(FSCollection.mails.rawValue).document()
         mail.id = document.documentID
         mail.sentTime = Timestamp(date: Date())
         
@@ -67,7 +68,7 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: send a mail"))
                 }
             }
             
@@ -78,16 +79,16 @@ class MailManager {
         }
     }
     
-    func sendWelcomeMail(completion: @escaping (Result<String, Error>) -> Void) {
+    func sendWelcomeMail(completion: @escaping Handler<String>) {
         
         if let id = UserManager.shared.userID {
             
             var welcomeMail = Mail()
             welcomeMail.setupWelcomeMail()
             
-            let document = db.collection("Mailboxes").document(id).collection("Mails").document()
+            let document = mailboxDatabase.document(id).collection(FSCollection.mails.rawValue).document()
             welcomeMail.id = document.documentID
-            welcomeMail.receipientID = id
+            welcomeMail.recipientID = id
             welcomeMail.sentTime = Timestamp(date: Date())
             
             do {
@@ -99,7 +100,7 @@ class MailManager {
                         completion(.failure(error))
                     } else {
                         
-                        completion(.success("Success"))
+                        completion(.success("Success: send welcome mail"))
                     }
                 }
                 
@@ -111,11 +112,11 @@ class MailManager {
         }
     }
     
-    func deleteMail(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteMail(mailID: String, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
         
-            db.collection("Mailboxes").document(userID).collection("Mails").document(mailID).delete() { err in
+            mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).document(mailID).delete() { err in
                 
                 if let err = err {
                     print("Error removing mail: \(err)")
@@ -123,17 +124,17 @@ class MailManager {
                 } else {
                     print("Mail successfully removed!")
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: delete a mail"))
                 }
             }
         }
     }
     
-    func updateReadTime(mailID: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateReadTime(mailID: String, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection("Mailboxes").document(userID).collection("Mails").document(mailID)
+            let document = mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).document(mailID)
             
             let updateDict = [
                 "read_timestamp": Timestamp(date: Date())
@@ -146,18 +147,18 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: update read time"))
                 }
             }
         }
         
     }
     
-    func getReflectionTime(completion: @escaping (Result<Int, Error>) -> Void) {
+    func getReflectionTime(completion: @escaping Handler<Int>) {
         
         if let userID = UserManager.shared.userID {
             
-            db.collection("Users").document(userID).getDocument() { (document, error) in
+            userDatabase.document(userID).getDocument { (document, error) in
                 
                 if let error = error {
                     
@@ -177,11 +178,11 @@ class MailManager {
         }
     }
     
-    func updateReflectionTime(time: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateReflectionTime(time: Int, completion: @escaping Handler<String>) {
         
         if let userID = UserManager.shared.userID {
             
-            let document = db.collection("Users").document(userID)
+            let document = userDatabase.document(userID)
             
             let updateDict = [
                 "preferred_reflection_hour": time
@@ -194,19 +195,19 @@ class MailManager {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: update reflection time"))
                 }
             }
         }
     }
     
-    func fetchNumberOfUnreadMails(completion: @escaping (Result<Int, Error>) -> Void) {
+    func fetchNumberOfUnreadMails(completion: @escaping Handler<Int>) {
         
         if let userID = UserManager.shared.userID {
             
             var count = 0
             
-            db.collection("Mailboxes").document(userID).collection("Mails").getDocuments { (querySnapshot, err) in
+            mailboxDatabase.document(userID).collection(FSCollection.mails.rawValue).getDocuments { (querySnapshot, err) in
                 
                 if let err = err {
                     print("Error getting number of mails: \(err)")
@@ -228,6 +229,6 @@ class MailManager {
                 }
             }
         }
-        
     }
+    
 }

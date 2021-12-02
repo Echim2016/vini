@@ -55,10 +55,10 @@ class SetProfileViewController: UIViewController {
     var user: User = User()
     
     var cloudCategorySelection: [CloudCategorySelection] = [
-        CloudCategorySelection(category: CloudCategory.career),
-        CloudCategorySelection(category: CloudCategory.relationship),
-        CloudCategorySelection(category: CloudCategory.selfGrowth),
-        CloudCategorySelection(category: CloudCategory.lifestyle)
+        CloudCategorySelection(category: .career),
+        CloudCategorySelection(category: .relationship),
+        CloudCategorySelection(category: .selfGrowth),
+        CloudCategorySelection(category: .lifestyle)
     ]
     
     var selectedIndex = 0
@@ -135,7 +135,7 @@ extension SetProfileViewController {
         
         VProgressHUD.show()
                     
-        DiscoverUserManager.shared.fetchUserProfile() { result in
+        DiscoverUserManager.shared.fetchUserProfile { result in
             switch result {
             case .success(let user):
                 
@@ -205,7 +205,6 @@ extension SetProfileViewController: UITableViewDelegate {
         default:
             break
         }
-        
     }
     
 }
@@ -232,7 +231,8 @@ extension SetProfileViewController: UITableViewDataSource {
         UIView()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
             
@@ -310,7 +310,6 @@ extension SetProfileViewController: UITableViewDataSource {
         default:
             return UITableViewCell()
         }
-        
     }
     
 }
@@ -354,7 +353,6 @@ extension SetProfileViewController: UITextViewDelegate {
             if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SetProfileCell {
                 
                 let count = updatedText.count < wonderingCharactersLimit ? updatedText.count : wonderingCharactersLimit
-                
                 cell.charactersLimitLabel.text = "\(count) / \(wonderingCharactersLimit)"
             }
             
@@ -365,7 +363,6 @@ extension SetProfileViewController: UITextViewDelegate {
             if let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? SetProfileCell {
                 
                 let count = updatedText.count < displayNameCharactersLimit ? updatedText.count : displayNameCharactersLimit
-                
                 cell.charactersLimitLabel.text = "\(count) / \(displayNameCharactersLimit)"
             }
             

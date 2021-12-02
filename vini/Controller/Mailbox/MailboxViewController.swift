@@ -25,6 +25,7 @@ class MailboxViewController: UIViewController {
     
     var mails: [Mail] = [] {
         didSet {
+            
             remindsLabel.isHidden = !mails.isEmpty
         }
     }
@@ -67,7 +68,10 @@ class MailboxViewController: UIViewController {
             alert.alertType = .blockUserAlert
             
             if let indexPath = sender as? IndexPath {
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
+                    
                     self.blockUser(blockUserID: self.mails[indexPath.row].senderID)
                 }
             }
@@ -103,7 +107,9 @@ extension MailboxViewController {
     func fetchMails(blockList: [String]) {
         
         MailManager.shared.fetchData(blockList: blockList) { result in
+            
             switch result {
+                
             case .success(let mails):
                 
                 VProgressHUD.dismiss()
@@ -129,8 +135,10 @@ extension MailboxViewController {
     
     func getReflectionTime() {
         
-        MailManager.shared.getReflectionTime() { result in
+        MailManager.shared.getReflectionTime { result in
+            
             switch result {
+                
             case .success(let startTime):
                 
                 self.preferredReflectionTime = startTime
@@ -146,9 +154,10 @@ extension MailboxViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: blockUserID) { result in
+        UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
             
             switch result {
+                
             case .success:
                 
                 VProgressHUD.dismiss()
@@ -183,15 +192,14 @@ extension MailboxViewController: UITableViewDelegate {
         }
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    func tableView(_ tableView: UITableView,
+                   contextMenuConfigurationForRowAt indexPath: IndexPath,
+                   point: CGPoint) -> UIContextMenuConfiguration? {
         
-        let block = UIAction(
-            title: "封鎖",
-            image: UIImage(systemName: "exclamationmark.bubble.fill"),
-            attributes: [.destructive]) { _ in
-                
-                self.performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: indexPath)
-            }
+        let block = UIAction.setupAction(of: .block) { _ in
+            
+            self.performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: indexPath)
+        }
         
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             UIMenu(title: "", children: [block])

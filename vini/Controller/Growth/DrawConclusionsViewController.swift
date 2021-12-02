@@ -43,14 +43,12 @@ class DrawConclusionsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupTextView()
-        
-        setupNavBarBackButton(tintColor: .B2)
-        
+        setupNavBarBackButton(tintColor: .white)
         setupSaveButton()
-        
-        setupNavigationController(title: "我的學習結論", titleColor: .B2)
-            
+        setupNavigationController(title: "我的學習結論", titleColor: .white)
         fetchConclusion()
+        setupNavigationBarStandardAppearance(backgroundColor: .B1)
+        setupNavigationBarScrollEdgeAppearance(backgroundColor: .B1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,13 +57,21 @@ class DrawConclusionsViewController: UIViewController {
         conclusionTextView.becomeFirstResponder()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        setupNavigationBarScrollEdgeAppearance(backgroundColor: .S2)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let alert = segue.destination as? AlertViewController {
             
             alert.alertType = .returnToPreviousPageAlert
             
-            alert.onConfirm = {
+            alert.onConfirm = { [weak self] in
+                
+                guard let self = self else { return }
                 
                 self.navigationController?.popViewController(animated: true)
             }
@@ -77,7 +83,7 @@ extension DrawConclusionsViewController {
     
     private func fetchConclusion() {
         
-        GrowthCardProvider.shared.fetchConclusion(id: growthCardID) { result in
+        GrowthCardManager.shared.fetchConclusion(id: growthCardID) { result in
             
             switch result {
             case .success(let conclusion):
@@ -146,7 +152,7 @@ extension DrawConclusionsViewController {
             action: #selector(tapSaveButton(_:))
         )
         
-        navigationItem.rightBarButtonItem?.tintColor = .B2
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     @objc func tapSaveButton(_ sender: Any) {
@@ -157,7 +163,7 @@ extension DrawConclusionsViewController {
             
             VProgressHUD.show()
             
-            GrowthCardProvider.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+            GrowthCardManager.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
                 
                 switch result {
                 case .success(let success):

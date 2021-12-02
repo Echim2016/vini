@@ -16,10 +16,23 @@ target 'vini' do
   pod 'Kingfisher'
   pod 'RSKPlaceholderTextView'
   pod 'IQKeyboardManagerSwift'
-  pod 'loady'
   pod "Haptica"
-  pod 'lottie-ios'
   pod 'JGProgressHUD'
+
+  target 'ViniUnitTests' do
+        inherit! :search_paths
+        pod 'SwiftLint' 
+        pod 'Firebase/Auth'
+        pod 'Firebase/Firestore'
+        pod 'FirebaseFirestoreSwift'
+        pod 'Firebase/Storage'
+        pod 'Firebase/Crashlytics'
+        pod 'Kingfisher'
+        pod 'RSKPlaceholderTextView'
+        pod 'IQKeyboardManagerSwift'
+        pod 'Haptica'
+        pod 'JGProgressHUD'
+    end
 
 
 end

@@ -17,7 +17,9 @@ class MailDetailViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
@@ -26,7 +28,12 @@ class MailDetailViewController: UIViewController {
     
     @IBOutlet weak var blockUserButton: UIBarButtonItem!
     
+    private var userManager = UserManager.shared
+
+    private var mailManager = MailManager.shared
+    
     var mail: Mail = Mail() {
+        
         didSet {
             
             if mail.senderID == MailManager.shared.welcomeMailSenderID {
@@ -43,7 +50,6 @@ class MailDetailViewController: UIViewController {
         tableView.registerCellWithNib(identifier: MailCell.identifier, bundle: nil)
         tableView.registerCellWithNib(identifier: MailContentCell.identifier, bundle: nil)
         setupPopGestureRecognizer()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +86,9 @@ class MailDetailViewController: UIViewController {
                 
                 alert.alertStyle = .danger
                 alert.alertType = .blockUserAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.blockUser()
                 }
@@ -88,7 +96,9 @@ class MailDetailViewController: UIViewController {
             case Segue.showDeleteAlert.rawValue:
                 
                 alert.alertType = .deleteMailAlert
-                alert.onConfirm = {
+                alert.onConfirm = { [weak self] in
+                    
+                    guard let self = self else { return }
                     
                     self.deleteMail()
                 }
@@ -97,21 +107,21 @@ class MailDetailViewController: UIViewController {
                 break
                 
             }
-            
         }
-
     }
+    
 }
 
 extension MailDetailViewController {
     
-    func updateReadStatus() {
+    private func updateReadStatus() {
         
         if mail.readTimestamp == nil {
             
             MailManager.shared.updateReadTime(
                 mailID: mail.id
             ) { result in
+                
                 switch result {
                 case .success(let success):
                     
@@ -125,11 +135,12 @@ extension MailDetailViewController {
         }
     }
     
-    func deleteMail() {
+    private func deleteMail() {
         
         VProgressHUD.show()
         
-        MailManager.shared.deleteMail(mailID: mail.id) { result in
+        mailManager.deleteMail(mailID: mail.id) { result in
+            
             switch result {
             case .success:
                 
@@ -144,21 +155,21 @@ extension MailDetailViewController {
         }
     }
     
-    func showDeleteMailAlert() {
+    private func showDeleteMailAlert() {
         
         performSegue(withIdentifier: Segue.showDeleteAlert.rawValue, sender: nil)
     }
     
-    func showBlockUserAlert() {
+    private func showBlockUserAlert() {
         
         performSegue(withIdentifier: Segue.showBlockAlert.rawValue, sender: nil)
     }
     
-    func blockUser() {
+    private func blockUser() {
         
         VProgressHUD.show()
         
-        UserManager.shared.blockUser(blockUserID: mail.senderID) { result in
+        userManager.updateBlockUserList(blockUserID: mail.senderID, action: .block) { result in
             
             switch result {
             case .success:
@@ -173,6 +184,7 @@ extension MailDetailViewController {
             }
         }
     }
+    
 }
 
 extension MailDetailViewController: UITableViewDelegate {
@@ -182,24 +194,32 @@ extension MailDetailViewController: UITableViewDelegate {
 extension MailDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        
+        MailDetailRows.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
+        guard let rowType = MailDetailRows(rawValue: indexPath.row) else { fatalError() }
+        
+        switch rowType {
                 
-        case 0:
+        case .title:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MailTitleCell.identifier, for: indexPath) as? MailTitleCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: MailTitleCell.identifier,
+                for: indexPath) as? MailTitleCell
+            else {
                 fatalError()
             }
             
@@ -207,8 +227,12 @@ extension MailDetailViewController: UITableViewDataSource {
             
             return cell
             
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MailCell.identifier, for: indexPath) as? MailCell else {
+        case .header:
+            
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: MailCell.identifier,
+                for: indexPath) as? MailCell
+            else {
                 fatalError()
             }
 
@@ -222,19 +246,18 @@ extension MailDetailViewController: UITableViewDataSource {
             
             return cell
             
-        case 2:
+        case .content:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: MailContentCell.identifier, for: indexPath) as? MailContentCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: MailContentCell.identifier,
+                for: indexPath) as? MailContentCell
+            else {
                 fatalError()
             }
             
             cell.setupCell(content: mail.content)
             
             return cell
-
-        default:
-            
-            return UITableViewCell(style: .value1, reuseIdentifier: "Cell")
         }
     }
     

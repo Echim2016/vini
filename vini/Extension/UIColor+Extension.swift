@@ -15,6 +15,8 @@ extension UIColor {
     
     static let S1 = UIColor(red: 215/255, green: 192/255, blue: 149/255, alpha: 1)
     
+    static let S2 = UIColor(red: 0.86, green: 0.75, blue: 0.56, alpha: 1)
+    
     static let G1 = UIColor(red: 211/255, green: 220/255, blue: 230/255, alpha: 0.85)
     
 }

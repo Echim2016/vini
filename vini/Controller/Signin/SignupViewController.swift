@@ -45,7 +45,7 @@ class SignupViewController: UIViewController {
         setupBackgroundView()
         setupTextView()
         setupNextButton()
-        setupNotifacationButton()
+        setupNotificationButton()
         setupStartButton()
     }
     
@@ -123,17 +123,24 @@ extension SignupViewController {
         
         if let userID = UserManager.shared.userID {
             
-            UserManager.shared.updateReflectionTime(
+            UserManager.shared.updateDisplayName(
                 userID: userID,
                 name: displayNameToUpdate) { result in
+                    
                     switch result {
-                    case .success(_):
+                        
+                    case .success(let success):
+                        
+                        print(success)
                         completion(true)
+                        
                     case .failure(let error):
+                        
                         print(error)
                         completion(false)
                     }
                 }
+            
         } else {
             
             completion(false)
@@ -188,7 +195,7 @@ extension SignupViewController {
         ])
     }
     
-    func setupNotifacationButton() {
+    func setupNotificationButton() {
         
         notificationButton.addTarget(self, action: #selector(tapNotificationButton(_:)), for: .touchUpInside)
         

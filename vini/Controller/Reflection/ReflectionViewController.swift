@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class ReflectionViewController: UIViewController {
@@ -35,7 +34,6 @@ class ReflectionViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         modalPresentationCapturesStatusBarAppearance = true
         self.additionalSafeAreaInsets = UIEdgeInsets(top: -44, left: 0, bottom: -34, right: 0)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,12 +55,12 @@ class ReflectionViewController: UIViewController {
     
     @objc func tapContinueButton(_ sender: UIButton) {
         
-        Haptic.play("o", delay: 0)
+        playMediumImpactVibration()
         self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension ReflectionViewController  {
+extension ReflectionViewController {
     
     func fetchReflectionData() {
         
@@ -81,7 +79,6 @@ extension ReflectionViewController  {
             }
         }
     }
-    
 }
 
 extension ReflectionViewController: UICollectionViewDelegate {
@@ -90,28 +87,32 @@ extension ReflectionViewController: UICollectionViewDelegate {
         
         let page = Int(scrollView.contentOffset.y / self.view.frame.height)
         
-        if page == 1 && !isVisited {
+        if page == ReflectionPage.reflection.rawValue && !isVisited {
             
             collectionView.isScrollEnabled = false
         }
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
     }
-    
 }
 
 extension ReflectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        ReflectionPage.allCases.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                 
         switch indexPath.row {
-        case 0:
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReflectionIntroCell.identifier, for: indexPath) as? ReflectionIntroCell else {
+        case ReflectionPage.intro.rawValue:
+            
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ReflectionIntroCell.identifier,
+                for: indexPath) as? ReflectionIntroCell
+            else {
                 fatalError()
             }
             
@@ -119,9 +120,12 @@ extension ReflectionViewController: UICollectionViewDataSource {
             
             return cell
             
-        case 1:
+        case ReflectionPage.reflection.rawValue:
             
-            guard let cell = collectionView.dequeueReusableCell( withReuseIdentifier: ReflectionPracticeCell.identifier, for: indexPath) as? ReflectionPracticeCell else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ReflectionPracticeCell.identifier,
+                for: indexPath) as? ReflectionPracticeCell
+            else {
                 fatalError()
             }
             
@@ -130,9 +134,12 @@ extension ReflectionViewController: UICollectionViewDataSource {
             
             return cell
             
-        case 2:
+        case ReflectionPage.outro.rawValue:
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReflectionOutroCell.identifier, for: indexPath) as? ReflectionOutroCell else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: ReflectionOutroCell.identifier,
+                for: indexPath) as? ReflectionOutroCell
+            else {
                 fatalError()
             }
             
@@ -144,9 +151,7 @@ extension ReflectionViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
             
         }
-        
     }
-    
 }
 
 extension ReflectionViewController {
@@ -174,7 +179,6 @@ extension ReflectionViewController {
             tabbarController.setupSoundPlayer()
         }
     }
-
 }
 
 extension ReflectionViewController: CollectionViewCellDelegate {
@@ -182,6 +186,12 @@ extension ReflectionViewController: CollectionViewCellDelegate {
     func didTapDismissButton(_ cell: UICollectionViewCell) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didEndAnimation() {
+        
+        self.collectionView.isScrollEnabled = true
+        self.isVisited = true
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 extension UIViewController {
     
@@ -56,6 +57,25 @@ extension UIViewController {
         self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
+    func setupNavigationBarStandardAppearance(backgroundColor: UIColor) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = backgroundColor
+        appearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+    }
+    
+    func setupNavigationBarScrollEdgeAppearance(backgroundColor: UIColor) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = backgroundColor
+        appearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = nil
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     func setupBlurBackground(layer: Int) {
         
         view.backgroundColor = .clear
@@ -72,6 +92,7 @@ extension UIViewController {
             blurView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
+    
 }
 
 extension UIViewController: UIGestureRecognizerDelegate {
@@ -80,5 +101,44 @@ extension UIViewController: UIGestureRecognizerDelegate {
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+}
+
+extension UIViewController {
+    
+    func playLightImpactVibration(delay: TimeInterval = 0) {
+        
+        Haptic.play(".", delay: delay)
+    }
+    
+    func playMediumImpactVibration() {
+        
+        Haptic.play("o", delay: 0)
+    }
+    
+    func playArchivingImpactVibration() {
+        
+        Haptic.play("..oO-Oo..", delay: 0.2)
+    }
+    
+    func playRedirectingImpactVibration() {
+        
+        Haptic.play("..o-o..o-o..", delay: 0.2)
+    }
+    
+    func playReachedEdgeImpactVibration() {
+        
+        Haptic.play(".o.", delay: 0)
+    }
+    
+    func playPageLandingImpactVibration() {
+        
+        Haptic.play("...o-o...", delay: 0.3)
+    }
+    
+    func playCloudSelectingImpactVibration() {
+        
+        Haptic.play(".-.", delay: 0.3)
     }
 }

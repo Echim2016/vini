@@ -13,15 +13,11 @@ class EmojiTextField: UITextField {
     
     override var textInputMode: UITextInputMode? {
         
-        for mode in UITextInputMode.activeInputModes {
+        for mode in UITextInputMode.activeInputModes where mode.primaryLanguage == "emoji" {
             
-            if mode.primaryLanguage == "emoji" {
-                
-                return mode
-            }
+            return mode
         }
+        
         return nil
     }
-    
-
 }

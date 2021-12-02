@@ -11,7 +11,7 @@ import FirebaseFirestore
 struct Mail: Codable {
     
     var id: String
-    var receipientID: String
+    var recipientID: String
     var displayWondering: String
     var content: String
     var senderDisplayName: String
@@ -23,7 +23,7 @@ struct Mail: Codable {
     enum CodingKeys: String, CodingKey {
         
         case id
-        case receipientID = "receipient_id"
+        case recipientID = "receipient_id"
         case displayWondering = "display_wondering"
         case content
         case senderDisplayName = "sender_display_name"
@@ -35,7 +35,7 @@ struct Mail: Codable {
     
     init() {
         self.id = ""
-        self.receipientID = ""
+        self.recipientID = ""
         self.displayWondering = ""
         self.content = ""
         self.senderDisplayName = ""
@@ -58,5 +58,12 @@ struct Mail: Codable {
             self.content = mail
         }
     }
-       
+    
+}
+
+enum MailDetailRows: Int, CaseIterable {
+    
+    case title = 0
+    case header
+    case content
 }

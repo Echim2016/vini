@@ -38,7 +38,7 @@ struct User: Codable {
         self.viniType = UIImage.AssetIdentifier.amaze.name
         self.displayName = "Vini"
         self.wondering = ""
-        self.isPublished = true
+        self.isPublished = false
         self.cloudCategory = CloudCategory.lifestyle.category
         self.blockList = []
         self.preferredReflectionTime = 23

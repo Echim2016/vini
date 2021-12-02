@@ -13,11 +13,11 @@ class ReflectionManager {
     
     static let shared = ReflectionManager()
     
-    lazy var db = Firestore.firestore()
+    let database = Firestore.firestore().collection(FSCollection.reflection.rawValue)
     
-    func fetchQuestions(completion: @escaping (Result<[String], Error>) -> Void) {
+    func fetchQuestions(completion: @escaping Handler<[String]>) {
         
-        db.collection("Reflection").document("Questions").getDocument { (document, err) in
+        database.document("Questions").getDocument { (document, err) in
             
             if let err = err {
                 print("Error getting quotes: \(err)")
@@ -31,27 +31,6 @@ class ReflectionManager {
                     }
                 
                     completion(.success(list))
-                }
-            }
-        }
-    }
-    
-    func fetchUserReflectionTime(userID: String, completion: @escaping (Result<Int, Error>) -> Void) {
-        
-        db.collection("User").document(userID).getDocument { (document, err) in
-            
-            if let err = err {
-                print("Error getting quotes: \(err)")
-                completion(.failure(err))
-            } else {
-                
-                if let document = document, document.exists {
-                    
-                    guard let time = document.get("preferred_reflection_hour") as? Int else {
-                        return
-                    }
-                
-                    completion(.success(time))
                 }
             }
         }

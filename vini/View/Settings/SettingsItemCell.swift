@@ -32,7 +32,7 @@ class SettingsItemCell: UITableViewCell {
         
     }
     
-    func setupCell(title: String){
+    func setupCell(title: String) {
         
         titleLabel.text = title
     }

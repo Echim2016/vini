@@ -1,5 +1,5 @@
 //
-//  GrowthCardProvider.swift
+//  GrowthCardManager.swift
 //  vini
 //
 //  Created by Yi-Chin Hsu on 2021/10/18.
@@ -9,18 +9,19 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-class GrowthCardProvider {
+class GrowthCardManager {
     
-    static let shared = GrowthCardProvider()
+    static let shared = GrowthCardManager()
+        
+    let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
+    let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
-    lazy var db = Firestore.firestore()
-    
-    func fetchData(isArchived: Bool, completion: @escaping (Result<[GrowthCard], Error>) -> Void) {
+    func fetchData(isArchived: Bool, completion: @escaping Handler<[GrowthCard]>) {
         
         if let userID = UserManager.shared.userID {
             
             // swiftlint:disable line_length
-            db.collection("Growth_Cards").whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments() { (querySnapshot, error) in
+            cardDatabase.whereField("user_id", isEqualTo: userID).whereField("is_archived", isEqualTo: isArchived).order(by: "created_time", descending: true).getDocuments { (querySnapshot, error) in
                 // swiftlint:able line_length
                 if let error = error {
                     
@@ -50,9 +51,9 @@ class GrowthCardProvider {
         
     }
     
-    func addData(growthCard: inout GrowthCard, completion: @escaping (Result<String, Error>) -> Void) {
+    func addData(growthCard: inout GrowthCard, completion: @escaping Handler<String>) {
         
-        let document = db.collection("Growth_Cards").document()
+        let document = cardDatabase.document()
         growthCard.id = document.documentID
         growthCard.createdTime = Timestamp(date: Date())
         
@@ -65,7 +66,7 @@ class GrowthCardProvider {
                     completion(.failure(error))
                 } else {
                     
-                    completion(.success("Success"))
+                    completion(.success("Success: adding growth card"))
                 }
             }
             
@@ -76,9 +77,9 @@ class GrowthCardProvider {
         }
     }
     
-    func updateConclusion(id: String, conclusion: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateConclusion(id: String, conclusion: String, completion: @escaping Handler<String>) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = cardDatabase.document(id)
         
         document.updateData(["conclusion": conclusion]) { error in
             
@@ -87,16 +88,16 @@ class GrowthCardProvider {
                 completion(.failure(error))
             } else {
                 
-                completion(.success("Success"))
+                completion(.success("Success: update conclusion"))
             }
         }
     }
     
     func fetchConclusion(id: String, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = cardDatabase.document(id)
         
-        document.getDocument{ (document, error) in
+        document.getDocument { (document, error) in
             
             if let document = document, document.exists {
                 
@@ -112,9 +113,9 @@ class GrowthCardProvider {
         }
     }
     
-    func updateGrowthCard(id: String, emoji: String, title: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func updateGrowthCard(id: String, emoji: String, title: String, completion: @escaping Handler<String>) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = cardDatabase.document(id)
         
         let updateDict = [
             "emoji": emoji,
@@ -128,19 +129,19 @@ class GrowthCardProvider {
                 completion(.failure(error))
             } else {
                 
-                completion(.success("Success"))
+                completion(.success("Success: update growth card"))
             }
         }
     }
     
-    func deleteGrowthCardAndRelatedCards(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func deleteGrowthCardAndRelatedCards(id: String, completion: @escaping Handler<String>) {
                     
-        let batch = db.batch()
+        let batch = Firestore.firestore().batch()
         
-        let growthCardRef = db.collection("Growth_Cards").document(id)
+        let growthCardRef = cardDatabase.document(id)
         batch.deleteDocument(growthCardRef)
         
-        GrowthContentProvider.shared.fetchGrowthContents(id: id) { result in
+        GrowthContentManager.shared.fetchGrowthContents(id: id) { result in
             
             switch result {
                 
@@ -148,16 +149,21 @@ class GrowthCardProvider {
                 
                 cards.forEach { card in
                     
-                    let growthContentCardsRef = self.db.collection("Growth_Contents").document(card.id)
+                    let growthContentCardsRef = self.contentDatabase.document(card.id)
+                    
                     batch.deleteDocument(growthContentCardsRef)
                     
                     if !card.image.isEmpty {
                         
-                        GrowthContentProvider.shared.deleteGrowthContentCardImage(id: card.id) { result in
+                        GrowthContentManager.shared.deleteGrowthContentCardImage(id: card.id) { result in
+                            
                             switch result {
                             case .success(let success):
+                                
                                 print("Content image deleted! \(success)")
+                                
                             case .failure(let error):
+                                
                                 print(error)
                             }
                         }
@@ -174,7 +180,7 @@ class GrowthCardProvider {
                     } else {
                         
                         print("Success deleting cards!")
-                        completion(.success("Cards deleted!"))
+                        completion(.success("Success: cards deleted"))
                         
                     }
                 }
@@ -186,34 +192,36 @@ class GrowthCardProvider {
         
     }
     
-    func archiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func archiveGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = cardDatabase.document(id)
         
         let updateDict = [
             "is_archived": true,
             "archived_time": Timestamp(date: Date())
-        ] as [String : Any]
+        ] as [String: Any]
         
         document.updateData(updateDict) { error in
             
             if let error = error {
                 
-                completion(.failure(error))
+                print(error)
+                completion(false)
             } else {
                 
-                completion(.success("Success"))
+                print("Success: archive growth card")
+                completion(true)
             }
         }
     }
     
-    func unarchiveGrowthCard(id: String, completion: @escaping (Result<String, Error>) -> Void) {
+    func unarchiveGrowthCard(id: String, completion: @escaping Handler<String>) {
         
-        let document = db.collection("Growth_Cards").document(id)
+        let document = cardDatabase.document(id)
         
         let updateDict = [
             "is_archived": false
-        ] as [String : Any]
+        ] as [String: Any]
         
         document.updateData(updateDict) { error in
             
@@ -222,8 +230,9 @@ class GrowthCardProvider {
                 completion(.failure(error))
             } else {
                 
-                completion(.success("Success"))
+                completion(.success("Success: unarchive growth card"))
             }
         }
     }
+    
 }

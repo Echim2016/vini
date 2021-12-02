@@ -15,7 +15,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
     @IBOutlet weak var cloudImageView: UIImageView!
     @IBOutlet weak var bottomStraightLine: UIView!
     
-    weak var delegate: ReflectionViewController?
+    weak var delegate: CollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,20 +24,17 @@ class ReflectionPracticeCell: UICollectionViewCell {
         question2Label.alpha = 0
         question3Label.alpha = 0
         bottomStraightLine.alpha = 0
-        
     }
     
     func setupCell(quotes: [String]) {
         
         var displayQuotes = quotes
         displayQuotes.shuffle()
-        
+
         question1Label.text = displayQuotes[0]
         question2Label.text = displayQuotes[1]
         question3Label.text = displayQuotes[2]
-        
         cloudImageView.float(duration: 1.7)
-        
         setupLabel1Animation()
     }
     
@@ -48,7 +45,6 @@ class ReflectionPracticeCell: UICollectionViewCell {
             delay: 1.5,
             animations: {
                 self.question1Label.alpha = 1
-//                self.delegate?.collectionView.isScrollEnabled = false
             },
             completion: { _ in
                 self.setupLabel2Animation()
@@ -60,7 +56,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 2,
+            delay: 1.5,
             animations: {
                 self.question2Label.alpha = 1
             },
@@ -74,7 +70,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 2,
+            delay: 1.5,
             animations: {
                 self.question3Label.alpha = 1
             },
@@ -95,10 +91,8 @@ class ReflectionPracticeCell: UICollectionViewCell {
             },
             completion: { _ in
                 
-                self.delegate?.collectionView.isScrollEnabled = true
-                self.delegate?.isVisited = true
+                self.delegate?.didEndAnimation()
             }
         )
     }
-
 }

@@ -14,10 +14,12 @@ class NotificationManager {
     
     var reflectionTime = 23
     
-    func setupReflectionNotification(userID: String) {
+    func setupReflectionNotification() {
         
-        ReflectionManager.shared.fetchUserReflectionTime(userID: userID) { result in
+        MailManager.shared.getReflectionTime { result in
+            
             switch result {
+                
             case .success(let hour):
                 
                 self.reflectionTime = hour

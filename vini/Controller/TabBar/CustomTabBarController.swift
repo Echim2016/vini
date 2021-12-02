@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class CustomTabBarController: UITabBarController {
@@ -34,7 +33,7 @@ class CustomTabBarController: UITabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         
         switch item.title {
             
@@ -116,7 +115,7 @@ extension CustomTabBarController {
                     
                 case .success(let user):
                     
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user" : user])
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user": user])
                     
                 case .failure(let error):
                     
