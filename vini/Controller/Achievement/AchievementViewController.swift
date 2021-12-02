@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
     
 class AchievementViewController: UIViewController {
     
@@ -73,13 +72,13 @@ class AchievementViewController: UIViewController {
     
     @IBAction func tapSettingsButton(_ sender: Any) {
    
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.showSettings.rawValue, sender: nil)
     }
     
     @IBAction func tapWelcomeActionButton(_ sender: Any) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         self.tabBarController?.selectedIndex = TabBarItem.growth.rawValue
     }
     
@@ -93,7 +92,7 @@ class AchievementViewController: UIViewController {
             controller.growthCard = growthCards[sender.tag]
             controller.state = .review
             
-            Haptic.play(".", delay: 0)
+            playLightImpactVibration()
             present(navigationController, animated: true, completion: nil)
         }
     }

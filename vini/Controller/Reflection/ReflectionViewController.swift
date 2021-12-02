@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class ReflectionViewController: UIViewController {
@@ -56,7 +55,7 @@ class ReflectionViewController: UIViewController {
     
     @objc func tapContinueButton(_ sender: UIButton) {
         
-        Haptic.play("o", delay: 0)
+        playMediumImpactVibration()
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -88,12 +87,12 @@ extension ReflectionViewController: UICollectionViewDelegate {
         
         let page = Int(scrollView.contentOffset.y / self.view.frame.height)
         
-        if page == ReflectionPage.intro.rawValue && !isVisited {
+        if page == ReflectionPage.reflection.rawValue && !isVisited {
             
             collectionView.isScrollEnabled = false
         }
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
     }
 }
 
@@ -187,6 +186,12 @@ extension ReflectionViewController: CollectionViewCellDelegate {
     func didTapDismissButton(_ cell: UICollectionViewCell) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didEndAnimation() {
+        
+        self.collectionView.isScrollEnabled = true
+        self.isVisited = true
     }
 }
 

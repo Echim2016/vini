@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 
 class GrowthPageViewController: UIViewController {
     
@@ -85,7 +84,7 @@ class GrowthPageViewController: UIViewController {
     
     @IBAction func tapCreateNewGrowthCardButton(_ sender: Any) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.createNewGrowthCard.rawValue, sender: nil)
     }
     
@@ -181,7 +180,7 @@ extension GrowthPageViewController {
     
 }
 
-extension GrowthPageViewController: GrowthDelegate {
+extension GrowthPageViewController: DataManagerProtocol {
     
     func fetchData() {
         
@@ -314,7 +313,7 @@ extension GrowthPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: Segue.showGrowthCapture.rawValue, sender: indexPath.row)
-        Haptic.play(".", delay: 0.1)
+        playLightImpactVibration(delay: 0.1)
     }
     
     func tableView(_ tableView: UITableView,

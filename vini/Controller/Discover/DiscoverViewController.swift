@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 
 class DiscoverViewController: UIViewController {
     
@@ -81,7 +80,7 @@ class DiscoverViewController: UIViewController {
         fetchUserInfoWithoutBlockList()
         showBackgroundViewScaleUpAnimation()
         showInitialIndicatorAnimation()
-        Haptic.play("...o-o...", delay: 0.3)
+        playPageLandingImpactVibration()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,7 +132,7 @@ class DiscoverViewController: UIViewController {
                         self.currentSelectedVini.layer.removeAllAnimations()
                         self.currentSelectedVini.isUserInteractionEnabled = true
                         self.currentSelectedVini = vini
-                        Haptic.play(".", delay: 0.1)
+                        self.playLightImpactVibration(delay: 0.1)
                     }
                 }
             }
@@ -142,18 +141,19 @@ class DiscoverViewController: UIViewController {
     
     @IBAction func tapProfileSettingButton(_ sender: Any) {
 
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.showProfileSetting.rawValue, sender: nil)
     }
     
     @IBAction func tapSendMailButton(_ sender: Any) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.showSendMailPage.rawValue, sender: nil)
     }
     
     @IBAction func tapMapButton(_ sender: Any) {
         
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.showMap.rawValue, sender: nil)
     }
     
@@ -351,14 +351,14 @@ extension DiscoverViewController: MapScrollViewDelegate {
         
         self.rightIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.right.to.line"), for: .normal)
         showIndicatorAnimation(indicator: rightIndicatorArrow)
-        Haptic.play(".o.", delay: 0)
+        playReachedEdgeImpactVibration()
     }
     
     func didReachedLeftEdge() {
         
         self.leftIndicatorArrow.setBackgroundImage(UIImage(systemName: "arrow.left.to.line"), for: .normal)
         showIndicatorAnimation(indicator: leftIndicatorArrow)
-        Haptic.play(".o.", delay: 0)
+        playReachedEdgeImpactVibration()
     }
 }
 

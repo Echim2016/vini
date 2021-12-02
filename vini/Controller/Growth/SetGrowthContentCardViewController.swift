@@ -8,7 +8,6 @@
 import UIKit
 import PhotosUI
 import RSKPlaceholderTextView
-import Haptica
 
 class SetGrowthContentCardViewController: UIViewController {
     
@@ -23,7 +22,7 @@ class SetGrowthContentCardViewController: UIViewController {
         case showEmptyInputAlert = "ShowEmptyInputAlert"
     }
     
-    weak var delegate: GrowthDelegate?
+    weak var delegate: DataManagerProtocol?
     var manager: GrowthContentManager = GrowthContentManager.shared
     
     @IBOutlet weak var photoLibraryButton: UIButton! {
@@ -120,16 +119,16 @@ class SetGrowthContentCardViewController: UIViewController {
             
         } else {
             
+            playLightImpactVibration()
+            
             switch currentStatus {
                 
             case .create:
                 
-                Haptic.play(".", delay: 0)
                 addGrowthContentCard()
                 
             case .edit:
                 
-                Haptic.play(".", delay: 0)
                 performSegue(withIdentifier: Segue.showUpdateContentCardAlert.rawValue, sender: nil)
             }
         }

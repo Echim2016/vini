@@ -9,10 +9,9 @@ import UIKit
 import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
-import Haptica
 import AVFoundation
 
-protocol GrowthDelegate: AnyObject {
+protocol DataManagerProtocol: AnyObject {
     
     func fetchData()
 }
@@ -24,13 +23,12 @@ class GrowthCaptureViewController: UIViewController {
         case createContentCard = "CreateGrowthContentCard"
         case editContentCard = "EditGrowthContentCard"
         case drawConclusions = "DrawConclusions"
-        case showArchiveView = "ShowArchiveView"
         case showCongratsPage = "ShowCongratsPage"
         case showDeleteGrowthContentCardAlert = "ShowDeleteGrowthContentCardAlert"
         case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
     }
 
-    weak var delegate: GrowthDelegate?
+    weak var delegate: DataManagerProtocol?
     
     var growthCardManager: GrowthCardManager = .shared
     var contentCardManager: GrowthContentManager = .shared
@@ -54,7 +52,7 @@ class GrowthCaptureViewController: UIViewController {
             case .edit:
                 setupEditAppearance()
                 
-            default:
+            case .create, .review, .archiving:
                 break
             }
         }
@@ -123,12 +121,10 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     
     var growthCard = GrowthCard()
-    var headerEmojiToUpdate: String = ""
-    var headerTitleToUpdate: String = ""
     
-    var data: [GrowthContent] = [] {
+    var growthContents: [GrowthContent] = [] {
         didSet {
-            if data.isEmpty && state == .archiving {
+            if growthContents.isEmpty && state == .archiving {
                 
                 state = .archived
             }
@@ -176,65 +172,72 @@ class GrowthCaptureViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
+        
+        switch segue.identifier {
+            
+        case Segue.createContentCard.rawValue:
+            
+            if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
 
-            destinationVC.delegate = self
-            destinationVC.growthCard = growthCard
-
-            switch segue.identifier {
-                
-            case Segue.createContentCard.rawValue:
-                
+                destinationVC.delegate = self
+                destinationVC.growthCard = growthCard
                 destinationVC.currentStatus = .create
-                
-            case Segue.editContentCard.rawValue:
+            }
+            
+        case Segue.editContentCard.rawValue:
+            
+            if let destinationVC = segue.destination as? SetGrowthContentCardViewController {
+
+                destinationVC.delegate = self
+                destinationVC.growthCard = growthCard
                 
                 if let index = sender as? Int {
                     
                     destinationVC.currentStatus = .edit
-                    destinationVC.contentCard = data[index]
+                    destinationVC.contentCard = growthContents[index]
                 }
-
-            default:
-                break
             }
-        }
+            
+        case Segue.drawConclusions.rawValue:
+            
+            if let destinationVC = segue.destination as? DrawConclusionsViewController {
 
-        if let destinationVC = segue.destination as? DrawConclusionsViewController {
+                destinationVC.introText = growthCard.title
+                destinationVC.growthCardID = growthCard.id
+            }
 
-            destinationVC.introText = growthCard.title
-            destinationVC.growthCardID = growthCard.id
-        }
+        case Segue.showCongratsPage.rawValue:
+            
+            if let destinationVC = segue.destination as? CongratsViewController {
 
-        if let destinationVC = segue.destination as? CongratsViewController {
-
-            destinationVC.delegate = delegate
-        }
-
-        if let alert = segue.destination as? AlertViewController {
-
-            switch segue.identifier {
-
-            case Segue.showDeleteGrowthContentCardAlert.rawValue:
+                destinationVC.delegate = delegate
+            }
+            
+        case Segue.showDeleteGrowthContentCardAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
 
                 if let indexPath = sender as? IndexPath {
 
-                    alert.alertType = .deleteGrowthContentCardAlert
-                    alert.onConfirm = { [weak self] in
-                        
-                        guard let self = self else { return }
-                        self.deleteGrowthContentCard(indexPath: indexPath)
+                        alert.alertType = .deleteGrowthContentCardAlert
+                        alert.onConfirm = { [weak self] in
+                            
+                            guard let self = self else { return }
+                            self.deleteGrowthContentCard(indexPath: indexPath)
+                        }
                     }
-                }
-
-            case Segue.showContentCardEmptyAlert.rawValue:
-
-                alert.alertType = .emptyContentCardAlert
-
-            default:
-                break
             }
+            
+        case Segue.showContentCardEmptyAlert.rawValue:
+            
+            if let alert = segue.destination as? AlertViewController {
+
+                    alert.alertType = .emptyContentCardAlert
+            }
+            
+        default:
+            
+            break
         }
     }
     
@@ -283,21 +286,21 @@ class GrowthCaptureViewController: UIViewController {
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: nil)
     }
     
     @objc func tapDrawConclusionsButton(_ sender: UIButton) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.drawConclusions.rawValue, sender: nil)
     }
     
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         
-        if data.isEmpty {
+        if growthContents.isEmpty {
             
             performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
             
@@ -319,7 +322,7 @@ class GrowthCaptureViewController: UIViewController {
 
         } else if gesture.state == UIGestureRecognizer.State.ended {
             
-            if data.isEmpty {
+            if growthContents.isEmpty {
                 
                 navigateToCongratsPage()
                 
@@ -331,43 +334,8 @@ class GrowthCaptureViewController: UIViewController {
     }
 }
 
-// MARK: - VC appearance in different state
-extension GrowthCaptureViewController {
-    
-    private func setupEditButton(disable: Bool = false) {
-        
-        editButton.isEnabled = !disable
-        editButton.isHidden = disable
-    }
-    
-    private func setupFooterAppearance(archive: Bool = false) {
- 
-        buttonStackView.alpha = archive ? 0 : 1
-        archiveButton.alpha = archive ? 1 : 0
-        sparkVini.alpha = archive ? 1 : 0
-        archiveIntroLabel.text = archive ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
-    }
-    
-    private func setupArchivingAppearance() {
-        
-        archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
-        archiveIntroLabel.isHidden = false
-        self.sparkVini.shake()
-    }
-    
-    private func setupEditAppearance(disable: Bool = false) {
-        
-        emojiTextField.isEnabled = !disable
-        headerTitleTextView.isEditable = !disable
-        characterLimitLabel.isHidden = disable
-        tableView.isScrollEnabled = disable
-        let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
-        editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
-    }
-}
-
 // MARK: - Firebase -
-extension GrowthCaptureViewController: GrowthDelegate {
+extension GrowthCaptureViewController: DataManagerProtocol {
     
     func fetchData() {
         
@@ -381,7 +349,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             switch result {
             case .success(let contents):
                 
-                self.data = contents
+                self.growthContents = contents
         
                 UIView.transition(
                     with: self.tableView,
@@ -403,8 +371,8 @@ extension GrowthCaptureViewController: GrowthDelegate {
     
     private func deleteGrowthContentCard(indexPath: IndexPath) {
         
-        let id = self.data[indexPath.row - 1].id
-        let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+        let id = self.growthContents[indexPath.row - 1].id
+        let imageExists = !self.growthContents[indexPath.row - 1].image.isEmpty
         
         contentCardManager.deleteGrowthContentCard(id: id, imageExists: imageExists) { result in
             
@@ -413,7 +381,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             case .success(let message):
                 
                 print(message)
-                self.data.remove(at: indexPath.row - 1)
+                self.growthContents.remove(at: indexPath.row - 1)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                 
             case .failure(let error):
@@ -428,30 +396,28 @@ extension GrowthCaptureViewController: GrowthDelegate {
         view.endEditing(true)
 
         growthCardManager.updateGrowthCard(id: growthCard.id,
-                                           emoji: headerEmojiToUpdate,
-                                           title: headerTitleToUpdate) { result in
+                                           emoji: growthCard.emoji,
+                                           title: growthCard.title) { result in
             
             switch result {
                 
             case .success(let message):
                 
                 print(message)
-                self.growthCard.emoji = self.headerEmojiToUpdate
-                self.growthCard.title = self.headerTitleToUpdate
                 self.hideEditPage()
                 
             case .failure(let error):
                 
                 print(error)
-                self.headerEmojiLabel.text = self.growthCard.emoji
-                self.headerTitleLabel.text = self.growthCard.title
+                VProgressHUD.showFailure(text: "更新成長卡片時出了一點問題，請再試一次")
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
     private func createGrowthCard() {
         
-        if headerEmojiToUpdate.isEmpty || headerTitleToUpdate.isEmpty {
+        if growthCard.emoji.isEmpty || growthCard.title.isEmpty {
             
             VProgressHUD.showFailure(text: "似乎有空白的欄位，\n別忘了在圓圈處填入Emoji！🙆‍♂️")
             
@@ -459,10 +425,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             
             VProgressHUD.show()
             
-            var growthCard = GrowthCard()
             growthCard.userID = userID
-            growthCard.title = headerTitleToUpdate
-            growthCard.emoji = headerEmojiToUpdate
             
             growthCardManager.addData(growthCard: &growthCard) { result in
                 
@@ -485,24 +448,14 @@ extension GrowthCaptureViewController: GrowthDelegate {
     
     private func archiveGrowthCard(completion: @escaping (Bool) -> Void) {
         
-        growthCardManager.archiveGrowthCard(id: growthCard.id) { result in
-            
-            switch result {
-            case .success(let message):
-                print(message)
-                completion(true)
-            case .failure(let error):
-                print(error)
-                completion(false)
-            }
-        }
+        growthCardManager.archiveGrowthCard(id: growthCard.id, completion: completion)
     }
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count + 1
+        growthContents.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -548,7 +501,7 @@ extension GrowthCaptureViewController: UITableViewDataSource {
                 fatalError()
             }
             
-            cell.setupCell(content: data[indexPath.row - 1])
+            cell.setupCell(content: growthContents[indexPath.row - 1])
             
             return cell
         }
@@ -621,9 +574,10 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
                       return
                   }
             
-            headerEmojiToUpdate = text
+            growthCard.emoji = text
             
         default:
+            
             break
         }
     }
@@ -644,6 +598,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             return updatedText.count <= titleCharactersLimit
             
         default:
+            
             return true
         }
     }
@@ -659,12 +614,48 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
                       return
                   }
                         
-            headerTitleToUpdate = textView.text
+            growthCard.title = text
             
         default:
+            
             break
         }
 
+    }
+}
+
+// MARK: - VC appearance in different state
+extension GrowthCaptureViewController {
+    
+    private func setupEditButton(disable: Bool = false) {
+        
+        editButton.isEnabled = !disable
+        editButton.isHidden = disable
+    }
+    
+    private func setupFooterAppearance(archive: Bool = false) {
+ 
+        buttonStackView.alpha = archive ? 0 : 1
+        archiveButton.alpha = archive ? 1 : 0
+        sparkVini.alpha = archive ? 1 : 0
+        archiveIntroLabel.text = archive ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
+    }
+    
+    private func setupArchivingAppearance() {
+        
+        archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
+        archiveIntroLabel.isHidden = false
+        sparkVini.shake(count: Float(growthContents.count * 2), for: 3, withTranslation: 3)
+    }
+    
+    private func setupEditAppearance(disable: Bool = false) {
+        
+        emojiTextField.isEnabled = !disable
+        headerTitleTextView.isEditable = !disable
+        characterLimitLabel.isHidden = disable
+        tableView.isScrollEnabled = disable
+        let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
+        editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
 }
 
@@ -806,7 +797,7 @@ extension GrowthCaptureViewController {
         
         var workItem: DispatchWorkItem?
         
-        let dataLength = data.count
+        let dataLength = growthContents.count
         for index in 0..<dataLength {
             
             workItem = DispatchWorkItem {
@@ -814,10 +805,10 @@ extension GrowthCaptureViewController {
                 if self.state == .archiving {
                    
                     let indexPath = IndexPath(row: dataLength - index, section: 0)
-                    self.data.remove(at: dataLength - 1 - index)
+                    self.growthContents.remove(at: dataLength - 1 - index)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                     self.playArchivedSound()
-                    Haptic.play("..oO-Oo..", delay: 0.2)
+                    self.playArchivingImpactVibration()
 
                 } else {
                     

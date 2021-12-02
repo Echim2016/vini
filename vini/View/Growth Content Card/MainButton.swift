@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 
 class MainButton: UIButton {
 

@@ -192,7 +192,7 @@ class GrowthCardManager {
         
     }
     
-    func archiveGrowthCard(id: String, completion: @escaping Handler<String>) {
+    func archiveGrowthCard(id: String, completion: @escaping (Bool) -> Void) {
         
         let document = cardDatabase.document(id)
         
@@ -205,10 +205,12 @@ class GrowthCardManager {
             
             if let error = error {
                 
-                completion(.failure(error))
+                print(error)
+                completion(false)
             } else {
                 
-                completion(.success("Success: archive growth card"))
+                print("Success: archive growth card")
+                completion(true)
             }
         }
     }

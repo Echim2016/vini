@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Haptica
 
 extension UIViewController {
     
@@ -102,4 +103,42 @@ extension UIViewController: UIGestureRecognizerDelegate {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+}
+
+extension UIViewController {
+    
+    func playLightImpactVibration(delay: TimeInterval = 0) {
+        
+        Haptic.play(".", delay: delay)
+    }
+    
+    func playMediumImpactVibration() {
+        
+        Haptic.play("o", delay: 0)
+    }
+    
+    func playArchivingImpactVibration() {
+        
+        Haptic.play("..oO-Oo..", delay: 0.2)
+    }
+    
+    func playRedirectingImpactVibration() {
+        
+        Haptic.play("..o-o..o-o..", delay: 0.2)
+    }
+    
+    func playReachedEdgeImpactVibration() {
+        
+        Haptic.play(".o.", delay: 0)
+    }
+    
+    func playPageLandingImpactVibration() {
+        
+        Haptic.play("...o-o...", delay: 0.3)
+    }
+    
+    func playCloudSelectingImpactVibration() {
+        
+        Haptic.play(".-.", delay: 0.3)
+    }
 }
