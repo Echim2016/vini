@@ -577,6 +577,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             growthCard.emoji = text
             
         default:
+            
             break
         }
     }
@@ -597,6 +598,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             return updatedText.count <= titleCharactersLimit
             
         default:
+            
             return true
         }
     }
@@ -615,6 +617,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             growthCard.title = text
             
         default:
+            
             break
         }
 
@@ -642,7 +645,7 @@ extension GrowthCaptureViewController {
         
         archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
         archiveIntroLabel.isHidden = false
-        self.sparkVini.shake()
+        sparkVini.shake(count: Float(growthContents.count * 2), for: 3, withTranslation: 3)
     }
     
     private func setupEditAppearance(disable: Bool = false) {
