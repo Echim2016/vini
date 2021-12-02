@@ -87,7 +87,7 @@ extension ReflectionViewController: UICollectionViewDelegate {
         
         let page = Int(scrollView.contentOffset.y / self.view.frame.height)
         
-        if page == ReflectionPage.intro.rawValue && !isVisited {
+        if page == ReflectionPage.reflection.rawValue && !isVisited {
             
             collectionView.isScrollEnabled = false
         }
@@ -186,6 +186,12 @@ extension ReflectionViewController: CollectionViewCellDelegate {
     func didTapDismissButton(_ cell: UICollectionViewCell) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func didEndAnimation() {
+        
+        self.collectionView.isScrollEnabled = true
+        self.isVisited = true
     }
 }
 

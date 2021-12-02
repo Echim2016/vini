@@ -15,7 +15,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
     @IBOutlet weak var cloudImageView: UIImageView!
     @IBOutlet weak var bottomStraightLine: UIView!
     
-    weak var delegate: ReflectionViewController?
+    weak var delegate: CollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -56,7 +56,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 2,
+            delay: 1.5,
             animations: {
                 self.question2Label.alpha = 1
             },
@@ -70,7 +70,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
         
         UIView.animate(
             withDuration: 2,
-            delay: 2,
+            delay: 1.5,
             animations: {
                 self.question3Label.alpha = 1
             },
@@ -91,8 +91,7 @@ class ReflectionPracticeCell: UICollectionViewCell {
             },
             completion: { _ in
                 
-                self.delegate?.collectionView.isScrollEnabled = true
-                self.delegate?.isVisited = true
+                self.delegate?.didEndAnimation()
             }
         )
     }
