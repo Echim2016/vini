@@ -180,7 +180,7 @@ extension GrowthPageViewController {
     
 }
 
-extension GrowthPageViewController: GrowthDelegate {
+extension GrowthPageViewController: DataManagerProtocol {
     
     func fetchData() {
         

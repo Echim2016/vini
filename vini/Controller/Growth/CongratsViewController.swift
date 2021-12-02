@@ -10,7 +10,7 @@ import AVFoundation
 
 class CongratsViewController: UIViewController {
 
-    weak var delegate: GrowthDelegate?
+    weak var delegate: DataManagerProtocol?
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerViewHeight: NSLayoutConstraint!

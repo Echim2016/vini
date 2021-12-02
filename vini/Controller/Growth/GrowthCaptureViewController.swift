@@ -11,8 +11,7 @@ import FirebaseFirestore
 import RSKPlaceholderTextView
 import AVFoundation
 
-// protocol naming
-protocol GrowthDelegate: AnyObject {
+protocol DataManagerProtocol: AnyObject {
     
     func fetchData()
 }
@@ -29,7 +28,7 @@ class GrowthCaptureViewController: UIViewController {
         case showContentCardEmptyAlert = "ShowContentCardEmptyAlert"
     }
 
-    weak var delegate: GrowthDelegate?
+    weak var delegate: DataManagerProtocol?
     
     var growthCardManager: GrowthCardManager = .shared
     var contentCardManager: GrowthContentManager = .shared
@@ -336,7 +335,7 @@ class GrowthCaptureViewController: UIViewController {
 }
 
 // MARK: - Firebase -
-extension GrowthCaptureViewController: GrowthDelegate {
+extension GrowthCaptureViewController: DataManagerProtocol {
     
     func fetchData() {
         
