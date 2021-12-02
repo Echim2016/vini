@@ -124,10 +124,6 @@ class GrowthCaptureViewController: UIViewController {
     
     var growthCard = GrowthCard()
     
-    // refactor
-    var headerEmojiToUpdate: String = ""
-    var headerTitleToUpdate: String = ""
-    
     var growthContents: [GrowthContent] = [] {
         didSet {
             if growthContents.isEmpty && state == .archiving {
@@ -137,7 +133,6 @@ class GrowthCaptureViewController: UIViewController {
         }
     }
 
-    // player
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -334,41 +329,6 @@ class GrowthCaptureViewController: UIViewController {
     }
 }
 
-// MARK: - VC appearance in different state
-extension GrowthCaptureViewController {
-    
-    private func setupEditButton(disable: Bool = false) {
-        
-        editButton.isEnabled = !disable
-        editButton.isHidden = disable
-    }
-    
-    private func setupFooterAppearance(archive: Bool = false) {
- 
-        buttonStackView.alpha = archive ? 0 : 1
-        archiveButton.alpha = archive ? 1 : 0
-        sparkVini.alpha = archive ? 1 : 0
-        archiveIntroLabel.text = archive ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
-    }
-    
-    private func setupArchivingAppearance() {
-        
-        archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
-        archiveIntroLabel.isHidden = false
-        self.sparkVini.shake()
-    }
-    
-    private func setupEditAppearance(disable: Bool = false) {
-        
-        emojiTextField.isEnabled = !disable
-        headerTitleTextView.isEditable = !disable
-        characterLimitLabel.isHidden = disable
-        tableView.isScrollEnabled = disable
-        let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
-        editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
-    }
-}
-
 // MARK: - Firebase -
 extension GrowthCaptureViewController: GrowthDelegate {
     
@@ -431,30 +391,32 @@ extension GrowthCaptureViewController: GrowthDelegate {
         view.endEditing(true)
 
         growthCardManager.updateGrowthCard(id: growthCard.id,
-                                           emoji: headerEmojiToUpdate,
-                                           title: headerTitleToUpdate) { result in
+                                           emoji: growthCard.emoji,
+                                           title: growthCard.title) { result in
             
             switch result {
                 
             case .success(let message):
                 
                 print(message)
-                self.growthCard.emoji = self.headerEmojiToUpdate
-                self.growthCard.title = self.headerTitleToUpdate
+//                self.growthCard.emoji = self.headerEmojiToUpdate
+//                self.growthCard.title = self.headerTitleToUpdate
                 self.hideEditPage()
                 
             case .failure(let error):
                 
                 print(error)
-                self.headerEmojiLabel.text = self.growthCard.emoji
-                self.headerTitleLabel.text = self.growthCard.title
+                VProgressHUD.showFailure(text: "更新成長卡片時出了一點問題，請再試一次")
+                self.dismiss(animated: true, completion: nil)
+//                self.headerEmojiLabel.text = self.growthCard.emoji
+//                self.headerTitleLabel.text = self.growthCard.title
             }
         }
     }
     
     private func createGrowthCard() {
         
-        if headerEmojiToUpdate.isEmpty || headerTitleToUpdate.isEmpty {
+        if growthCard.emoji.isEmpty || growthCard.title.isEmpty {
             
             VProgressHUD.showFailure(text: "似乎有空白的欄位，\n別忘了在圓圈處填入Emoji！🙆‍♂️")
             
@@ -462,10 +424,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             
             VProgressHUD.show()
             
-            var growthCard = GrowthCard()
             growthCard.userID = userID
-            growthCard.title = headerTitleToUpdate
-            growthCard.emoji = headerEmojiToUpdate
             
             growthCardManager.addData(growthCard: &growthCard) { result in
                 
@@ -614,7 +573,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
                       return
                   }
             
-            headerEmojiToUpdate = text
+            growthCard.emoji = text
             
         default:
             break
@@ -627,7 +586,6 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             
         case headerTitleTextView:
             
-            // extract function 
             let currentText = textView.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             
@@ -653,12 +611,47 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
                       return
                   }
                         
-            headerTitleToUpdate = textView.text
+            growthCard.title = text
             
         default:
             break
         }
 
+    }
+}
+
+// MARK: - VC appearance in different state
+extension GrowthCaptureViewController {
+    
+    private func setupEditButton(disable: Bool = false) {
+        
+        editButton.isEnabled = !disable
+        editButton.isHidden = disable
+    }
+    
+    private func setupFooterAppearance(archive: Bool = false) {
+ 
+        buttonStackView.alpha = archive ? 0 : 1
+        archiveButton.alpha = archive ? 1 : 0
+        sparkVini.alpha = archive ? 1 : 0
+        archiveIntroLabel.text = archive ? "請長按按鈕來封存卡片" : "對生活中的小細節用心，\n就能把世界活得更寬闊。"
+    }
+    
+    private func setupArchivingAppearance() {
+        
+        archiveIntroLabel.text = "正在努力打包所有學習，請持續長按..."
+        archiveIntroLabel.isHidden = false
+        self.sparkVini.shake()
+    }
+    
+    private func setupEditAppearance(disable: Bool = false) {
+        
+        emojiTextField.isEnabled = !disable
+        headerTitleTextView.isEditable = !disable
+        characterLimitLabel.isHidden = disable
+        tableView.isScrollEnabled = disable
+        let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
+        editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
 }
 
