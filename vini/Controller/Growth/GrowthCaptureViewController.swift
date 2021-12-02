@@ -12,6 +12,7 @@ import RSKPlaceholderTextView
 import Haptica
 import AVFoundation
 
+// protocol naming
 protocol GrowthDelegate: AnyObject {
     
     func fetchData()
@@ -54,7 +55,7 @@ class GrowthCaptureViewController: UIViewController {
             case .edit:
                 setupEditAppearance()
                 
-            default:
+            case .create, .review, .archiving:
                 break
             }
         }
@@ -123,18 +124,21 @@ class GrowthCaptureViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     
     var growthCard = GrowthCard()
+    
+    // refactor
     var headerEmojiToUpdate: String = ""
     var headerTitleToUpdate: String = ""
     
-    var data: [GrowthContent] = [] {
+    var growthContents: [GrowthContent] = [] {
         didSet {
-            if data.isEmpty && state == .archiving {
+            if growthContents.isEmpty && state == .archiving {
                 
                 state = .archived
             }
         }
     }
 
+    // player
     var player: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -193,7 +197,7 @@ class GrowthCaptureViewController: UIViewController {
                 if let index = sender as? Int {
                     
                     destinationVC.currentStatus = .edit
-                    destinationVC.contentCard = data[index]
+                    destinationVC.contentCard = growthContents[index]
                 }
 
             default:
@@ -283,6 +287,7 @@ class GrowthCaptureViewController: UIViewController {
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
+        // haptic function
         Haptic.play(".", delay: 0)
         performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: nil)
     }
@@ -297,7 +302,7 @@ class GrowthCaptureViewController: UIViewController {
         
         Haptic.play(".", delay: 0)
         
-        if data.isEmpty {
+        if growthContents.isEmpty {
             
             performSegue(withIdentifier: Segue.showContentCardEmptyAlert.rawValue, sender: nil)
             
@@ -319,7 +324,7 @@ class GrowthCaptureViewController: UIViewController {
 
         } else if gesture.state == UIGestureRecognizer.State.ended {
             
-            if data.isEmpty {
+            if growthContents.isEmpty {
                 
                 navigateToCongratsPage()
                 
@@ -381,7 +386,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             switch result {
             case .success(let contents):
                 
-                self.data = contents
+                self.growthContents = contents
         
                 UIView.transition(
                     with: self.tableView,
@@ -403,8 +408,8 @@ extension GrowthCaptureViewController: GrowthDelegate {
     
     private func deleteGrowthContentCard(indexPath: IndexPath) {
         
-        let id = self.data[indexPath.row - 1].id
-        let imageExists = !self.data[indexPath.row - 1].image.isEmpty
+        let id = self.growthContents[indexPath.row - 1].id
+        let imageExists = !self.growthContents[indexPath.row - 1].image.isEmpty
         
         contentCardManager.deleteGrowthContentCard(id: id, imageExists: imageExists) { result in
             
@@ -413,7 +418,7 @@ extension GrowthCaptureViewController: GrowthDelegate {
             case .success(let message):
                 
                 print(message)
-                self.data.remove(at: indexPath.row - 1)
+                self.growthContents.remove(at: indexPath.row - 1)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                 
             case .failure(let error):
@@ -485,24 +490,14 @@ extension GrowthCaptureViewController: GrowthDelegate {
     
     private func archiveGrowthCard(completion: @escaping (Bool) -> Void) {
         
-        growthCardManager.archiveGrowthCard(id: growthCard.id) { result in
-            
-            switch result {
-            case .success(let message):
-                print(message)
-                completion(true)
-            case .failure(let error):
-                print(error)
-                completion(false)
-            }
-        }
+        growthCardManager.archiveGrowthCard(id: growthCard.id, completion: completion)
     }
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count + 1
+        growthContents.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -548,7 +543,7 @@ extension GrowthCaptureViewController: UITableViewDataSource {
                 fatalError()
             }
             
-            cell.setupCell(content: data[indexPath.row - 1])
+            cell.setupCell(content: growthContents[indexPath.row - 1])
             
             return cell
         }
@@ -634,6 +629,7 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             
         case headerTitleTextView:
             
+            // extract function 
             let currentText = textView.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             
@@ -806,7 +802,7 @@ extension GrowthCaptureViewController {
         
         var workItem: DispatchWorkItem?
         
-        let dataLength = data.count
+        let dataLength = growthContents.count
         for index in 0..<dataLength {
             
             workItem = DispatchWorkItem {
@@ -814,7 +810,7 @@ extension GrowthCaptureViewController {
                 if self.state == .archiving {
                    
                     let indexPath = IndexPath(row: dataLength - index, section: 0)
-                    self.data.remove(at: dataLength - 1 - index)
+                    self.growthContents.remove(at: dataLength - 1 - index)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                     self.playArchivedSound()
                     Haptic.play("..oO-Oo..", delay: 0.2)
