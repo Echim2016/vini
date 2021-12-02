@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class ReflectionViewController: UIViewController {
@@ -56,7 +55,7 @@ class ReflectionViewController: UIViewController {
     
     @objc func tapContinueButton(_ sender: UIButton) {
         
-        Haptic.play("o", delay: 0)
+        playMediumImpactVibration()
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -93,7 +92,7 @@ extension ReflectionViewController: UICollectionViewDelegate {
             collectionView.isScrollEnabled = false
         }
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
     }
 }
 

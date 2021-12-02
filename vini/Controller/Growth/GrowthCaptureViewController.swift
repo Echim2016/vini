@@ -9,7 +9,6 @@ import UIKit
 import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
-import Haptica
 import AVFoundation
 
 // protocol naming
@@ -287,20 +286,19 @@ class GrowthCaptureViewController: UIViewController {
     
     @objc func tapCreateGrowthContentCardButton(_ sender: UIButton) {
         
-        // haptic function
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.createContentCard.rawValue, sender: nil)
     }
     
     @objc func tapDrawConclusionsButton(_ sender: UIButton) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         performSegue(withIdentifier: Segue.drawConclusions.rawValue, sender: nil)
     }
     
     @objc func tapShowArchiveViewButton(_ sender: UIButton) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         
         if growthContents.isEmpty {
             
@@ -813,7 +811,7 @@ extension GrowthCaptureViewController {
                     self.growthContents.remove(at: dataLength - 1 - index)
                     self.tableView.deleteRows(at: [indexPath], with: .fade)
                     self.playArchivedSound()
-                    Haptic.play("..oO-Oo..", delay: 0.2)
+                    self.playArchivingImpactVibration()
 
                 } else {
                     

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class CustomTabBarController: UITabBarController {
@@ -34,7 +33,7 @@ class CustomTabBarController: UITabBarController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        Haptic.play(".", delay: 0)
+        playLightImpactVibration()
         
         switch item.title {
             

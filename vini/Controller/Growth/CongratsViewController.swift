@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Haptica
 import AVFoundation
 
 class CongratsViewController: UIViewController {
@@ -42,7 +41,7 @@ class CongratsViewController: UIViewController {
     
     @IBAction func tapBackButton(_ sender: Any) {
      
-        Haptic.play("o", delay: 0)
+        playMediumImpactVibration()
         delegate?.fetchData()
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
