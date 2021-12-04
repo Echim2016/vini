@@ -2,19 +2,26 @@
 
 ![](https://i.imgur.com/JogrJjx.png)
 
+<p align="left">
+    <img src="https://img.shields.io/badge/platform-iOS-lightgray">
+    <img src="https://img.shields.io/badge/release-v1.0.4-green">
+</p>
+
 ## Vini: a growth tracking app for self-improvement.
 
 Vini is a growth tracking app for you to capture your personal growth, share your mood, and get inspired by others.
 
+為了達到成長目標，我們常追求別人的答案，追求現有的目標框架或系統，進而陷入期待與挫折的循環，甚至因為沒有達成目標，而否定了過程的累積與學習。
 
+Vini 專注在捕捉與紀錄在成長之路上，那些微不足道、看似無用、卻又能帶給自己啟發的微小學習，Vini 相信，生活中的一句話、一篇文章、一部電影、一首觸動人心的歌、或是一場突如其來的大雨，都可能為你帶來新的啟發。
 
-[](https://img.shields.io/badge/platform-iOS-lightgrey)
+現在就用 Vini 捕捉你的微小學習，用更真實的方式自我成長！
 
 <br>
 
 
  [![](https://i.imgur.com/NKyvGNy.png)](https://apps.apple.com/tw/app/id1591798324)
-
+ 
 
 ## Table of Contents
 * [Features](#Features)
