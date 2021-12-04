@@ -135,7 +135,7 @@ https://user-images.githubusercontent.com/23053223/144700847-00fdd328-119b-44b4-
 
 
 
-#### Haptic Vibration
+### Haptic Vibration
 Experience different vibration patterns when:
 
 - Signing in and redirecting to home page.
@@ -195,17 +195,11 @@ Experience different vibration patterns when:
 
 ## Release Notes
 
-
-
 | Version | Date | Notes |
 | -------- | -------- | -------- |
 | 1.0.2   | 2021.11.20     | Released in App Store   |
 | 1.0.3   | 2021.11.29    | Fix navagation bar color bug     |
 | 1.0.4   | 2021.12.04     | Fix reflection text bug in specific devices.     |
 
-
-
 ## Author
 - Echim Hsu｜ychim26@gmail.com
-
-
