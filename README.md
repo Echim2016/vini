@@ -1,6 +1,6 @@
-![](https://i.imgur.com/BeYmbqH.png)
+<!-- ![](https://i.imgur.com/BeYmbqH.png) -->
 
-<!-- ![](https://i.imgur.com/JogrJjx.png) -->
+![](https://i.imgur.com/JogrJjx.png)
 
 ## Vini: a growth tracking app for self-improvement.
 
@@ -21,13 +21,28 @@ Vini is a growth tracking app for you to capture your personal growth, share you
 #### Set a goal
 Create a growth goal as your starting point of self-growth.
 
-
 #### Record your new findings
 Record a growth content card to capture your new learnings or findings in life.
 
-
 #### Archive and celebrate 
 Archive a growth card with Vini to set a memorable milestone and celebrate your growth.
+
+<!-- ![set a goal-1](https://user-images.githubusercontent.com/23053223/144701478-e78cd99b-a179-437f-ba53-fce64c970ee7.png) -->
+<!-- ![set a goal-2](https://user-images.githubusercontent.com/23053223/144701541-9755a42c-8fba-4a06-ba7e-7c3e286af9f8.png) -->
+<!-- ![record a content card](https://user-images.githubusercontent.com/23053223/144701718-8ceb8990-9431-4202-a815-7d955d02f2bd.png) -->
+<!-- ![archive a card](https://user-images.githubusercontent.com/23053223/144701721-e150997c-c865-499c-8cdc-45e704738033.png) -->
+<!-- ![congrats](https://user-images.githubusercontent.com/23053223/144701724-fb08d175-f65b-43b8-8b6a-09e0a6a8416e.png) -->
+
+<br>
+
+<p align="left">
+ 
+ <img src="https://user-images.githubusercontent.com/23053223/144701541-9755a42c-8fba-4a06-ba7e-7c3e286af9f8.png" width="176" height="351">
+ <img src="https://user-images.githubusercontent.com/23053223/144701718-8ceb8990-9431-4202-a815-7d955d02f2bd.png" width="176" height="351">
+ <img src="https://user-images.githubusercontent.com/23053223/144701721-e150997c-c865-499c-8cdc-45e704738033.png" width="176" height="351">
+ <img src="https://user-images.githubusercontent.com/23053223/144701724-fb08d175-f65b-43b8-8b6a-09e0a6a8416e.png" width="176" height="351">
+
+</p>
 
 #### Review your achievements and insights
 Review and get inspired by your past achievements and insights.
@@ -52,13 +67,8 @@ Built smooth animation with immersive sound effect when signing in, editing, ale
 
 
 https://user-images.githubusercontent.com/23053223/144701133-9062ec56-49ec-4cd1-a504-e7602be84f72.MP4
-
-
 https://user-images.githubusercontent.com/23053223/144701072-c4dcd772-174a-41ae-b787-aef236c738be.MP4
-
-
 https://user-images.githubusercontent.com/23053223/144700629-70e833f3-bef1-4fce-9c51-54b47484dc0f.MP4
-
 
 #### Custom Alert Modal
 
