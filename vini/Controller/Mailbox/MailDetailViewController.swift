@@ -28,15 +28,14 @@ class MailDetailViewController: UIViewController {
     
     @IBOutlet weak var blockUserButton: UIBarButtonItem!
     
-    private var userManager = UserManager.shared
-
-    private var mailManager = MailManager.shared
+    private let userManager = UserManager.shared
+    private let mailManager = MailManager.shared
     
     var mail: Mail = Mail() {
         
         didSet {
             
-            if mail.senderID == MailManager.shared.welcomeMailSenderID {
+            if mail.senderID == mailManager.welcomeMailSenderID {
                 
                 blockUserButton.isEnabled = false
             }
@@ -104,6 +103,7 @@ class MailDetailViewController: UIViewController {
                 }
                 
             default:
+                
                 break
                 
             }
@@ -118,7 +118,7 @@ extension MailDetailViewController {
         
         if mail.readTimestamp == nil {
             
-            MailManager.shared.updateReadTime(
+            mailManager.updateReadTime(
                 mailID: mail.id
             ) { result in
                 
