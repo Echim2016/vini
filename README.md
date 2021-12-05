@@ -110,34 +110,6 @@ Read new mails only in specified reflection time at night, get inspired, and rec
 <br>
 
 
-
-## Techniques
-<!-- 
-* Implemented **OOP** and **MVC** design pattern.
-* Built user interfaces both with **Interface Builder** and **programmatically**.
-* Designed and built a **custom reuse mechanism** of infinite scroll view to help reduce the burden of memory.
-* Designed a **random generated algorithm** for distributing several custom views on the horizontal scroll view without intersection.
-* Built **animation**, **sound effect**, and **haptic vibration** to create an immersive and delightful user experience.
-* Worked on **long-press gesture handling** for better archiving experience.
-* Created a **reusable alert modal** for error handling in both API managers and view controllers.
-* Implemented **user-defined notification** by using User Notifications.
-* Applied **Singleton** design pattern to manage Firebase APIs.
-* Utilized **Sign-in with Apple** and **Firebase Authentication** to carry out the privacy-preserving sign-in flow. -->
-
-
-* Implemented `OOP` and `MVC` design pattern.
-* Built user interfaces both with `Interface Builder` and `programmatically`.
-* Designed and built a `custom reuse mechanism` of infinite scroll view to help reduce the burden of memory.
-* Designed a `random generated algorithm` for distributing several custom views on the horizontal scroll view without intersection.
-* Built `animation`, `sound effect`, and `haptic vibration` to create an immersive and delightful user experience.
-* Worked on `long-press gesture handling` for better archiving experience.
-* Created a `reusable alert modal` for error handling in both API managers and view controllers.
-* Implemented `user-defined notification` by using User Notifications.
-* Applied `Singleton` design pattern to manage Firebase APIs.
-* Utilized `Sign-in with Apple` and `Firebase Authentication` to carry out the privacy-preserving sign-in flow.
-
-<br>
-
 ## UX Highlights
 
 Vini provides an immersive and delightful user experience thourgh:
@@ -195,6 +167,34 @@ Experience different vibration patterns when:
 - Redirecting to Vini Cloud.
 - Archiving a growth card.
 
+<br>
+
+## Techniques
+<!-- 
+* Implemented **OOP** and **MVC** design pattern.
+* Built user interfaces both with **Interface Builder** and **programmatically**.
+* Designed and built a **custom reuse mechanism** of infinite scroll view to help reduce the burden of memory.
+* Designed a **random generated algorithm** for distributing several custom views on the horizontal scroll view without intersection.
+* Built **animation**, **sound effect**, and **haptic vibration** to create an immersive and delightful user experience.
+* Worked on **long-press gesture handling** for better archiving experience.
+* Created a **reusable alert modal** for error handling in both API managers and view controllers.
+* Implemented **user-defined notification** by using User Notifications.
+* Applied **Singleton** design pattern to manage Firebase APIs.
+* Utilized **Sign-in with Apple** and **Firebase Authentication** to carry out the privacy-preserving sign-in flow. -->
+
+
+* Implemented `OOP` and `MVC` design pattern.
+* Built user interfaces both with `Interface Builder` and `programmatically`.
+* Designed and built a `custom reuse mechanism` of infinite scroll view to help reduce the burden of memory.
+* Designed a `random generated algorithm` for distributing several custom views on the horizontal scroll view without intersection.
+* Built `animation`, `sound effect`, and `haptic vibration` to create an immersive and delightful user experience.
+* Worked on `long-press gesture handling` for better archiving experience.
+* Created a `reusable alert modal` for error handling in both API managers and view controllers.
+* Implemented `user-defined notification` by using User Notifications.
+* Applied `Singleton` design pattern to manage Firebase APIs.
+* Utilized `Sign-in with Apple` and `Firebase Authentication` to carry out the privacy-preserving sign-in flow.
+
+<br>
 
 ## Libraries
 
