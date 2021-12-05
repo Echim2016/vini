@@ -28,18 +28,49 @@ enum SettingsSection: Int, CaseIterable {
         }
     }
     
-    var settingItems: [String] {
+    var settingItems: [SettingsTitle] {
         
         switch self {
             
         case .notification:
-            return ["每日反思時間"]
+            return [.reflectionTime]
             
         case .account:
-            return ["已封鎖的使用者", "登出", "刪除帳號"]
+            return [.blockedUsers, .logOut, .deleteAccount]
             
         case .about:
-            return ["隱私權政策"]
+            return [.privacyPolicy]
+        }
+    }
+    
+}
+
+enum SettingsTitle: Int, CaseIterable {
+    
+    case reflectionTime = 0
+    case blockedUsers
+    case logOut
+    case deleteAccount
+    case privacyPolicy
+    
+    var title: String {
+        
+        switch self {
+            
+        case .reflectionTime:
+            return "每日反思時間"
+            
+        case .blockedUsers:
+            return "已封鎖的使用者"
+            
+        case .logOut:
+            return "登出"
+            
+        case .deleteAccount:
+            return "刪除帳號"
+            
+        case .privacyPolicy:
+            return "隱私權政策"
         }
     }
     

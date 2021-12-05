@@ -12,6 +12,10 @@ class CustomTabBarController: UITabBarController {
     
     var player: AVAudioPlayer?
 
+    private let mailManager = MailManager.shared
+    
+    private let userManager = UserManager.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +31,7 @@ class CustomTabBarController: UITabBarController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         tabBar.frame.size.height *= 1.15
         tabBar.frame.origin.y = view.frame.height - tabBar.frame.size.height
     }
@@ -42,10 +47,9 @@ class CustomTabBarController: UITabBarController {
             fetchUserData()
             
         default:
-            break
             
+            break
         }
-       
     }
     
     func setupTabBarAppearance() {
@@ -53,7 +57,7 @@ class CustomTabBarController: UITabBarController {
         tabBar.layer.masksToBounds = true
         tabBar.isTranslucent = true
         tabBar.layer.cornerRadius = 25
-        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func setupTabBarItemTitle() {
@@ -89,8 +93,10 @@ extension CustomTabBarController {
     
     func fetchMailsForBadgeValue() {
         
-        MailManager.shared.fetchNumberOfUnreadMails { result in
+        mailManager.fetchNumberOfUnreadMails { result in
+            
             switch result {
+                
             case .success(let count):
                 
                 if let tabBarItems = self.tabBar.items {
@@ -109,23 +115,24 @@ extension CustomTabBarController {
         
         if let userID = UserManager.shared.userID {
             
-            UserManager.shared.fetchUser(userID: userID) { result in
+            userManager.fetchUser(userID: userID) { result in
                 
                 switch result {
                     
                 case .success(let user):
                     
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "updateUserInfo"), object: nil, userInfo: ["user": user])
+                    NotificationCenter.default.post(
+                        name: Notification.Name(rawValue: "updateUserInfo"),
+                        object: nil,
+                        userInfo: ["user": user]
+                    )
                     
                 case .failure(let error):
                     
                     print(error)
-                    
                 }
-                
             }
-            
         }
-        
     }
+    
 }

@@ -16,7 +16,9 @@ class MailboxViewController: UIViewController {
     }
 
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
@@ -24,11 +26,16 @@ class MailboxViewController: UIViewController {
     }
     
     var mails: [Mail] = [] {
+        
         didSet {
             
             remindsLabel.isHidden = !mails.isEmpty
         }
     }
+    
+    private let discoverUserManager = DiscoverUserManager.shared
+    private let mailManager = MailManager.shared
+    private let userManager = UserManager.shared
         
     var preferredReflectionTime: Int = 23
     
@@ -86,7 +93,7 @@ extension MailboxViewController {
         
         VProgressHUD.show()
         
-        DiscoverUserManager.shared.fetchUserProfile { result in
+        discoverUserManager.fetchUserProfile { result in
             
             switch result {
                 
@@ -106,7 +113,7 @@ extension MailboxViewController {
     
     func fetchMails(blockList: [String]) {
         
-        MailManager.shared.fetchData(blockList: blockList) { result in
+        mailManager.fetchData(blockList: blockList) { result in
             
             switch result {
                 
@@ -135,7 +142,7 @@ extension MailboxViewController {
     
     func getReflectionTime() {
         
-        MailManager.shared.getReflectionTime { result in
+        mailManager.getReflectionTime { result in
             
             switch result {
                 
@@ -154,7 +161,7 @@ extension MailboxViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
+        userManager.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
             
             switch result {
                 
@@ -178,7 +185,7 @@ extension MailboxViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if mails[indexPath.row].readTimestamp == nil,
-           mails[indexPath.row].senderID != MailManager.shared.welcomeMailSenderID {
+           mails[indexPath.row].senderID != mailManager.welcomeMailSenderID {
             
             let currentHour = Calendar.current.component(.hour, from: Date())
             if currentHour == preferredReflectionTime {

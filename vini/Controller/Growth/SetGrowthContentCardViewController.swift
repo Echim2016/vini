@@ -12,6 +12,7 @@ import RSKPlaceholderTextView
 class SetGrowthContentCardViewController: UIViewController {
     
     enum Status {
+        
         case create
         case edit
     }
@@ -26,6 +27,7 @@ class SetGrowthContentCardViewController: UIViewController {
     var manager: GrowthContentManager = GrowthContentManager.shared
     
     @IBOutlet weak var photoLibraryButton: UIButton! {
+        
         didSet {
             
             if #available(iOS 14, *) {
@@ -35,19 +37,25 @@ class SetGrowthContentCardViewController: UIViewController {
     }
     
     @IBOutlet weak var introLabel: UILabel! {
+        
         didSet {
+            
             introLabel.text = "關於「\(growthCard?.title ?? "")」..."
         }
     }
     
     @IBOutlet weak var titleIntroLabel: UILabel! {
+        
         didSet {
+            
             titleIntroLabel.text = "這個學習的標題是..."
         }
     }
     
     @IBOutlet weak var contentTextView: RSKPlaceholderTextView! {
+        
         didSet {
+            
             contentTextView.delegate = self
             contentTextView.text = contentCard.content
         }
@@ -61,10 +69,11 @@ class SetGrowthContentCardViewController: UIViewController {
     }
     
     @IBOutlet weak var contentImageView: UIImageView! {
+        
         didSet {
+            
             contentImageView.layer.cornerRadius = 18
             contentImageView.loadImage(contentCard.image, placeHolder: nil)
-
         }
     }
     
@@ -161,6 +170,7 @@ class SetGrowthContentCardViewController: UIViewController {
             }
         }
     }
+    
 }
 
 // MARK: - Firebase -
@@ -246,14 +256,21 @@ extension SetGrowthContentCardViewController: UITextViewDelegate {
               }
         
         switch textView {
+            
         case contentTextView:
+            
             contentCard.content = text
+            
         case titleTextView:
+            
             contentCard.title = text
+            
         default:
+            
             break
         }
     }
+    
 }
 
 // MARK: - Image Picker -
@@ -309,4 +326,5 @@ extension SetGrowthContentCardViewController: UIImagePickerControllerDelegate,
             }
         }
     }
+    
 }

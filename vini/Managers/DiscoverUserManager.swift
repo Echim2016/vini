@@ -22,6 +22,7 @@ class DiscoverUserManager {
             if let error = error {
                 
                 completion(.failure(error))
+                
             } else {
                 
                 var vinis = [ViniView]()
@@ -79,6 +80,9 @@ class DiscoverUserManager {
                     completion(.success("Success"))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
         
     }
@@ -114,6 +118,9 @@ class DiscoverUserManager {
                     
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
 }

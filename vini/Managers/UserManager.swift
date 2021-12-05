@@ -92,6 +92,9 @@ class UserManager {
                     }
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
         
     }
@@ -182,6 +185,9 @@ class UserManager {
                     completion(.success(true))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     

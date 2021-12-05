@@ -30,7 +30,9 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var wonderingLabel: UILabel!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var mapButton: UIButton! {
+        
         didSet {
+            
             if #available(iOS 15, *) {
                 
                 mapButton.setBackgroundImage(UIImage(systemName: "map.circle.fill"), for: .normal)
@@ -41,6 +43,9 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var blockButton: UIButton!
     @IBOutlet weak var leftIndicatorArrow: UIButton!
     @IBOutlet weak var rightIndicatorArrow: UIButton!
+    
+    let discoverUserManager = DiscoverUserManager.shared
+    let userManager = UserManager.shared
     
     private var currentSelectedVini: ViniView = ViniView()
     private var user: User?
@@ -57,8 +62,7 @@ class DiscoverViewController: UIViewController {
         setupMapScrollView()
         setupNavigationController(title: "探索", titleColor: .white)
         navigationController?.navigationBar.isHidden = true
-        headerView.layer.cornerRadius = 25
-        sendButton.layer.cornerRadius = 20
+        sendButton.setupCorner()
         bigCloudImageView.float(duration: 1.6)
         mediumCloudImageView.float(duration: 2.0)
         view.bringSubviewToFront(headerView)
@@ -110,6 +114,7 @@ class DiscoverViewController: UIViewController {
             let location = gesture.location(in: map)
             
             map.subviews.filter {$0.frame.contains(location)}.forEach { vini in
+                
                 if let vini = vini as? ViniView {
                     
                     sendButton.alpha = 1
@@ -195,6 +200,7 @@ class DiscoverViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension DiscoverViewController {
@@ -221,6 +227,7 @@ extension DiscoverViewController {
     func setupBackgroundRectView() {
         
         backgroundRectView.layer.sublayers?.forEach({ layer in
+            
             if let layer = layer as? CAGradientLayer {
                 layer.removeFromSuperlayer()
             }
@@ -267,6 +274,7 @@ extension DiscoverViewController {
             self.user = user
         }
     }
+    
 }
 
 extension DiscoverViewController {
@@ -279,7 +287,7 @@ extension DiscoverViewController {
             
         } else {
             
-            DiscoverUserManager.shared.fetchUserProfile { result in
+            discoverUserManager.fetchUserProfile { result in
                 
                 switch result {
                     
@@ -297,10 +305,12 @@ extension DiscoverViewController {
     
     func fetchUserInfo(blockList: [String]) {
         
-        DiscoverUserManager.shared.fetchData(
+        discoverUserManager.fetchData(
             category: cloudCategory.category,
             blockList: blockList) { result in
+                
             switch result {
+                
             case .success(let vinis):
                 
                 self.infoOfUsers = vinis
@@ -318,7 +328,7 @@ extension DiscoverViewController {
         
         VProgressHUD.show()
         
-        UserManager.shared.updateBlockUserList(blockUserID: currentSelectedVini.data.id, action: .block) { result in
+        userManager.updateBlockUserList(blockUserID: currentSelectedVini.data.id, action: .block) { result in
             
             switch result {
                 
@@ -482,8 +492,8 @@ extension DiscoverViewController {
             delay: 0.0,
             options: .curveEaseIn,
             animations: {
-                indicator.alpha = 1
                 
+                indicator.alpha = 1
             },
             completion: { _ in
                 

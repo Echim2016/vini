@@ -47,6 +47,9 @@ class GrowthCardManager {
                     completion(.success(growthCards))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
         
     }
@@ -77,11 +80,11 @@ class GrowthCardManager {
         }
     }
     
-    func updateConclusion(id: String, conclusion: String, completion: @escaping Handler<String>) {
+    func updateConclusion(growthCard: GrowthCard, completion: @escaping Handler<String>) {
         
-        let document = cardDatabase.document(id)
+        let document = cardDatabase.document(growthCard.id)
         
-        document.updateData(["conclusion": conclusion]) { error in
+        document.updateData(["conclusion": growthCard.conclusion]) { error in
             
             if let error = error {
                 

@@ -19,7 +19,9 @@ class DiscoverMapViewController: UIViewController {
     @IBOutlet weak var modalBackgroundView: UIView!
     
     @IBOutlet weak var collectionView: UICollectionView! {
+        
         didSet {
+            
             collectionView.delegate = self
             collectionView.dataSource = self
             collectionView.isPagingEnabled = true
@@ -27,6 +29,7 @@ class DiscoverMapViewController: UIViewController {
             collectionView.decelerationRate = UIScrollView.DecelerationRate(rawValue: 0.5)
         }
     }
+    
     @IBOutlet weak var leftArrowButton: UIButton!
     @IBOutlet weak var rightArrowButton: UIButton!
     
@@ -38,6 +41,7 @@ class DiscoverMapViewController: UIViewController {
     var currentSelectedCategory: CloudCategory = .career
     
     var currentSelectedIndex: Int = 0 {
+        
         didSet {
             
             if currentSelectedIndex > mapCategory.count - 1 {
@@ -50,11 +54,11 @@ class DiscoverMapViewController: UIViewController {
                         
             currentSelectedCategory = mapCategory[currentSelectedIndex]
                         
-            let contenOffset = CGPoint(
+            let contentOffset = CGPoint(
                 x: collectionView.frame.width * CGFloat(currentSelectedIndex),
                 y: collectionView.contentOffset.y)
             
-            collectionView.setContentOffset(contenOffset, animated: false)
+            collectionView.setContentOffset(contentOffset, animated: false)
         }
     }
     
@@ -75,11 +79,6 @@ class DiscoverMapViewController: UIViewController {
         rightArrowButton.layer.cornerRadius = 25
         cancelButton.layer.cornerRadius = 18
         confirmButton.layer.cornerRadius = 18
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
     }
     
