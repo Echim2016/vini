@@ -15,7 +15,9 @@ class BlockListViewController: UIViewController {
     }
 
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
         }
@@ -23,9 +25,13 @@ class BlockListViewController: UIViewController {
     
     @IBOutlet weak var introLabel: UILabel!
     
-    var userBlockList: [String] = []
+    private let discoverUserManager = DiscoverUserManager.shared
+    private let userManager = UserManager.shared
     
-    var blockUsers: [User] = [] {
+    private var userBlockList: [String] = []
+    
+    private var blockUsers: [User] = [] {
+        
         didSet {
             
             if blockUsers.count == userBlockList.count {
@@ -47,18 +53,17 @@ class BlockListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        playLightImpactVibration()
         setupNavigationController(title: "已封鎖的使用者", titleColor: .white)
         setupNavBarBackButton()
-        
         blockUsers = []
         fetchUserProfile()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let alert = segue.destination as? AlertViewController,
-        let indexPath = sender as? IndexPath {
+           let indexPath = sender as? IndexPath {
             
             let blockUserID = blockUsers[indexPath.row].id
             
@@ -76,9 +81,9 @@ class BlockListViewController: UIViewController {
 
 extension BlockListViewController {
     
-    func fetchUserProfile() {
+    private func fetchUserProfile() {
                 
-        DiscoverUserManager.shared.fetchUserProfile { result in
+        discoverUserManager.fetchUserProfile { result in
             
             switch result {
                 
@@ -87,22 +92,23 @@ extension BlockListViewController {
                 self.userBlockList = user.blockList
                 
                 if !self.userBlockList.isEmpty {
+                    
                     self.fetchBlockUsersList(list: self.userBlockList)
                 }
                 
             case.failure(let error):
                 
                 print(error)
-                
             }
         }
     }
     
-    func fetchBlockUsersList(list: [String]) {
+    private func fetchBlockUsersList(list: [String]) {
                 
         userBlockList.forEach { userID in
             
-            UserManager.shared.fetchUser(userID: userID) { result in
+            userManager.fetchUser(userID: userID) { result in
+                
                 switch result {
                     
                 case .success(let user):
@@ -118,9 +124,9 @@ extension BlockListViewController {
         }
     }
     
-    func unblockUser(id: String, indexPath: IndexPath) {
+    private func unblockUser(id: String, indexPath: IndexPath) {
         
-        UserManager.shared.updateBlockUserList(blockUserID: id, action: .unblock) { result in
+        userManager.updateBlockUserList(blockUserID: id, action: .unblock) { result in
             
             switch result {
                 
