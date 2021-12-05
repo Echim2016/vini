@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/release-v1.0.4-green">
 </p>
 
-## Vini: a growth tracking app for self-improvement.
+# Vini: a growth tracking app for self-improvement.
 
 Vini is a growth tracking app for you to capture your personal growth, share your mood, and get inspired by others.
 
@@ -32,6 +32,7 @@ Vini 專注在捕捉與紀錄在成長之路上，那些微不足道、看似無
 * [Release Notes](#Release-Notes)
 * [Author](#Author)
 
+<br>
 
 ## Features
 
@@ -65,6 +66,7 @@ Review and get inspired by your past achievements and insights.
  <img src="https://user-images.githubusercontent.com/23053223/144702542-b3c80ad5-aafe-414c-a5ad-9e3262e789fe.png" width="176" height="351">
 
 </p>
+<br>
 
 
 ### Explore and meet others on Vini Cloud
@@ -83,6 +85,7 @@ Set your current status and a personal dedicated Vini character on Vini Cloud, a
  <img src="https://user-images.githubusercontent.com/23053223/144702013-8eedca23-87e4-4b38-bb66-f43c0ef7be19.png" width="176" height="351">
 
 </p>
+<br>
 
 ### Do a self-reflection at night
 Guided by the mindful questions and enjoy the meditation music to do a self-reflection before going to bed.
@@ -104,54 +107,8 @@ Read new mails only in specified reflection time at night, get inspired, and rec
 
 </p>
 
-## UX Highlights
+<br>
 
-Vini provides an immersive and delightful user experience thourgh:
-
-### Animations and Sound Effect
-
-Built smooth animation with immersive sound effect when signing in, editing, alerting, archiving, and clicking on something.
-
-
-https://user-images.githubusercontent.com/23053223/144701133-9062ec56-49ec-4cd1-a504-e7602be84f72.MP4
-
-https://user-images.githubusercontent.com/23053223/144701072-c4dcd772-174a-41ae-b787-aef236c738be.MP4
-
-https://user-images.githubusercontent.com/23053223/144700629-70e833f3-bef1-4fce-9c51-54b47484dc0f.MP4
-
-
-### Self-Reflection
-
-Provided personal reflection questions with mindful meditation sound.
-
-https://user-images.githubusercontent.com/23053223/144702626-f34b72d1-42b0-4ced-8b26-31cf42cfa247.mp4
-
-
-### Custom Alert Modal
-
-Popped up a Vini-styled alert modal for error handling and providing alert messages for better experience.
-
-https://user-images.githubusercontent.com/23053223/144700799-20773813-8665-4784-a447-0c549d566ffd.MP4
-
-
-### User-defined Notification time
-
-Created a user-defined time picker for modifying user's reflection time.
-
-https://user-images.githubusercontent.com/23053223/144700847-00fdd328-119b-44b4-8327-9287dd683f89.MP4
-
-
-
-### Haptic Vibration
-Experience different vibration patterns when:
-
-- Signing in and redirecting to home page.
-- Tapping on confirm or main buttons.
-- Tapping on Discover tab.
-- Tapping on specific Vini on Vini Cloud.
-- Reaching the edge on Vini Cloud.
-- Redirecting to Vini Cloud.
-- Archiving a growth card.
 
 
 ## Techniques
@@ -179,6 +136,64 @@ Experience different vibration patterns when:
 * Applied `Singleton` design pattern to manage Firebase APIs.
 * Utilized `Sign-in with Apple` and `Firebase Authentication` to carry out the privacy-preserving sign-in flow.
 
+<br>
+
+## UX Highlights
+
+Vini provides an immersive and delightful user experience thourgh:
+
+### Animations and Sound Effect
+
+Built smooth animation with immersive sound effect when signing in, editing, alerting, archiving, and clicking on something.
+
+
+https://user-images.githubusercontent.com/23053223/144701133-9062ec56-49ec-4cd1-a504-e7602be84f72.MP4
+
+https://user-images.githubusercontent.com/23053223/144701072-c4dcd772-174a-41ae-b787-aef236c738be.MP4
+
+https://user-images.githubusercontent.com/23053223/144700629-70e833f3-bef1-4fce-9c51-54b47484dc0f.MP4
+
+<br>
+
+
+### Self-Reflection
+
+Provided personal reflection questions with mindful meditation sound.
+
+https://user-images.githubusercontent.com/23053223/144702626-f34b72d1-42b0-4ced-8b26-31cf42cfa247.mp4
+
+<br>
+
+
+### Custom Alert Modal
+
+Popped up a Vini-styled alert modal for error handling and providing alert messages for better experience.
+
+https://user-images.githubusercontent.com/23053223/144700799-20773813-8665-4784-a447-0c549d566ffd.MP4
+
+<br>
+
+
+### User-defined Notification time
+
+Created a user-defined time picker for modifying user's reflection time.
+
+https://user-images.githubusercontent.com/23053223/144700847-00fdd328-119b-44b4-8327-9287dd683f89.MP4
+
+<br>
+
+
+
+### Haptic Vibration
+Experience different vibration patterns when:
+
+- Signing in and redirecting to home page.
+- Tapping on confirm or main buttons.
+- Tapping on Discover tab.
+- Tapping on specific Vini on Vini Cloud.
+- Reaching the edge on Vini Cloud.
+- Redirecting to Vini Cloud.
+- Archiving a growth card.
 
 
 ## Libraries
