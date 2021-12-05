@@ -15,10 +15,11 @@ class SetProfileViewController: UIViewController {
     }
 
     @IBOutlet weak var viniImageView: UIImageView!
-    
+
     var viniAssets = UIImage.AssetIdentifier.allCases
     
     var currentViniIndex: Int = 0 {
+        
         didSet {
             
             if currentViniIndex >= viniAssets.count {
@@ -34,7 +35,9 @@ class SetProfileViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
@@ -47,10 +50,12 @@ class SetProfileViewController: UIViewController {
     var displayNameTextView: UITextView?
     
     @IBOutlet weak var viniSelectorView: UIView!
-    
+
     @IBOutlet weak var isPublishedSwitch: UISwitch!
     
     weak var delegate: DiscoverProtocol?
+    
+    var discoverUserManager = DiscoverUserManager.shared
         
     var user: User = User()
     
@@ -93,6 +98,7 @@ class SetProfileViewController: UIViewController {
     }
     
     @IBAction func tapDismissButton(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -127,6 +133,7 @@ class SetProfileViewController: UIViewController {
             alert.alertType = .emptyInputAlert
         }
     }
+    
 }
 
 extension SetProfileViewController {
@@ -135,7 +142,7 @@ extension SetProfileViewController {
         
         VProgressHUD.show()
                     
-        DiscoverUserManager.shared.fetchUserProfile { result in
+        discoverUserManager.fetchUserProfile { result in
             switch result {
             case .success(let user):
                 
@@ -164,7 +171,7 @@ extension SetProfileViewController {
         
         VProgressHUD.show()
         
-        DiscoverUserManager.shared.updateUserStatus(
+        discoverUserManager.updateUserStatus(
             wondering: user.wondering,
             name: user.displayName,
             viniType: viniAssets[currentViniIndex].name,
@@ -186,6 +193,7 @@ extension SetProfileViewController {
             }
         }
     }
+    
 }
 
 extension SetProfileViewController: UITableViewDelegate {
@@ -237,6 +245,7 @@ extension SetProfileViewController: UITableViewDataSource {
         switch indexPath.row {
             
         case 0:
+            
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SetProfileCell.identifier,
                 for: indexPath
@@ -258,6 +267,7 @@ extension SetProfileViewController: UITableViewDataSource {
             return cell
             
         case 1:
+            
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SetProfileCell.identifier,
                 for: indexPath
@@ -308,6 +318,7 @@ extension SetProfileViewController: UITableViewDataSource {
             return cell
 
         default:
+            
             return UITableViewCell()
         }
     }
@@ -329,11 +340,17 @@ extension SetProfileViewController: UITextViewDelegate {
               }
 
         switch textView {
+            
         case wonderingTextView:
+            
             user.wondering = text
+            
         case displayNameTextView:
+            
             user.displayName = text
+            
         default:
+            
             break
         }
     }
@@ -373,4 +390,5 @@ extension SetProfileViewController: UITextViewDelegate {
             return false
         }
     }
+    
 }
