@@ -17,20 +17,26 @@ class DrawConclusionsViewController: UIViewController {
     }
 
     @IBOutlet weak var conclusionIntroLabel: UILabel! {
+        
         didSet {
-            conclusionIntroLabel.text = "關於「\(introText)」..."
+            
+            if let growthCard = growthCard {
+                
+                conclusionIntroLabel.text = "關於「\(growthCard.title)」..."
+            }
         }
     }
         
     @IBOutlet weak var conclusionTextView: RSKPlaceholderTextView! {
+        
         didSet {
+            
             conclusionTextView.delegate = self
         }
     }
     
-    var introText = "這張成長卡片"
-    var growthCardID = ""
-    var conclusionToAdd = ""
+    let manager = GrowthCardManager.shared
+    var growthCard: GrowthCard?
     var conclusionHasEdited  = false
     
     override func viewDidLoad() {
@@ -77,25 +83,38 @@ class DrawConclusionsViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension DrawConclusionsViewController {
     
     private func fetchConclusion() {
         
-        GrowthCardManager.shared.fetchConclusion(id: growthCardID) { result in
+        if let id = growthCard?.id {
             
-            switch result {
-            case .success(let conclusion):
+            manager.fetchConclusion(id: id) { result in
                 
-                self.conclusionToAdd = conclusion
-                self.conclusionTextView.text = self.conclusionToAdd
-                
-            case .failure(let error):
-                print(error)
+                switch result {
+                    
+                case .success(let conclusion):
+                    
+                    self.growthCard?.conclusion = conclusion
+                    self.conclusionTextView.text = conclusion
+                    
+                case .failure(let error):
+                    
+                    print(error)
+                }
             }
+            
+        } else {
+            
+            VProgressHUD.showFailure(text: "似乎出了一點問題，請再試一次")
+            navigationController?.popViewController(animated: true)
         }
+        
     }
+    
 }
 
 // MARK: - Text View -
@@ -121,12 +140,17 @@ extension DrawConclusionsViewController: UITextViewDelegate {
               }
         
         switch textView {
+            
         case conclusionTextView:
-            conclusionToAdd = text
+            
+            growthCard?.conclusion = text
+            
         default:
+            
             break
         }
     }
+    
 }
 
 extension DrawConclusionsViewController {
@@ -163,18 +187,29 @@ extension DrawConclusionsViewController {
             
             VProgressHUD.show()
             
-            GrowthCardManager.shared.updateConclusion(id: growthCardID, conclusion: conclusionToAdd) { result in
+            guard let growthCard = growthCard else {
+                
+                VProgressHUD.showFailure()
+                return
+            }
+            
+            manager.updateConclusion(growthCard: growthCard) { result in
                 
                 switch result {
+                    
                 case .success(let success):
+                    
                     print(success)
                     VProgressHUD.showSuccess(text: "成功儲存")
                     self.conclusionHasEdited = false
+                    
                 case .failure(let error):
+                    
                     print(error)
                     VProgressHUD.showFailure(text: "儲存時出了一些問題，請重新再試")
                 }
             }
+            
         } else {
             
             VProgressHUD.showSuccess()

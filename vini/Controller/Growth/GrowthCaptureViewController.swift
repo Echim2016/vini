@@ -202,8 +202,7 @@ class GrowthCaptureViewController: UIViewController {
             
             if let destinationVC = segue.destination as? DrawConclusionsViewController {
 
-                destinationVC.introText = growthCard.title
-                destinationVC.growthCardID = growthCard.id
+                destinationVC.growthCard = growthCard
             }
 
         case Segue.showCongratsPage.rawValue:
@@ -332,6 +331,7 @@ class GrowthCaptureViewController: UIViewController {
             }
         }
     }
+    
 }
 
 // MARK: - Firebase -
@@ -450,6 +450,7 @@ extension GrowthCaptureViewController: DataManagerProtocol {
         
         growthCardManager.archiveGrowthCard(id: growthCard.id, completion: completion)
     }
+    
 }
 
 extension GrowthCaptureViewController: UITableViewDataSource {
@@ -506,6 +507,7 @@ extension GrowthCaptureViewController: UITableViewDataSource {
             return cell
         }
     }
+    
 }
 
 extension GrowthCaptureViewController: UITableViewDelegate {
@@ -620,8 +622,8 @@ extension GrowthCaptureViewController: UITextViewDelegate, UITextFieldDelegate {
             
             break
         }
-
     }
+    
 }
 
 // MARK: - VC appearance in different state
@@ -657,6 +659,7 @@ extension GrowthCaptureViewController {
         let imageName = disable ? "pencil.circle.fill" : "checkmark.circle.fill"
         editButton.setBackgroundImage(UIImage(systemName: imageName), for: .normal)
     }
+    
 }
 
 extension GrowthCaptureViewController {
@@ -822,4 +825,5 @@ extension GrowthCaptureViewController {
             }
         }
     }
+    
 }
