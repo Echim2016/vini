@@ -24,6 +24,9 @@ class SendMailViewController: UIViewController {
     
     weak var delegate: DiscoverProtocol?
     
+    var mailManager = MailManager.shared
+    var userManager = UserManager.shared
+    
     var contentTextView: UITextView?
     
     var recipient: ViniView?
@@ -31,7 +34,9 @@ class SendMailViewController: UIViewController {
     var user: User?
     
     @IBOutlet weak var tableView: UITableView! {
+        
         didSet {
+            
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
@@ -44,7 +49,6 @@ class SendMailViewController: UIViewController {
         super.viewDidLoad()
 
         self.isModalInPresentation = true
-        
         tableView.registerCellWithNib(identifier: SetProfileCell.identifier, bundle: nil)
     }
     
@@ -75,11 +79,11 @@ class SendMailViewController: UIViewController {
         if mailToSend.content.isEmpty {
             
             performSegue(withIdentifier: Segue.showEmptyInputAlert.rawValue, sender: nil)
+            
         } else {
             
             performSegue(withIdentifier: Segue.showSendMailAlert.rawValue, sender: nil)
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,6 +118,7 @@ class SendMailViewController: UIViewController {
                 }
                 
             default:
+                
                 break
             }
         }
@@ -135,19 +140,23 @@ extension SendMailViewController {
             mailToSend.senderID = senderID
             mailToSend.senderDisplayName = user?.displayName ?? "Vini"
             
-            MailManager.shared.sendMails(mail: &mailToSend) { result in
+            mailManager.sendMails(mail: &mailToSend) { result in
                 
                 switch result {
+                    
                 case .success(let message):
+                    
                     print(message)
                     VProgressHUD.showSuccess()
                     self.dismiss(animated: true, completion: nil)
                     
                 case .failure(let error):
+                    
                     print(error)
                     VProgressHUD.showFailure(text: "信件寄送出了一些問題，請重新再試")
                 }
             }
+            
         } else {
             
             VProgressHUD.showFailure(text: "信件讀取出了一些問題")
@@ -160,7 +169,7 @@ extension SendMailViewController {
         
         if let blockUserID = recipient?.data.id {
             
-            UserManager.shared.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
+            userManager.updateBlockUserList(blockUserID: blockUserID, action: .block) { result in
                 
                 switch result {
                 case .success:
@@ -240,9 +249,11 @@ extension SendMailViewController: UITextViewDelegate {
         switch textView {
 
         case contentTextView:
+            
             mailToSend.content = text
             
         default:
+            
             break
         }
     }
@@ -254,6 +265,7 @@ extension SendMailViewController {
     func setupHeaderInfo() {
         
         if let receipient = recipient {
+            
             senderNameLabel.text = "來自：" + (user?.displayName ?? "Me")
             receipientNameLabel.text = "寄給：" +  receipient.data.name
             replyTitleLabel.text = "回覆：" + receipient.data.wondering
@@ -264,4 +276,5 @@ extension SendMailViewController {
         
         sendMailButton.setBackgroundImage(UIImage(systemName: "paperplane.circle.fill"), for: .normal)
     }
+    
 }
