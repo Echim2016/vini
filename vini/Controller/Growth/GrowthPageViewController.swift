@@ -35,12 +35,16 @@ class GrowthPageViewController: UIViewController {
         }
     }
     
-    var data: [GrowthCard] = [] {
+    let growthCardManager = GrowthCardManager.shared
+    
+    let mailManager = MailManager.shared
+    
+    var growthCards: [GrowthCard] = [] {
         
         didSet {
             
             remindsLabel.text = Tips.randomText()
-            remindsLabel.isHidden = !data.isEmpty
+            remindsLabel.isHidden = !growthCards.isEmpty
         }
     }
     
@@ -69,9 +73,7 @@ class GrowthPageViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationController()
-        
         tableView.registerCellWithNib(identifier: GrowthCardCell.identifier, bundle: nil)
-        
         tableView.register(MyGrowthCardsHeader.self, forHeaderFooterViewReuseIdentifier: MyGrowthCardsHeader.identifier)
     }
     
@@ -120,13 +122,13 @@ class GrowthPageViewController: UIViewController {
                         
                         guard let self = self else { return }
                         
-                        let id = self.data[indexPath.row].id
+                        let id = self.growthCards[indexPath.row].id
                         
                         self.deleteGrowthCard(id: id) { success in
                             if success {
                                 
                                 VProgressHUD.showSuccess()
-                                self.data.remove(at: indexPath.row)
+                                self.growthCards.remove(at: indexPath.row)
                                 self.tableView.deleteRows(at: [indexPath], with: .left)
                             } else {
                                 
@@ -153,7 +155,7 @@ class GrowthPageViewController: UIViewController {
                 
                 if let index = sender as? Int {
                     
-                    growthCaptureVC.growthCard = data[index]
+                    growthCaptureVC.growthCard = growthCards[index]
                 }
                 
             case Segue.createNewGrowthCard.rawValue:
@@ -195,14 +197,14 @@ extension GrowthPageViewController {
         
         VProgressHUD.show()
         
-        GrowthCardManager.shared.fetchData(isArchived: false) { result in
+        growthCardManager.fetchData(isArchived: false) { result in
             
             switch result {
                 
             case .success(let cards):
                 
                 VProgressHUD.dismiss()
-                self.data = cards
+                self.growthCards = cards
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -217,10 +219,12 @@ extension GrowthPageViewController {
         
         VProgressHUD.show()
         
-        GrowthCardManager.shared.deleteGrowthCardAndRelatedCards(id: id) { result in
+        growthCardManager.deleteGrowthCardAndRelatedCards(id: id) { result in
             
             switch result {
+                
             case .success(let success):
+                
                 print(success)
                 VProgressHUD.dismiss()
                 completion(true)
@@ -232,12 +236,12 @@ extension GrowthPageViewController {
                 completion(false)
             }
         }
-        
     }
     
     private func getReflectionTime() {
         
-        MailManager.shared.getReflectionTime { result in
+        mailManager.getReflectionTime { result in
+            
             switch result {
                 
             case .success(let hour):
@@ -256,7 +260,7 @@ extension GrowthPageViewController {
 extension GrowthPageViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        growthCards.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -272,7 +276,7 @@ extension GrowthPageViewController: UITableViewDataSource {
             fatalError()
         }
         
-        cell.setupCell(title: data[indexPath.row].title, emoji: data[indexPath.row].emoji)
+        cell.setupCell(title: growthCards[indexPath.row].title, emoji: growthCards[indexPath.row].emoji)
         
         return cell
     }
@@ -285,7 +289,7 @@ extension GrowthPageViewController: UITableViewDataSource {
             return MyGrowthCardsHeader()
         }
         
-        header.titleLabel.text = data.isEmpty ?  "" : "我的成長項目"
+        header.titleLabel.text = growthCards.isEmpty ?  "" : "我的成長項目"
         
         return header
     }

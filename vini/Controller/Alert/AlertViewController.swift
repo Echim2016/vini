@@ -45,12 +45,14 @@ class AlertViewController: UIViewController {
     @objc func tapCancelButton(_ sender: UIButton) {
         
         defer {
+            
             self.dismiss(animated: true, completion: nil)
         }
         
         let onCancel = self.onCancel
 
         self.onCancel = nil
+        
         guard let block = onCancel else { return }
         
         block()
@@ -59,13 +61,17 @@ class AlertViewController: UIViewController {
     @objc func tapConfirmButton(_ sender: UIButton) {
         
         defer {
+            
             playLightImpactVibration()
             self.dismiss(animated: true, completion: nil)
         }
+        
         let onConfirm = self.onConfirm
         
         self.onConfirm = nil
+        
         guard let block = onConfirm else { return }
+        
         block()
     }
 }
@@ -104,4 +110,5 @@ extension AlertViewController {
         viniImageView.isHidden = true
         confirmButton.backgroundColor = UIColor(red: 210/255, green: 13/255, blue: 13/255, alpha: 0.9)
     }
+    
 }
