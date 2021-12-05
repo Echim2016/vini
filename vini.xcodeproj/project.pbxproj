@@ -40,6 +40,7 @@
 		9C1CFDDE271EF2E2003A3E73 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */; };
 		9C1EADF8271D099300C2F73C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */; };
 		9C208078273BB51B00F6614F /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C208077273BB51B00F6614F /* Array+Extension.swift */; };
+		9C2B5411275CD5A700E3F524 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B5410275CD5A700E3F524 /* Error.swift */; };
 		9C2EE79C2747AE5900854527 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2EE79B2747AE5900854527 /* Tips.swift */; };
 		9C2EE79E2747B45400854527 /* sign-in-whoosh-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */; };
 		9C35AAD027338C3B007795D8 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35AACF27338C3B007795D8 /* NotificationManager.swift */; };
@@ -189,6 +190,7 @@
 		9C1CFDDD271EF2E2003A3E73 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C1EADF7271D099300C2F73C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C208077273BB51B00F6614F /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		9C2B5410275CD5A700E3F524 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		9C2EE79B2747AE5900854527 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
 		9C2EE79D2747B45400854527 /* sign-in-whoosh-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sign-in-whoosh-1.mp3"; sourceTree = "<group>"; };
 		9C35AACF27338C3B007795D8 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				9C957869273BDE770056F757 /* TabBarItem.swift */,
+				9C2B5410275CD5A700E3F524 /* Error.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -650,8 +653,8 @@
 		9CC1E4D6271BE58900F17190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9C4B510A27539D18001F7199 /* Firebase */,
 				9C4B510927539D0F001F7199 /* Base */,
+				9C4B510A27539D18001F7199 /* Firebase */,
 				9C4B510827539D07001F7199 /* User */,
 				9CAB44FB274F6FA500B9E926 /* Reflection */,
 				9C697F252737DB0000EDBBCB /* Alert */,
@@ -1133,6 +1136,7 @@
 				9C697F38273A643900EDBBCB /* SetCloudCategoryTitleCell.swift in Sources */,
 				9C697F33273938D100EDBBCB /* CloudCategory.swift in Sources */,
 				9C6C3D992733D4DC00F45247 /* UserManager.swift in Sources */,
+				9C2B5411275CD5A700E3F524 /* Error.swift in Sources */,
 				9CA42C842727968B007F9589 /* MapScrollView.swift in Sources */,
 				9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */,
 				9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */,

@@ -50,6 +50,9 @@ class MailManager {
                     completion(.success(mails))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -109,6 +112,9 @@ class MailManager {
                 print(error)
                 completion(.failure(error))
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -127,6 +133,9 @@ class MailManager {
                     completion(.success("Success: delete a mail"))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -150,8 +159,10 @@ class MailManager {
                     completion(.success("Success: update read time"))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
-        
     }
     
     func getReflectionTime(completion: @escaping Handler<Int>) {
@@ -175,6 +186,9 @@ class MailManager {
                     }
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -198,6 +212,9 @@ class MailManager {
                     completion(.success("Success: update reflection time"))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -228,6 +245,9 @@ class MailManager {
                     
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     

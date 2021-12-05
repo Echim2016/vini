@@ -47,6 +47,9 @@ class GrowthCardManager {
                     completion(.success(growthCards))
                 }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
         
     }

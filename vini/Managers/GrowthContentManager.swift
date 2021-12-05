@@ -144,6 +144,7 @@ class GrowthContentManager {
                     }
                 }
             }
+            
         } else {
             
             document.updateData(updateDict) { error in
