@@ -80,6 +80,9 @@ class InsightManager {
                 
                 completion(.success(insightDict))
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
     }
     
@@ -136,8 +139,10 @@ class InsightManager {
         contentDatabase.whereField("user_id", isEqualTo: userID).order(by: "created_time", descending: true).getDocuments { (querySnapshot, err) in
 
             if let err = err {
+                
                 print("Error getting growth cards: \(err)")
                 completion(.failure(err))
+                
             } else {
                 
                 if let querySnapshot = querySnapshot {

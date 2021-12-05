@@ -18,12 +18,16 @@ class TimePickerViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var pickerView: UIPickerView! {
+        
         didSet {
+            
             pickerView.delegate = self
             pickerView.dataSource = self
         }
     }
         
+    private let mailManager = MailManager.shared
+    
     var hourToUpdate: Int = 23
     
     var timeOptions = TimeOptions.allCases
@@ -39,6 +43,7 @@ class TimePickerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        playLightImpactVibration()
         windowView.layer.cornerRadius = 25
         confirmButton.setupCorner()
         cancelButton.setupCorner()
@@ -64,9 +69,8 @@ class TimePickerViewController: UIViewController {
     @IBAction func tapSaveButton(_ sender: Any) {
         
         view.endEditing(true)
-        
+        playMediumImpactVibration()
         NotificationManager.shared.setupNotificationSchedule(hour: hourToUpdate)
-        
         updateReflectionTime()
     }
 
@@ -78,7 +82,7 @@ extension TimePickerViewController {
         
         VProgressHUD.show()
         
-        MailManager.shared.getReflectionTime { result in
+        mailManager.getReflectionTime { result in
             switch result {
                 
             case .success(let hour):
@@ -87,10 +91,10 @@ extension TimePickerViewController {
                 self.pickerView.selectRow(pickerSelectedIndex, inComponent: 0, animated: true)
                 VProgressHUD.dismiss()
                 
-            case . failure(let error):
+            case .failure(let error):
                 
                 print(error)
-                VProgressHUD.showFailure(text: "請重新再試")
+                VProgressHUD.showFailure(text: "出了一些問題，請重新再試")
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -100,7 +104,7 @@ extension TimePickerViewController {
         
         VProgressHUD.show()
         
-        MailManager.shared.updateReflectionTime(
+        mailManager.updateReflectionTime(
             time: hourToUpdate
         ) { result in
             
@@ -132,6 +136,7 @@ extension TimePickerViewController: UIPickerViewDelegate {
 }
 
 extension TimePickerViewController: UIPickerViewDataSource {
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }

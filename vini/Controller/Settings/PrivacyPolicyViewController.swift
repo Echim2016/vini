@@ -12,8 +12,6 @@ class PrivacyPolicyViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
     
-    let privacyURL = "https://www.privacypolicies.com/live/e5082ad3-aa9c-4307-9329-d5d333917e4b"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,8 +23,11 @@ class PrivacyPolicyViewController: UIViewController {
     
     func setupWebView() {
         
-        guard let url = URL(string: privacyURL) else {
+        guard let privacyURL = Bundle.main.infoDictionary?["PrivacyURL"] as? String,
+              let url = URL(string: privacyURL) else {
+            
             VProgressHUD.showFailure()
+            navigationController?.popViewController(animated: true)
             return
         }
         

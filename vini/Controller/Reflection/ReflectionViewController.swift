@@ -11,7 +11,9 @@ import AVFoundation
 class ReflectionViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
+        
         didSet {
+            
             collectionView.delegate = self
             collectionView.dataSource = self
             collectionView.isPagingEnabled = true
@@ -50,6 +52,7 @@ class ReflectionViewController: UIViewController {
     }
 
     override var prefersStatusBarHidden: Bool {
+        
         return true
     }
     
@@ -179,6 +182,7 @@ extension ReflectionViewController {
             tabbarController.setupSoundPlayer()
         }
     }
+    
 }
 
 extension ReflectionViewController: CollectionViewCellDelegate {
@@ -193,6 +197,7 @@ extension ReflectionViewController: CollectionViewCellDelegate {
         self.collectionView.isScrollEnabled = true
         self.isVisited = true
     }
+    
 }
 
 extension ReflectionViewController {
@@ -205,4 +210,5 @@ extension ReflectionViewController {
         
         cell.setupTitleAnimation()
     }
+    
 }

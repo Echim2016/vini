@@ -115,7 +115,6 @@ extension CongratsViewController {
             },
             completion: nil
         )
-        
     }
     
     func playCongratsSound() {
@@ -127,4 +126,5 @@ extension CongratsViewController {
             player?.play()
         }
     }
+    
 }

@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController {
     
     var sections: [SettingsSection] = SettingsSection.allCases
     
-    var rowTitles: [[String]] = []
+    var rowTitles: [[SettingsTitle]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +89,7 @@ class SettingsViewController: UIViewController {
             }
             
         default:
+            
             break
         }
     }
@@ -99,29 +100,37 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch (indexPath.section, indexPath.row) {
+        guard let section = SettingsSection(rawValue: indexPath.section) else {
             
-        case (0, 0):
+                  fatalError()
+              }
+        
+        let rowTitle = section.settingItems[indexPath.row]
+        
+        switch (section, rowTitle) {
+            
+        case (.notification, .reflectionTime):
             
             performSegue(withIdentifier: Segue.showReflectionTimeSetting.rawValue, sender: nil)
             
-        case (1, 0):
+        case (.account, .blockedUsers):
             
             performSegue(withIdentifier: Segue.showBlockList.rawValue, sender: nil)
             
-        case (1, 1):
+        case (.account, .logOut):
             
             performSegue(withIdentifier: Segue.showLogOutAlert.rawValue, sender: nil)
             
-        case (1, 2):
+        case (.account, .deleteAccount):
             
             performSegue(withIdentifier: Segue.showDeleteAccountAlert.rawValue, sender: nil)
             
-        case (SettingsSection.about.rawValue, 0):
+        case (.about, .privacyPolicy):
             
             performSegue(withIdentifier: Segue.showPrivacyPage.rawValue, sender: nil)
             
         default:
+            
             break
         }
     }
@@ -173,7 +182,7 @@ extension SettingsViewController: UITableViewDataSource {
             fatalError()
         }
         
-        cell.setupCell(title: rowTitles[indexPath.section][indexPath.row])
+        cell.setupCell(title: rowTitles[indexPath.section][indexPath.row].title)
         
         return cell
     }
