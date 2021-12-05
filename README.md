@@ -62,7 +62,7 @@ Review and get inspired by your past achievements and insights.
  <img src="https://user-images.githubusercontent.com/23053223/144701541-9755a42c-8fba-4a06-ba7e-7c3e286af9f8.png" width="176" height="351">
  <img src="https://user-images.githubusercontent.com/23053223/144701718-8ceb8990-9431-4202-a815-7d955d02f2bd.png" width="176" height="351">
  <img src="https://user-images.githubusercontent.com/23053223/144701721-e150997c-c865-499c-8cdc-45e704738033.png" width="176" height="351">
- <img src="https://user-images.githubusercontent.com/23053223/144701724-fb08d175-f65b-43b8-8b6a-09e0a6a8416e.png" width="176" height="351">
+<!--  <img src="https://user-images.githubusercontent.com/23053223/144701724-fb08d175-f65b-43b8-8b6a-09e0a6a8416e.png" width="176" height="351"> -->
  <img src="https://user-images.githubusercontent.com/23053223/144702542-b3c80ad5-aafe-414c-a5ad-9e3262e789fe.png" width="176" height="351">
 
 </p>
