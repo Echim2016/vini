@@ -82,6 +82,7 @@ extension ReflectionViewController {
             }
         }
     }
+    
 }
 
 extension ReflectionViewController: UICollectionViewDelegate {
@@ -155,6 +156,7 @@ extension ReflectionViewController: UICollectionViewDataSource {
             
         }
     }
+    
 }
 
 extension ReflectionViewController {

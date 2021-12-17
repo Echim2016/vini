@@ -46,11 +46,9 @@ class SetProfileViewController: UIViewController {
     }
     
     var wonderingTextView: UITextView?
-    
     var displayNameTextView: UITextView?
     
     @IBOutlet weak var viniSelectorView: UIView!
-
     @IBOutlet weak var isPublishedSwitch: UISwitch!
     
     weak var delegate: DiscoverProtocol?
@@ -143,7 +141,9 @@ extension SetProfileViewController {
         VProgressHUD.show()
                     
         discoverUserManager.fetchUserProfile { result in
+            
             switch result {
+                
             case .success(let user):
                 
                 self.user = user
@@ -180,10 +180,12 @@ extension SetProfileViewController {
         ) { result in
             
             switch result {
+                
             case .success:
                 
                 VProgressHUD.showSuccess()
                 self.delegate?.didSelectCloudCategory(self.cloudCategorySelection[self.selectedIndex].category)
+                self.refreshUserData()
                 self.dismiss(animated: true, completion: nil)
                 
             case .failure(let error):
@@ -211,6 +213,7 @@ extension SetProfileViewController: UITableViewDelegate {
             tableView.reloadRows(at: [lastIndexPath, indexPath], with: .none)
             
         default:
+            
             break
         }
     }
