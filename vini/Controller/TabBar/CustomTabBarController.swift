@@ -78,7 +78,7 @@ class CustomTabBarController: UITabBarController {
             player?.numberOfLoops = -1
             player?.volume = 0
             player?.play()
-            player?.setVolume(0.2, fadeDuration: 3)
+            player?.setVolume(0.1, fadeDuration: 3)
         }
     }
     

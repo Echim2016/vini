@@ -15,6 +15,8 @@ class DiscoverUserManager {
     
     let userDatabase = Firestore.firestore().collection(FSCollection.users.rawValue)
     
+    private init() { }
+    
     func fetchData(category: String, blockList: [String], completion: @escaping Handler<[ViniView]>) {
         
         userDatabase.whereField("is_published", isEqualTo: true).whereField("cloud_category", isEqualTo: category).getDocuments { (querySnapshot, error) in

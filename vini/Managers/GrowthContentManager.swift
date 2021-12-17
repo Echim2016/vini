@@ -18,6 +18,8 @@ class GrowthContentManager {
 
     let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
+    private init() { }
+    
     func fetchGrowthContents(id: String, completion: @escaping Handler<[GrowthContent]>) {
         
         let ref = cardDatabase.document(id)

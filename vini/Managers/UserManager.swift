@@ -29,6 +29,8 @@ class UserManager {
         case unblock
     }
     
+    private init() { }
+    
     func createNewUser(user: inout User, completion: @escaping Handler<String>) {
         
         let document = userDatabase.document(user.id)

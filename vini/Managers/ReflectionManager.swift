@@ -15,6 +15,8 @@ class ReflectionManager {
     
     let database = Firestore.firestore().collection(FSCollection.reflection.rawValue)
     
+    private init() { }
+    
     func fetchQuestions(completion: @escaping Handler<[String]>) {
         
         database.document("Questions").getDocument { (document, err) in

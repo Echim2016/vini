@@ -16,6 +16,8 @@ class GrowthCardManager {
     let cardDatabase = Firestore.firestore().collection(FSCollection.growthCard.rawValue)
     let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
+    private init() { }
+    
     func fetchData(isArchived: Bool, completion: @escaping Handler<[GrowthCard]>) {
         
         if let userID = UserManager.shared.userID {

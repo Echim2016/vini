@@ -11,11 +11,11 @@ import RSKPlaceholderTextView
 
 class SignupViewController: UIViewController {
     
-    var signupBackgoundView: UIView?
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameTextView: RSKPlaceholderTextView! {
+        
         didSet {
+            
             nameTextView.delegate = self
         }
     }
@@ -37,11 +37,11 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isHidden = true
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         setupBackgroundView()
         setupTextView()
         setupNextButton()
@@ -62,13 +62,18 @@ class SignupViewController: UIViewController {
         if !displayNameToUpdate.isEmpty {
             
             updateDisplayName { sucesss in
+                
                 if sucesss {
+                    
                     self.hideContentAnimation()
+                    
                 } else {
+                    
                     self.nameTextView.text = ""
                     self.nameTextView.shake(count: 5, for: 0.2, withTranslation: 2)
                 }
             }
+            
         } else {
             
             self.nameTextView.shake(count: 5, for: 0.3, withTranslation: 3)
@@ -85,6 +90,7 @@ class SignupViewController: UIViewController {
         
         redirectToHomePage()
     }
+    
 }
 
 extension SignupViewController: UITextViewDelegate {
@@ -93,6 +99,7 @@ extension SignupViewController: UITextViewDelegate {
         
         guard let text = textView.text,
               !text.isEmpty else {
+                  
                   textView.text = ""
                   return
               }
@@ -276,8 +283,6 @@ extension SignupViewController {
     func showRemindsContentAnimation() {
         
         titleLabel.text = "\(displayNameToUpdate) 今天過得還好嗎？\n反思是 Vini 很重視的每日儀式。"
-//        remindsLabel.font = UIFont(name: "PingFangTC-Regular", size: 16)
-//        remindsLabel.textColor = .white
         remindsLabel.text = "每到晚上的指定時間，Vini 會帶你進行一次簡單的反思練習，你也可以在這段時間看見其他使用者寫給你的私信。"
         
         let yTransform = CGAffineTransform(translationX: 0, y: -60)
@@ -353,6 +358,7 @@ extension SignupViewController {
     func askForNotificationAuthorization() {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            
             if granted {
                 print("User gave permissions for local notifications")
             }

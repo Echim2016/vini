@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>PrivacyURL</key>
+	<string>https://www.privacypolicies.com/live/e5082ad3-aa9c-4307-9329-d5d333917e4b</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -31,7 +33,5 @@
 到了每天晚上的反思時段，你可以體驗 Vini 為你準備的幾個反思題目，也可以在這段時間，前往信箱查看其他使用者寄給你的信件，如果你能從中得到啟發，那就太好了！
 
 期待你能在生活中捕捉到那些意想不到、但又讓你能不斷向前的微小學習。現在就去開啟自己的成長項目吧！</string>
-	<key>PrivacyURL</key>
-	<string>https://www.privacypolicies.com/live/e5082ad3-aa9c-4307-9329-d5d333917e4b</string>
 </dict>
 </plist>

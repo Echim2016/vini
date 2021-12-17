@@ -54,6 +54,8 @@ class DiscoverViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.isUserInteractionEnabled = true
+        
+        setupNotificationCenterObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,8 +71,6 @@ class DiscoverViewController: UIViewController {
         view.bringSubviewToFront(mapButton)
         view.bringSubviewToFront(profileButton)
         view.bringSubviewToFront(mediumCloudImageView)
-        
-        setupNotificationCenterObserver()
     }
     
     override func viewDidAppear(_ animated: Bool) {
