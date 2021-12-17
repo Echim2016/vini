@@ -344,7 +344,7 @@ extension SigninViewController {
             
             player = try? AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1
-            player?.volume = 0.5
+            player?.volume = 0.3
             player?.play()
         }
     }
@@ -354,7 +354,7 @@ extension SigninViewController {
         if let url = Bundle.main.url(forResource: "sign-in-whoosh-1", withExtension: "mp3") {
                         
             player = try? AVAudioPlayer(contentsOf: url)
-            player?.volume = 0.5
+            player?.volume = 0.4
             player?.play()
         }
     }

@@ -123,20 +123,21 @@ class SendMailViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension SendMailViewController {
     
     func sendMail() {
         
-        if let receipient = recipient,
+        if let recipient = recipient,
            let senderID = UserManager.shared.userID {
             
             VProgressHUD.show()
             
-            mailToSend.displayWondering = receipient.data.wondering
-            mailToSend.senderViniType = receipient.data.viniType
-            mailToSend.recipientID = receipient.data.id
+            mailToSend.displayWondering = recipient.data.wondering
+            mailToSend.senderViniType = user?.viniType ?? UIImage.AssetIdentifier.amaze.name
+            mailToSend.recipientID = recipient.data.id
             mailToSend.senderID = senderID
             mailToSend.senderDisplayName = user?.displayName ?? "Vini"
             
@@ -264,11 +265,11 @@ extension SendMailViewController {
     
     func setupHeaderInfo() {
         
-        if let receipient = recipient {
+        if let recipient = recipient {
             
             senderNameLabel.text = "來自：" + (user?.displayName ?? "Me")
-            receipientNameLabel.text = "寄給：" +  receipient.data.name
-            replyTitleLabel.text = "回覆：" + receipient.data.wondering
+            receipientNameLabel.text = "寄給：" +  recipient.data.name
+            replyTitleLabel.text = "回覆：" + recipient.data.wondering
         }
     }
     

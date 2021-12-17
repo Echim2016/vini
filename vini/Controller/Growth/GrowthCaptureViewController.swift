@@ -791,7 +791,7 @@ extension GrowthCaptureViewController {
         if let url = Bundle.main.url(forResource: "tap-archive-button", withExtension: "wav") {
             
             player = try? AVAudioPlayer(contentsOf: url)
-            player?.volume = 0.2
+            player?.volume = 0.3
             player?.play()
         }
     }

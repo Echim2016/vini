@@ -122,7 +122,7 @@ extension CongratsViewController {
         if let url = Bundle.main.url(forResource: "congrats", withExtension: "wav") {
             
             player = try? AVAudioPlayer(contentsOf: url)
-            player?.volume = 0.4
+            player?.volume = 0.2
             player?.play()
         }
     }

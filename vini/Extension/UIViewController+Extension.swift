@@ -142,3 +142,15 @@ extension UIViewController {
         Haptic.play(".-.", delay: 0.3)
     }
 }
+
+extension UIViewController {
+    
+    func refreshUserData() {
+        
+        if let tabBar = self.presentingViewController as? CustomTabBarController {
+            
+            tabBar.fetchUserData()
+        }
+    }
+    
+}
