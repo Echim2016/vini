@@ -17,6 +17,8 @@ class InsightManager {
     
     let contentDatabase = Firestore.firestore().collection(FSCollection.growthContents.rawValue)
     
+    private init() { }
+    
     func fetchInsights(completion: @escaping Handler<[InsightTitle: String]>) {
         
         if let userID = UserManager.shared.userID {

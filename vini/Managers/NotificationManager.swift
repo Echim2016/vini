@@ -14,6 +14,8 @@ class NotificationManager {
     
     var reflectionTime = 23
     
+    private init() { }
+    
     func setupReflectionNotification() {
         
         MailManager.shared.getReflectionTime { result in

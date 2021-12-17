@@ -19,6 +19,8 @@ class MailManager {
     
     let welcomeMailSenderID = "WelcomeMail"
     
+    private init() { }
+    
     func fetchData(blockList: [String], completion: @escaping Handler<[Mail]>) {
         
         if let userID = UserManager.shared.userID {
