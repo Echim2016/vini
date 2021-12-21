@@ -207,6 +207,7 @@ extension ReflectionViewController {
     func setupWelcomeAnimation() {
         
         guard let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? ReflectionIntroCell else {
+            
             return
         }
         

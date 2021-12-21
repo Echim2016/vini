@@ -30,7 +30,7 @@ class SetGrowthContentCardViewController: UIViewController {
         
         didSet {
             
-            if #available(iOS 14, *) {
+            if #available(iOS 15, *) {
                 photoLibraryButton.setBackgroundImage(UIImage(systemName: "photo.circle.fill"), for: .normal)
             }
         }
