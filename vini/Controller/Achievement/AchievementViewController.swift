@@ -270,15 +270,7 @@ extension AchievementViewController: UICollectionViewDelegate {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         
-        cell.alpha = 0.1
-        
-        UIView.animate(
-            withDuration: 0.3,
-            delay: 0.1 * Double(indexPath.row),
-            animations: {
-                cell.alpha = 1
-            }
-        )
+        cell.animateFadeIn(delayOrder: indexPath.row)
     }
     
 }

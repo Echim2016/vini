@@ -162,3 +162,21 @@ extension UIView {
     }
     
 }
+
+// MARK: - Cell Animation -
+extension UIView {
+    
+    func animateFadeIn(duration: Double = 0.3, delayOrder: Int = 0) {
+        
+        self.alpha = 0.1
+        
+        UIView.animate(
+            withDuration: duration,
+            delay: 0.05 * Double(delayOrder),
+            animations: {
+                
+                self.alpha = 1
+        })
+    }
+    
+}
