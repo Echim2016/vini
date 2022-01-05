@@ -19,7 +19,7 @@ class UserManager {
     
     let mailboxDatabase = Firestore.firestore().collection(FSCollection.mailboxes.rawValue)
     
-    let userID = Auth.auth().currentUser?.uid
+    private(set) var userID = Auth.auth().currentUser?.uid
     
     var userBlockList: [String]?
     
@@ -35,6 +35,7 @@ class UserManager {
         
         let document = userDatabase.document(user.id)
         user.createdTime = Timestamp(date: Date())
+        userID = user.id
         
         do {
             
@@ -101,24 +102,31 @@ class UserManager {
         
     }
     
-    func updateDisplayName(userID: String, name: String, completion: @escaping Handler<Bool>) {
+    func updateDisplayName(name: String, completion: @escaping Handler<Bool>) {
         
-        let document = userDatabase.document(userID)
-        
-        let updateDict = [
-            "display_name": name
-        ]
-        
-        document.updateData(updateDict) { error in
+        if let userID = self.userID {
+                        
+            let document = userDatabase.document(userID)
             
-            if let error = error {
+            let updateDict = [
+                "display_name": name
+            ]
+            
+            document.updateData(updateDict) { error in
                 
-                completion(.failure(error))
-            } else {
-                
-                completion(.success(true))
+                if let error = error {
+                    print("display name error")
+                    completion(.failure(error))
+                } else {
+                    print("update success")
+                    completion(.success(true))
+                }
             }
+        } else {
+            
+            completion(.failure(ApiError.userIDNotFound))
         }
+        
     }
     
     func fetchUser(userID: String, completion: @escaping Handler<User>) {

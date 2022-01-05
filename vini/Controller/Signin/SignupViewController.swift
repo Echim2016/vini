@@ -29,6 +29,8 @@ class SignupViewController: UIViewController {
     
     var startButton = NextButton()
     
+    var userManager = UserManager.shared
+    
     var displayNameToUpdate = ""
     
     let displayNameCharactersLimit = 10
@@ -61,9 +63,9 @@ class SignupViewController: UIViewController {
         
         if !displayNameToUpdate.isEmpty {
             
-            updateDisplayName { sucesss in
+            updateDisplayName { success in
                 
-                if sucesss {
+                if success {
                     
                     self.hideContentAnimation()
                     
@@ -128,33 +130,24 @@ extension SignupViewController {
     
     func updateDisplayName(completion: @escaping (Bool) -> Void) {
         
-        if let userID = UserManager.shared.userID {
+        userManager.updateDisplayName(name: displayNameToUpdate) { result in
             
-            UserManager.shared.updateDisplayName(
-                userID: userID,
-                name: displayNameToUpdate) { result in
-                    
-                    switch result {
-                        
-                    case .success(let success):
-                        
-                        print(success)
-                        completion(true)
-                        
-                    case .failure(let error):
-                        
-                        print(error)
-                        completion(false)
-                    }
-                }
-            
-        } else {
-            
-            completion(false)
+            switch result {
+                
+            case .success(let success):
+                
+                print(success)
+                completion(success)
+                
+            case .failure(let error):
+                
+                print(error)
+                completion(false)
+            }
         }
         
     }
-
+    
 }
 
 extension SignupViewController {
