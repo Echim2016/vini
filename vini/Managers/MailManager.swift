@@ -37,13 +37,12 @@ class MailManager {
                     for document in querySnapshot!.documents {
                         
                         do {
-                            if let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder()) {
-                               
+                            
+                            let mail = try document.data(as: Mail.self, decoder: Firestore.Decoder())
                                 if !blockList.contains(mail.senderID) {
                                     
                                     mails.append(mail)
                                 }
-                            }
                             
                         } catch {
                             completion(.failure(error))

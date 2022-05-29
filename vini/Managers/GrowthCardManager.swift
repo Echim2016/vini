@@ -35,10 +35,10 @@ class GrowthCardManager {
                     for document in querySnapshot!.documents {
                         
                         do {
-                            if let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder()) {
-                                
+
+                            let growthCard = try document.data(as: GrowthCard.self, decoder: Firestore.Decoder())
+                            
                                 growthCards.append(growthCard)
-                            }
                             
                         } catch {
                             

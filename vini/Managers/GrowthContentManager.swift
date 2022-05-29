@@ -34,12 +34,12 @@ class GrowthContentManager {
                 var growthContents = [GrowthContent]()
                 
                 for document in querySnapshot!.documents {
-                    
+                                        
                     do {
-                        if let growthContent = try document.data(as: GrowthContent.self, decoder: Firestore.Decoder()) {
-                            
+
+                            let growthContent = try document.data(as: GrowthContent.self, decoder: Firestore.Decoder())
+                        
                             growthContents.append(growthContent)
-                        }
                         
                     } catch {
                         

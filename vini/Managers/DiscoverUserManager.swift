@@ -32,8 +32,9 @@ class DiscoverUserManager {
                 for document in querySnapshot!.documents {
                     
                     do {
-                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                            
+
+                        let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder())
+                        
                             if !blockList.contains(userInfo.id) {
                                 
                                 let vini = ViniView()
@@ -43,8 +44,6 @@ class DiscoverUserManager {
                                 vini.data.viniType = userInfo.viniType
                                 vinis.append(vini)
                             }
-                            
-                        }
                         
                     } catch {
                         
@@ -105,10 +104,10 @@ class DiscoverUserManager {
                         var user = User()
                         
                         do {
-                            if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                                
+                            
+                            let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder())
+                            
                                 user = userInfo
-                            }
                             
                         } catch {
                             

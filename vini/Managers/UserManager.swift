@@ -144,11 +144,12 @@ class UserManager {
                     var user = User()
                     
                     do {
-                        if let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder()) {
-                            
+
+                        let userInfo = try document.data(as: User.self, decoder: Firestore.Decoder())
+                        
                             user = userInfo
+                        
                             self.userBlockList = user.blockList
-                        }
                         
                     } catch {
                         
