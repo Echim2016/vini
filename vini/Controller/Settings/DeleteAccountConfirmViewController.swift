@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RSKPlaceholderTextView
 
 class DeleteAccountConfirmViewController: UIViewController {
     
@@ -31,15 +30,13 @@ class DeleteAccountConfirmViewController: UIViewController {
         return textView
     }()
     
-    private let textField: RSKPlaceholderTextView = {
-        let textField = RSKPlaceholderTextView()
+    private let textField: UITextField = {
+        let textField = UITextField()
         textField.font = UIFont(name: "PingFangTC-Medium", size: 24)
         textField.textAlignment = .center
-        textField.textContainer.maximumNumberOfLines = 1
         textField.textColor = .S1
         textField.tintColor = .S1
         textField.backgroundColor = .white.withAlphaComponent(0.05)
-        textField.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
         return textField
     }()
     
@@ -57,7 +54,7 @@ class DeleteAccountConfirmViewController: UIViewController {
         
         setupPopGestureRecognizer()
         setupUI()
-        textField.delegate = self
+        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +66,7 @@ class DeleteAccountConfirmViewController: UIViewController {
         confirmButton.layer.cornerRadius = 25
     }
     
-    func setupUI() {
+    private func setupUI() {
         
         remindTextView.text = "刪除帳號是無法復原的動作，你將會永遠刪除 Vini 中的所有紀錄，請輸入「\(deleteConfirmString)」來確認刪除動作。"
         
@@ -99,10 +96,10 @@ class DeleteAccountConfirmViewController: UIViewController {
     }
 }
 
-extension DeleteAccountConfirmViewController: UITextViewDelegate {
+extension DeleteAccountConfirmViewController {
     
-    func textViewDidChange(_ textView: UITextView) {
-        let isCorrectConfirmStringInput: Bool = textView.text == deleteConfirmString
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        let isCorrectConfirmStringInput: Bool = textField.text == deleteConfirmString
         
         confirmButton.isEnabled = isCorrectConfirmStringInput
         confirmButton.backgroundColor = isCorrectConfirmStringInput ? UIColor(red: 210/255, green: 13/255, blue: 13/255, alpha: 0.9) : UIColor.white.withAlphaComponent(0.3)
