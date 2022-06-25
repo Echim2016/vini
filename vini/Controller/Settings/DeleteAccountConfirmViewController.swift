@@ -23,7 +23,7 @@ class DeleteAccountConfirmViewController: UIViewController {
         let textView = UITextView()
         textView.isEditable = false
         textView.isSelectable = false
-        textView.font = UIFont(name: "PingFangTC-Medium", size: 14)
+        textView.font = UIFont(name: "PingFangTC-Medium", size: 16)
         textView.textColor = .white
         textView.backgroundColor = .clear
         textView.isScrollEnabled = false
@@ -71,7 +71,7 @@ class DeleteAccountConfirmViewController: UIViewController {
     
     private func setupUI() {
         
-        remindTextView.text = "刪除帳號是無法復原的動作，你將會永遠刪除 Vini 中的所有紀錄，請輸入「\(deleteConfirmString)」來確認刪除動作。"
+        remindTextView.text = "刪除帳號是無法復原的動作，你將永遠刪除 Vini 中的所有紀錄，請輸入「\(deleteConfirmString)」來確認刪除動作。"
         
         self.view.addSubview(vStackView)
         vStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -96,6 +96,8 @@ class DeleteAccountConfirmViewController: UIViewController {
         NSLayoutConstraint.activate([
             confirmButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        vStackView.setCustomSpacing(24, after: textField)
     }
     
     @objc func tapConfirmButton() {

@@ -22,14 +22,14 @@
                                     <constraint firstAttribute="width" secondItem="iEk-qL-NLp" secondAttribute="height" multiplier="1:1" id="yk8-NC-4zQ"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="你要離開 Vini 了嗎？帳號一旦刪除之後，過去的成長卡片、微小學習、信箱信件等資訊都將被刪除。" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-b9-d8q">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="你要離開 Vini 了嗎？帳號一旦刪除之後，過去的成長卡片、微小學習、信箱信件等資訊都將被刪除。Vini 無法復原你的紀錄，也無法保留你的重要成長，你真的要刪除帳號嗎？" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-b9-d8q">
                                 <rect key="frame" x="16" y="283.5" width="382" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="FKt-Ae-g3i"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-nw-FQx">
