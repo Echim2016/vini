@@ -48,7 +48,7 @@ class MapScrollView: UIView {
     var mapStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.distribution = .fillProportionally
+        stack.distribution = .fillEqually
         stack.spacing = 0
         return stack
     }()
