@@ -36,6 +36,8 @@ class DeleteAccountConfirmViewController: UIViewController {
         textField.textAlignment = .center
         textField.textColor = .S1
         textField.tintColor = .S1
+        textField.setLeftPaddingPoints(16)
+        textField.setRightPaddingPoints(16)
         textField.backgroundColor = .white.withAlphaComponent(0.05)
         return textField
     }()
