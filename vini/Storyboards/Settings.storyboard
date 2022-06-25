@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xkN-mF-uVF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xkN-mF-uVF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                         <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
                         <segue destination="6bQ-9j-hGV" kind="show" identifier="ShowBlockList" id="zK9-6h-YYD"/>
                         <segue destination="Z0K-wj-Aj3" kind="show" identifier="ShowPrivacyPage" id="CCl-lP-hai"/>
-                        <segue destination="maY-8e-5TJ" kind="presentation" identifier="ShowDeleteAccountAlert" id="gpr-Rv-qgD"/>
+                        <segue destination="maY-8e-5TJ" kind="show" identifier="ShowDeleteAccountAlert" id="gpr-Rv-qgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -80,10 +80,12 @@
             </objects>
             <point key="canvasLocation" x="1699" y="282"/>
         </scene>
-        <!--Alert-->
+        <!--DeleteAccount-->
         <scene sceneID="lmf-gQ-yD2">
             <objects>
-                <viewControllerPlaceholder storyboardName="Alert" id="maY-8e-5TJ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="DeleteAccount" id="maY-8e-5TJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FJK-da-RTY"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4e-8x-egm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1661" y="347"/>

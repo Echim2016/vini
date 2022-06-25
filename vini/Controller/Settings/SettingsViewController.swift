@@ -81,13 +81,6 @@ class SettingsViewController: UIViewController {
                 }
             }
             
-        case Segue.showDeleteAccountAlert.rawValue:
-            
-            if let alert = segue.destination as? AlertViewController {
-                
-                alert.alertType = .deleteAccountAlert
-            }
-            
         default:
             
             break

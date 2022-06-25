@@ -1,0 +1,110 @@
+//
+//  DeleteAccountConfirmViewController.swift
+//  vini
+//
+//  Created by Yi-Chin Hsu on 2022/6/25.
+//
+
+import UIKit
+import RSKPlaceholderTextView
+
+class DeleteAccountConfirmViewController: UIViewController {
+    
+    private let deleteConfirmString: String = "bye-vini"
+    
+    private let vStackView: UIStackView = {
+        let vStackView = UIStackView()
+        vStackView.axis = .vertical
+        vStackView.distribution = .fill
+        vStackView.spacing = 16
+        return vStackView
+    }()
+    
+    private let remindTextView: UITextView = {
+        let textView = UITextView()
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.font = UIFont(name: "PingFangTC-Medium", size: 14)
+        textView.textColor = .white
+        textView.backgroundColor = .clear
+        textView.isScrollEnabled = false
+        return textView
+    }()
+    
+    private let textField: RSKPlaceholderTextView = {
+        let textField = RSKPlaceholderTextView()
+        textField.font = UIFont(name: "PingFangTC-Medium", size: 24)
+        textField.textAlignment = .center
+        textField.textContainer.maximumNumberOfLines = 1
+        textField.textColor = .S1
+        textField.tintColor = .S1
+        textField.backgroundColor = .white.withAlphaComponent(0.05)
+        textField.contentInset = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 0)
+        return textField
+    }()
+    
+    private let confirmButton: MainButton = {
+        let button = MainButton()
+        button.setTitle("確認永久刪除", for: .normal)
+        button.titleLabel?.font = UIFont(name: "PingFangTC-Medium", size: 16)
+        button.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        button.isEnabled = false
+        return button
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupPopGestureRecognizer()
+        setupUI()
+        textField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationController(title: "確認刪除帳號", titleColor: .white)
+        setupNavBarBackButton()
+        textField.layer.cornerRadius = 10
+        confirmButton.layer.cornerRadius = 25
+    }
+    
+    func setupUI() {
+        
+        remindTextView.text = "刪除帳號是無法復原的動作，你將會永遠刪除 Vini 中的所有紀錄，請輸入「\(deleteConfirmString)」來確認刪除動作。"
+        
+        self.view.addSubview(vStackView)
+        vStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            vStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            vStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            vStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            vStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32)
+        ])
+        
+        vStackView.addArrangedSubview(remindTextView)
+        remindTextView.translatesAutoresizingMaskIntoConstraints = false
+        
+        vStackView.addArrangedSubview(textField)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        vStackView.addArrangedSubview(confirmButton)
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            confirmButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
+extension DeleteAccountConfirmViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let isCorrectConfirmStringInput: Bool = textView.text == deleteConfirmString
+        
+        confirmButton.isEnabled = isCorrectConfirmStringInput
+        confirmButton.backgroundColor = isCorrectConfirmStringInput ? UIColor(red: 210/255, green: 13/255, blue: 13/255, alpha: 0.9) : UIColor.white.withAlphaComponent(0.3)
+    }
+}

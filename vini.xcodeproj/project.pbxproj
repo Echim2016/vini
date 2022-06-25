@@ -122,6 +122,9 @@
 		9CD660E52737B080008B265C /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */; };
 		9CEAC5132728060C00C98B96 /* ViniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5122728060C00C98B96 /* ViniView.swift */; };
 		9CEAC5152728FCAD00C98B96 /* DiscoverUserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */; };
+		9CEE2D602866AD26002D12CF /* DeleteAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE2D5F2866AD26002D12CF /* DeleteAccount.storyboard */; };
+		9CEE2D622866AE95002D12CF /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE2D612866AE95002D12CF /* DeleteAccountViewController.swift */; };
+		9CEE2D642866B8F6002D12CF /* DeleteAccountConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE2D632866B8F6002D12CF /* DeleteAccountConfirmViewController.swift */; };
 		9CEE9D99272944B1006CCA06 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */; };
 		9CEE9D9B27294B23006CCA06 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */; };
 		9CEE9D9E27295084006CCA06 /* SetProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */; };
@@ -276,6 +279,9 @@
 		9CD660E42737B080008B265C /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		9CEAC5122728060C00C98B96 /* ViniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViniView.swift; sourceTree = "<group>"; };
 		9CEAC5142728FCAD00C98B96 /* DiscoverUserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverUserManager.swift; sourceTree = "<group>"; };
+		9CEE2D5F2866AD26002D12CF /* DeleteAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DeleteAccount.storyboard; sourceTree = "<group>"; };
+		9CEE2D612866AE95002D12CF /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		9CEE2D632866B8F6002D12CF /* DeleteAccountConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountConfirmViewController.swift; sourceTree = "<group>"; };
 		9CEE9D98272944B1006CCA06 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
 		9CEE9D9A27294B23006CCA06 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		9CEE9D9C27295084006CCA06 /* SetProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileCell.swift; sourceTree = "<group>"; };
@@ -325,6 +331,8 @@
 				9C021D58272E53DF009A7581 /* TimePickerViewController.swift */,
 				9C178063273AA2EF00097E3C /* BlockListViewController.swift */,
 				9C8A36AF273E34B100D57873 /* PrivacyPolicyViewController.swift */,
+				9CEE2D612866AE95002D12CF /* DeleteAccountViewController.swift */,
+				9CEE2D632866B8F6002D12CF /* DeleteAccountConfirmViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -721,6 +729,7 @@
 				9C8A36AD273E349000D57873 /* PrivacyPolicy.storyboard */,
 				9C021D56272E53C6009A7581 /* TimePicker.storyboard */,
 				9C697F202737D25800EDBBCB /* Alert.storyboard */,
+				9CEE2D5F2866AD26002D12CF /* DeleteAccount.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -914,6 +923,7 @@
 				9CEE9DA8272B9AAB006CCA06 /* Achievement.storyboard in Resources */,
 				9CEE9DA3272AA84A006CCA06 /* Mailbox.storyboard in Resources */,
 				9C840CAE2730E9C900AF3F73 /* InsightCollectionViewCell.xib in Resources */,
+				9CEE2D602866AD26002D12CF /* DeleteAccount.storyboard in Resources */,
 				9C021D57272E53C6009A7581 /* TimePicker.storyboard in Resources */,
 				9C5FC91D271D226E00DE4E42 /* Growth.storyboard in Resources */,
 				9C697F3127391F3200EDBBCB /* CloudCategoryCell.xib in Resources */,
@@ -1058,6 +1068,7 @@
 			files = (
 				9C5FC925271D3A3100DE4E42 /* GrowthPageViewController.swift in Sources */,
 				9CA66FA22723059E00E85F28 /* String+Extension.swift in Sources */,
+				9CEE2D642866B8F6002D12CF /* DeleteAccountConfirmViewController.swift in Sources */,
 				9CEE9DAF272B9EEA006CCA06 /* MailCell.swift in Sources */,
 				9CEE9DAB272B9B2B006CCA06 /* AchievementViewController.swift in Sources */,
 				9C95786A273BDE770056F757 /* TabBarItem.swift in Sources */,
@@ -1126,6 +1137,7 @@
 				9C51A3C727326C5800F85CE4 /* ReflectionIntroCell.swift in Sources */,
 				9CEE9DBB272BD5F1006CCA06 /* Mail.swift in Sources */,
 				9C42440C2752656900CBAE32 /* UIAction+Extension.swift in Sources */,
+				9CEE2D622866AE95002D12CF /* DeleteAccountViewController.swift in Sources */,
 				9C95786C273BDFBA0056F757 /* CustomTabBarController.swift in Sources */,
 				9C5FC92C271D50EA00DE4E42 /* GrowthCard.swift in Sources */,
 				9CA66FA4272308B200E85F28 /* EmojiTextField.swift in Sources */,
