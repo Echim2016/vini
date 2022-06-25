@@ -57,6 +57,7 @@ class DeleteAccountConfirmViewController: UIViewController {
         setupPopGestureRecognizer()
         setupUI()
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        confirmButton.addTarget(self, action: #selector(tapConfirmButton), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +96,42 @@ class DeleteAccountConfirmViewController: UIViewController {
         NSLayoutConstraint.activate([
             confirmButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc func tapConfirmButton() {
+        
+        performUserDeletion()
+    }
+    
+    private func performUserDeletion() {
+        
+        VProgressHUD.show()
+        
+        UserManager.shared.deleteUser { result in
+            switch result {
+            case .success(let isDeleted):
+                
+                if isDeleted {
+                    
+                    VProgressHUD.showSuccess()
+                    
+                    if let signinNav = UIStoryboard.signIn.instantiateViewController(
+                        withIdentifier: StoryboardCategory.signIn.rawValue
+                    ) as? UINavigationController {
+                        
+                        if let sceneDelegate: SceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                            sceneDelegate.window?.rootViewController = signinNav
+                            sceneDelegate.window?.makeKeyAndVisible()
+                        }
+                    }
+                }
+                
+            case.failure(let error):
+                
+                print(error)
+                VProgressHUD.showFailure(text: "刪除帳號時出了一點問題，建議重新登入後再試")
+            }
+        }
     }
 }
 

@@ -68,6 +68,23 @@ class UserManager {
         }
     }
     
+    func deleteUser(completion: @escaping Handler<Bool>) {
+        
+        let user = Auth.auth().currentUser
+                
+        user?.delete { error in
+          if let error = error {
+
+              completion(.failure(error))
+              
+          } else {
+
+              print("User Deletion Success")
+              completion(.success(true))
+          }
+        }
+    }
+    
     func createNewMailBox(completion: @escaping Handler<String>) {
         
         if let userID = self.userID {
