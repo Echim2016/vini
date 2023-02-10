@@ -5,8 +5,8 @@
 //  Created by Yi-Chin Hsu on 2021/10/19.
 //
 
+// swiftlint:disable file_length
 import UIKit
-import grpc
 import FirebaseFirestore
 import RSKPlaceholderTextView
 import AVFoundation

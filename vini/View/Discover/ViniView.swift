@@ -52,10 +52,10 @@ class ViniView: UIView {
         viniImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            viniImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            viniImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            viniImageView.widthAnchor.constraint(equalToConstant: 80),
-            viniImageView.heightAnchor.constraint(equalToConstant: 100)
+            viniImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            viniImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            viniImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            viniImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Delete Account View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="DeleteAccountViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vini_sweat" translatesAutoresizingMaskIntoConstraints="NO" id="iEk-qL-NLp">
+                                <rect key="frame" x="151.5" y="108" width="111" height="111.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iEk-qL-NLp" secondAttribute="height" multiplier="1:1" id="yk8-NC-4zQ"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="你要離開 Vini 了嗎？帳號一旦刪除之後，過去的成長卡片、微小學習、信箱信件等資訊都將被刪除。Vini 無法復原你的紀錄，也無法保留你的重要成長，你真的要刪除帳號嗎？" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKc-b9-d8q">
+                                <rect key="frame" x="16" y="283.5" width="382" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="FKt-Ae-g3i"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e0q-nw-FQx">
+                                <rect key="frame" x="16" y="780" width="382" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PA0-UA-UL8" customClass="MainButton" customModule="vini" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="繼續成長">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpK-k7-pB7" customClass="MainButton" customModule="vini" customModuleProvider="target">
+                                        <rect key="frame" x="199" y="0.0" width="183" height="50"/>
+                                        <color key="backgroundColor" red="0.82352941176470584" green="0.050980392156862744" blue="0.050980392156862744" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="確定刪除">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="j15-5C-FHE" kind="show" id="VFN-cG-G3h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2xY-sg-FW4"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="iEk-qL-NLp" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="514-YQ-cco"/>
+                            <constraint firstItem="e0q-nw-FQx" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="8zS-Mx-TEp"/>
+                            <constraint firstItem="iEk-qL-NLp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="64" id="Iex-MX-xSq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="e0q-nw-FQx" secondAttribute="trailing" constant="16" id="M2i-aM-zkC"/>
+                            <constraint firstItem="iEk-qL-NLp" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="15:56" constant="0.40000000000000002" id="TAJ-W2-ivS"/>
+                            <constraint firstItem="dKc-b9-d8q" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="XIy-gB-M5b"/>
+                            <constraint firstItem="dKc-b9-d8q" firstAttribute="top" secondItem="iEk-qL-NLp" secondAttribute="bottom" constant="64" id="asM-6F-nl6"/>
+                            <constraint firstItem="e0q-nw-FQx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ewh-Uq-jaR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dKc-b9-d8q" secondAttribute="trailing" constant="16" id="gbt-Am-TEl"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="e0q-nw-FQx" secondAttribute="bottom" constant="32" id="jHh-MB-QRE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="C8Y-4t-xO4"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="PA0-UA-UL8" id="lmw-BL-V20"/>
+                        <outlet property="confirmButton" destination="PpK-k7-pB7" id="2cr-4g-plM"/>
+                        <outlet property="viniImageView" destination="iEk-qL-NLp" id="ezN-q4-aTd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1045" y="76"/>
+        </scene>
+        <!--Delete Account Confirm View Controller-->
+        <scene sceneID="ZWV-Dp-SXv">
+            <objects>
+                <viewController id="j15-5C-FHE" customClass="DeleteAccountConfirmViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bgc-2p-13L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="u7V-PK-ayG"/>
+                        <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="26a-0e-6nx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OkR-ZQ-JgU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1880" y="76"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="vini_sweat" width="318" height="321.5"/>
+    </resources>
+</document>
