@@ -219,9 +219,12 @@ Experience different vibration patterns when:
 
 | Version | Date | Notes |
 | -------- | -------- | -------- |
-| 1.0.2   | 2021.11.20     | Released in App Store   |
-| 1.0.3   | 2021.11.29    | Fix navagation bar color bug     |
+| 1.0.2   | 2021.11.20     | Released in App Store.   |
+| 1.0.3   | 2021.11.29    | Fix navigation bar color bug.     |
 | 1.0.4   | 2021.12.04     | Fix reflection text bug in specific devices.     |
+| 1.0.5   | 2021.12.17     | Fix avatar display bug and improve sound experience.     |
+| 1.0.6   | 2022.01.05     | Fix signup bug.     |
+| 1.1.0   | 2022.06.25     | Add delete account feature.     |
 
 ## Author
 - Echim Hsu｜ychim26@gmail.com
