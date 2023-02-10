@@ -4,7 +4,7 @@
 
 <p align="left">
     <img src="https://img.shields.io/badge/platform-iOS-lightgray">
-    <img src="https://img.shields.io/badge/release-v1.0.4-green">
+    <img src="https://img.shields.io/badge/release-v1.1.0-green">
 </p>
 
 # Vini: a growth tracking app for self-improvement.
@@ -213,7 +213,7 @@ Experience different vibration patterns when:
 - [x] iOS 13 or higher.
 
 ## Version
-> 1.0.4
+> 1.1.0
 
 ## Release Notes
 
