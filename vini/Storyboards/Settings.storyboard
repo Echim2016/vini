@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xkN-mF-uVF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xkN-mF-uVF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4bR-4M-cgT" userLabel="Footer">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vini" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SH-Qy-VOR">
+                                        <rect key="frame" x="193.5" y="11" width="27.5" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="0SH-Qy-VOR" firstAttribute="centerX" secondItem="4bR-4M-cgT" secondAttribute="centerX" id="0XV-p9-3v3"/>
+                                    <constraint firstItem="0SH-Qy-VOR" firstAttribute="centerY" secondItem="4bR-4M-cgT" secondAttribute="centerY" id="tz9-p0-MSB"/>
+                                    <constraint firstAttribute="height" constant="44" id="ufS-yI-F5r"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="KzP-cJ-Gyv">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="726"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
@@ -25,10 +42,13 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="4bR-4M-cgT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3db-f5-g1L"/>
+                            <constraint firstItem="KzP-cJ-Gyv" firstAttribute="bottom" secondItem="4bR-4M-cgT" secondAttribute="top" id="EjX-wV-X2m"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KzP-cJ-Gyv" secondAttribute="trailing" id="TI6-pb-Hhq"/>
                             <constraint firstItem="KzP-cJ-Gyv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="WZv-Mm-aBo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4bR-4M-cgT" secondAttribute="trailing" id="ZJT-eh-U9K"/>
                             <constraint firstItem="KzP-cJ-Gyv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hI7-hR-YeM"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="KzP-cJ-Gyv" secondAttribute="bottom" id="yXW-uZ-TyI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="4bR-4M-cgT" secondAttribute="bottom" id="i2d-gf-ww5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GpN-M4-xN8">
@@ -41,6 +61,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="KzP-cJ-Gyv" id="V95-g0-B4U"/>
+                        <outlet property="versionNumberLabel" destination="0SH-Qy-VOR" id="uZ4-K5-Mwf"/>
                         <segue destination="Skc-NN-kdY" kind="presentation" identifier="ShowReflectionTimeSetting" animates="NO" id="4Lj-PC-rOB"/>
                         <segue destination="rdC-1a-42Z" kind="presentation" identifier="ShowLogOutAlert" id="9bE-fw-Eqc"/>
                         <segue destination="6bQ-9j-hGV" kind="show" identifier="ShowBlockList" id="zK9-6h-YYD"/>
@@ -106,7 +127,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="xkN-mF-uVF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="13X-aK-DCr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

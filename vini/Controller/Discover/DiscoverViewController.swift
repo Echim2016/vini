@@ -250,7 +250,7 @@ extension DiscoverViewController {
     
     func resetTitle() {
         
-        wonderingLabel.text = "這裡是\(cloudCategory.title)層\n繼續探索吧！"
+        wonderingLabel.text = "這裡是\(cloudCategory.title)層\n看看大家在想些什麼？"
         nameLabel.text = "最近在想些什麼？"
         sendButton.alpha = 0
         blockButton.alpha = 0

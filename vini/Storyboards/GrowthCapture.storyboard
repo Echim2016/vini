@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GJw-ih-adG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GJw-ih-adG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IOB-tM-r9n">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="JnJ-UK-3Bl">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
@@ -86,7 +86,7 @@
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="R5T-tD-nbY">
-                                    <rect key="frame" x="0.0" y="361" width="414" height="300"/>
+                                    <rect key="frame" x="0.0" y="373" width="414" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-bE-cn7" customClass="MainButton" customModule="vini" customModuleProvider="target">
@@ -124,17 +124,17 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0xE-Hy-fcH">
-                                        <rect key="frame" x="0.0" y="294.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="300" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0xE-Hy-fcH" id="VmE-o8-N1i">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sea-Ec-MQt" userLabel="Expand View">
-                                <rect key="frame" x="0.0" y="268" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="272" width="414" height="0.0"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 / 20 字" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0p-Be-PqF">
                                         <rect key="frame" x="33" y="5" width="348" height="18.5"/>
@@ -161,7 +161,7 @@
                             <constraint firstItem="Sea-Ec-MQt" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="180" id="dxk-IK-XMN"/>
                             <constraint firstItem="IOB-tM-r9n" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="rus-nv-RPO"/>
                             <constraint firstItem="Sea-Ec-MQt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sBs-Rz-k7P"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="IOB-tM-r9n" secondAttribute="bottom" id="sJu-of-jaq"/>
+                            <constraint firstAttribute="bottom" secondItem="IOB-tM-r9n" secondAttribute="bottom" id="sJu-of-jaq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nFc-Rx-ICV">
@@ -256,7 +256,7 @@
             <objects>
                 <viewController id="F69-GU-DzG" customClass="SetGrowthContentCardViewController" customModule="vini" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bu2-g3-47S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaa-um-dyL" userLabel="Close Button">
@@ -333,7 +333,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37j-Hm-j3C" userLabel="Album Button">
-                                        <rect key="frame" x="48" y="0.5" width="40" height="39"/>
+                                        <rect key="frame" x="48" y="0.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="GZk-fC-Btk"/>
                                             <constraint firstAttribute="height" constant="40" id="Gqu-FL-igw"/>
@@ -411,7 +411,7 @@
                 <navigationController storyboardIdentifier="GrowthCapture" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="GJw-ih-adG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eXH-Zb-6ya">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" red="0.090196078430000007" green="0.1215686275" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -442,17 +442,17 @@
     </scenes>
     <designables>
         <designable name="Zq7-UH-jTE">
-            <size key="intrinsicContentSize" width="10" height="41.5"/>
+            <size key="intrinsicContentSize" width="0.0" height="41.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="ayE-PI-VOL"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="97"/>
-        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="camera.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="photo.fill.on.rectangle.fill" catalog="system" width="128" height="102"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
     </resources>
 </document>

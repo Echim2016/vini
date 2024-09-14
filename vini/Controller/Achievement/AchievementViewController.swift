@@ -52,6 +52,7 @@ class AchievementViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.registerCellWithNib(identifier: ArchivedCardCell.identifier, bundle: nil)
+        tableView.showsVerticalScrollIndicator = false
         setupNavigationController(title: "我的成就", titleColor: .white)
         setupNotificationCenterObserver()
     }
