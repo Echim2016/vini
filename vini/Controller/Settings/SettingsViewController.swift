@@ -25,7 +25,9 @@ class SettingsViewController: UIViewController {
             tableView.dataSource = self
         }
     }
-    
+  
+    @IBOutlet weak var versionNumberLabel: UILabel!
+  
     var sections: [SettingsSection] = SettingsSection.allCases
     
     var rowTitles: [[SettingsTitle]] = []
@@ -36,6 +38,10 @@ class SettingsViewController: UIViewController {
         tableView.registerCellWithNib(identifier: SettingsItemCell.identifier, bundle: nil)
         
         rowTitles = sections.map { $0.settingItems }
+      
+      if let versionNumber = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
+        versionNumberLabel.text = "v\(versionNumber)"
+      }
     }
     
     override func viewWillAppear(_ animated: Bool) {
