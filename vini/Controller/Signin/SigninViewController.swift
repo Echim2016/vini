@@ -9,7 +9,6 @@ import UIKit
 import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
-import grpc
 import AVFoundation
 
 class SigninViewController: UIViewController {
