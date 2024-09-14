@@ -40,7 +40,8 @@ class CreateGrowthContentCell: UITableViewCell {
         
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMMM d"
+        dateFormatter.dateFormat = "M 月 d 日, EEEE"
+        dateFormatter.locale = Locale(identifier: "zh")
         dateLabel.text = dateFormatter.string(from: date)
     }
     
