@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         FirebaseConfiguration().setLoggerLevel(FirebaseLoggerLevel.min)
         FirebaseApp.configure()
-        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.isEnabled = true
         UITabBar.appearance().tintColor = .white
         
         // User Notifications
