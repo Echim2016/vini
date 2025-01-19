@@ -225,6 +225,7 @@ Experience different vibration patterns when:
 | 1.0.5   | 2021.12.17     | Fix avatar display bug and improve sound experience.     |
 | 1.0.6   | 2022.01.05     | Fix signup bug.     |
 | 1.1.0   | 2022.06.25     | Add delete account feature.     |
+| 1.1.1   | 2024.09.14     | Add minor improvements.     |
 
 ## Author
 - Echim Hsu｜ychim26@gmail.com
